@@ -166,7 +166,7 @@ form .input {
     height: 90vw;
     padding: 10px;
     box-sizing: border-box;
-    resize: both;
+    /* resize: both; */
     /* resize: horizontal; */
     overflow: auto;
     max-width: 100%;
