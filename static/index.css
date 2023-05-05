@@ -42,7 +42,8 @@ body {
     margin-top: 5vh;
     margin-bottom: 2vh;
     padding: 5px;
-    background: rgba(10, 10, 10, 0.85);
+    /* background: rgba(10, 10, 10, 0.85); */
+    background: red;
     color: #FDFD96;
     border-radius: 5px;
 }
