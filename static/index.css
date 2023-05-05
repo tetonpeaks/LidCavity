@@ -31,7 +31,6 @@ body {
     resize: horizontal;
     overflow: auto;
     max-width: 100%;
-    height: calc(100vh - 16px);
 }
 
 .hero0 {
