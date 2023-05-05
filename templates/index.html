@@ -10,15 +10,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
   </head>
   <body class="body">
-          <div class="hero0" id="hero0">
-            <div class="progress" id="progress">
-              <canvas id="myChart0"></canvas>
-            </div>
+    <div class="upper">
 
-            <div class="form">
+      <div class="hero0" id="hero0">
+        <div class="progress" id="progress">
+          <canvas id="myChart0"></canvas>
+        </div>
+
+        <div class="form">
               <form action="">
                 <p>
-                  <label for="input-T" class="input"> Temp. </label>
+                  <label for="input-T" class="input"> TempE. </label>
                   <input type="text" class="input" id="input-T" value="60" placeholder="60&#8451">
                   <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
                 </p>
@@ -48,6 +50,7 @@
 
             </div>
           </div>
+        </div>
 
         <!-- <div class="" id=""> -->
           <div class="hero1">
