@@ -19,20 +19,35 @@ body {
 
 } */
 
-.hero0 {
-    /* position: relative; */
-    /* display: inline-block; */
+.upper {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 75%;
     margin-top: 10vh;
+    margin-bottom: 2vh;
+    width: 75%;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: horizontal;
+    overflow: auto;
+    max-width: 100%;
+    height: calc(100vh - 16px);
+}
+
+.hero0 {
+    /* display: block; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: auto;
+    width: 90%;
+    margin-top: 5vh;
     margin-bottom: 2vh;
     padding: 5px;
     background: rgba(10, 10, 10, 0.85);
     color: #FDFD96;
     border-radius: 5px;
 }
+
 
 form {
     display: grid;
@@ -67,6 +82,7 @@ form .input {
     font-size: 11px;;
     border: 2px solid #FDFD96;
     border-radius: 5px;
+    padding: 2.5px;
     color: #FDFD96;
     background-color: black;
     /* box-shadow: 1px 1px 1px 1px #FDFD96; */
