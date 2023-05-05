@@ -116,7 +116,7 @@ form .input {
 
 .hero1 {
     position: relative;
-    width: 45vw;
+    width: 100vw;
     height: 45vh;
     float: left;
     margin-left: 1vw;
@@ -136,7 +136,7 @@ form .input {
 
 .hero2 {
     position: relative;
-    width: 45vw;
+    width: 100vw;
     height: 45vh;
     float: right;
     margin-right: 3vw;
