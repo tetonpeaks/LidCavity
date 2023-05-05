@@ -181,7 +181,8 @@ form .input {
     margin-top: 2vh;
     margin-bottom: 2vh;
     padding: 5px;
-    background: rgba(10, 10, 10, 0.85);
+    background: red;
+    /* background: rgba(10, 10, 10, 0.85); */
     color: #FDFD96;
     border-radius: 5px;
     /* display: block;
