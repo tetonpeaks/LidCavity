@@ -61,6 +61,8 @@ form {
     border: 2px solid #FDFD96;
     color: #FDFD96;
     border-radius: 4px;
+
+    overflow: auto;
 }
 
 form label {
