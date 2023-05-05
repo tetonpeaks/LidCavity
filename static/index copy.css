@@ -157,24 +157,50 @@ form .input {
 }
 
 .bottom {
-    display: inline-block;
-    /* position: relative; */
-    width: 100vw;
-    height: 100vw;
-    vertical-align: middle;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1vh;
+    /* margin-bottom: 2vh; */
+    width: 90vw;
+    /* height: 90vw; */
+    /* height: calc(100vh - 16px); */
+    padding: 2px;
+    box-sizing: border-box;
+    /* resize: both; */
+    /* resize: horizontal; */
+    overflow: auto;
+    max-width: 100%;
+    background: red;
 }
 
 .hero2 {
-    /* display: inline-block;
-    vertical-align: middle; */
+    display: flex;
+    /* margin-left: auto;
+    margin-right: auto; */
     margin: auto;
-    width: 75%;
-    height: 75%;
-    background: rgba(10, 10, 10, 0.15);
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    overflow: auto;
+    padding-bottom: 35%;
+    background: red;
+    /* background: rgba(10, 10, 10, 0.85); */
     color: #FDFD96;
     border-radius: 5px;
-
-    /* overflow: auto; */
+    /* display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    height: 250px;
+    background: rgb(10, 10, 10, 0);
+    color: #FDFD96;
+    border-radius: 10px; */
+    /* position: relative; */
+    /* border: 2px solid #FDFD96; */
+    /* padding: 20px; */
+    /* width: 45vw;
+    height: 45vh; */
 }
 
 /* .myChart3 {

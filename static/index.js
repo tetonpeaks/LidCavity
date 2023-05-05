@@ -458,11 +458,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const image = new Image();
                 image.src = img_src;
+                console.log(":: chartArea =", myScatter.chartArea)
                 const imgPlugin = {
                     id: 'custom_canvas_background_image',
                         beforeDraw: () => {
                             if (image.complete) {
-                                ctx3.drawImage(image, myScatter.chartArea.left*0.87, myScatter.chartArea.top, myScatter.chartArea.width*1.05, myScatter.chartArea.height*1.02);
+                                ctx3.drawImage(image, myScatter.chartArea.left*0.8, myScatter.chartArea.top, myScatter.chartArea.width*1.05, myScatter.chartArea.height*1.02);
+                                //ctx3.drawImage(image, myScatter.chartArea.left*0.75, myScatter.chartArea.top, myScatter.chartArea.width*1.05, myScatter.chartArea.height*1.02);
 
                             } else {
                                 image.onload = () => myScatter.draw();
