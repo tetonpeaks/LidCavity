@@ -53,14 +53,6 @@ body {
     background-color: rgba(10, 10, 10, 0.85);
 }
 
-@keyframes blinkingBackground{
-    0%		{ background-color: #10c018;}
-    25%		{ background-color: #1056c0;}
-    50%		{ background-color: #ef0a1a;}
-    75%		{ background-color: #254878;}
-    100%	        { background-color: #04a1d5;}
-}
-
 .grid0 {
     display: grid;
     grid-template-columns: max-content max-content;
@@ -177,4 +169,12 @@ form .select {
 
 .nav {
     background-color: rgb(10, 10, 10);
+}
+
+@keyframes blinkingBackground{
+    0%		{ background-color: #10c018;}
+    25%		{ background-color: #1056c0;}
+    50%		{ background-color: #ef0a1a;}
+    75%		{ background-color: #254878;}
+    100%	        { background-color: #04a1d5;}
 }

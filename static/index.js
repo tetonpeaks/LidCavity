@@ -25,14 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var start;
 
     var ofs = 0.5;
-    var elem_div = document.getElementById("hero0");
+    var hero0 = document.getElementById("hero0");
+    var hero2 = document.getElementById("hero2");
     var str;
 
-    //elem_div.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin(ofs))+');'
-    elem_div.style = 'background-color: rgba(10, 10, 10, 0.85);'
+    //hero0.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin(ofs))+');'
+    hero0.style = 'background-color: rgba(10, 10, 10, 0.85);'
 
     /* str = `background-color: red;`
-    elem_div.style = str; */
+    hero0.style = str; */
 
     document.querySelector('#reset1').addEventListener('click', () => {
         //console.log(":: myChart1 =", myChart1)
@@ -163,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
         socket1.onopen = function() {
             console.log(":: Connected to Socket 1 ::");
 
-            elem_div.style = 'animation: blinkingBackground 2s infinite;';
+            hero0.style = 'animation: blinkingBackground 2s infinite;';
 
             socket1.send(JSON.stringify(
                 {
@@ -190,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
         socket1.onclose = function() {
             console.log('Closed Socket 1');
 
-            elem_div.style = 'background-color: rgba(10, 10, 10, 0.85);'
+            hero0.style = 'background-color: rgba(10, 10, 10, 0.85);'
 
             document.getElementById("uv").disabled = false;
             document.getElementById("uv").style.background = '#00FF00';
@@ -220,6 +221,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         socket2.onopen = function() {
             console.log(":: Connected to Socket 2 ::")
+
+            hero0.style = 'animation: blinkingBackground 2s infinite;';
+
             socket2.send(JSON.stringify(
                 {
                     flag: 1,
@@ -234,9 +238,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         socket2.onmessage = function(e) {
             const newData = JSON.parse(e.data);
-            if (newData.hasOwnProperty('ctr')) {
-                integrateData(newData);
-            } else if (newData.hasOwnProperty('x')) {
+
+            if (newData.hasOwnProperty('x')) {
                 xdata = newData.x;
                 ydata = newData.y;
             }
@@ -244,70 +247,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         socket2.onclose = function() {
             console.log('Closed Socket 2');
+
+            hero0.style = 'background-color: rgba(10, 10, 10, 0.85);'
+
             document.getElementById("uv").disabled = true;
             document.getElementById("uv").style.background = '#000000';
             document.getElementById("streamline").disabled = false;
             document.getElementById("streamline").style.background = '#00FF00';
         };
     });
-
-    const labels = ["Integrating velocity field...", ""];
-
-    //let ctx2 = document.getElementById("myChart0").getContext("2d");
-    /* var data = {
-            labels: labels,
-            datasets: [
-                {
-                    data: [0],
-                    backgroundColor: [
-                        'rgba(250, 160, 160, 0.2)',
-                    ],
-                    borderColor: [
-                        'grey',
-                    ],
-                }
-            ]
-        } */
-
-    /* var myProgressPie = new Chart(ctx2, {
-            type: 'pie',
-            data: data,
-            options: {
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                }
-            }
-        }) */
-
-    function integrateData(newData) {
-
-        let ctr = newData.ctr;
-
-        str = `.blink-text{
-            color: #000;
-            font-weight: bold;
-            font-size: 2rem;
-            animation: blinkingText 2s infinite;
-        }
-        @keyframes blinkingText{
-            0%		{ color: #10c018;}
-            25%		{ color: #1056c0;}
-            50%		{ color: #ef0a1a;}
-            75%		{ color: #254878;}
-            100%	{ color: #04a1d5;};`
-        elem_div.style = str;
-
-        /* data.labels[0] = [`Integrating velocity field [ ${Math.round(((ctr+1)/Np)*100)}% ]`]
-        data.datasets[0].data[0] = [(ctr/Np)*100]
-        myProgressPie.update();
-
-        if (data.datasets[0].data[0] >= 95) {
-            data.datasets[0].backgroundColor[0] = 'rgba(193, 225, 193, 0.2)';
-            myProgressPie.update();
-        } */
-    }
 
     var ctx3 = document.getElementById("myChart2").getContext("2d");
 
@@ -449,6 +397,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         socket3.onopen = function() {
             console.log(":: Connected to Socket 3 ::")
+
+            hero2.style = 'animation: blinkingBackground 2s infinite;';
+
             socket3.send(JSON.stringify(
                 {
                     flag: 2,
@@ -469,21 +420,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (myScatter != undefined) {
                     clearInterval(interval3);
+                    //myScatter.clear();
                     myScatter.destroy();
                 }
 
-                data.datasets[0].data[0] = 0;
-                data.datasets[0].backgroundColor[0] = 'rgba(250, 160, 160, 0.2)';
-                myProgressPie.update();
-
-                for (let i = 0; i < 8000; i++) {
-                    setTimeout(() => {
-                        data.datasets[0].data[0] = [(i/8000)*100];
-                        myProgressPie.update();
-                    }, 1000)
-                }
-
-            }  else if (newData.hasOwnProperty('img_src')) {
+            } else if (newData.hasOwnProperty('img_src')) {
                 img_src = newData.img_src;
 
                 const image = new Image();
@@ -608,6 +549,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 socket3.onclose = function() {
                     console.log('Closed Socket 3');
+
+                    hero2.style = 'background-color: rgba(10, 10, 10, 0.85);'
+
                     document.getElementById("streamline").disabled = true;
                     document.getElementById("streamline").style.background = '#000000';
                 };
@@ -626,10 +570,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 //streamDataset.datasets[i].data = [{x: 1, y: 1}]; //only made diff on init
             }
             myScatter.update();
-
-            data.labels[0] = ['Complete.']
-            data.datasets[0].backgroundColor[0] = 'rgba(193, 225, 193, 0.2)'
-            myProgressPie.update();
 
             var ctr = 0;
             interval3 = setInterval(function() {
