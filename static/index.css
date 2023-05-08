@@ -35,10 +35,10 @@ body {
     margin-bottom: 2vh;
     width: 75%;
     padding: 10px;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     /* resize: horizontal; */
-    overflow: auto;
-    max-width: 100%;
+    /* overflow: auto; */
+    /* max-width: 100%; */
 }
 
 .hero0 {
@@ -50,20 +50,32 @@ body {
     margin-top: 5vh;
     margin-bottom: 2vh;
     padding: 5px;
-    /* background: rgba(10, 10, 10, 0.85); */
-    background: red;
+    background: black;
+    /* background: red; */
     color: #FDFD96;
     border-radius: 5px;
+    text-align: center;
+}
+
+.grid0 {
+    display: grid;
+    grid-template-columns: max-content max-content max-content;
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+.status {
+    display: grid;
 }
 
 form {
     display: grid;
-    grid-template-columns: max-content max-content max-content;
+    grid-template-columns: max-content;
     grid-gap: 10px;
 
     font-size: 11px;;
 
-    width: 365px;
+    width: 150px;
     padding: 10px 10px;
     background-color: black;
     border: 2px solid #FDFD96;
@@ -71,6 +83,8 @@ form {
     border-radius: 4px;
 
     overflow: auto;
+
+    justify-content: center;
 }
 
 form label {
@@ -94,6 +108,7 @@ form .select {
 }
 
 .btn {
+    display: block;
     font-size: 11px;;
     border: 2px solid #FDFD96;
     border-radius: 5px;
@@ -104,7 +119,7 @@ form .select {
 }
 
 .progress {
-    position: relative;
+    /* position: relative; */
     background: rgba(10, 10, 10, 0.85);
     /* color: #FDFD96; */
     border: 2px solid #FDFD96;
@@ -115,7 +130,7 @@ form .select {
     /* margin-bottom: 20px; */
     width: 4rem;
     height: 4rem;
-    float: right;
+    float: ri/*  */ght;
 }
 
 .progress_backup {

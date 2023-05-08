@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const labels = ["Integrating velocity field...", ""];
 
-    let ctx2 = document.getElementById("myChart0").getContext("2d");
+    /* let ctx2 = document.getElementById("myChart0").getContext("2d");
     var data = {
             labels: labels,
             datasets: [
@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
             }
-        })
+        }) */
 
     function integrateData(newData) {
 
