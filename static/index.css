@@ -51,6 +51,7 @@ body {
     text-align: center;
     justify-items: center;
     background-color: rgba(10, 10, 10, 0.85);
+    border: 2px solid black;
 }
 
 .grid0 {
@@ -112,29 +113,6 @@ form .select {
     background-color: black;
 }
 
-.progress_backup {
-    position: relative;
-    background: rgba(10, 10, 10, 0.85);
-    color: #FDFD96;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 10vh;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    width: 200px;
-    height: 200px;
-    /* -ms-transform: translateX(-20vw);
-    transform: translateX(-20vw); */
-    float: left;
-}
-
-.lower {
-    padding: 10px;
-    margin-top: 1vh;
-    margin-left: 20px;
-    width: 100vw;
-}
-
 .hero1 {
     margin: auto;
     width: 75%;
@@ -142,6 +120,14 @@ form .select {
     background: rgba(10, 10, 10, 0.15);
     color: #FDFD96;
     border-radius: 5px;
+    border: 2px solid black;
+}
+
+.middle {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
 }
 
 .bottom {
@@ -155,9 +141,10 @@ form .select {
     margin: auto;
     width: 75%;
     height: auto;
-    background: rgba(10, 10, 10, 0.15);
+    /* background-color: rgba(10, 10, 10, 0.15); */
     color: #FDFD96;
     border-radius: 5px;
+    border: 2px solid black;
 }
 
 

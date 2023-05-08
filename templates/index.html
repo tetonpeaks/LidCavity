@@ -48,7 +48,7 @@
               </p>
               <p>
                 <label for="input-N" class="input"> # of CVs </label>
-                <input type="text" class="input" id="input-N" value="20" placeholder="10">
+                <input type="text" class="input" id="input-N" value="30" placeholder="10">
                 <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
               </p>
               <!-- <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> -->
@@ -58,17 +58,17 @@
       </div>
     </div>
 
-        <!-- <div class="" id=""> -->
-          <div class="hero1">
-              <canvas class="myChart1" id="myChart1" style="width:75%;height:250px"></canvas>
-          </div>
-        <div class="bottom">
-          <div class="hero2" id="hero2">
-            <canvas class="myChart2" id="myChart2" style="width:75%;height:250px"></canvas>
-            <!-- <canvas class="myChart2" id="myChart2" style="width:75%;height:46.875%"></canvas> -->
-          </div>
-        </div>
-        <!-- </div> -->
+    <div class="middle">
+      <div class="hero2" id="hero2">
+        <canvas class="myChart2" id="myChart2" style="width:75%;height:250px"></canvas>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="hero1">
+          <canvas class="myChart1" id="myChart1" style="width:75%;height:250px"></canvas>
+      </div>
+    </div>
 
     <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
   </body>

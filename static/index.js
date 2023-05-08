@@ -24,10 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
     var img_src;
     var start;
 
-    var ofs = 0.5;
+    var statusInterval;
+
+    var ofs = 0;
     var hero0 = document.getElementById("hero0");
     var hero2 = document.getElementById("hero2");
-    var str;
+
+
 
     //hero0.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin(ofs))+');'
     hero0.style = 'background-color: rgba(10, 10, 10, 0.85);'
@@ -164,7 +167,12 @@ document.addEventListener("DOMContentLoaded", function () {
         socket1.onopen = function() {
             console.log(":: Connected to Socket 1 ::");
 
-            hero0.style = 'animation: blinkingBackground 2s infinite;';
+            //hero0.style = 'animation: blinkingBackground 2s infinite;';
+            //hero0.style = 'background-color: rgba(255,0,0,1);';
+            statusInterval = setInterval(() => {
+                hero0.style = 'background-color: rgba(255,105,97,'+Math.abs(Math.sin(ofs))+');';
+                ofs += 0.02;
+            }, 10);
 
             socket1.send(JSON.stringify(
                 {
@@ -191,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
         socket1.onclose = function() {
             console.log('Closed Socket 1');
 
+            clearInterval(statusInterval);
             hero0.style = 'background-color: rgba(10, 10, 10, 0.85);'
 
             document.getElementById("uv").disabled = false;
@@ -200,6 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function addData(newData) {
         myChart1.data.labels.push(newData.x); // need to change
+        //hero0.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin((newData.x + 0.1) / 100))+');'
         /* myChart1.data.datasets[0].data.push(newData.total);
         myChart1.data.datasets[1].data.push(newData.pressure);
         myChart1.data.datasets[2].data.push(newData.umom);
@@ -222,7 +232,12 @@ document.addEventListener("DOMContentLoaded", function () {
         socket2.onopen = function() {
             console.log(":: Connected to Socket 2 ::")
 
-            hero0.style = 'animation: blinkingBackground 2s infinite;';
+            //hero0.style = 'animation: blinkingBackground 2s infinite;';
+
+            statusInterval = setInterval(() => {
+                hero0.style = 'background-color: rgba(255,105,97,'+Math.abs(Math.sin(ofs))+');';
+                ofs += 0.02;
+            }, 10);
 
             socket2.send(JSON.stringify(
                 {
@@ -248,7 +263,8 @@ document.addEventListener("DOMContentLoaded", function () {
         socket2.onclose = function() {
             console.log('Closed Socket 2');
 
-            hero0.style = 'background-color: rgba(10, 10, 10, 0.85);'
+            clearInterval(statusInterval);
+            hero0.style = 'background-color: black;'
 
             document.getElementById("uv").disabled = true;
             document.getElementById("uv").style.background = '#000000';
@@ -398,7 +414,12 @@ document.addEventListener("DOMContentLoaded", function () {
         socket3.onopen = function() {
             console.log(":: Connected to Socket 3 ::")
 
-            hero2.style = 'animation: blinkingBackground 2s infinite;';
+            //hero2.style = 'animation: blinkingBackground 2s infinite;';
+
+            statusInterval = setInterval(() => {
+                hero2.style = 'background-color: rgba(174,198,207,'+Math.abs(Math.sin(ofs))+');';
+                ofs += 0.02;
+            }, 10);
 
             socket3.send(JSON.stringify(
                 {
@@ -429,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const image = new Image();
                 image.src = img_src;
-                console.log(":: chartArea =", myScatter.chartArea)
+                //console.log(":: chartArea =", myScatter.chartArea)
                 const imgPlugin = {
                     id: 'custom_canvas_background_image',
                         beforeDraw: () => {
@@ -550,7 +571,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 socket3.onclose = function() {
                     console.log('Closed Socket 3');
 
-                    hero2.style = 'background-color: rgba(10, 10, 10, 0.85);'
+                    clearInterval(statusInterval);
+                    hero2.style = 'background-color: black;'
 
                     document.getElementById("streamline").disabled = true;
                     document.getElementById("streamline").style.background = '#000000';
