@@ -1,8 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    overflow: auto;
+    /* box-sizing: border-box;
+    overflow: auto; */
 }
 
 
@@ -33,8 +33,16 @@ body {
     margin-right: auto;
     margin-top: 10vh;
     margin-bottom: 2vh;
-    width: 75%;
+    width: 100%;
     padding: 10px;
+    /* border-radius: 5px; */
+    text-align: center;
+    color: #FDFD96;
+    /* background: rgba(10, 10, 10, 0.85); */
+    background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+
     /* box-sizing: border-box; */
     /* resize: horizontal; */
     /* overflow: auto; */
@@ -42,7 +50,7 @@ body {
 }
 
 .hero0 {
-    display: block;
+    /* display: block; */
     /* margin-left: auto;
     margin-right: auto; */
     margin: auto;
@@ -50,10 +58,10 @@ body {
     margin-top: 5vh;
     margin-bottom: 2vh;
     padding: 5px;
-    background: black;
-    /* background: red; */
+    /* background: black; */
+    background: red;
     color: #FDFD96;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     text-align: center;
 }
 
