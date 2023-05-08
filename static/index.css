@@ -35,39 +35,28 @@ body {
     margin-bottom: 2vh;
     width: 100%;
     padding: 10px;
-    /* border-radius: 5px; */
     text-align: center;
     color: #FDFD96;
-    /* background: rgba(10, 10, 10, 0.85); */
     background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
     background-repeat: no-repeat;
-    /* background-size: 100vw 100vh; */
-
-    /* box-sizing: border-box; */
-    /* resize: horizontal; */
-    /* overflow: auto; */
-    /* max-width: 100%; */
+    background-size: 105vw 100vh;
 }
 
 .hero0 {
-    /* display: block; */
-    /* margin-left: auto;
-    margin-right: auto; */
-    margin: auto;
-    /* width: 75%; */
-    margin-top: 5vh;
-    margin-bottom: 2vh;
+    display: inline-block;
+    margin: 0;
     padding: 5px;
-    /* background: black; */
-    background: red;
+    background: yellow;
     color: #FDFD96;
-    /* border-radius: 5px; */
+    border-radius: 5px;
     text-align: center;
+    justify-items: center;
+    background: rgba(10, 10, 10, 0.85);
 }
 
 .grid0 {
     display: grid;
-    grid-template-columns: max-content max-content max-content;
+    grid-template-columns: max-content max-content;
     grid-gap: 10px;
     justify-content: center;
 }
@@ -80,18 +69,15 @@ form {
     display: grid;
     grid-template-columns: max-content;
     grid-gap: 10px;
-
-    font-size: 11px;;
-
     width: 150px;
     padding: 10px 10px;
     background-color: black;
     border: 2px solid #FDFD96;
+    border-radius: 5px;
+
+    font-size: 11px;;
     color: #FDFD96;
-    border-radius: 4px;
-
     overflow: auto;
-
     justify-content: center;
 }
 
@@ -106,12 +92,14 @@ form p {
 form .input {
     font-size: 11px;
     width: 100px;
+    border-radius: 5px;
     color: #FDFD96;
 }
 
 form .select {
     font-size: 11px;
     width: 100px;
+    border-radius: 5px;
     color: #FDFD96;
 }
 
@@ -123,22 +111,6 @@ form .select {
     padding: 3.5px;
     color: #FDFD96;
     background-color: black;
-    /* box-shadow: 1px 1px 1px 1px #FDFD96; */
-}
-
-.progress {
-    /* position: relative; */
-    background: rgba(10, 10, 10, 0.85);
-    /* color: #FDFD96; */
-    border: 2px solid #FDFD96;
-    border-radius: 10px;
-    /* padding: 20px; */
-    /* margin-top: 10vh; */
-    margin-left: 20px;
-    /* margin-bottom: 20px; */
-    width: 4rem;
-    height: 4rem;
-    float: ri/*  */ght;
 }
 
 .progress_backup {
@@ -158,7 +130,6 @@ form .select {
 }
 
 .lower {
-    /* position: relative; */
     padding: 10px;
     margin-top: 1vh;
     margin-left: 20px;
@@ -166,81 +137,36 @@ form .select {
 }
 
 .hero1 {
-    /* position: relative; */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 400px;
-    height: 300px;
-    /* width: 75vw;
-    height: 45vh; */
-    /* -ms-transform: translateX(25%);
-    transform: translateX(25%); */
-    /* float: left; */
-    /* margin-left: 1vw; */
-    background: rgba(10, 10, 10, 0);
+    margin: auto;
+    width: 75%;
+    height: auto;
+    background: rgba(10, 10, 10, 0.15);
     color: #FDFD96;
-    border-radius: 10px;
-    /* padding: 20px; */
-    /* margin-left: 20px; */
-    /* margin-right: 0.1vw; */
+    border-radius: 5px;
 }
 
 .bottom {
     display: inline-block;
-    /* position: relative; */
     width: 100%;
     height: 100%;
     vertical-align: middle;
 }
 
 .hero2 {
-    /* display: inline-block;
-    vertical-align: middle; */
     margin: auto;
     width: 75%;
     height: auto;
-    /* width: 75%;
-    height: 46.875%; */
-    /* background: red; */
     background: rgba(10, 10, 10, 0.15);
     color: #FDFD96;
     border-radius: 5px;
-
-    /* overflow: auto; */
 }
 
-/* .myChart3 {
-    position: relative;
-} */
-
-/* .scatter {
-    position: relative;
-    background: rgba(10, 10, 10, 0.85);
-    color: #FDFD96;
-    border-radius: 10px;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
-} */
 
 .hero1 h2 {
     margin-top: 0;
     margin-bottom: 0.3em;
     text-align: left;
 }
-
-/* .chart-container {
-	position: relative;
-    width: 45vw;
-    height: 45vh;
-} */
-
-/* .myChart1 {
-    position: relative;
-    width: 45vw;
-    height: 45vh;
-} */
 
 .nav {
     background-color: rgb(10, 10, 10);
