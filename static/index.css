@@ -41,7 +41,7 @@ body {
     /* background: rgba(10, 10, 10, 0.85); */
     background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
     background-repeat: no-repeat;
-    background-size: 100vw 100vh;
+    /* background-size: 100vw 100vh; */
 
     /* box-sizing: border-box; */
     /* resize: horizontal; */
