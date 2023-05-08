@@ -33,7 +33,7 @@ body {
     margin-right: auto;
     margin-top: 10vh;
     margin-bottom: 2vh;
-    width: 90%;
+    width: 75%;
     padding: 10px;
     box-sizing: border-box;
     /* resize: horizontal; */
@@ -58,12 +58,12 @@ body {
 
 form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: max-content max-content max-content;
     grid-gap: 10px;
 
     font-size: 11px;;
 
-    /* width: 25%; */
+    width: 365px;
     padding: 10px 10px;
     background-color: black;
     border: 2px solid #FDFD96;
@@ -83,7 +83,13 @@ form p {
 
 form .input {
     font-size: 11px;
-    width: 65%;
+    width: 100px;
+    color: #FDFD96;
+}
+
+form .select {
+    font-size: 11px;
+    width: 100px;
     color: #FDFD96;
 }
 
