@@ -33,7 +33,7 @@ body {
     margin-right: auto;
     margin-top: 10vh;
     margin-bottom: 2vh;
-    width: 75%;
+    width: 90%;
     padding: 10px;
     box-sizing: border-box;
     /* resize: horizontal; */
@@ -46,7 +46,7 @@ body {
     /* margin-left: auto;
     margin-right: auto; */
     margin: auto;
-    width: 75%;
+    /* width: 75%; */
     margin-top: 5vh;
     margin-bottom: 2vh;
     padding: 5px;
