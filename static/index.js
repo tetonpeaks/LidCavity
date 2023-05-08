@@ -24,6 +24,16 @@ document.addEventListener("DOMContentLoaded", function () {
     var img_src;
     var start;
 
+    var ofs = 0.5;
+    var elem_div = document.getElementById("hero0");
+    var str;
+
+    //elem_div.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin(ofs))+');'
+    elem_div.style = 'background-color: rgba(10, 10, 10, 0.85);'
+
+    /* str = `background-color: red;`
+    elem_div.style = str; */
+
     document.querySelector('#reset1').addEventListener('click', () => {
         //console.log(":: myChart1 =", myChart1)
         myChart1.data.labels = [];
@@ -152,6 +162,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         socket1.onopen = function() {
             console.log(":: Connected to Socket 1 ::");
+
+            elem_div.style = 'animation: blinkingBackground 2s infinite;';
+
             socket1.send(JSON.stringify(
                 {
                     flag: 0,
@@ -176,6 +189,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         socket1.onclose = function() {
             console.log('Closed Socket 1');
+
+            elem_div.style = 'background-color: rgba(10, 10, 10, 0.85);'
+
             document.getElementById("uv").disabled = false;
             document.getElementById("uv").style.background = '#00FF00';
         };
@@ -237,8 +253,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const labels = ["Integrating velocity field...", ""];
 
-    /* let ctx2 = document.getElementById("myChart0").getContext("2d");
-    var data = {
+    //let ctx2 = document.getElementById("myChart0").getContext("2d");
+    /* var data = {
             labels: labels,
             datasets: [
                 {
@@ -251,9 +267,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     ],
                 }
             ]
-        }
+        } */
 
-    var myProgressPie = new Chart(ctx2, {
+    /* var myProgressPie = new Chart(ctx2, {
             type: 'pie',
             data: data,
             options: {
@@ -269,14 +285,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let ctr = newData.ctr;
 
-        data.labels[0] = [`Integrating velocity field [ ${Math.round(((ctr+1)/Np)*100)}% ]`]
+        str = `.blink-text{
+            color: #000;
+            font-weight: bold;
+            font-size: 2rem;
+            animation: blinkingText 2s infinite;
+        }
+        @keyframes blinkingText{
+            0%		{ color: #10c018;}
+            25%		{ color: #1056c0;}
+            50%		{ color: #ef0a1a;}
+            75%		{ color: #254878;}
+            100%	{ color: #04a1d5;};`
+        elem_div.style = str;
+
+        /* data.labels[0] = [`Integrating velocity field [ ${Math.round(((ctr+1)/Np)*100)}% ]`]
         data.datasets[0].data[0] = [(ctr/Np)*100]
         myProgressPie.update();
 
         if (data.datasets[0].data[0] >= 95) {
             data.datasets[0].backgroundColor[0] = 'rgba(193, 225, 193, 0.2)';
             myProgressPie.update();
-        }
+        } */
     }
 
     var ctx3 = document.getElementById("myChart2").getContext("2d");
