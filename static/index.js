@@ -187,6 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         socket1.onmessage = function(e) {
+            window.scrollTo(0, document.body.scrollHeight);
             const newData = JSON.parse(e.data);
             if (newData.hasOwnProperty('pressure')) {
                 addData(newData);
@@ -199,6 +200,8 @@ document.addEventListener("DOMContentLoaded", function () {
         socket1.onclose = function() {
             console.log('Closed Socket 1');
 
+            window.scrollTo(0, document.body.scrollTop);
+            //window.scrollTo(0, document.body.scrollIntoView);
             clearInterval(statusInterval);
             hero0.style = 'background-color: rgba(10, 10, 10, 0.85);'
 
