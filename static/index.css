@@ -73,8 +73,8 @@ body {
 form {
     display: grid;
     /* grid-template-columns: max-content max-content; */
-    grid-template-columns: max-content max-content max-content max-content max-content;
-    /* grid-template-rows: max-content max-content; */
+    grid-template-columns: max-content max-content max-content;
+    grid-template-rows: max-content max-content;
     grid-gap: 10px;
     /* width: 75%; */
     padding: 10px 10px;
@@ -98,14 +98,14 @@ form p {
 
 form .input {
     font-size: 11px;
-    width: 100px;
+    width: 70px;
     border-radius: 5px;
     color: #FDFD96;
 }
 
 form .select {
     font-size: 11px;
-    width: 100px;
+    width: 70px;
     border-radius: 5px;
     color: #FDFD96;
 }
