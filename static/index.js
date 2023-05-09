@@ -456,6 +456,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         beforeDraw: () => {
                             if (image.complete) {
                                 ctx3.drawImage(image, myScatter.chartArea.left*0.8, myScatter.chartArea.top, myScatter.chartArea.width*1.05, myScatter.chartArea.height*1.02);
+                                //ctx3.drawImage(image, myScatter.chartArea.left*0.8, myScatter.chartArea.top, myScatter.chartArea.width*1.05, myScatter.chartArea.height*1.02);
                                 //ctx3.drawImage(image, myScatter.chartArea.left*0.75, myScatter.chartArea.top, myScatter.chartArea.width*1.05, myScatter.chartArea.height*1.02);
 
                             } else {
