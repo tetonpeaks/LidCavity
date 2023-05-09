@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
         socket1.onmessage = function(e) {
             const newData = JSON.parse(e.data);
 
-            if (newData.x == 1) {
+            if (newData.x === 0) {
                 window.scrollTo(0, document.body.scrollHeight);
                 //window.scrollTo(0, document.body.scrollIntoView);
             }
