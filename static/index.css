@@ -56,20 +56,27 @@ body {
 
 .grid0 {
     display: grid;
-    grid-template-columns: max-content max-content;
+    /* grid-template-columns: max-content max-content; */
+    grid-template-columns: max-content;
+    grid-template-rows: max-content max-content;
     grid-gap: 10px;
     justify-content: center;
 }
 
 .status {
     display: grid;
+    grid-template-columns: max-content max-content max-content max-content;
+    justify-content: center;
+    /* display: inline-block; */
 }
 
 form {
     display: grid;
-    grid-template-columns: max-content;
+    /* grid-template-columns: max-content max-content; */
+    grid-template-columns: max-content max-content max-content max-content max-content;
+    /* grid-template-rows: max-content max-content; */
     grid-gap: 10px;
-    width: 150px;
+    /* width: 75%; */
     padding: 10px 10px;
     background-color: black;
     border: 2px solid #FDFD96;
