@@ -205,7 +205,8 @@ document.addEventListener("DOMContentLoaded", function () {
         socket1.onclose = function() {
             console.log('Closed Socket 1');
 
-            window.scrollTo(0, document.body.scrollHeight);
+            window.scrollTo(0, document.body.scrollTop);
+            //window.scrollTo(0, document.body.scrollHeight);
             //window.scrollTo(0, document.body.scrollIntoView);
             clearInterval(statusInterval);
             hero0.style = 'background-color: rgba(10, 10, 10, 0.85);'
@@ -439,6 +440,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     v: v,
                 }
             ));
+
+            document.getElementById('hero2').scrollIntoView();
+
         }
 
         socket3.onmessage = function(e) {
@@ -463,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     id: 'custom_canvas_background_image',
                         beforeDraw: () => {
                             if (image.complete) {
-                                ctx3.drawImage(image, myScatter.chartArea.left*0.8, myScatter.chartArea.top, myScatter.chartArea.width*1.05, myScatter.chartArea.height*1.02);
+                                ctx3.drawImage(image, myScatter.chartArea.left*0.88, myScatter.chartArea.top, myScatter.chartArea.width*1.03, myScatter.chartArea.height*1.02);
                                 //ctx3.drawImage(image, myScatter.chartArea.left*0.8, myScatter.chartArea.top, myScatter.chartArea.width*1.05, myScatter.chartArea.height*1.02);
                                 //ctx3.drawImage(image, myScatter.chartArea.left*0.75, myScatter.chartArea.top, myScatter.chartArea.width*1.05, myScatter.chartArea.height*1.02);
 

@@ -399,6 +399,10 @@ def genS_socket(ws):
 def index():
     return render_template('index.html')
 
+@app.route('/info')
+def info():
+    return render_template('info.html')
+
 
 if __name__ == '__main__':
     print("""
