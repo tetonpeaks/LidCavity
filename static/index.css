@@ -31,7 +31,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10vh;
+    /* margin-top: 10vh; */
     margin-bottom: 2vh;
     width: 100%;
     padding: 10px;
@@ -111,12 +111,16 @@ form .select {
     color: #FDFD96;
 }
 
-.btn {
-    display: block;
-    font-size: 11px;;
+.btn-navbar {
+    box-shadow: 0 -3px 5px -3px #3498db, 0 3px 5px -3px #3498db;
+}
+
+.btn-sm {
+    /* display: block; */
+    /* font-size: 11px; */
     border: 2px solid #FDFD96;
     border-radius: 5px;
-    padding: 3.5px;
+    /* padding: 3.5px; */
     color: #FDFD96;
     background-color: black;
 }

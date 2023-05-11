@@ -399,9 +399,9 @@ def genS_socket(ws):
 def index():
     return render_template('index.html')
 
-@app.route('/info')
+""" @app.route('/simulate')
 def info():
-    return render_template('info.html')
+    return render_template('simulate.html') """
 
 
 if __name__ == '__main__':

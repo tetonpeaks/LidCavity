@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         + (location.port ? ':'+location.port: '') // 8080 if condition met
                         + '/genS'; // flask-socket address in main.py
 
-    const Np = 350; const Nint = 250;
+    const Np = 350; const Nint = 250*2;
     var u; var v;
     var xdata = []; var ydata = [];
     var img_src;

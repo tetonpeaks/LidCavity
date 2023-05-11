@@ -10,6 +10,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
   </head>
   <body class="body">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('simulate') }}">First Page</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('view_second_page') }}">Second Page</a>
+                </li> -->
+            </ul>
+          </div>
+      </nav>
+    </div>
     <div class="upper">
       <div class="hero0" id="hero0">
         <div class="grid0">
@@ -17,7 +39,7 @@
           <div class="form">
             <form action="">
               <p>
-                <label for="input-T" class="input"> INFO PAGE </label>
+                <label for="input-T" class="input"> Fluid Temp </label>
                 <input type="text" class="input" id="input-T" value="60" placeholder="60&#8451">
                 <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
               </p>
