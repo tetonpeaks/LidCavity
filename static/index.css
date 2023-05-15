@@ -71,6 +71,9 @@ li {
     background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
     background-repeat: no-repeat;
     background-size: 105vw 100vh;
+
+    border: 2px solid #FDFD96;
+    border-radius: 5px;
 }
 
 .hero0 {
@@ -83,7 +86,7 @@ li {
     text-align: center;
     justify-items: center;
     background-color: rgba(10, 10, 10, 0.85);
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 
 .grid0 {
@@ -118,10 +121,11 @@ form {
     color: #FDFD96;
     overflow: auto;
     justify-content: center;
+    align-items: middle;
 }
 
 form label {
-    display: block;
+    float: center;
 }
 
 form p {
@@ -133,6 +137,7 @@ form .input {
     width: 70px;
     border-radius: 5px;
     color: #FDFD96;
+    text-align: center;
 }
 
 form .select {
@@ -140,10 +145,6 @@ form .select {
     width: 70px;
     border-radius: 5px;
     color: #FDFD96;
-}
-
-.btn-navbar {
-    box-shadow: 0 -3px 5px -3px #3498db, 0 3px 5px -3px #3498db;
 }
 
 .btn-sm {
@@ -156,28 +157,13 @@ form .select {
     background-color: black;
 }
 
-.hero1 {
-    margin: auto;
-    width: 75%;
-    height: auto;
-    background: rgba(10, 10, 10, 0.15);
-    color: #FDFD96;
-    border-radius: 5px;
-    border: 2px solid black;
-}
-
 .middle {
     display: inline-block;
     width: 100%;
     height: 100%;
+    justify-items: center;
     vertical-align: middle;
-}
-
-.bottom {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    vertical-align: middle;
+    border: 2px solid #FDFD96;
 }
 
 .hero2 {
@@ -187,14 +173,25 @@ form .select {
     /* background-color: rgba(10, 10, 10, 0.15); */
     color: #FDFD96;
     border-radius: 5px;
-    border: 2px solid black;
+    border: 2px solid #FDFD96;
 }
 
+.bottom {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    border: 2px solid #FDFD96;
+}
 
-.hero1 h2 {
-    margin-top: 0;
-    margin-bottom: 0.3em;
-    text-align: left;
+.hero1 {
+    margin: auto;
+    width: 75%;
+    height: auto;
+    background: rgba(10, 10, 10, 0.15);
+    color: #FDFD96;
+    border-radius: 5px;
+    border: 2px solid black;
 }
 
 @keyframes blinkingBackground{

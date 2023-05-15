@@ -12,16 +12,13 @@
   <body class="body" id="body" style="zoom: 100%">
     <div class="container">
       <nav class="navbar">
-
         <ul class="nav-links">
             <div class="menu">
               <li><a href="/" onclick="">Home</a></li>
               <li><a href="/simulate">Simulate</a></li>
             </div>
         </ul>
-
         <div class="logo">CFD</div>
-
       </nav>
     </div>
     <div class="upper">
@@ -31,27 +28,27 @@
           <div class="form">
             <form action="">
               <p>
-                <label for="input-T" class="input"> Fluid Temp </label>
+                <label for="input-T" class="input">Fluid Temp</label></br>
                 <input type="text" class="input" id="input-T" value="60" placeholder="60&#8451">
                 <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
               </p>
               <p>
-                <label for="input-U" class="input"> Plate Velocity </label>
+                <label for="input-U" class="input">Plate Velocity</label></br>
                 <input type="text" class="input" id="input-U" value="10" placeholder="10">
                 <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
               </p>
               <p>
-                <label for="input-Re" class="input"> Re </label>
+                <label for="input-Re" class="input">Re</label></br>
                 <input type="text" class="input" id="input-Re" value="400" placeholder="400">
                 <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
               </p>
               <p>
-                <label for="input-N" class="input"> # of CVs </label>
+                <label for="input-N" class="input"># of CVs</label></br>
                 <input type="text" class="input" id="input-N" value="20" placeholder="30">
                 <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
               </p>
               <p>
-                <label for="input-F" class="input"> Fluid </label>
+                <label for="input-F" class="input">Fluid</label></br>
                 <select class="select">
                   <option value="Water">Water</option>
                   <option value="R134a">R134a</option>
