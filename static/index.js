@@ -409,10 +409,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //anim.style = 'animation: blinkingBackground 2s infinite;';
 
-            statusInterval = setInterval(() => {
+            document.getElementById("grid2").style = 'animation: blinkingBackground 2s infinite;';
+
+            /* statusInterval = setInterval(() => {
                 document.getElementById("grid2").style = 'background-color: rgba(174,198,207,'+Math.abs(Math.sin(ofs))+');';
                 ofs += 0.02;
-            }, 10);
+            }, 10); */
 
             socket3.send(JSON.stringify(
                 {
@@ -570,7 +572,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log('Closed Socket 3');
 
                     clearInterval(statusInterval);
-                    document.getElementById('grid2').style = 'background-color: black;'
+                    document.getElementById('grid2').style = 'border-color: black;'
 
                     document.getElementById("streamline").disabled = true;
                     document.getElementById("streamline").style.background = '#000000';
