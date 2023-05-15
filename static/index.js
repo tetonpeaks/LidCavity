@@ -177,7 +177,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (newData.x === 0) {
                 window.scrollTo(0, document.body.scrollHeight);
-                hero0.style.zoom=1.0;
+                let page = document.getElementById('body');
+                let zoom = parseInt(page.style.zoom) - 10 +'%';
+                page.style.zoom = zoom;
                 //window.scrollTo(0, document.body.scrollIntoView);
             }
 
