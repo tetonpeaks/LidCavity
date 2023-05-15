@@ -173,7 +173,7 @@ form .select {
     /* background-color: rgba(10, 10, 10, 0.15); */
     color: #FDFD96;
     border-radius: 5px;
-    border: 2px solid #FDFD96;
+    border: 2px solid black;
 }
 
 .bottom {
