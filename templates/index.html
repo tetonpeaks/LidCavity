@@ -10,75 +10,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
   </head>
   <body class="body">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('simulate') }}">Simulate <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-          </div>
+    <div class="container">
+      <nav class="navbar">
+
+        <ul class="nav-links">
+            <div class="menu">
+              <li><a href="/">Home</a></li>
+              <li><a href="/simulate">Simulate</a></li>
+            </div>
+        </ul>
+
+        <div class="logo">CFD</div>
+
       </nav>
     </div>
+
     <div class="upper">
-      <div class="hero0" id="hero0">
-        <div class="grid0">
-
-          <div class="form">
-            <form action="">
-              <p>
-                <label for="input-T" class="input"> INFO PAGE </label>
-                <input type="text" class="input" id="input-T" value="60" placeholder="60&#8451">
-                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-              </p>
-              <p>
-                <label for="input-U" class="input"> Plate Velocity </label>
-                <input type="text" class="input" id="input-U" value="10" placeholder="10">
-                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-              </p>
-              <p>
-                <label for="input-Re" class="input"> Re </label>
-                <input type="text" class="input" id="input-Re" value="400" placeholder="400">
-                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-              </p>
-              <p>
-                <label for="input-N" class="input"> # of CVs </label>
-                <input type="text" class="input" id="input-N" value="30" placeholder="30">
-                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-              </p>
-              <p>
-                <label for="input-F" class="input"> Fluid </label>
-                <select class="select">
-                  <option value="Water">Water</option>
-                  <option value="R134a">R134a</option>
-                </select>
-                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-              </p>
-              <!-- <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> -->
-            </form>
-          </div>
-
-          <div class="status">
-            <button class="btn btn-sm btn-outline-secondary" id="run">Run</button>
-            <button class="btn btn-sm btn-outline-secondary" id="uv">Integrate Velocity Field</button>
-            <button class="btn btn-sm btn-outline-secondary" id="streamline">Animate Streamlines</button>
-            <button class="btn btn-sm btn-outline-secondary" id="reset1">Reset Chart 1</button>
-          </div>
-
-        </div>
-      </div>
     </div>
 
-    <div class="middle">
+    <!-- <div class="middle">
       <div class="hero2" id="hero2">
         <canvas class="myChart2" id="myChart2" style="width:75%;height:250px"></canvas>
       </div>
@@ -88,8 +39,8 @@
       <div class="hero1">
           <canvas class="myChart1" id="myChart1" style="width:75%;height:250px"></canvas>
       </div>
-    </div>
+    </div> -->
 
-    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script> -->
   </body>
 </html>

@@ -1,8 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box;
-    overflow: auto; */
+    box-sizing: border-box;
+    /* overflow: auto; */
 }
 
 
@@ -18,14 +18,45 @@ body {
     /* padding: 16px; */
 }
 
-/* @media only screen
-    and (device-width: 375px)
-    and (device-height: 812px)
-    and (-webkit-device-pixel-ratio: 3) { } */
+a {
+    text-decoration: none;
+}
 
-/* @media (min-width: 700px) {
+li {
+    list-style: none;
+}
 
-} */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.nav-links a {
+    color: #FDFD96
+}
+
+.logo {
+    font-size: 32px;
+    color: #FDFD96;
+}
+
+.menu {
+    display: flex; /* horizontal spread */
+    gap: 1em;
+    font-size: 18px;
+}
+
+.menu li:hover {
+    background-color: #4c9e9e;
+    border-radius: 5px 14px;
+    transition: 0.3s ease;
+}
+
+.menu li {
+    padding: 5px;
+}
 
 .upper {
     display: block;
@@ -164,10 +195,6 @@ form .select {
     margin-top: 0;
     margin-bottom: 0.3em;
     text-align: left;
-}
-
-.nav {
-    background-color: rgb(10, 10, 10);
 }
 
 @keyframes blinkingBackground{

@@ -29,32 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var ofs = 0;
     var hero0 = document.getElementById("hero0");
     var hero2 = document.getElementById("hero2");
-
-
-
     //hero0.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin(ofs))+');'
-    hero0.style = 'background-color: rgba(10, 10, 10, 0.85);'
-
-    /* str = `background-color: red;`
-    hero0.style = str; */
-
-    document.querySelector('#reset1').addEventListener('click', () => {
-        //console.log(":: myChart1 =", myChart1)
-        myChart1.data.labels = [];
-        myChart1.data.datasets.forEach(dataset => {
-            dataset.data = [];
-        });
-        myChart1.update();
-
-        data.datasets[0].data[0] = 0;
-        data.datasets[0].backgroundColor[0] = 'rgba(250, 160, 160, 0.2)';
-        myProgressPie.update();
-        myProgressPie.data.labels = [];
-        myProgressPie.data.datasets.forEach(dataset => {
-            dataset.data = [];
-        });
-        myProgressPie.update();
-    });
+    hero0.style = 'background-color: rgba(10, 10, 10, 0.85);';
 
     const ctx1 = document.getElementById("myChart1").getContext("2d");
     var myChart1 = new Chart(ctx1, {
@@ -152,9 +128,19 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     });
 
+    document.querySelector('#reset1').addEventListener('click', () => {
+        //console.log(":: myChart1 =", myChart1)
+        myChart1.data.labels = [];
+        myChart1.data.datasets.forEach(dataset => {
+            dataset.data = [];
+        });
+        myChart1.update();
+    });
+
     document.getElementById("uv").disabled = true;
     document.getElementById("streamline").disabled = true;
     document.querySelector('#run').addEventListener('click', () => {
+
 
         const T = document.querySelector('#input-T').value;
         const U = document.querySelector('#input-U').value;
@@ -195,7 +181,16 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (newData.hasOwnProperty('pressure')) {
-                addData(newData);
+                myChart1.data.labels.push(newData.x); // need to change
+                //hero0.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin((newData.x + 0.1) / 100))+');'
+                /* myChart1.data.datasets[0].data.push(newData.total);
+                myChart1.data.datasets[1].data.push(newData.pressure);
+                myChart1.data.datasets[2].data.push(newData.umom);
+                myChart1.data.datasets[3].data.push(newData.vmom); */
+                myChart1.data.datasets[0].data.push(newData.pressure);
+                myChart1.data.datasets[1].data.push(newData.umom);
+                myChart1.data.datasets[2].data.push(newData.vmom);
+                myChart1.update();
             } else if (newData.hasOwnProperty('u')) {
                 u = newData.u;
                 v = newData.v;
@@ -215,21 +210,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("uv").style.background = '#00FF00';
         };
     });
-
-    function addData(newData) {
-        myChart1.data.labels.push(newData.x); // need to change
-        //hero0.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin((newData.x + 0.1) / 100))+');'
-        /* myChart1.data.datasets[0].data.push(newData.total);
-        myChart1.data.datasets[1].data.push(newData.pressure);
-        myChart1.data.datasets[2].data.push(newData.umom);
-        myChart1.data.datasets[3].data.push(newData.vmom); */
-        myChart1.data.datasets[0].data.push(newData.pressure);
-        myChart1.data.datasets[1].data.push(newData.umom);
-        myChart1.data.datasets[2].data.push(newData.vmom);
-        myChart1.update();
-    };
-
-    var myProgressPie;
 
     document.querySelector('#uv').addEventListener('click', () => {
 
@@ -281,6 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("streamline").style.background = '#00FF00';
         };
     });
+
 
     var ctx3 = document.getElementById("myChart2").getContext("2d");
 
@@ -407,11 +388,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 imgPlugin: {}
             },
             plugins: []
-        });
+    });
 
     var interval3;
 
     document.querySelector('#streamline').addEventListener('click', () => {
+
 
         start = Date.now();
 
@@ -579,7 +561,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         plugins: [imgPlugin]
                     });
 
-                genStreamlines()
+                genStreamlines();
 
                 socket3.onclose = function() {
                     console.log('Closed Socket 3');
