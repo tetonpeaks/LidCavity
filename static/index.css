@@ -26,11 +26,15 @@ li {
     list-style: none;
 }
 
+.container0 {
+    border-bottom: 4px solid #FDFD96;
+}
+
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 15px;
 }
 
 .nav-links a {
@@ -71,7 +75,7 @@ li {
     background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
     background-repeat: no-repeat;
     background-size: 105vw 100vh;
-    border-top: 4px solid #FDFD96;
+    /* border-top: 4px solid #FDFD96; */
     border-bottom: 4px solid #FDFD96;
 }
 
@@ -175,6 +179,16 @@ form .select {
     padding: 5px;
     text-align: center;
     justify-items: center;
+    /* border: 2px solid red; */
+}
+
+.hero1 {
+    width: 75%;
+}
+
+.hero2 {
+    width: 75%;
+    height: 75%;
 }
 
 .grid1, .grid2 {
