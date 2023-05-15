@@ -176,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const newData = JSON.parse(e.data);
 
             if (newData.x === 0) {
+                document.getElementById('myChart1').scrollIntoView();
                 //window.scrollTo(0, document.body.scrollHeight);
                 //document.body.style.zoom = 1.0;
                 //window.scrollTo(0, document.body.scrollIntoView);
@@ -394,7 +395,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var interval3;
 
     document.querySelector('#streamline').addEventListener('click', () => {
-
 
         start = Date.now();
 
