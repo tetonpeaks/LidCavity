@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var ofs = 0;
     var hero0 = document.getElementById("hero0");
-    var hero2 = document.getElementById("hero2");
+    var anim = document.getElementById("anim");
     //hero0.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin(ofs))+');'
     hero0.style = 'background-color: rgba(10, 10, 10, 0.85);';
 
@@ -176,8 +176,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const newData = JSON.parse(e.data);
 
             if (newData.x === 0) {
-                window.scrollTo(0, document.body.scrollHeight);
-                document.body.style.zoom = 1.0;
+                //window.scrollTo(0, document.body.scrollHeight);
+                //document.body.style.zoom = 1.0;
                 //window.scrollTo(0, document.body.scrollIntoView);
             }
 
@@ -406,10 +406,10 @@ document.addEventListener("DOMContentLoaded", function () {
         socket3.onopen = function() {
             console.log(":: Connected to Socket 3 ::")
 
-            //hero2.style = 'animation: blinkingBackground 2s infinite;';
+            //anim.style = 'animation: blinkingBackground 2s infinite;';
 
             statusInterval = setInterval(() => {
-                hero2.style = 'background-color: rgba(174,198,207,'+Math.abs(Math.sin(ofs))+');';
+                anim.style = 'background-color: rgba(174,198,207,'+Math.abs(Math.sin(ofs))+');';
                 ofs += 0.02;
             }, 10);
 
@@ -424,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             ));
 
-            document.getElementById('hero2').scrollIntoView();
+            document.getElementById('anim').scrollIntoView();
 
         }
 
@@ -568,7 +568,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log('Closed Socket 3');
 
                     clearInterval(statusInterval);
-                    hero2.style = 'background-color: black;'
+                    anim.style = 'background-color: black;'
 
                     document.getElementById("streamline").disabled = true;
                     document.getElementById("streamline").style.background = '#000000';

@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
+    box-sizing: border-box; /* This is key for centering, full width, check borders w/ & w/o */
     /* overflow: auto; */
 }
 
@@ -71,9 +71,8 @@ li {
     background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
     background-repeat: no-repeat;
     background-size: 105vw 100vh;
-
-    border: 2px solid #FDFD96;
-    border-radius: 5px;
+    border-top: 4px solid #FDFD96;
+    border-bottom: 4px solid #FDFD96;
 }
 
 .hero0 {
@@ -157,23 +156,65 @@ form .select {
     background-color: black;
 }
 
+.container1 {
+    border-bottom: 4px solid #FDFD96;
+}
+
+.container1, .container2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
+    /* border: 2px solid greenyellow; */
+}
+
+.hero1, .hero2 {
+    display: inline-block;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    justify-items: center;
+}
+
+.grid1, .grid2 {
+    display: grid;
+    grid-template-columns: max-content;
+    /* grid-template-rows: max-content; */
+    grid-gap: 10px;
+    justify-content: center;
+    /* border: 4px solid red; */
+}
+
+/* .hero1, .hero2 {
+    border: 2px solid red;
+} */
+
+/* .hero2 {
+    width: 75%;
+    height: auto;
+    color: #FDFD96;
+    border-radius: 5px;
+    border: 2px solid red;
+} */
+
+/* .hero1 {
+    margin: auto;
+    width: 75%;
+    height: auto;
+    background: rgba(10, 10, 10, 0.15);
+    color: #FDFD96;
+    border-radius: 5px;
+    border: 2px solid red;
+} */
+
+
 .middle {
     display: inline-block;
     width: 100%;
     height: 100%;
-    justify-items: center;
     vertical-align: middle;
-    border: 2px solid #FDFD96;
-}
-
-.hero2 {
-    margin: auto;
-    width: 75%;
-    height: auto;
-    /* background-color: rgba(10, 10, 10, 0.15); */
-    color: #FDFD96;
-    border-radius: 5px;
-    border: 2px solid black;
+    border-bottom: 4px solid #FDFD96;;
 }
 
 .bottom {
@@ -181,17 +222,6 @@ form .select {
     width: 100%;
     height: 100%;
     vertical-align: middle;
-    border: 2px solid #FDFD96;
-}
-
-.hero1 {
-    margin: auto;
-    width: 75%;
-    height: auto;
-    background: rgba(10, 10, 10, 0.15);
-    color: #FDFD96;
-    border-radius: 5px;
-    border: 2px solid black;
 }
 
 @keyframes blinkingBackground{
