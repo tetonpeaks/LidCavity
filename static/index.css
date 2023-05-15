@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
     /* overflow: auto; */
 }
 
@@ -43,7 +43,7 @@ li {
 }
 
 .menu {
-    display: flex; /* horizontal spread */
+    display: flex;
     gap: 1em;
     font-size: 18px;
 }
