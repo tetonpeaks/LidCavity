@@ -279,138 +279,135 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     });
 
+    var ctx3 = document.getElementById("myChart2").getContext("2d");
 
+    var streamDataset = {
+        datasets: [
+          {
+            borderColor: "white",
+            borderRadius: 1.5,
+            showLine: true,
+            borderWidth: 1,
+            pointRadius: 2,
+            pointBackgroundColor: "black",
+            data: [
+              {
+                x: NaN,
+                y: NaN,
+              },
+              {
+                x: NaN,
+                y: NaN,
+              }
+            ]
+          },
+        ]
+    };
 
-    var interval3;
+    var myScatter = new Chart(ctx3, {
+            type: "scatter",
+            data: streamDataset,
+            options: {
+                scales: {
+                    xB: {
+                        position: "bottom",
+                        display: true,
+                        title: {
+                        display: true,
+                        text: "x/L",
+                        color: "#FDFD96",
+                        },
+                        min: 0,
+                        max: 1,
+                        ticks: {
+                        //beginAtZero: false,
+                        max: 1,
+                        min: 0,
+                        stepSize: 0.1,
+                        color: "#FDFD96",
+                        padding: 15,
+                        },
+                        grid: {
+                        display: true,
+                        borderColor: "#FDFD96",
+                        drawBorder: true,
+                        drawOnChartArea: false,
+                        color: "#FDFD96",
+                        tickLength: -10,
+                        drawTicks: true,
+                        },
+                    },
+                    xT: {
+                        position: "top",
+                        display: true,
+                        min: 0,
+                        max: 1,
+                        ticks: {
+                        display: false,
+                        },
+                        grid: {
+                        display: true,
+                        borderColor: "#FDFD96",
+                        drawBorder: true,
+                        drawOnChartArea: false,
+
+                        },
+                    },
+                    yL: {
+                        //beginAtZero: false,
+                        position: "left",
+                        display: true,
+                        title: {
+                        display: true,
+                        text: "y/L",
+                        color: "#FDFD96",
+                        },
+                        min: 0,
+                        max: 1,
+                        ticks: {
+                        stepSize: 0.1,
+                        color: "#FDFD96",
+                        padding: 15,
+                        },
+                        grid: {
+                        display: true,
+                        borderColor: "#FDFD96",
+                        drawBorder: true,
+                        drawOnChartArea: false,
+                        color: "#FDFD96",
+                        tickLength: -10,
+                        drawTicks: true,
+                        },
+                    },
+                    yR: {
+                        position: "right",
+                        display: true,
+                        min: 0,
+                        max: 1,
+                        ticks: {
+                        display: false,
+                        },
+                        grid: {
+                        display: true,
+                        borderColor: "#FDFD96",
+                        drawBorder: true,
+                        drawOnChartArea: false,
+
+                        },
+                    },
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                },
+                imgPlugin: {}
+            },
+            plugins: []
+    });
 
     document.querySelector('#streamline').addEventListener('click', () => {
 
-        var ctx3 = document.getElementById("myChart2").getContext("2d");
-
-        var streamDataset = {
-            datasets: [
-              {
-                borderColor: "white",
-                borderRadius: 1.5,
-                showLine: true,
-                borderWidth: 1,
-                pointRadius: 2,
-                pointBackgroundColor: "black",
-                data: [
-                  {
-                    x: NaN,
-                    y: NaN,
-                  },
-                  {
-                    x: NaN,
-                    y: NaN,
-                  }
-                ]
-              },
-            ]
-        };
-
-        var myScatter = new Chart(ctx3, {
-                type: "scatter",
-                data: streamDataset,
-                options: {
-                    scales: {
-                        xB: {
-                            position: "bottom",
-                            display: true,
-                            title: {
-                            display: true,
-                            text: "x/L",
-                            color: "#FDFD96",
-                            },
-                            min: 0,
-                            max: 1,
-                            ticks: {
-                            //beginAtZero: false,
-                            max: 1,
-                            min: 0,
-                            stepSize: 0.1,
-                            color: "#FDFD96",
-                            padding: 15,
-                            },
-                            grid: {
-                            display: true,
-                            borderColor: "#FDFD96",
-                            drawBorder: true,
-                            drawOnChartArea: false,
-                            color: "#FDFD96",
-                            tickLength: -10,
-                            drawTicks: true,
-                            },
-                        },
-                        xT: {
-                            position: "top",
-                            display: true,
-                            min: 0,
-                            max: 1,
-                            ticks: {
-                            display: false,
-                            },
-                            grid: {
-                            display: true,
-                            borderColor: "#FDFD96",
-                            drawBorder: true,
-                            drawOnChartArea: false,
-
-                            },
-                        },
-                        yL: {
-                            //beginAtZero: false,
-                            position: "left",
-                            display: true,
-                            title: {
-                            display: true,
-                            text: "y/L",
-                            color: "#FDFD96",
-                            },
-                            min: 0,
-                            max: 1,
-                            ticks: {
-                            stepSize: 0.1,
-                            color: "#FDFD96",
-                            padding: 15,
-                            },
-                            grid: {
-                            display: true,
-                            borderColor: "#FDFD96",
-                            drawBorder: true,
-                            drawOnChartArea: false,
-                            color: "#FDFD96",
-                            tickLength: -10,
-                            drawTicks: true,
-                            },
-                        },
-                        yR: {
-                            position: "right",
-                            display: true,
-                            min: 0,
-                            max: 1,
-                            ticks: {
-                            display: false,
-                            },
-                            grid: {
-                            display: true,
-                            borderColor: "#FDFD96",
-                            drawBorder: true,
-                            drawOnChartArea: false,
-
-                            },
-                        },
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                    },
-                    imgPlugin: {}
-                },
-                plugins: []
-        });
 
         start = Date.now();
 
@@ -446,8 +443,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (newData.hasOwnProperty('confirm')) {
 
                 if (myScatter != undefined) {
-                    clearInterval(interval3);
-                    //myScatter.clear();
                     myScatter.destroy();
                 }
 
@@ -573,7 +568,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         plugins: [imgPlugin]
                     });
 
-                genStreamlines(myScatter);
+                genStreamlines();
 
                 socket3.onclose = function() {
                     console.log('Closed Socket 3');
@@ -590,7 +585,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
-        function genStreamlines(myScatter) {
+        function genStreamlines() {
 
             for (let i = 0; i < Np; i++) {
                 streamDataset.datasets[i] = {};
