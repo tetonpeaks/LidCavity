@@ -6,7 +6,7 @@
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://mincss.com/entireframework.min.css" crossorigin="anonymous"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
-    <title>CFD</title>
+    <title>CFD - Simulate</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
   </head>
   <body class="body" id="body" style="zoom: 100%">
@@ -19,7 +19,7 @@
               <li><a href="/simulate">Simulate</a></li>
             </div>
         </ul>
-        <div class="logo">CFD</div>
+        <div class="logo">Simulation Zone</div>
       </nav>
     </div>
 
@@ -62,10 +62,10 @@
           </div>
 
           <div class="status">
-            <button class="btn btn-sm btn-outline-primary" id="run">Run</button>
-            <button class="btn btn-sm btn-outline-primary" id="uv">Integrate</br>Velocity</br> Field</button>
-            <button class="btn btn-sm btn-outline-primary" id="streamline">Animate</br>Streamlines</button>
-            <button class="btn btn-sm btn-outline-primary" id="reset1">Reset</br>Chart 1</button>
+            <button class="btn btn-sm btn-outline-primary btn0" id="run"></button>
+            <button class="btn btn-sm btn-outline-primary btn1" id="uv"></button>
+            <button class="btn btn-sm btn-outline-primary btn2" id="streamline"></button>
+            <button class="btn btn-sm btn-outline-primary btn3" id="reset1"></button>
           </div>
 
         </div>
@@ -90,8 +90,12 @@
       </div>
     </div>
 
+    <div class="rotating-border rotating-border--google">
+
+    </div>
 
 
-    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='simulate.js') }}"></script>
   </body>
 </html>
