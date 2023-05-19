@@ -145,6 +145,8 @@ document.addEventListener("DOMContentLoaded", function () {
             dataset.data = [];
         });
         myChart1.update();
+        document.documentElement.style.setProperty('--animation0', 'rotate 2s infinite linear');
+        document.documentElement.style.setProperty('--animation1', '');
     });
 
     document.getElementById("uv").disabled = true;
