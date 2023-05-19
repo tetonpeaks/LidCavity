@@ -77,8 +77,13 @@ li {
     color: #FDFD96
 }
 
-.logo {
+.logo-home {
     font-size: 32px;
+    color: #FDFD96;
+}
+
+.logo-sim {
+    font-size: 18px;
     color: #FDFD96;
 }
 
@@ -158,8 +163,8 @@ form {
     background-color: rgba(10, 10, 10, 1);
     border: 2px solid #FDFD96;
     border-radius: 5px;
-
-    font-size: 11px;;
+    padding: 3.5px;
+    font-size: 11px;
     color: #FDFD96;
     overflow: auto;
     justify-content: center;
@@ -171,7 +176,8 @@ form label {
 }
 
 form p {
-    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 form .input {
