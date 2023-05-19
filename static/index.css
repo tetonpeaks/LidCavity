@@ -456,7 +456,8 @@ form .select {
 
 
 .btn3:after{
-    content: "Reset Chart 1";
+    content: "Reset \A Chart 1";
+    white-space: pre-wrap;
     height: 94%;
     width: 94%;
     position: absolute;
