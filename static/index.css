@@ -531,7 +531,7 @@ form .select {
     height: 100%; /* Used for demo purposes */
     float: left; /* Makes sure panels are side-by-side */
     position: relative; /* Needed to define the z-index */
-    z-index: 2; /* Places the panels in front of the prize */
+    z-index: 0; /* Places the panels in front of the prize */
     text-align: center;
     color: #FDFD96;
     /* border: 2px solid red; */
@@ -580,7 +580,7 @@ input[type=checkbox] {
     cursor: pointer; /* Indicate the curtain is clickable */
     width: 100%; /* The checkbox is as wide as the component */
     height: 200vh; /* The checkbox is as tall as the component */
-    z-index: 100; /* Make sure the checkbox is on top of everything else */
+    z-index: 0; /* Make sure the checkbox is on top of everything else */
     opacity: 0; /* Hide the checkbox */
   }
 
@@ -613,5 +613,5 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     float: left; /* Makes sure panels are side-by-side */
     position: relative; /* Needed to define the z-index */
     z-index: 2; /* Places the panels in front of the prize */
-    transition: all 1s ease-out; /* Animates the sliding transition */
+    transition: all 4s ease-out; /* Animates the sliding transition */
   }

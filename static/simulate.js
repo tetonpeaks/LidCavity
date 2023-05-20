@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    //document.getElementById("checkbox").click();
+
+    let btn_homeVal = document.querySelector('#checkbox').checked;
+    console.log(":: btn_home =", btn_homeVal)
+
+    if (btn_homeVal === true) {
+        document.querySelector("#checkbox").click();
+    }
+
     /* If the main page is served via https, the WebSocket must be served via
             "wss" (WebSocket Secure) */
     const scheme = window.location.protocol == "https:" ? 'wss://' : 'ws://';
@@ -41,6 +50,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.documentElement.style.setProperty('--bgcolor1', '#FDFD96');
     document.documentElement.style.setProperty('--bgcolor2', '#FDFD96');
     document.documentElement.style.setProperty('--bgcolor3', '#FDFD96');
+
+    /* document.querySelector('#home').addEventListener('click', () => {
+        document.getElementById("checkbox").click();
+    })
+
+    document.querySelector('#simulate').addEventListener('click', () => {
+        document.getElementById("checkbox").click();
+    }) */
 
     const ctx1 = document.getElementById("myChart1").getContext("2d");
     var myChart1 = new Chart(ctx1, {

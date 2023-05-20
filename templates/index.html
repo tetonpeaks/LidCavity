@@ -13,13 +13,26 @@
       <nav class="navbar">
         <ul class="nav-links">
             <div class="menu">
-              <li><a href="/" onclick="">Home</a></li>
-              <li><a href="/simulate">Simulate</a></li>
+              <li><a href="/" onclick="" class="home" id="home">Home</a></li>
+              <li><a href="/simulate" class="simulate" id="simulate">Simulate</a></li>
             </div>
         </ul>
         <div class="logo-home">CFD</div>
       </nav>
     </div>
+
+    <!-- The parent component -->
+    <div class="curtain">
+
+      <!-- The component wrapper -->
+      <div class="curtain__wrapper">
+
+        <!-- The checkbox hack! -->
+        <input type="checkbox" checked class="checkbox" id="checkbox">
+
+      </div> <!-- curtain__wrapper -->
+
+    </div> <!-- curtain -->
   </body>
   <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
 </html>
