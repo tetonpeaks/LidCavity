@@ -14,85 +14,105 @@
     <div class="container0">
       <nav class="navbar">
         <ul class="nav-links">
-            <div class="menu">
-              <li><a href="/" onclick="">Home</a></li>
-              <li><a href="/simulate">Simulate</a></li>
-            </div>
+          <div class="menu">
+            <li><a href="/" onclick="">Home</a></li>
+            <li><a href="/simulate">Simulate</a></li>
+          </div>
         </ul>
-        <div class="logo-sim">Simulation Zone</div>
+        <div class="logo-home">CFD</div>
       </nav>
     </div>
 
-    <div class="upper">
-      <div class="hero0" id="hero0">
-        <div class="grid0">
+    <!-- The parent component -->
+    <div class="curtain">
 
-          <div class="form">
-            <form action="">
-              <p>
-                <label for="input-T" class="input">Fluid Temp</label></br>
-                <input type="text" class="input" id="input-T" value="60" placeholder="60&#8451">
-                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-              </p>
-              <p>
-                <label for="input-U" class="input">Plate Velocity</label></br>
-                <input type="text" class="input" id="input-U" value="10" placeholder="10">
-                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-              </p>
-              <p>
-                <label for="input-Re" class="input">Re</label></br>
-                <input type="text" class="input" id="input-Re" value="400" placeholder="400">
-                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-              </p>
-              <p>
-                <label for="input-N" class="input"># of CVs</label></br>
-                <input type="text" class="input" id="input-N" value="20" placeholder="30">
-                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-              </p>
-              <p>
-                <label for="input-F" class="input">Fluid</label></br>
-                <select class="select">
-                  <option value="Water">Water</option>
-                  <option value="R134a">R134a</option>
-                </select>
-                <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-              </p>
-              <!-- <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> -->
-            </form>
+      <!-- The component wrapper -->
+      <div class="curtain__wrapper">
+
+        <!-- The checkbox hack! -->
+        <input type="checkbox" checked>
+
+        <!-- The left curtain panel -->
+        <div class="curtain__panel curtain__panel--left">Simulation</div> <!-- curtain__panel -->
+
+        <!-- The prize behind the curtain panels -->
+        <div class="curtain__prize">
+
+          <div class="upper">
+            <div class="hero0" id="hero0">
+              <div class="grid0">
+
+                <div class="form">
+                  <form action="">
+                    <p>
+                      <label for="input-T" class="input">Fluid Temp</label></br>
+                      <input type="text" class="input" id="input-T" value="60" placeholder="60&#8451">
+                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                    </p>
+                    <p>
+                      <label for="input-U" class="input">Plate Velocity</label></br>
+                      <input type="text" class="input" id="input-U" value="10" placeholder="10">
+                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                    </p>
+                    <p>
+                      <label for="input-Re" class="input">Re</label></br>
+                      <input type="text" class="input" id="input-Re" value="400" placeholder="400">
+                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                    </p>
+                    <p>
+                      <label for="input-N" class="input"># of CVs</label></br>
+                      <input type="text" class="input" id="input-N" value="20" placeholder="30">
+                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                    </p>
+                    <p>
+                      <label for="input-F" class="input">Fluid</label></br>
+                      <select class="select">
+                        <option value="Water">Water</option>
+                        <option value="R134a">R134a</option>
+                      </select>
+                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                    </p>
+                    <!-- <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> -->
+                  </form>
+                </div>
+
+                <div class="status">
+                  <button class="btn btn-sm btn-outline-primary btn0" id="run"></button>
+                  <button class="btn btn-sm btn-outline-primary btn1" id="uv"></button>
+                  <button class="btn btn-sm btn-outline-primary btn2" id="streamline"></button>
+                  <button class="btn btn-sm btn-outline-primary btn3" id="reset1"></button>
+                </div>
+
+              </div>
+            </div>
           </div>
 
-          <div class="status">
-            <button class="btn btn-sm btn-outline-primary btn0" id="run"></button>
-            <button class="btn btn-sm btn-outline-primary btn1" id="uv"></button>
-            <button class="btn btn-sm btn-outline-primary btn2" id="streamline"></button>
-            <button class="btn btn-sm btn-outline-primary btn3" id="reset1"></button>
+          <div class="container1">
+            <div class="hero1">
+              <div class="grid1">
+                <canvas class="myChart1" id="myChart1" style="width:75%;height:400px;"></canvas>
+              </div>
+            </div>
           </div>
 
-        </div>
-      </div>
-    </div>
+          <div class="container2">
+            <div class="hero2">
+              <div class="grid2" id="grid2">
+                <!-- <div class="anim" id="anim"> -->
+                    <canvas class="myChart2" id="myChart2" style="width:75%;height:250px;"></canvas>
+                  <!-- </div> -->
+              </div>
+            </div>
+          </div>
 
-    <div class="container1">
-      <div class="hero1">
-        <div class="grid1">
-          <canvas class="myChart1" id="myChart1" style="width:75%;height:400px;"></canvas>
-        </div>
-      </div>
-    </div>
+        </div> <!-- curtain__prize -->
 
-    <div class="container2">
-      <div class="hero2">
-        <div class="grid2" id="grid2">
-          <!-- <div class="anim" id="anim"> -->
-              <canvas class="myChart2" id="myChart2" style="width:75%;height:250px;"></canvas>
-            <!-- </div> -->
-        </div>
-      </div>
-    </div>
+        <!-- The right curtain panel -->
+        <div class="curtain__panel curtain__panel--right">Zone</div> <!-- curtain__panel -->
 
-    <div class="rotating-border rotating-border--google">
+      </div> <!-- curtain__wrapper -->
 
-    </div>
+    </div> <!-- curtain -->
 
 
 
