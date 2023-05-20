@@ -82,6 +82,7 @@ li {
     padding: 5px;
     color: #FDFD96;
     border: 2px solid #FDFD96;
+    border-radius: 5px;
 }
 
 .logo-sim {
@@ -97,12 +98,14 @@ li {
 
 .menu li:hover, .menu:focus, .menu:active {
     background-color: #4c9e9e;
-    border-radius: 5px 14px;
+    /* border-radius: 5px 14px; */
     transition: 0.3s ease;
 }
 
 .menu li {
     padding: 5px;
+    border: 2px solid #FDFD96;
+    border-radius: 5px;
 }
 
 .upper {
