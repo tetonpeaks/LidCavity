@@ -547,8 +547,8 @@ form .select {
     font-size: 32px;
     font-weight: bold;
     color: #FDFD96;
-    border-left: 2px solid #FDFD96;
-    border-right: 4px solid #FDFD96;
+    border-left: 4px solid #FDFD96;
+    border-right: 2px solid #FDFD96;
 }
 
 .curtain__panel--right {
