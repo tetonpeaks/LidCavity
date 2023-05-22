@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    let btn_home = document.querySelector('#checkbox').checked;
-    console.log(":: btn_home =", btn_home)
+    //let btn_home = document.querySelector('#checkbox').checked;
+    console.log(":: btn_home =", document.querySelector('#checkbox'))
 
 
     /* document.querySelector('#home').addEventListener('click', () => {
