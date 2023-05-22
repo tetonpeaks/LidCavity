@@ -1,17 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    //document.getElementById("checkbox").click();
-
-    /* let btn_homeVal = document.querySelector('#checkbox').checked;
-    console.log(":: btn_sim =", btn_homeVal) */
-
-    //if (btn_homeVal === true) {
-    //    document.querySelector("#checkbox").click();
-    //}
-
     setTimeout(() => {
         document.querySelector('#checkbox').click();
-    }, 500);
+    }, 250);
 
     /* If the main page is served via https, the WebSocket must be served via
             "wss" (WebSocket Secure) */

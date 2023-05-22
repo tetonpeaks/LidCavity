@@ -583,7 +583,7 @@ input[type=checkbox] {
 
 /* Slide the first panel in */
 input[type=checkbox]:checked ~ div.curtain__panel--left {
-    transform: translateY(0);
+    transform: translateY(0%);
 }
 
 /* Slide the panel to the left out of the container */
