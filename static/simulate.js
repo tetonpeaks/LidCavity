@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //document.getElementById("checkbox").click();
 
     let btn_homeVal = document.querySelector('#checkbox').checked;
-    console.log(":: btn_home =", btn_homeVal)
+    console.log(":: btn_sim =", btn_homeVal)
 
     if (btn_homeVal === true) {
         document.querySelector("#checkbox").click();

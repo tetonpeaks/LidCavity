@@ -516,30 +516,26 @@ form .select {
 
 .curtain {
     width: 100%; /* Ensures the component is the full screen width */
-    height: 100%; /* We're using this for demo purposes */
+    height: 200vh; /* We're using this for demo purposes */
     overflow: hidden; /* Allows us to slide the panels outside the container without them showing */
   }
 
 .curtain__wrapper {
     width: 100%;
     height: 100%;
-    /* border: 2px solid red; */
 }
 
 .curtain__panel {
     background: black;
-    /* width: 50%;  */ /* Each panel takes up half the container */
-    /* height: 100vh; */ /* Used for demo purposes */
-    width: 100%;
-    height: 200vh; /* Each panel takes up half the container vertically */
-    /* float: left; */ /* Makes sure panels are side-by-side */
-    float: left; /* Makes sure panels are side-by-side vertically */
+    width: 50%; /* Each panel takes up half the container */
+    height: 100%; /* Used for demo purposes */
+    float: left; /* Makes sure panels are side-by-side */
     position: relative; /* Needed to define the z-index */
     z-index: 0; /* Places the panels in front of the prize */
     text-align: center;
     color: #FDFD96;
     /* border: 2px solid red; */
-    /* animation: blinkingBackground 2s infinite; */
+    animation: blinkingBackground 2s infinite;
 }
 
 .curtain__panel--left {
@@ -548,17 +544,27 @@ form .select {
     /* position: relative; */
     /* justify-content: center; */
     /* align-items: second baseline; */
-
-    /* height: 100%; */
-    width: 100vw;
-    line-height: 100vh;
+    height: 100px;
+    line-height: 70vh;
     text-align: center;
     font-size: 32px;
     font-weight: bold;
     color: #FDFD96;
     border-left: 4px solid #FDFD96;
+    border-right: 2px solid #FDFD96;
+}
+
+.curtain__panel--right {
+    /* Styles for sliding the right panel */
+    content: 'Zone';
+    height: 100px;
+    line-height: 100vh;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: #FDFD96;
+    border-left: 2px solid #FDFD96;
     border-right: 4px solid #FDFD96;
-    border-bottom: 4px solid #FDFD96;
 }
 
 .curtain__prize {
@@ -573,9 +579,8 @@ input[type=checkbox] {
     position: absolute; /* Force the checkbox at the start of the container */
     cursor: pointer; /* Indicate the curtain is clickable */
     width: 100%; /* The checkbox is as wide as the component */
-    height: 100%; /* The checkbox is as tall as the component */
-    /* z-index: 100; */ /* Make sure the checkbox is on top of everything else */
-    z-index: 0;
+    height: 200vh; /* The checkbox is as tall as the component */
+    z-index: 0; /* Make sure the checkbox is on top of everything else */
     opacity: 0; /* Hide the checkbox */
   }
 
@@ -583,17 +588,27 @@ input[type=checkbox] {
 
 /* Slide the first panel in */
 input[type=checkbox]:checked ~ div.curtain__panel--left {
-    transform: translateY(0);
+    transform: translateX(0);
+}
+
+/* Slide the second panel in */
+input[type=checkbox]:checked ~ div.curtain__panel--right {
+    transform: translateX(0);
 }
 
 /* Slide the panel to the left out of the container */
 .curtain__panel--left {
-    transform: translateY(-100%);
+    transform: translateX(-100%);
+}
+
+/* Slide the panel to the right out of the container */
+.curtain__panel--right {
+    transform: translateX(100%);
 }
 
 .curtain__panel {
     background: black;
-    width: 100%; /* Each panel takes up half the container */
+    width: 50%; /* Each panel takes up half the container */
     height: 150%; /* Used for demo purposes */
     float: left; /* Makes sure panels are side-by-side */
     position: relative; /* Needed to define the z-index */
