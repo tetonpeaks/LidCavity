@@ -4,15 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(":: btn_home =", document.querySelector('#checkbox'))
 
 
-    /* document.querySelector('#home').addEventListener('click', () => {
-        document.getElementById("checkbox").click();
-    }) */
-
-    /* document.querySelector('#simulate').addEventListener('click', () => {
-        document.getElementById("checkbox").click();
-    }) */
-
-
     const links = document.querySelectorAll( "a" );
     console.log(":: links =", links)
 
