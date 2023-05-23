@@ -633,25 +633,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 streamDataset.datasets.forEach(function(dataset, i) {
 
-                let xxdata;
-                let yydata;
+                    let xxdata;
+                    let yydata;
 
-                xxdata = xdata[i];
-                yydata = ydata[i];
+                    xxdata = xdata[i];
+                    yydata = ydata[i];
 
-                dataset.data = [
-                    {
-                        x: xxdata[ctr],
-                        y: yydata[ctr]
-                    }
-                ]
+                    dataset.data = [
+                        {
+                            x: xxdata[ctr],
+                            y: yydata[ctr]
+                        }
+                    ]
 
-                dataset.borderRadius = 1
-                dataset.borderColor = "white"
-                dataset.borderWidth = 1.5
-                dataset.pointRadius = 3
-                dataset.showLine = true
-                dataset.pointBackgroundColor = "black"
+                    dataset.borderRadius = 1
+                    dataset.borderColor = "white"
+                    dataset.borderWidth = 1.5
+                    dataset.pointRadius = 3
+                    dataset.showLine = true
+                    dataset.pointBackgroundColor = "black"
 
                 });
 
