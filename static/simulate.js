@@ -176,13 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
         socket1.onopen = function() {
             console.log(":: Connected to Socket 1 ::");
 
-            //hero0.style = 'animation: blinkingBackground 2s infinite;';
-            //hero0.style = 'background-color: rgba(255,0,0,1);';
-            /* statusInterval = setInterval(() => {
-                hero0.style = 'background-color: rgba(255,105,97,'+Math.abs(Math.sin(ofs))+');';
-                ofs += 0.02;
-            }, 10); */
-
             document.documentElement.style.setProperty('--bgcolor0', '#04b0ee');
 
             socket1.send(JSON.stringify(
