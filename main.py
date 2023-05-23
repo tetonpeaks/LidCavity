@@ -30,6 +30,8 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg') # don't show plot
 
+from CoolProp.CoolProp import PropsSI
+
 import main_calcALL
 import genPosition
 
@@ -84,9 +86,19 @@ def fvm_socket(ws):
         P = np.asfortranarray(np.zeros((NI,NJ)), dtype='float32')
         cresid = np.asfortranarray(np.zeros((NI,NJ)), dtype='float32')
 
-        # Should probably keep this for websocket dump
-        L = 1
-        ro = 983.1747
+        # Define fluid properites
+        mu = PropsSI('V','T',float(res['T'])+273.15,'P',101325,'Water')
+        ro = PropsSI('D','T',float(res['T'])+273.15,'P',101325,'Water')
+
+        # Define flow conditions
+        Re = float(res['Re'])
+        ubn = float(res['U'])
+
+        #L = 1
+        L = (Re*mu)/(ro*ubn)
+
+        print(":: mu:", mu, " :: ro:", ro, ":: Re:", Re, " :: ubn:", ubn)
+
         dx = L / NI
         dy = L / NJ
 
@@ -102,16 +114,6 @@ def fvm_socket(ws):
         t1 = time.time()
         for i in range(0,10000):
 
-            # Define fluid properites
-            #mu = PropsSI('V','T',float(res['T'])+273.15,'P',101325,'Water')
-            #ro = PropsSI('D','T',float(res['T'])+273.15,'P',101325,'Water')
-            mu = 1.12e-3
-            ro = 100
-
-            # Define flow conditions
-            Re = float(res['Re'])
-            ubn = float(res['U'])
-            print(":: mu:", mu, " :: ro:", ro, ":: Re:", Re, " :: ubn:", ubn)
 
             main_error = 0
             [u_out,v_out,P_out,P_prime_out,cresid_out,vresid_out,uresid_out,main_error,iter] = main_calcALL.main(N,Nmax,ctr,u,v,P,P_prime,mu,ro,Re,ubn)
@@ -259,6 +261,8 @@ def genP_socket(ws):
         print(":: Np =", Np)
         solx0 = np.asfortranarray(np.random.uniform(low=0.01, high=0.99, size=(Np,)), dtype='float32')
         soly0 = np.asfortranarray(np.random.uniform(low=0.01, high=0.99, size=(Np,)), dtype='float32')
+        #solx0 = np.asfortranarray(np.zeros(Np))
+        #soly0 = np.asfortranarray(np.zeros(Np))
 
         Nint = int(res['Nint'])
 

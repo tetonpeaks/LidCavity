@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         + (location.port ? ':'+location.port: '') // 8080 if condition met
                         + '/genS'; // flask-socket address in main.py
 
-    const Np = 350; const Nint = 250;
-    var u; var v; var L;
+    const Np = 300; const Nint = 250;
+    var u; var v; var speed; var L;
     var xdata = []; var ydata = [];
     var img_src;
     var start;
@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var ofs = 0;
     var hero0 = document.getElementById("hero0");
-    var anim = document.getElementById("anim");
     //hero0.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin(ofs))+');'
     //hero0.style = 'background-color: rgba(10, 10, 10, 0.85);';
 
@@ -166,7 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector('#run').addEventListener('click', () => {
 
-        const fluidType = document.querySelector('#input-F').value;
         const T = document.querySelector('#input-T').value;
         const U = document.querySelector('#input-U').value;
         const Re = document.querySelector('#input-Re').value;
@@ -195,7 +193,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     Re: Re,
                     N: N,
                     Nint: Nint,
-                    //fluidType: fluidType,
                 }
             ));
         }
@@ -246,9 +243,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector('#uv').addEventListener('click', () => {
 
-        console.log(":: u =", u[1][1], ":: v =", v[1][1])
-
-        const fluidType = document.querySelector('#input-F').value;
         const T = document.querySelector('#input-T').value;
         const U = document.querySelector('#input-U').value;
         const Re = document.querySelector('#input-Re').value;
@@ -272,9 +266,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     Np: Np,
                     u: u,
                     v: v,
-                    T: T,
-                    fluidType: fluidType,
-
                 }
             ));
         }
@@ -464,10 +455,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const newData = JSON.parse(e.data);
 
-            if (newData.hasOwnProperty('confirm')) {
-
-
-            } else if (newData.hasOwnProperty('img_src')) {
+            if (newData.hasOwnProperty('img_src')) {
 
                 if (myScatter != undefined) {
                     clearInterval(interval3)
@@ -592,7 +580,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             imgPlugin: {}
                         },
                         plugins: [imgPlugin]
-                    });
+                });
 
                 genStreamlines();
 

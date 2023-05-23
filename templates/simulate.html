@@ -33,7 +33,11 @@
         <input type="checkbox" checked class="checkbox" id="checkbox">
 
         <!-- The left curtain panel -->
-        <div class="curtain__panel curtain__panel--left">Simulation Zone</div> <!-- curtain__panel -->
+        <div class="curtain__panel curtain__panel--left">
+          <p>Simulation</p>
+          <p>Zone</p>
+        </div>
+           <!-- curtain__panel -->
 
         <!-- The prize behind the curtain panels -->
         <div class="curtain__prize">
@@ -62,15 +66,6 @@
                     <p>
                       <label for="input-N" class="input"># of CVs</label></br>
                       <input type="text" class="input" id="input-N" value="20" placeholder="30">
-                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-                    </p>
-                    <p>
-                      <label for="input-F" class="input">Fluid</label></br>
-                      <select class="select" id="input-F">
-                        <option value="Water">Water</option>
-                        <option value="R134a">R134a</option>
-                        <option value="Nitrogen">Nitrogen</option>
-                      </select>
                       <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
                     </p>
                     <!-- <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> -->

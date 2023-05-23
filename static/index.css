@@ -161,8 +161,8 @@ li {
 form {
     display: grid;
     /* grid-template-columns: max-content max-content; */
-    grid-template-columns: max-content max-content max-content;
-    grid-template-rows: max-content max-content;
+    grid-template-columns: max-content max-content max-content max-content;
+    /* grid-template-rows: max-content max-content; */
     grid-gap: 10px;
     /* width: 75%; */
     background-color: rgba(10, 10, 10, 1);
@@ -538,8 +538,8 @@ form .select {
     z-index: 0; /* Places the panels in front of the prize */
     text-align: center;
     color: #FDFD96;
+    animation: blinkingBackground 2s infinite;
     /* border: 2px solid red; */
-    /* animation: blinkingBackground 2s infinite; */
 }
 
 .curtain__panel--left {
@@ -553,7 +553,7 @@ form .select {
     width: 100vw;
     line-height: 100vh;
     text-align: center;
-    font-size: 32px;
+    font-size: 62px;
     font-weight: bold;
     color: #FDFD96;
     border-left: 4px solid #FDFD96;
@@ -600,5 +600,5 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     z-index: 2; /* Places the panels in front of the prize */
     -webkit-transition: -webkit-transform 4s;
     -webkit-transition: transform 4s;
-    transition: all 1s ease-out; /* Animates the sliding transition */
+    transition: all 4s ease-out; /* Animates the sliding transition */
 }
