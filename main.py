@@ -14,7 +14,6 @@
 
 from __future__ import print_function
 
-# [START gae_flex_websockets_apps]
 from flask import Flask, render_template, request
 from flask_sockets import Sockets
 from flask_wtf import CSRFProtect, csrf
