@@ -100,20 +100,18 @@ def fvm_socket(ws):
         gc.collect()
         #time.sleep(10)
         t1 = time.time()
-
-        # Define fluid properites
-        #mu = PropsSI('V','T',float(res['T'])+273.15,'P',101325,'Water')
-        #ro = PropsSI('D','T',float(res['T'])+273.15,'P',101325,'Water')
-        mu = 1.12e-3
-        ro = 100
-
-        # Define flow conditions
-        Re = float(res['Re'])
-        ubn = float(res['U'])
-        print(":: mu:", mu, " :: ro:", ro, ":: Re:", Re, " :: ubn:", ubn)
-
         for i in range(0,10000):
 
+            # Define fluid properites
+            #mu = PropsSI('V','T',float(res['T'])+273.15,'P',101325,'Water')
+            #ro = PropsSI('D','T',float(res['T'])+273.15,'P',101325,'Water')
+            mu = 1.12e-3
+            ro = 100
+
+            # Define flow conditions
+            Re = float(res['Re'])
+            ubn = float(res['U'])
+            print(":: mu:", mu, " :: ro:", ro, ":: Re:", Re, " :: ubn:", ubn)
 
             main_error = 0
             [u_out,v_out,P_out,P_prime_out,cresid_out,vresid_out,uresid_out,main_error,iter] = main_calcALL.main(N,Nmax,ctr,u,v,P,P_prime,mu,ro,Re,ubn)

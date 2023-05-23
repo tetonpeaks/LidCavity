@@ -410,12 +410,12 @@ module integrate
         !write(*,*) ":: xx =", xx(j), " :: yy =", yy(j)
     end do
 
-
   end subroutine rk4Interp
 
 end module integrate
 
-subroutine main(N, Np, Nint, u, v, xi, yi, x_out, y_out)
+subroutine main(N, Np, Nint, u, v, xi, yi, &
+   x_out, y_out)
   use arrays
   use interp
   use integrate
@@ -425,16 +425,20 @@ subroutine main(N, Np, Nint, u, v, xi, yi, x_out, y_out)
   integer, parameter :: rk = kind ( 1.0D+00 )
 
   integer :: ierror, NI, NJ, velNI, velNJ, i, j
-  real(kind=rk) :: L, dx, dy, h
+  real(kind=rk) :: dx, dy, h
   real(kind=rk), allocatable, dimension(:) :: x, y, t_span, xx, yy
   character(len=16) :: filename
 
   integer, intent(in) :: N, Np, Nint
   real(kind=8), intent(in), dimension(:) :: xi, yi
+  !real(kind=8), intent(in), dimension(:) :: XXX, YYY
   real(kind=8), intent(in), dimension(:,:) :: u, v
+  !real(kind=8), intent(in) :: L
+  real(kind=rk) :: L
   real(kind=8), intent(out), dimension(Np, Nint) :: x_out, y_out
 
   L=1.0
+  !L = (Re*mu)/(ro*ubn)
 
   !N = 20
   NI = N
@@ -452,12 +456,22 @@ subroutine main(N, Np, Nint, u, v, xi, yi, x_out, y_out)
   !write(*,*) "Hello World!"
   !write(*,*) ':: u(velNI,velNJ) =', u(velNI,velNJ), ':: v(2,2) =', v(2,2)
 
+  !DO i=1,velNI
+  !  x(i) = 0.0
+  !END DO
+!
+  !DO j=1,velNJ
+  !  y(j) = 0.0
+  !END DO
+
   DO i=1,velNI
-    x(i) = 0.0
+    x(i) = 0
+    !x(i) = XXX(i)
   END DO
 
   DO j=1,velNJ
-    y(j) = 0.0
+    y(j) = 0
+    !y(j) = YYY(j)
   END DO
 
   !Generate mesh
@@ -470,7 +484,6 @@ subroutine main(N, Np, Nint, u, v, xi, yi, x_out, y_out)
   DO i=2,velNJ
       y(i)=y(i-1)+.5*dy
   END DO
-  !write(*,*) ':: x(velNI,velNJ) =', x(velNI), ':: y(velNI,velNJ) =', y(velNJ)
 
   !xi = 0.8
   !yi = 0.8
@@ -478,7 +491,8 @@ subroutine main(N, Np, Nint, u, v, xi, yi, x_out, y_out)
   !Nint = 500
   allocate (t_span(Nint))
 
-  call r8vec_linspace ( Nint, real(0.0, 8), REAL(1.45, 8), t_span )
+  !call r8vec_linspace ( Nint, real(0.0, 8), REAL(1.45, 8), t_span )
+  call r8vec_linspace ( Nint, real(0, 8), REAL(1.45, 8), t_span )
   h = t_span(2) - t_span(1)
   !write(*,*) ':: t_span(Nint) =', t_span(Nint), ' :: h =', h
 
@@ -486,6 +500,8 @@ subroutine main(N, Np, Nint, u, v, xi, yi, x_out, y_out)
   call rk4Interp(Nint, h, velNI, velNJ, x, y, u, v, Np, xi, yi, xx, yy, x_out, y_out)
   !write(*,*) ':: xx =', xx
   !write(*,*) ':: yy =', yy
+  !write(*,*) ':: x(velNI,velNJ) =', x_out, ':: y(velNI,velNJ) =', y_out, ' :: XXX =', XXX(40)
+  !write(*,*) ':: L =', L
 
   deallocate(x, y)
 

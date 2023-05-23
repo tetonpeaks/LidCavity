@@ -1163,7 +1163,7 @@ NIv=NI-1
 dx=L/REAL(NJ)
 dy=L/REAL(NI)
 
-!write(*,*) '** N =', N, ' :: dx =', dx, ' :: dy =', dy
+write(*,*) '** N =', N, ' :: dx =', dx, ' :: dy =', dy
 
 !Loop properties
 tol=1E-7

@@ -66,9 +66,10 @@
                     </p>
                     <p>
                       <label for="input-F" class="input">Fluid</label></br>
-                      <select class="select">
+                      <select class="select" id="input-F">
                         <option value="Water">Water</option>
                         <option value="R134a">R134a</option>
+                        <option value="Nitrogen">Nitrogen</option>
                       </select>
                       <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
                     </p>
@@ -98,9 +99,7 @@
           <div class="container2">
             <div class="hero2">
               <div class="grid2" id="grid2">
-                <!-- <div class="anim" id="anim"> -->
                     <canvas class="myChart2" id="myChart2" style="width:75%;height:250px;"></canvas>
-                  <!-- </div> -->
               </div>
             </div>
           </div>

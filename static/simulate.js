@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         + '/genS'; // flask-socket address in main.py
 
     const Np = 350; const Nint = 250;
-    var u; var v;
+    var u; var v; var L;
     var xdata = []; var ydata = [];
     var img_src;
     var start;
@@ -163,9 +163,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("uv").disabled = true;
     document.getElementById("streamline").disabled = true;
+
     document.querySelector('#run').addEventListener('click', () => {
 
-
+        const fluidType = document.querySelector('#input-F').value;
         const T = document.querySelector('#input-T').value;
         const U = document.querySelector('#input-U').value;
         const Re = document.querySelector('#input-Re').value;
@@ -194,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     Re: Re,
                     N: N,
                     Nint: Nint,
+                    //fluidType: fluidType,
                 }
             ));
         }
@@ -244,6 +246,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector('#uv').addEventListener('click', () => {
 
+        console.log(":: u =", u[1][1], ":: v =", v[1][1])
+
+        const fluidType = document.querySelector('#input-F').value;
+        const T = document.querySelector('#input-T').value;
+        const U = document.querySelector('#input-U').value;
+        const Re = document.querySelector('#input-Re').value;
         const N = document.querySelector('#input-N').value;
         //const Nint = document.querySelector('#input-Nint').value;
 
@@ -264,6 +272,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     Np: Np,
                     u: u,
                     v: v,
+                    T: T,
+                    fluidType: fluidType,
+
                 }
             ));
         }
@@ -322,90 +333,89 @@ document.addEventListener("DOMContentLoaded", function () {
             options: {
                 scales: {
                     xB: {
-                        position: "bottom",
-                        display: true,
-                        title: {
-                        display: true,
-                        text: "x/L",
-                        color: "#FDFD96",
+                            position: "bottom",
+                            display: true,
+                            title: {
+                            display: true,
+                            text: "x/L",
+                            color: "#FDFD96",
                         },
                         min: 0,
                         max: 1,
                         ticks: {
-                        //beginAtZero: false,
-                        max: 1,
-                        min: 0,
-                        stepSize: 0.1,
-                        color: "#FDFD96",
-                        padding: 15,
+                            //beginAtZero: false,
+                            min: 0,
+                            max: 1,
+                            stepSize: 0.1,
+                            color: "#FDFD96",
+                            padding: 15,
                         },
                         grid: {
-                        display: true,
-                        borderColor: "#FDFD96",
-                        drawBorder: true,
-                        drawOnChartArea: false,
-                        color: "#FDFD96",
-                        tickLength: -10,
-                        drawTicks: true,
+                            display: true,
+                            borderColor: "#FDFD96",
+                            drawBorder: true,
+                            drawOnChartArea: false,
+                            color: "#FDFD96",
+                            tickLength: -10,
+                            drawTicks: true,
                         },
                     },
                     xT: {
-                        position: "top",
-                        display: true,
-                        min: 0,
-                        max: 1,
-                        ticks: {
-                        display: false,
-                        },
-                        grid: {
-                        display: true,
-                        borderColor: "#FDFD96",
-                        drawBorder: true,
-                        drawOnChartArea: false,
+                            position: "top",
+                            display: true,
+                            min: 0,
+                            max: 1,
+                            ticks: {
+                                display: false,
+                            },
+                                grid: {
+                                display: true,
+                                borderColor: "#FDFD96",
+                                drawBorder: true,
+                                drawOnChartArea: false,
 
-                        },
+                            },
                     },
                     yL: {
-                        //beginAtZero: false,
-                        position: "left",
-                        display: true,
-                        title: {
-                        display: true,
-                        text: "y/L",
-                        color: "#FDFD96",
+                            //beginAtZero: false,
+                            position: "left",
+                            display: true,
+                            title: {
+                                display: true,
+                                text: "y/L",
+                                color: "#FDFD96",
                         },
                         min: 0,
                         max: 1,
                         ticks: {
-                        stepSize: 0.1,
-                        color: "#FDFD96",
-                        padding: 15,
+                            stepSize: 0.1,
+                            color: "#FDFD96",
+                            padding: 15,
                         },
                         grid: {
-                        display: true,
-                        borderColor: "#FDFD96",
-                        drawBorder: true,
-                        drawOnChartArea: false,
-                        color: "#FDFD96",
-                        tickLength: -10,
-                        drawTicks: true,
+                            display: true,
+                            borderColor: "#FDFD96",
+                            drawBorder: true,
+                            drawOnChartArea: false,
+                            color: "#FDFD96",
+                            tickLength: -10,
+                            drawTicks: true,
                         },
                     },
                     yR: {
-                        position: "right",
-                        display: true,
-                        min: 0,
-                        max: 1,
-                        ticks: {
-                        display: false,
-                        },
-                        grid: {
-                        display: true,
-                        borderColor: "#FDFD96",
-                        drawBorder: true,
-                        drawOnChartArea: false,
-
-                        },
+                            position: "right",
+                            display: true,
+                            min: 0,
+                            max: 1,
+                            ticks: {
+                                display: false,
+                            },
+                                grid: {
+                                display: true,
+                                borderColor: "#FDFD96",
+                                drawBorder: true,
+                                drawOnChartArea: false,
+                            },
                     },
                 },
                 plugins: {
@@ -417,6 +427,8 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             plugins: []
     });
+
+    var interval3;
 
     document.querySelector('#streamline').addEventListener('click', () => {
 
@@ -454,11 +466,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (newData.hasOwnProperty('confirm')) {
 
+
+            } else if (newData.hasOwnProperty('img_src')) {
+
                 if (myScatter != undefined) {
+                    clearInterval(interval3)
                     myScatter.destroy();
                 }
 
-            } else if (newData.hasOwnProperty('img_src')) {
                 img_src = newData.img_src;
 
                 const image = new Image();
@@ -484,90 +499,89 @@ document.addEventListener("DOMContentLoaded", function () {
                         options: {
                             scales: {
                                 xB: {
-                                    position: "bottom",
-                                    display: true,
-                                    title: {
-                                    display: true,
-                                    text: "x/L",
-                                    color: "#FDFD96",
+                                        position: "bottom",
+                                        display: true,
+                                        title: {
+                                        display: true,
+                                        text: "x/L",
+                                        color: "#FDFD96",
                                     },
                                     min: 0,
                                     max: 1,
                                     ticks: {
-                                    //beginAtZero: false,
-                                    max: 1,
-                                    min: 0,
-                                    stepSize: 0.1,
-                                    color: "#FDFD96",
-                                    padding: 15,
+                                        //beginAtZero: false,
+                                        min: 0,
+                                        max: 1,
+                                        stepSize: 0.1,
+                                        color: "#FDFD96",
+                                        padding: 15,
                                     },
                                     grid: {
-                                    display: true,
-                                    borderColor: "#FDFD96",
-                                    drawBorder: true,
-                                    drawOnChartArea: false,
-                                    color: "#FDFD96",
-                                    tickLength: -10,
-                                    drawTicks: true,
+                                        display: true,
+                                        borderColor: "#FDFD96",
+                                        drawBorder: true,
+                                        drawOnChartArea: false,
+                                        color: "#FDFD96",
+                                        tickLength: -10,
+                                        drawTicks: true,
                                     },
                                 },
                                 xT: {
-                                    position: "top",
-                                    display: true,
-                                    min: 0,
-                                    max: 1,
-                                    ticks: {
-                                    display: false,
-                                    },
-                                    grid: {
-                                    display: true,
-                                    borderColor: "#FDFD96",
-                                    drawBorder: true,
-                                    drawOnChartArea: false,
+                                        position: "top",
+                                        display: true,
+                                        min: 0,
+                                        max: 1,
+                                        ticks: {
+                                            display: false,
+                                        },
+                                            grid: {
+                                            display: true,
+                                            borderColor: "#FDFD96",
+                                            drawBorder: true,
+                                            drawOnChartArea: false,
 
-                                    },
+                                        },
                                 },
                                 yL: {
-                                    //beginAtZero: false,
-                                    position: "left",
-                                    display: true,
-                                    title: {
-                                    display: true,
-                                    text: "y/L",
-                                    color: "#FDFD96",
+                                        //beginAtZero: false,
+                                        position: "left",
+                                        display: true,
+                                        title: {
+                                            display: true,
+                                            text: "y/L",
+                                            color: "#FDFD96",
                                     },
                                     min: 0,
                                     max: 1,
                                     ticks: {
-                                    stepSize: 0.1,
-                                    color: "#FDFD96",
-                                    padding: 15,
+                                        stepSize: 0.1,
+                                        color: "#FDFD96",
+                                        padding: 15,
                                     },
                                     grid: {
-                                    display: true,
-                                    borderColor: "#FDFD96",
-                                    drawBorder: true,
-                                    drawOnChartArea: false,
-                                    color: "#FDFD96",
-                                    tickLength: -10,
-                                    drawTicks: true,
+                                        display: true,
+                                        borderColor: "#FDFD96",
+                                        drawBorder: true,
+                                        drawOnChartArea: false,
+                                        color: "#FDFD96",
+                                        tickLength: -10,
+                                        drawTicks: true,
                                     },
                                 },
                                 yR: {
-                                    position: "right",
-                                    display: true,
-                                    min: 0,
-                                    max: 1,
-                                    ticks: {
-                                    display: false,
-                                    },
-                                    grid: {
-                                    display: true,
-                                    borderColor: "#FDFD96",
-                                    drawBorder: true,
-                                    drawOnChartArea: false,
-
-                                    },
+                                        position: "right",
+                                        display: true,
+                                        min: 0,
+                                        max: 1,
+                                        ticks: {
+                                            display: false,
+                                        },
+                                            grid: {
+                                            display: true,
+                                            borderColor: "#FDFD96",
+                                            drawBorder: true,
+                                            drawOnChartArea: false,
+                                        },
                                 },
                             },
                             plugins: {
@@ -614,7 +628,7 @@ document.addEventListener("DOMContentLoaded", function () {
             interval3 = setInterval(function() {
 
                 if (ctr > Nint-1) {
-                ctr = 0;
+                    ctr = 0;
                 }
 
                 streamDataset.datasets.forEach(function(dataset, i) {
