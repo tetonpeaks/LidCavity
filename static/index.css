@@ -273,39 +273,6 @@ form .select {
     border: 4px solid black;
 }
 
-@keyframes blinkingBackground{
-    /* 0%		{ color: #10c018;}
-    25%		{ color: #1056c0;}
-    50%		{ color: #ef0a1a;}
-    75%		{ color: #254878;}
-    100%	        { color: #04a1d5;} */
-    /* 0%		{ border-color: #10c018;}
-    25%		{ border-color: #1056c0;}
-    50%		{ border-color: #ef0a1a;}
-    75%		{ border-color: #254878;}
-    100%	        { border-color: #04a1d5;} */
-    /* 0%		{ background-color: #10c018;}
-    25%		{ background-color: #1056c0;}
-    50%		{ background-color: #ef0a1a;}
-    75%		{ background-color: #254878;}
-    100%	        { background-color: #04a1d5;} */
-    0%		{ color: #FDFD96;}
-    50%		{ color: black;}
-    100%		{ color: #FDFD96;}
-    0%		{ border-color: #FDFD96;}
-    50%		{ border-color: black;}
-    100%		{ border-color: #FDFD96;}
-    0%		{ background-color: black;}
-    50%		{ background-color: #FDFD96;}
-    100%		{ background-color: black;}
-}
-
-@keyframes blinkingText {
-    0%		{ background-color: #FDFD96;}
-    50%		{ background-color: black;}
-    100%		{ background-color: #FDFD96;}
-}
-
 .btn0:before{
     content: "";
     background-image: conic-gradient(
@@ -406,7 +373,6 @@ form .select {
     top: -25%;
     animation: var(--animation3);
 }
-
 
 .btn3:after{
     content: "Reset \A Chart";
@@ -515,7 +481,25 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     /* float: left; */ /* Makes sure panels are side-by-side */
     position: relative; /* Needed to define the z-index */
     z-index: 2; /* Places the panels in front of the prize */
-    -webkit-transition: -webkit-transform 4s;
-    -webkit-transition: transform 4s;
+    -webkit-transition: -webkit-transform 2s;
+    -webkit-transition: transform 2s;
     transition: all 2s step-end; /* Animates the sliding transition */
+}
+
+@keyframes blinkingBackground{
+    0%		{ color: #FDFD96;}
+    50%		{ color: black;}
+    100%		{ color: #FDFD96;}
+    0%		{ border-color: #FDFD96;}
+    50%		{ border-color: black;}
+    100%		{ border-color: #FDFD96;}
+    0%		{ background-color: black;}
+    50%		{ background-color: #FDFD96;}
+    100%		{ background-color: black;}
+}
+
+@keyframes blinkingText {
+    0%		{ background-color: #FDFD96;}
+    50%		{ background-color: black;}
+    100%		{ background-color: #FDFD96;}
 }
