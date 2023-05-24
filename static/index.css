@@ -273,26 +273,26 @@ form .select {
     border: 4px solid black;
 }
 
-.btn0:before{
+.btn0:before {
     content: "";
     background-image: conic-gradient(
-        var(--bgcolor0) 20deg,
+        var(--bgcolor1) 20deg,
         transparent 120deg
     );
     height: 150%;
     width: 150%;
     position: absolute;
     left: -25%;
-    top: -25%;
-    animation: var(--animation0);
+    top: -25%;;
+    animation: var(--animation1);
 }
 
 .btn0:after{
-    content: "Run";
+    content: "Integrate Velocity Field";
     height: 94%;
     width: 94%;
     position: absolute;
-    background-color: rgba(10, 10, 10, 1);;
+    background-color: rgba(10,10,10,1);
     border-radius: 5px;
     top: 3%;
     left: 3%;
