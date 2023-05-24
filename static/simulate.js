@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
     setTimeout(() => {
+        window.scrollTo(0, document.body.scrollTop);
         document.querySelector('#checkbox').click();
     }, 250);
 
@@ -22,10 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         + (location.port ? ':'+location.port: '') // 8080 if condition met
                         + '/genS'; // flask-socket address in main.py
 
-    const Np = 300; const Nint = 250;
+    var U; var Re; var Np; const Nint = 250;
     var u; var v; var speed; var L;
     var xdata = []; var ydata = [];
     var img_src;
+    var ctr;
     var start;
 
     var statusInterval;
@@ -160,16 +163,15 @@ document.addEventListener("DOMContentLoaded", function () {
         document.documentElement.style.setProperty('--animation1', '');
     });
 
-    document.getElementById("uv").disabled = true;
-    document.getElementById("streamline").disabled = true;
+    //document.getElementById("uv").disabled = true;
+    //document.getElementById("streamline").disabled = true;
 
     document.querySelector('#run').addEventListener('click', () => {
 
-        const T = document.querySelector('#input-T').value;
-        const U = document.querySelector('#input-U').value;
-        const Re = document.querySelector('#input-Re').value;
-        const N = document.querySelector('#input-N').value;
-        //const Nint = document.querySelector('#input-Nint').value;
+        U = document.querySelector('#input-U').value;
+        Re = document.querySelector('#input-Re').value;
+        N = document.querySelector('#input-N').value;
+        Np = document.querySelector('#input-Np').value;
 
         const socket1 = new WebSocket(webSocketUri1);
 
@@ -181,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
             socket1.send(JSON.stringify(
                 {
                     flag: 0,
-                    T: T,
                     U: U,
                     Re: Re,
                     N: N,
@@ -236,20 +237,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector('#uv').addEventListener('click', () => {
 
-        const T = document.querySelector('#input-T').value;
-        const U = document.querySelector('#input-U').value;
-        const Re = document.querySelector('#input-Re').value;
-        const N = document.querySelector('#input-N').value;
-        //const Nint = document.querySelector('#input-Nint').value;
+        console.log('in uv **')
+
+        N = document.querySelector('#input-N').value;
+        Np = document.querySelector('#input-Np').value;
 
         const socket2 = new WebSocket(webSocketUri2);
 
         socket2.onopen = function() {
+
             console.log(":: Connected to Socket 2 ::")
 
-            //hero0.style = 'animation: blinkingBackground 2s infinite;';
-
+            clearInterval(interval3)
             document.documentElement.style.setProperty('--bgcolor1', '#04b0ee');
+            document.documentElement.style.setProperty('--animation1', 'rotate 2s infinite linear');
 
             socket2.send(JSON.stringify(
                 {
@@ -278,7 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
             clearInterval(statusInterval);
             //hero0.style = 'background-color: black;'
 
-            document.getElementById("uv").disabled = true;
+            //document.getElementById("uv").disabled = true;
             document.getElementById("streamline").disabled = false;
             document.documentElement.style.setProperty('--animation1', '');
             document.documentElement.style.setProperty('--bgcolor1', '#FDFD96');
@@ -416,11 +417,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector('#streamline').addEventListener('click', () => {
 
-
         start = Date.now();
 
-        const N = document.querySelector('#input-N').value;
-        //const Nint = document.querySelector('#input-Nint').value;
+        N = document.querySelector('#input-N').value;
 
         const socket3 = new WebSocket(webSocketUri3);
 
@@ -434,14 +433,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     flag: 2,
                     N: N,
                     Nint: Nint,
-                    Np: Np,
                     u: u,
                     v: v,
                 }
             ));
-
-            //document.getElementById('myChart2').style = 'height: 250px;';
-
         }
 
         socket3.onmessage = function(e) {
@@ -452,6 +447,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (myScatter != undefined) {
                     clearInterval(interval3)
+                    streamDataset.datasets = [];
                     myScatter.destroy();
                 }
 
@@ -605,17 +601,22 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             myScatter.update();
 
-            var ctr = 0;
+            //var ctr = 0;
+            ctr = 0;
+            console.log(":: xdata.length =", xdata.length)
+            //console.log(":: xdata =", xdata[ctr])
             interval3 = setInterval(function() {
+
+                //console.log(":: ctr =", ctr)
 
                 if (ctr > Nint-1) {
                     ctr = 0;
                 }
 
-                streamDataset.datasets.forEach(function(dataset, i) {
+                var xxdata = new Array();
+                var yydata = new Array();
 
-                    let xxdata;
-                    let yydata;
+                streamDataset.datasets.forEach(function(dataset, i) {
 
                     xxdata = xdata[i];
                     yydata = ydata[i];

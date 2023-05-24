@@ -85,9 +85,10 @@ def fvm_socket(ws):
         P = np.asfortranarray(np.zeros((NI,NJ)), dtype='float32')
         cresid = np.asfortranarray(np.zeros((NI,NJ)), dtype='float32')
 
+        T = 60
         # Define fluid properites
-        mu = PropsSI('V','T',float(res['T'])+273.15,'P',101325,'Water')
-        ro = PropsSI('D','T',float(res['T'])+273.15,'P',101325,'Water')
+        mu = PropsSI('V','T',float(T)+273.15,'P',101325,'Water')
+        ro = PropsSI('D','T',float(T)+273.15,'P',101325,'Water')
 
         # Define flow conditions
         Re = float(res['Re'])
@@ -240,10 +241,12 @@ def genP_socket(ws):
         res = json.loads(message)
 
         N = int(res['N'])
+        Np = int(res['Np'])
+        Nint = int(res['Nint'])
+        print(":: N =", N, " :: Np =", Np, " :: Nint =", Nint)
 
         u = np.asfortranarray(res['u'], dtype=np.double)
         v = np.asfortranarray(res['v'], dtype=np.double)
-        velN = len(u)
 
         L = 1
         x_mat, y_mat = np.mgrid[0:L:((2*N+1)*1j), 0:L:((2*N+1)*1j)]
@@ -256,14 +259,11 @@ def genP_socket(ws):
         # Initialize particles
 
         #print(":: data =", request.body)
-        Np = int(res['Np'])
-        print(":: Np =", Np)
         solx0 = np.asfortranarray(np.random.uniform(low=0.01, high=0.99, size=(Np,)), dtype='float32')
         soly0 = np.asfortranarray(np.random.uniform(low=0.01, high=0.99, size=(Np,)), dtype='float32')
         #solx0 = np.asfortranarray(np.zeros(Np))
         #soly0 = np.asfortranarray(np.zeros(Np))
 
-        Nint = int(res['Nint'])
 
         #print(":: solx0 =", solx0, " :: soly0 =", soly0)
 
