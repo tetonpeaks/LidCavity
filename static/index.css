@@ -399,6 +399,7 @@ form .select {
 .curtain {
     width: 100%; /* Ensures the component is the full screen width */
     height: 100%; /* We're using this for demo purposes */
+    position: relative;
     overflow: hidden; /* Allows us to slide the panels outside the container without them showing */
   }
 
@@ -416,7 +417,8 @@ form .select {
     height: 100vh; /* Each panel takes up half the container vertically */
     /* float: left; */ /* Makes sure panels are side-by-side */
     /* float: left;  *//* Makes sure panels are side-by-side vertically */
-    position: relative; /* Needed to define the z-index */
+    /* position: relative; */ /* Needed to define the z-index */
+    position: absolute; /* Needed to define the z-index */
     /* z-index: 0; */ /* Places the panels in front of the prize */
     /* text-align: center; */
     color: #FDFD96;
@@ -479,7 +481,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
 }
 
 .curtain__prize {
-    transform: translateY(-100%);
+    /* transform: translateY(-100%); */
     /* transition: all 2s step-end; */
 }
 
