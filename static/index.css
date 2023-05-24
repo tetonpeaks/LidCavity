@@ -455,7 +455,7 @@ form .select {
     z-index: 0; /* Places the panels in front of the prize */
     text-align: center;
     color: #FDFD96;
-    animation: blinkingBackground 4s ease-out;
+    animation: blinkingBackground 2s linear;
     /* border: 4px solid red; */
 }
 
@@ -515,7 +515,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     /* float: left; */ /* Makes sure panels are side-by-side */
     position: relative; /* Needed to define the z-index */
     z-index: 2; /* Places the panels in front of the prize */
-    -webkit-transition: -webkit-transform 4s;
-    -webkit-transition: transform 4s;
-    transition: all 4s ease-out; /* Animates the sliding transition */
+    /* -webkit-transition: -webkit-transform 4s;
+    -webkit-transition: transform 4s; */
+    transition: all 2s step-end; /* Animates the sliding transition */
 }

@@ -47,11 +47,6 @@
                 <div class="form">
                   <form action="">
                     <p>
-                      <label for="input-T" class="input">Fluid Temp</label></br>
-                      <input type="text" class="input" id="input-T" value="60" placeholder="60&#8451">
-                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-                    </p>
-                    <p>
                       <label for="input-U" class="input">Plate Velocity</label></br>
                       <input type="text" class="input" id="input-U" value="10" placeholder="10">
                       <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
@@ -64,6 +59,11 @@
                     <p>
                       <label for="input-N" class="input"># of CVs</label></br>
                       <input type="text" class="input" id="input-N" value="20" placeholder="30">
+                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                    </p>
+                    <p>
+                      <label for="input-T" class="input"># of Particles</label></br>
+                      <input type="text" class="input" id="input-T" value="60" placeholder="60&#8451">
                       <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
                     </p>
                     <!-- <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> -->
