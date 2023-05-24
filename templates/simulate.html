@@ -40,45 +40,48 @@
               <p>Zone</p>
             </div>
 
-            <div class="upper">
-              <div class="hero0" id="hero0">
-              <div class="grid0">
 
-                <div class="form">
-                  <form action="">
-                    <p>
-                      <label for="input-U" class="input">Plate Velocity</label></br>
-                      <input type="text" class="input" id="input-U" value="10" placeholder="10">
-                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-                    </p>
-                    <p>
-                      <label for="input-Re" class="input">Re</label></br>
-                      <input type="text" class="input" id="input-Re" value="400" placeholder="400">
-                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-                    </p>
-                    <p>
-                      <label for="input-N" class="input"># of CVs</label></br>
-                      <input type="text" class="input" id="input-N" value="20" placeholder="30">
-                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-                    </p>
-                    <p>
-                      <label for="input-Np" class="input"># of Particles</label></br>
-                      <input type="text" class="input" id="input-Np" value="300" placeholder="300">
-                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-                    </p>
-                    <!-- <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> -->
-                  </form>
-                </div>
+          </div>
 
-                <div class="status">
-                  <button class="btn btn-sm btn-outline-primary btn0" id="run"></button>
-                  <button class="btn btn-sm btn-outline-primary btn1" id="uv"></button>
-                  <button class="btn btn-sm btn-outline-primary btn2" id="streamline"></button>
-                  <button class="btn btn-sm btn-outline-primary btn3" id="reset1"></button>
-                </div>
+          <div class="upper">
+            <div class="hero0" id="hero0">
+            <div class="grid0">
 
+              <div class="form">
+                <form action="">
+                  <p>
+                    <label for="input-U" class="input">Plate Velocity</label></br>
+                    <input type="text" class="input" id="input-U" value="10" placeholder="10">
+                    <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                  </p>
+                  <p>
+                    <label for="input-Re" class="input">Re</label></br>
+                    <input type="text" class="input" id="input-Re" value="400" placeholder="400">
+                    <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                  </p>
+                  <p>
+                    <label for="input-N" class="input"># of CVs</label></br>
+                    <input type="text" class="input" id="input-N" value="20" placeholder="30">
+                    <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                  </p>
+                  <p>
+                    <label for="input-Np" class="input"># of Particles</label></br>
+                    <input type="text" class="input" id="input-Np" value="300" placeholder="300">
+                    <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                  </p>
+                  <!-- <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> -->
+                </form>
               </div>
+
+              <div class="status">
+                <button class="btn btn-sm btn-outline-primary btn0" id="run"></button>
+                <button class="btn btn-sm btn-outline-primary btn1" id="uv"></button>
+                <button class="btn btn-sm btn-outline-primary btn2" id="streamline"></button>
+                <button class="btn btn-sm btn-outline-primary btn3" id="reset1"></button>
+              </div>
+
             </div>
+          </div>
           </div>
 
           <div class="container1">
@@ -96,7 +99,6 @@
               </div>
             </div>
           </div>
-        </div>
         <!-- curtain__panel -->
 
 
