@@ -515,7 +515,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     /* float: left; */ /* Makes sure panels are side-by-side */
     position: relative; /* Needed to define the z-index */
     z-index: 2; /* Places the panels in front of the prize */
-    /* -webkit-transition: -webkit-transform 4s;
-    -webkit-transition: transform 4s; */
+    -webkit-transition: -webkit-transform 4s;
+    -webkit-transition: transform 4s;
     transition: all 2s step-end; /* Animates the sliding transition */
 }
