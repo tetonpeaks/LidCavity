@@ -433,14 +433,15 @@ form .select {
     color: #FDFD96;
     animation: blinkingBackground 2s linear;
     /* border-left: 4px solid #FDFD96;
-    border-right: 4px solid #FDFD96;
-    border-bottom: 4px solid #FDFD96; */
+    border-right: 4px solid #FDFD96; */
+    border-top: 4px solid #FDFD96;
+    border-bottom: 4px solid #FDFD96;
 }
 
 .zone {
     height: 100vh;
     font-size: 62px;
-    line-height: 50vh;
+    line-height: 42.5vh;
     text-align: center;
     font-weight: bold;
     /* border-bottom: 4px solid #FDFD96; */
@@ -473,7 +474,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
 
 /* Slide the panel to the left out of the container */
 .curtain__panel--left {
-    transform: translateY(-100%);
+    transform: translateY(100%);
 }
 
 .curtain__panel {
