@@ -431,7 +431,7 @@ form .select {
     /* line-height: 10vh; */
     z-index: 10;
     color: #FDFD96;
-    animation: blinkingBackground 2s ease-in;
+    animation: blinkingBackground 3s ease-in-out;
     /* border-left: 4px solid #FDFD96;
     border-right: 4px solid #FDFD96; */
     border-top: 4px solid #FDFD96;
@@ -494,7 +494,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     z-index: 2; /* Places the panels in front of the prize */
     -webkit-transition: -webkit-transform 2s;
     -webkit-transition: transform 2s;
-    transition: all 2s linear; /* Animates the sliding transition */
+    transition: all 3s ease-out; /* Animates the sliding transition */
 }
 
 @keyframes blinkingBackground{

@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('#checkbox').click();
     }, 250);
 
-    setTimeout(() => {
+    /* setTimeout(() => {
         document.getElementById('zone').style.display = 'none';
-    }, 1000);
+    }, 1000); */
 
 
     /* If the main page is served via https, the WebSocket must be served via
