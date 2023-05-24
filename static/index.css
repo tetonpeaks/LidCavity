@@ -166,7 +166,7 @@ form {
     grid-gap: 10px;
     /* width: 75%; */
     background-color: rgba(10, 10, 10, 1);
-    border: 2px solid #FDFD96;
+    border: 2px solid black;
     border-radius: 5px;
     padding: 3.5px;
     font-size: 11px;
@@ -494,7 +494,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     z-index: 2; /* Places the panels in front of the prize */
     -webkit-transition: -webkit-transform 2s;
     -webkit-transition: transform 2s;
-    transition: all 3s ease-out; /* Animates the sliding transition */
+    transition: all 1s ease-out; /* Animates the sliding transition */
 }
 
 @keyframes blinkingBackground{
