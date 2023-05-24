@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('#checkbox').click();
     }, 250);
 
+    setTimeout(() => {
+        document.getElementById('zone').style.display = 'none';
+    }, 1000);
+
+
     /* If the main page is served via https, the WebSocket must be served via
             "wss" (WebSocket Secure) */
     const scheme = window.location.protocol == "https:" ? 'wss://' : 'ws://';
