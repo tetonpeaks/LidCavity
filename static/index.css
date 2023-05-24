@@ -431,7 +431,7 @@ form .select {
     /* line-height: 10vh; */
     z-index: 10;
     color: #FDFD96;
-    animation: blinkingBackground 2s linear;
+    animation: blinkingBackground 2s ease-in;
     /* border-left: 4px solid #FDFD96;
     border-right: 4px solid #FDFD96; */
     border-top: 4px solid #FDFD96;
@@ -450,9 +450,11 @@ form .select {
 .curtain__prize {
     /* background: #333; */
     position: absolute; /* Forces the prize position into the container start */
+    top: 100vh;
     z-index: 1; /* Places the prize behind the panels, which are z-index 2 */
     width: 100%;
     height: 100%;
+    transition: all 3s linear;
 }
 
 input[type=checkbox] {
@@ -472,9 +474,16 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     transform: translateY(0%);
 }
 
+input[type=checkbox]:checked ~ div.curtain__prize {
+    transform: translateY(0%);
+}
+
 /* Slide the panel to the left out of the container */
 .curtain__panel--left {
     transform: translateY(100%);
+}
+.curtain__prize {
+    transform: translateY(-100%);
 }
 
 .curtain__panel {
@@ -486,7 +495,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     /* z-index: 2;  *//* Places the panels in front of the prize */
     -webkit-transition: -webkit-transform 2s;
     -webkit-transition: transform 2s;
-    transition: all 2s ease-out; /* Animates the sliding transition */
+    transition: all 3s linear; /* Animates the sliding transition */
 }
 
 @keyframes blinkingBackground{
