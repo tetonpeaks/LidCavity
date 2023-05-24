@@ -284,7 +284,7 @@ form .select {
     position: absolute;
     left: -25%;
     top: -25%;;
-    animation: var(--animation1);
+    animation: var(--animation0);
 }
 
 .btn0:after{
