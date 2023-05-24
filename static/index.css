@@ -274,6 +274,21 @@ form .select {
 }
 
 @keyframes blinkingBackground{
+    /* 0%		{ color: #10c018;}
+    25%		{ color: #1056c0;}
+    50%		{ color: #ef0a1a;}
+    75%		{ color: #254878;}
+    100%	        { color: #04a1d5;} */
+    /* 0%		{ border-color: #10c018;}
+    25%		{ border-color: #1056c0;}
+    50%		{ border-color: #ef0a1a;}
+    75%		{ border-color: #254878;}
+    100%	        { border-color: #04a1d5;} */
+    /* 0%		{ background-color: #10c018;}
+    25%		{ background-color: #1056c0;}
+    50%		{ background-color: #ef0a1a;}
+    75%		{ background-color: #254878;}
+    100%	        { background-color: #04a1d5;} */
     0%		{ color: #FDFD96;}
     50%		{ color: black;}
     100%		{ color: #FDFD96;}
