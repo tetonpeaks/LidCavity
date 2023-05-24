@@ -39,18 +39,13 @@
               <p>Simulation</p>
               <p>Zone</p>
             </div>
-              <!-- <p>Zone</p> -->
+
             <div class="upper">
               <div class="hero0" id="hero0">
               <div class="grid0">
 
                 <div class="form">
                   <form action="">
-                    <p>
-                      <label for="input-Np" class="input"># of Particles</label></br>
-                      <input type="text" class="input" id="input-Np" value="300" placeholder="60&#8451">
-                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
-                    </p>
                     <p>
                       <label for="input-U" class="input">Plate Velocity</label></br>
                       <input type="text" class="input" id="input-U" value="10" placeholder="10">
@@ -64,6 +59,11 @@
                     <p>
                       <label for="input-N" class="input"># of CVs</label></br>
                       <input type="text" class="input" id="input-N" value="20" placeholder="30">
+                      <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                    </p>
+                    <p>
+                      <label for="input-Np" class="input"># of Particles</label></br>
+                      <input type="text" class="input" id="input-Np" value="300" placeholder="300">
                       <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
                     </p>
                     <!-- <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> -->
