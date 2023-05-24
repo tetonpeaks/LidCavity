@@ -471,18 +471,9 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     transform: translateY(0%);
 }
 
-/* input[type=checkbox]:checked ~ div.curtain__prize {
-    transform: translateY(0%);
-} */
-
 /* Slide the panel to the left out of the container */
 .curtain__panel--left {
     transform: translateY(-100%);
-}
-
-.curtain__prize {
-    /* transform: translateY(-100%); */
-    /* transition: all 2s step-end; */
 }
 
 .curtain__panel {
@@ -494,7 +485,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     /* z-index: 2;  *//* Places the panels in front of the prize */
     -webkit-transition: -webkit-transform 2s;
     -webkit-transition: transform 2s;
-    transition: all 2s step-end; /* Animates the sliding transition */
+    transition: all 2s ease-out; /* Animates the sliding transition */
 }
 
 @keyframes blinkingBackground{
