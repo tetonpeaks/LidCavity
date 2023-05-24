@@ -288,7 +288,7 @@ form .select {
 }
 
 .btn0:after{
-    content: "Integrate Velocity Field";
+    content: "Run";
     height: 94%;
     width: 94%;
     position: absolute;
@@ -413,20 +413,21 @@ form .select {
     /* width: 50%;  */ /* Each panel takes up half the container */
     /* height: 100vh; */ /* Used for demo purposes */
     width: 100%;
-    height: 250vh; /* Each panel takes up half the container vertically */
+    height: 100vh; /* Each panel takes up half the container vertically */
     /* float: left; */ /* Makes sure panels are side-by-side */
     /* float: left;  *//* Makes sure panels are side-by-side vertically */
     position: relative; /* Needed to define the z-index */
     /* z-index: 0; */ /* Places the panels in front of the prize */
     /* text-align: center; */
     color: #FDFD96;
-    /* border: 4px solid red; */
+    border: 4px solid red;
 }
 
 .curtain__panel--left {
     /* height: 100%; */
     width: 100vw;
     /* line-height: 10vh; */
+    z-index: 10;
     color: #FDFD96;
     animation: blinkingBackground 2s linear;
     /* border-left: 4px solid #FDFD96;
@@ -457,7 +458,7 @@ input[type=checkbox] {
     width: 100%; /* The checkbox is as wide as the component */
     height: 100%; /* The checkbox is as tall as the component */
     /* z-index: 100; */ /* Make sure the checkbox is on top of everything else */
-    /* z-index: 0; */
+    z-index: 0;
     opacity: 0; /* Hide the checkbox */
   }
 
@@ -468,9 +469,18 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     transform: translateY(0%);
 }
 
+/* input[type=checkbox]:checked ~ div.curtain__prize {
+    transform: translateY(0%);
+} */
+
 /* Slide the panel to the left out of the container */
 .curtain__panel--left {
-    transform: translateY(-40%);
+    transform: translateY(-100%);
+}
+
+.curtain__prize {
+    transform: translateY(-100%);
+    /* transition: all 2s step-end; */
 }
 
 .curtain__panel {
