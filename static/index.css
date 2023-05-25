@@ -147,6 +147,16 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     transition: top 0.3s; */
 }
 
+.logo-home, .logo-sim {
+    font-size: 18px;
+    padding: 5px;
+    color: #CEB888;
+    border: 2px solid black;
+    box-shadow: 0px 0px 7.5px rgba(206,184,136,1);
+    border-radius: 5px;
+    background-color: black;
+}
+
 .navbar {
     position: fixed;
     width: 100%;
@@ -156,23 +166,6 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     justify-content: space-between;
     padding: 15px;
     z-index: 10;
-    background-color: black;
-    /* border-bottom: 4px solid rgba(206,184,136,1); */
-
-    /* background: black url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg'); */
-    /* background: black var(--bg-image);
-    background-repeat: no-repeat;
-    background-position: 0 0px;
-    background-size: 100vw 100vh; */
-}
-
-.logo-home, .logo-sim {
-    font-size: 18px;
-    padding: 5px;
-    color: #CEB888;
-    border: 2px solid #CEB888;
-    box-shadow: 0px 0px 5px rgba(206,184,136,0.85);
-    border-radius: 5px;
     background-color: black;
 }
 
@@ -200,10 +193,10 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
 
 .menu li {
     padding: 5px;
-    border: 2px solid black;
+    border: 2px solid #CEB888;
     border-radius: 5px;
     /* box-shadow: 0px 0px 5px rgba(10,10,10,0.85); */
-    box-shadow: 0px 0px 5px rgba(206,184,136,0.85);
+    box-shadow: 0px 0px 5px rgba(206,184,136,7.5);
     /* background-color: rgba(206,184,136,1); */
     background-color: black;
 
