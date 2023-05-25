@@ -1,14 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    var navbarTop = document.getElementById('navbar').offsetTop;
+    var navbarHeight = document.getElementById('navbar').offsetHeight;
+    var upperTop = document.getElementById('upper').offsetTop;
+    var upperHeight = document.getElementById('upper').offsetHeight;
+    var hero1Top = document.getElementById('hero1').offsetTop;
+    var hero1Height = document.getElementById('hero1').offsetHeight;
+
+    console.log(":: navbar =", navbarTop + navbarHeight)
+    console.log(":: upper =", upperTop + upperHeight)
+    console.log(":: hero1 =", hero1Top + hero1Height)
+
+    //document.getElementById('container1').offsetTop = navbarTop + navbarHeight + upperTop + upperHeight;
 
     setTimeout(() => {
         window.scrollTo(0, document.body.scrollTop);
         document.querySelector('#checkbox').click();
     }, 250);
 
-    /* setTimeout(() => {
+    setTimeout(() => {
         document.getElementById('zone').style.display = 'none';
-    }, 1000); */
+    }, 1000);
 
 
     /* If the main page is served via https, the WebSocket must be served via

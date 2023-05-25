@@ -236,6 +236,7 @@ form .select {
     text-align: center;
     width: 100%;
     /* border: 2px solid greenyellow; */
+    position: relative;
 }
 
 .hero1, .hero2 {
