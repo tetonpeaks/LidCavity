@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var hero1Top = document.getElementById('hero1').offsetTop;
     var hero1Height = document.getElementById('hero1').offsetHeight;
 
-    console.log(":: navbar =", navbarTop + navbarHeight)
+    /* console.log(":: navbar =", navbarTop + navbarHeight)
     console.log(":: upper =", upperTop + upperHeight)
-    console.log(":: hero1 =", hero1Top + hero1Height)
+    console.log(":: hero1 =", hero1Top + hero1Height) */
 
     //document.getElementById('container1').offsetTop = navbarTop + navbarHeight + upperTop + upperHeight;
 
