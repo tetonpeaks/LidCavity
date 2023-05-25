@@ -6,6 +6,8 @@
 }
 
 :root {
+    /* --bg-image: url('https://helios-i.mashable.com/imagery/articles/04xiSvNtqBjg2FTly1Tb3tG/hero-image.fill.size_1248x702.v1623369589.png') */
+    --bg-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
     --color: rgba(255,255,255,1);
     --bgcolor0: #CEB888;
     --bgcolor1: #CEB888;
@@ -18,45 +20,13 @@
 }
 
 body {
-    /* background-color: #AEC6CF; */
     background-color: black;
-    /* background-image: url('https://www.severe-weather.eu/wp-content/gallery/tropical/hurricane-epsilon-bermuda-atlantic-water-vapor-satellite.png'); */
-    /* background-image: url('https://nesdis-prod.s3.amazonaws.com/styles/webp/s3/2021-07/2174v1_20180104-noreaster.jpeg.webp?itok=TsS16AU1'); */
-    /* background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
-    background-repeat: no-repeat;
-    background-size: 100vw 100vh; */
-    /* padding: 16px; */
 }
 
 a {
    /*  color: var(--color); */
     text-decoration: none;
 }
-
-/* a::before {
-
-    content: " ";
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    margin: 0 0.2rem -0.2rem 0;
-    background: var(--color);
-    border-radius: 50%;
-    transition: background 0.2s;
-    animation: var(--animation);
-  }
-
-  a:hover {
-
-    color: #0f0 !important;
-
-  }
-
-  a:hover::before {
-
-    background: #0f0 !important;
-
-  } */
 
 li {
     list-style: none;
@@ -186,35 +156,28 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     justify-content: space-between;
     padding: 15px;
     z-index: 10;
-    /* background-color: rgba(206,184,136,0.1); */
+    background-color: black;
     /* border-bottom: 4px solid rgba(206,184,136,1); */
 
-    background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
+    /* background: black url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg'); */
+    /* background: black var(--bg-image);
     background-repeat: no-repeat;
     background-position: 0 0px;
-    background-size: 100vw 100vh;
+    background-size: 100vw 100vh; */
+}
+
+.logo-home, .logo-sim {
+    font-size: 18px;
+    padding: 5px;
+    color: #CEB888;
+    border: 2px solid #CEB888;
+    box-shadow: 0px 0px 5px rgba(206,184,136,0.85);
+    border-radius: 5px;
+    background-color: black;
 }
 
 .nav-links a {
-    color: black;
-}
-
-.logo-home {
-    font-size: 18px;
-    padding: 5px;
-    color: black;
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: rgba(206,184,136,1);
-}
-
-.logo-sim {
-    font-size: 18px;
-    padding: 5px;
-    color: black;
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: rgba(206,184,136,1);
+    color: rgba(206,184,136,1);
 }
 
 .menu {
@@ -224,8 +187,13 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
 }
 
 .menu li:hover, a:hover, .menu:focus {
-    background-color: rgba(10, 10, 10, 0.85);
-    color: #CEB888;
+    /* background-color: rgba(10, 10, 10, 0.85);
+    color: #CEB888; */
+    border-color: #CEB888;
+    /* box-shadow: 0px 0px 5px rgba(206,184,136,0.85); */
+    box-shadow: black;
+    background-color: #CEB888;
+    color: black;
     /* border-radius: 5px 14px; */
     transition: 0.3s ease;
 }
@@ -234,8 +202,10 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     padding: 5px;
     border: 2px solid black;
     border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(10,10,10,0.85);
-    background-color: rgba(206,184,136,1);
+    /* box-shadow: 0px 0px 5px rgba(10,10,10,0.85); */
+    box-shadow: 0px 0px 5px rgba(206,184,136,0.85);
+    /* background-color: rgba(206,184,136,1); */
+    background-color: black;
 
     transition: all 0.2 ease-in-out;
 }
@@ -257,11 +227,11 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     padding: 10px;
     text-align: center;
     color: #CEB888;
-    background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
+    background: black var(--bg-image);
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
     background-position: 0 -65px;
-    /* border-top: 4px solid #CEB888; */
+    border-top: 4px solid #CEB888;
     border-bottom: 4px solid #CEB888;
     z-index: 10;
 }
@@ -362,6 +332,7 @@ form .select {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    background-color: black;
     top: 228px;
     z-index: 1;
 
