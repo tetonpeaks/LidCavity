@@ -241,8 +241,8 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
 }
 
 .menu li:active {
-    /* transform: scale(1.1);
-    transition: 0.1;; */
+    transform: scale(1.1);
+    transition: 0.1;
 }
 
 .upper {
