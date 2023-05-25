@@ -18,12 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('#checkbox').click();
     }, 250);
 
-    setTimeout(() => {
-        //document.getElementById('zone').style.display = 'none';
-        document.getElementById('zone').remove();
-        document.getElementById('curtain__panel').remove();
-    }, 3000);
-
+    setTimeout(() => {  document.getElementById('curtain__panel').remove() }, 3000);
 
     /* If the main page is served via https, the WebSocket must be served via
             "wss" (WebSocket Secure) */
@@ -214,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const newData = JSON.parse(e.data);
 
             if (newData.x === 0) {
-                //document.getElementById('myChart1').scrollIntoView();
+                document.getElementById('myChart1').scrollIntoView();
                 //window.scrollTo(0, document.body.scrollHeight);
                 //document.body.style.zoom = 1.0;
                 //window.scrollTo(0, document.body.scrollIntoView);
@@ -602,7 +597,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.documentElement.style.setProperty('--bgcolor2', '#FDFD96');
                     document.getElementById("streamline").disabled = true;
 
-                    document.getElementById('grid2').scrollIntoView();
+                    //document.getElementById('myChart2').scrollIntoView();
+                    //document.body.scrollTo(0, hero1Top + hero1Height);
+                    window.scrollTo(0, 410);
+
                 };
             }
         };
@@ -622,7 +620,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //var ctr = 0;
             ctr = 0;
-            console.log(":: xdata.length =", xdata.length)
+            //console.log(":: xdata.length =", xdata.length)
             //console.log(":: xdata =", xdata[ctr])
             interval3 = setInterval(function() {
 
