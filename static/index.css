@@ -223,7 +223,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     font-size: 18px;
 }
 
-.menu li:hover, a:hover, .menu:focus, .menu:active {
+.menu li:hover, a:hover, .menu:focus {
     background-color: rgba(10, 10, 10, 0.85);
     color: #FDFD96;
     /* border-radius: 5px 14px; */
@@ -235,8 +235,14 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     border: 2px solid black;
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(10,10,10,0.85);
-
     background-color: rgba(253,253,150,1);
+
+    transition: all 0.2 ease-in-out;
+}
+
+.menu li:active {
+    /* transform: scale(1.1);
+    transition: 0.1;; */
 }
 
 .upper {
