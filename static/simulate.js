@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 250);
 
     setTimeout(() => {
-        document.getElementById('zone').style.display = 'none';
+        //document.getElementById('zone').style.display = 'none';
+        document.getElementById('zone').remove();
+        document.getElementById('curtain__panel').remove();
     }, 3000);
 
 
