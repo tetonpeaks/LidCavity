@@ -7,10 +7,10 @@
 
 :root {
     --color: rgba(255,255,255,1);
-    --bgcolor0: #FDFD96;
-    --bgcolor1: #FDFD96;
-    --bgcolor2: #FDFD96;
-    --bgcolor3: #FDFD96;
+    --bgcolor0: #CEB888;
+    --bgcolor1: #CEB888;
+    --bgcolor2: #CEB888;
+    --bgcolor3: #CEB888;
     --animation0: ;
     --animation1: ;
     --animation2: ;
@@ -90,7 +90,7 @@ li {
     top: 65px;
     /* z-index: 0; */ /* Places the panels in front of the prize */
     /* text-align: center; */
-    color: #FDFD96;
+    color: #CEB888;
 
     /* border: 4px solid red; */
     /* border-top: 4px solid red; */
@@ -101,12 +101,12 @@ li {
     width: 100vw;/*  */
     /* line-height: 10vh; */
     z-index: 10;
-    color: #FDFD96;
+    color: #CEB888;
     animation: blinkingBackground 2s ease-in-out;
-    /* border-left: 4px solid #FDFD96;
-    border-right: 4px solid #FDFD96; */
-    border-top: 4px solid #FDFD96;
-    /* border-bottom: 4px solid #FDFD96; */
+    /* border-left: 4px solid #CEB888;
+    border-right: 4px solid #CEB888; */
+    border-top: 4px solid #CEB888;
+    /* border-bottom: 4px solid #CEB888; */
 }
 
 .zone {
@@ -116,7 +116,7 @@ li {
     line-height: 40vh;
     text-align: center;
     font-weight: bold;
-    /* border: 4px solid #FDFD96; */
+    /* border: 4px solid #CEB888; */
 }
 
 .curtain__prize {
@@ -158,7 +158,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
 } */
 
 .curtain__panel {
-    background: black;
+    background: white;
     /* width: 100%; */ /* Each panel takes up half the container */
     /* height: 150%; */ /* Used for demo purposes */
     /* float: left; */ /* Makes sure panels are side-by-side */
@@ -170,7 +170,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
 }
 
 .container0 {
-    /* border-bottom: 4px solid #FDFD96; */
+    /* border-bottom: 4px solid #CEB888; */
     /* position: fixed; */
     /* top: -10px;
     width: 100%;
@@ -186,8 +186,8 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     justify-content: space-between;
     padding: 15px;
     z-index: 10;
-    /* background-color: rgba(253,253,150,0.1); */
-    /* border-bottom: 4px solid rgba(253,253,150,1); */
+    /* background-color: rgba(206,184,136,0.1); */
+    /* border-bottom: 4px solid rgba(206,184,136,1); */
 
     background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
     background-repeat: no-repeat;
@@ -205,7 +205,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     color: black;
     border: 2px solid black;
     border-radius: 5px;
-    background-color: rgba(253,253,150,1);
+    background-color: rgba(206,184,136,1);
 }
 
 .logo-sim {
@@ -214,7 +214,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     color: black;
     border: 2px solid black;
     border-radius: 5px;
-    background-color: rgba(253,253,150,1);
+    background-color: rgba(206,184,136,1);
 }
 
 .menu {
@@ -225,7 +225,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
 
 .menu li:hover, a:hover, .menu:focus {
     background-color: rgba(10, 10, 10, 0.85);
-    color: #FDFD96;
+    color: #CEB888;
     /* border-radius: 5px 14px; */
     transition: 0.3s ease;
 }
@@ -235,7 +235,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     border: 2px solid black;
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(10,10,10,0.85);
-    background-color: rgba(253,253,150,1);
+    background-color: rgba(206,184,136,1);
 
     transition: all 0.2 ease-in-out;
 }
@@ -256,13 +256,13 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     width: 100%;
     padding: 10px;
     text-align: center;
-    color: #FDFD96;
+    color: #CEB888;
     background-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
     background-position: 0 -65px;
-    /* border-top: 4px solid #FDFD96; */
-    border-bottom: 4px solid #FDFD96;
+    /* border-top: 4px solid #CEB888; */
+    border-bottom: 4px solid #CEB888;
     z-index: 10;
 }
 
@@ -271,7 +271,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     margin: 0;
     padding: 5px;
     /* height: 200px; */
-    color: #FDFD96;
+    color: #CEB888;
     border-radius: 5px;
     text-align: center;
     justify-items: center;
@@ -311,7 +311,7 @@ form {
     border-radius: 5px;
     padding: 3.5px;
     font-size: 11px;
-    color: #FDFD96;
+    color: #CEB888;
     overflow: auto;
     justify-content: center;
     align-items: middle;
@@ -330,7 +330,7 @@ form .input {
     font-size: 11px;
     width: 70px;
     border-radius: 5px;
-    color: #FDFD96;
+    color: #CEB888;
     text-align: center;
 }
 
@@ -338,7 +338,7 @@ form .select {
     font-size: 11px;
     width: 70px;
     border-radius: 5px;
-    color: #FDFD96;
+    color: #CEB888;
 }
 
 .btn0, .btn1, .btn2, .btn3 {
@@ -350,7 +350,7 @@ form .select {
     bottom: 0;
     left: 0;
     right: 0;
-    /* box-shadow: 0 20px 35px #FDFD96; */
+    /* box-shadow: 0 20px 35px #CEB888; */
     border-radius: 5px;
     overflow: hidden;
     background-color: rgba(10,10,10,1);
@@ -369,7 +369,7 @@ form .select {
 }
 
 .container1 {
-    border-bottom: 4px solid #FDFD96;
+    border-bottom: 4px solid #CEB888;
 }
 
 .container2 {
@@ -437,9 +437,10 @@ form .select {
     position: absolute;
     background-color: rgba(10,10,10,1);
     border-radius: 5px;
+    border-color: white;
     top: 3%;
     left: 3%;
-    color: #FDFD96;
+    color: #CEB888;
     display: grid;
     place-items: center;
     font-size: 11px;
@@ -468,7 +469,7 @@ form .select {
     border-radius: 5px;
     top: 3%;
     left: 3%;
-    color: #FDFD96;
+    color: #CEB888;
     display: grid;
     place-items: center;
     font-size: 11px;
@@ -497,7 +498,7 @@ form .select {
     border-radius: 5px;
     top: 3%;
     left: 3%;
-    color: #FDFD96;
+    color: #CEB888;
     display: grid;
     place-items: center;
     font-size: 11px;
@@ -527,7 +528,7 @@ form .select {
     border-radius: 5px;
     top: 3%;
     left: 3%;
-    color: #FDFD96;
+    color: #CEB888;
     display: grid;
     place-items: center;
     font-size: 11px;
@@ -540,19 +541,19 @@ form .select {
 }
 
 @keyframes blinkingBackground{
-    0%		{ color: #FDFD96;}
+    0%		{ color: #CEB888;}
     50%		{ color: black;}
-    100%		{ color: #FDFD96;}
-    0%		{ border-color: #FDFD96;}
+    100%		{ color: #CEB888;}
+    0%		{ border-color: #CEB888;}
     50%		{ border-color: black;}
-    100%		{ border-color: #FDFD96;}
+    100%		{ border-color: #CEB888;}
     0%		{ background-color: black;}
-    50%		{ background-color: #FDFD96;}
+    50%		{ background-color: #CEB888;}
     100%		{ background-color: black;}
 }
 
 @keyframes blinkingText {
-    0%		{ background-color: #FDFD96;}
+    0%		{ background-color: #CEB888;}
     50%		{ background-color: black;}
-    100%		{ background-color: #FDFD96;}
+    100%		{ background-color: #CEB888;}
 }
