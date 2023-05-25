@@ -91,16 +91,18 @@ li {
     /* z-index: 0; */ /* Places the panels in front of the prize */
     /* text-align: center; */
     color: #FDFD96;
+
     /* border: 4px solid red; */
+    border-top: 4px solid red;
 }
 
 .curtain__panel--left {
     /* height: 100%; */
-    width: 100vw;
+    width: 100vw;/*  */
     /* line-height: 10vh; */
     z-index: 10;
     color: #FDFD96;
-    animation: blinkingBackground 3s ease-in-out;
+    animation: blinkingBackground 2s ease-in-out;
     /* border-left: 4px solid #FDFD96;
     border-right: 4px solid #FDFD96; */
     /* border-top: 4px solid #FDFD96; */
@@ -148,7 +150,7 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
 
 /* Slide the panel to the left out of the container */
 .curtain__panel--left {
-    transform: translateY(100%);
+    transform: translateY(105vh);
 }
 /* .curtain__prize {
     transform: translateY(-50%);
@@ -349,23 +351,32 @@ form .select {
 
 .container1, .container2 {
     display: block;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     border-bottom: 4px solid #FDFD96;
-    /* height: 50vh; */
-    position: relative;
-    top: 293px;
-    z-index: 0;
+    top: 228px;
+    z-index: 1;
+
+    /* border: 4px solid red; */
+}
+
+.container2 {
+    height: 75vh;
+
+    /* border: 4px solid red; */
 }
 
 .hero1, .hero2 {
+    top: 0;
     position: relative;
     display: inline-block;
     margin: 0;
     padding: 5px;
     text-align: center;
     justify-items: center;
+
     /* border: 2px solid red; */
 }
 

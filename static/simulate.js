@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(() => {
         document.getElementById('zone').style.display = 'none';
-    }, 1000);
+    }, 3000);
 
 
     /* If the main page is served via https, the WebSocket must be served via
