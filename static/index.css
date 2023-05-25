@@ -240,7 +240,6 @@ input[type=checkbox]:checked ~ div.curtain__panel--left {
     display: inline-block;
     margin: 0;
     padding: 5px;
-    /* height: 200px; */
     color: #CEB888;
     border-radius: 5px;
     text-align: center;
