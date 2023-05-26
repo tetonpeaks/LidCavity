@@ -1,0 +1,530 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* This is key for centering, full width, check borders w/ & w/o */
+    /* overflow: auto; */
+}
+
+:root {
+    /* --bg-image: url('https://helios-i.mashable.com/imagery/articles/04xiSvNtqBjg2FTly1Tb3tG/hero-image.fill.size_1248x702.v1623369589.png') */
+    --bg-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
+    --color: rgba(255,255,255,1);
+    --bgcolor0: #CEB888;
+    --bgcolor1: #CEB888;
+    --bgcolor2: #CEB888;
+    --bgcolor3: #CEB888;
+    --animation0: ;
+    --animation1: ;
+    --animation2: ;
+    --animation3: ;
+}
+
+body {
+    background-color: black;
+}
+
+a {
+   /*  color: var(--color); */
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.curtain {
+    width: 100%; /* Ensures the component is the full screen width */
+    height: 100%; /* We're using this for demo purposes */
+    position: absolute;
+    /* top: 65px; */
+    /* overflow: scroll; */
+}
+
+.curtain__wrapper {
+    width: 100%;
+    height: 100%;
+    /* border: 4px solid red; */
+   /*  overflow: hidden; */ /* Allows us to slide the panels outside the container without them showing */
+}
+
+.curtain__panel {
+    background: black;
+    /* width: 50%;  */ /* Each panel takes up half the container */
+    /* height: 100vh; */ /* Used for demo purposes */
+    width: 100%;
+    height: 100vh; /* Each panel takes up half the container vertically */
+    /* float: left; */ /* Makes sure panels are side-by-side */
+    /* float: left;  *//* Makes sure panels are side-by-side vertically */
+    /* position: relative; */ /* Needed to define the z-index */
+    position: absolute; /* Needed to define the z-index */
+    top: 65px;
+    /* z-index: 0; */ /* Places the panels in front of the prize */
+    /* text-align: center; */
+    color: #CEB888;
+
+    /* border: 4px solid red; */
+    /* border-top: 4px solid red; */
+}
+
+.curtain__panel--left {
+    /* height: 100%; */
+    width: 100vw;/*  */
+    /* line-height: 10vh; */
+    z-index: 10;
+    color: #CEB888;
+    animation: blinkingBackground 2s ease-in-out;
+    /* border-left: 4px solid #CEB888;
+    border-right: 4px solid #CEB888; */
+    border-top: 4px solid #CEB888;
+    /* border-bottom: 4px solid #CEB888; */
+}
+
+.zone {
+    height: 100vh;
+    font-size: 62px;
+    /* line-height: 42.5vh; */
+    line-height: 40vh;
+    text-align: center;
+    font-weight: bold;
+    /* border: 4px solid #CEB888; */
+}
+
+.curtain__prize {
+    position: absolute; /* Forces the prize position into the container start */
+    /* top: 100vh; */
+    /* z-index: 1; */ /* Places the prize behind the panels, which are z-index 2 */
+    width: 100%;
+    height: 100%;
+    /* transition: all 4s linear; */
+}
+
+input[type=checkbox] {
+    position: absolute; /* Force the checkbox at the start of the container */
+    cursor: pointer; /* Indicate the curtain is clickable */
+    width: 100%; /* The checkbox is as wide as the component */
+    height: 100%; /* The checkbox is as tall as the component */
+    /* z-index: 100; */ /* Make sure the checkbox is on top of everything else */
+    z-index: 0;
+    opacity: 0; /* Hide the checkbox */
+  }
+
+/* When the checkbox is checked... */
+
+/* Slide the first panel in */
+input[type=checkbox]:checked ~ div.curtain__panel--left {
+    transform: translateY(0%);
+}
+
+/* input[type=checkbox]:checked ~ div.curtain__prize {
+    transform: translateY(100%);
+} */
+
+/* Slide the panel to the left out of the container */
+.curtain__panel--left {
+    transform: translateY(105vh);
+}
+/* .curtain__prize {
+    transform: translateY(-50%);
+} */
+
+.curtain__panel {
+    background: black;
+    /* width: 100%; */ /* Each panel takes up half the container */
+    /* height: 150%; */ /* Used for demo purposes */
+    /* float: left; */ /* Makes sure panels are side-by-side */
+    position: absolute; /* Needed to define the z-index */
+    z-index: 10; /* Places the panels in front of the prize */
+    -webkit-transition: -webkit-transform 2s;
+    -webkit-transition: transform 2s;
+    transition: all 2s ease-in; /* Animates the sliding transition */
+}
+
+/* START NAVBAR */
+
+.container0 {
+    /* border-bottom: 4px solid #CEB888; */
+    /* position: fixed; */
+    /* top: -10px;
+    width: 100%;
+    transition: top 0.3s; */
+}
+
+.logo-home, .logo-sim {
+    font-size: 18px;
+    padding: 5px;
+    color: #CEB888;
+    border: 2px solid black;
+    box-shadow: 0px 0px 7.5px rgba(206,184,136,1);
+    border-radius: 5px;
+    background-color: black;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    /* overflow: scroll */;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    z-index: 10;
+    background-color: black;
+
+    border-bottom: 4px solid rgba(206,184,136,1);
+}
+
+.nav-links a {
+    color: rgba(206,184,136,1);
+}
+
+.menu {
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+
+.menu li:hover, a:hover, .menu:focus {
+    /* background-color: rgba(10, 10, 10, 0.85);
+    color: #CEB888; */
+    border-color: #CEB888;
+    /* box-shadow: 0px 0px 5px rgba(206,184,136,0.85); */
+    box-shadow: black;
+    background-color: #CEB888;
+    color: black;
+    /* border-radius: 5px 14px; */
+    transition: 0.3s ease;
+}
+
+.menu li {
+    padding: 5px;
+    border: 2px solid #CEB888;
+    border-radius: 5px;
+    /* box-shadow: 0px 0px 5px rgba(10,10,10,0.85); */
+    box-shadow: 0px 0px 5px rgba(206,184,136,7.5);
+    /* background-color: rgba(206,184,136,1); */
+    background-color: black;
+
+    transition: all 0.2 ease-in-out;
+}
+
+.menu li:active {
+    transform: scale(1.1);
+    transition: 0.1;
+}
+
+/* END NAVBAR */
+
+/* START UPPER DIV */
+
+.upper {
+    display: block;
+    position: fixed;
+    top: 65px;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 10vh; */
+    margin-bottom: 2vh;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: #CEB888;
+    background: black var(--bg-image);
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    background-position: 0 -65px;
+    /* border-top: 4px solid #CEB888; */
+    border-bottom: 4px solid #CEB888;
+    z-index: 9;
+}
+
+.hero0 {
+    display: inline-block;
+    margin: 0;
+    padding: 5px;
+    color: #CEB888;
+    border-radius: 5px;
+    text-align: center;
+    justify-items: center;
+    background-color: rgba(10, 10, 10, 0.85);
+    border: 2px solid black;
+
+
+    /* overflow: hidden;
+    background-color: #1c1b29; */
+
+}
+
+.grid0 {
+    display: grid;
+    /* grid-template-columns: max-content max-content; */
+    grid-template-columns: max-content;
+    grid-template-rows: max-content max-content;
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+.status {
+    display: grid;
+    grid-template-columns: max-content max-content max-content max-content;
+    justify-content: space-around;
+    /* display: inline-block; */
+}
+
+form {
+    display: grid;
+    /* grid-template-columns: max-content max-content; */
+    grid-template-columns: max-content max-content max-content max-content;
+    /* grid-template-rows: max-content max-content; */
+    grid-gap: 10px;
+    background-color: rgba(10, 10, 10, 0.85);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 3.5px;
+    font-size: 11px;
+    color: #CEB888;
+    overflow: auto;
+    justify-content: center;
+    align-items: middle;
+}
+
+form label {
+    float: center;
+}
+
+form p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+form .input {
+    font-size: 11px;
+    width: 70px;
+    border-radius: 5px;
+    color: #CEB888;
+    text-align: center;
+}
+
+.btn0, .btn1, .btn2, .btn3 {
+    height: 50px;
+    width: 75px;
+    position: relative;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* box-shadow: 0 20px 35px #CEB888; */
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: rgba(10,10,10,1);
+}
+
+.btn0:before {
+    content: "";
+    background-image: conic-gradient(
+        var(--bgcolor0) 20deg,
+        transparent 120deg
+    );
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;;
+    animation: var(--animation0);
+}
+
+.btn0:after {
+    content: "Run";
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    background-color: rgba(10,10,10,1);
+    border-radius: 5px;
+    top: 3%;
+    left: 3%;
+    color: #CEB888;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+}
+
+.btn1:before {
+    content: "";
+    background-image: conic-gradient(
+        var(--bgcolor1) 20deg,
+        transparent 120deg
+    );
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;;
+    animation: var(--animation1);
+}
+
+.btn1:after {
+    content: "Integrate Velocity Field";
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    background-color: rgba(10,10,10,1);
+    border-radius: 5px;
+    top: 3%;
+    left: 3%;
+    color: #CEB888;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+}
+
+.btn2:before {
+    content: "";
+    background-image: conic-gradient(
+        var(--bgcolor2) 20deg,
+        transparent 120deg
+    );
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;
+    animation: var(--animation2);
+}
+
+.btn2:after {
+    content: "Animate Streamlines";
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    background-color: rgba(10, 10, 10, 1);
+    border-radius: 5px;
+    top: 3%;
+    left: 3%;
+    color: #CEB888;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+}
+
+.btn3:before {
+    content: "";
+    background-image: conic-gradient(
+        var(--bgcolor3) 20deg,
+        transparent 120deg
+    );
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;
+    animation: var(--animation3);
+}
+
+.btn3:after {
+    content: "Reset Chart";
+    white-space: pre-wrap;
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    background-color: rgba(10, 10, 10, 1);
+    border-radius: 5px;
+    top: 3%;
+    left: 3%;
+    color: #CEB888;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+}
+
+/* END UPPER DIV */
+
+/* START LOWER CONTAINERS */
+
+.container1, .container2 {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: black;
+    top: 228px;
+    z-index: 1;
+
+    /* border: 4px solid red; */
+}
+
+.container1 {
+    border-bottom: 4px solid #CEB888;
+}
+
+.container2 {
+    height: 65vh;
+
+    /* border: 4px solid red; */
+}
+
+.hero1, .hero2 {
+    top: 0;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    justify-items: center;
+
+    /* border: 2px solid red; */
+}
+
+.hero1 {
+    width: 75%;
+}
+
+.hero2 {
+    width: 75%;
+    /* height: 75%; */
+}
+
+.grid1, .grid2 {
+    display: grid;
+    grid-template-columns: max-content;
+    /* grid-template-rows: max-content; */
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+.grid1 {
+    padding-right: 50px;
+}
+
+.grid2 {
+    height: 600px;
+    border: 4px solid black;
+}
+
+/* END LOWER CONTAINERS */
+
+/* KEY FRAMES */
+
+@keyframes rotate{
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes blinkingBackground{
+    0%		{ color: #CEB888;}
+    50%		{ color: black;}
+    100%		{ color: #CEB888;}
+    0%		{ border-color: #CEB888;}
+    50%		{ border-color: black;}
+    100%		{ border-color: #CEB888;}
+    0%		{ background-color: black;}
+    50%		{ background-color: #CEB888;}
+    100%		{ background-color: black;}
+}
+
+@keyframes blinkingText {
+    0%		{ background-color: #CEB888;}
+    50%		{ background-color: black;}
+    100%		{ background-color: #CEB888;}
+}
