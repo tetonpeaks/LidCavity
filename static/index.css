@@ -128,40 +128,79 @@ li {
 
 .hero0 {
     display: inline-block;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
     margin: 0;
     padding: 5px;
     color: #CEB888;
     border-radius: 5px;
     text-align: center;
     justify-items: center;
-    /* background-color: rgba(10, 10, 10, 0.85); */
-    /* border: 2px solid black; */
+    background-color: black;
+    border: 2px solid rgba(10,10,10,0.85);
+    z-index: 5;
+
 }
 
 .grid0 {
     display: grid;
+    grid-template-columns: max-content max-content max-content max-content max-content max-content max-content max-content;
+    grid-template-rows: max-content max-content max-content max-content max-content max-content max-content max-content max-content max-content;
+    grid-gap: 0px;
+    z-index: inherit;
+
+    position: absolute;
+}
+
+.grid0__cell {
+    width: 50px;
+    height: 50px;
+    /* background-color: black; */
+    border: 1px dashed rgba(207,207,196,1);
+}
+
+
+.grid1 {
+    display: grid;
+    grid-template-columns: max-content max-content max-content max-content ;
+    grid-template-rows: max-content max-content max-content max-content;
+    grid-gap: 0px;
+
+    z-index: 6;
+    /* opacity: 0.5; */
+
+    position: absolute;
+    top: 55px;
+    left: 30px;
+}
+
+.grid1__cell {
+    width: 50px;
+    height: 50px;
+    /* background-color: black; */
+    border: 2px solid rgba(119,221,119,1);
+    opacity: 1;
+}
+
+.grid2 {
+    display: grid;
     grid-template-columns: max-content max-content max-content;
     grid-template-rows: max-content max-content max-content;
     grid-gap: 0px;
+
+    z-index: 7;
+    /* opacity: 0.5; */
+
+    position: absolute;
+    top: 110px;
+    left: 60px;
 }
 
-.base {
-    width: 100px;
-    height: 100px;
-    background-color: black;
-    border: 2px dashed red;
-}
-
-.base01, .base11, .base21 {
-    border-right: 0px;
-    border-left: 0px;
-}
-
-.base10, .base12 {
-    border-top: 0px;
-    border-bottom: 0px;
-}
-
-.base11 {
-    border: 0px;
+.grid2__cell {
+    width: 50px;
+    height: 50px;
+    /* background-color: black; */
+    border: 3px solid rgba(119,158,203,1);
+    opacity: 0.9;
 }
