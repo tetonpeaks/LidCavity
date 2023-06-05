@@ -111,8 +111,8 @@ li {
 
 .page0 {
     display: block;
-    position: fixed;
-    top: 65px;
+    /* position: fixed; */
+    /* top: 65px; */
     margin-left: auto;
     margin-right: auto;
     /* margin-top: 10vh; */
@@ -124,6 +124,11 @@ li {
     /* border-top: 4px solid #CEB888; */
     border-bottom: 4px solid #CEB888;
     z-index: 9;
+
+    position: absolute;
+    top: 1000px;
+
+
 }
 
 .hero0 {
@@ -141,6 +146,10 @@ li {
     border: 2px solid rgba(10,10,10,0.85);
     z-index: 5;
 
+    overflow: hidden;
+
+    /* top: 1000px; */
+
 }
 
 .grid0 {
@@ -151,7 +160,30 @@ li {
     z-index: inherit;
 
     position: absolute;
+
+    left: -500px;
+
+    /* transition: 0.5s; */
+
+    -webkit-animation: slide 3s forwards;
+    -webkit-animation-delay: 1s;
+    animation: slide 3s forwards;
+    animation-delay: 1s;
+
 }
+
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
+}
+
+/* .hero0:hover .grid0 {
+    transition: 0.5s;
+    left: 0;
+} */
 
 .grid0__cell {
     width: 50px;
