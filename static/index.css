@@ -226,7 +226,7 @@ h1 {
     grid-template-rows: max-content max-content max-content max-content;
     grid-gap: 0px;
 
-    z-index: 6;
+    z-index: 9;
     /* opacity: 0.5; */
 
     position: absolute;
@@ -264,7 +264,7 @@ h1 {
     grid-template-rows: max-content max-content max-content;
     grid-gap: 0px;
 
-    z-index: 7;
+    z-index: 9;
     /* opacity: 0.5; */
 
     position: absolute;
