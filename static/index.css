@@ -17,6 +17,7 @@
     --animation1: ;
     --animation2: ;
     --animation3: ;
+    --margin-left: 37.5%;
 }
 
 body {
@@ -113,16 +114,17 @@ li {
     display: block;
     /* position: fixed; */
     /* top: 65px; */
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: 0;
     /* margin-top: 10vh; */
-    margin-bottom: 2vh;
+    /* margin-bottom: 2vh; */
     width: 100%;
-    padding: 10px;
-    text-align: center;
+    padding: 0;
+    /* text-align: center; */
     color: #CEB888;
     /* border-top: 4px solid #CEB888; */
-    border-bottom: 4px solid #CEB888;
+    /* border-bottom: 4px solid #CEB888; */
     z-index: 9;
 
     position: absolute;
@@ -141,9 +143,10 @@ li {
     color: #CEB888;
     border-radius: 5px;
     text-align: center;
-    justify-items: center;
+    /* justify-items: center; */
     background-color: black;
-    border: 2px solid rgba(10,10,10,0.85);
+    /* border: 2px solid rgba(10,10,10,0.85); */
+    /* border: 2px solid red; */
     z-index: 5;
 
     overflow: hidden;
@@ -152,46 +155,70 @@ li {
 
 }
 
+h1 {
+
+    color: #CEB888;
+    z-index: 9;
+
+    position: absolute;
+    right: -240px;
+
+    animation: slideRL 2s forwards;
+    animation-delay: 1s;
+
+    /* animation-name: slide;
+    animation-duration: 2s;
+    animation-delay: 1s; */
+}
+
+/* @keyframes slideh1 {
+    from {
+        margin-left: 100%;
+    }
+
+    to {
+        margin-left: 0%;
+    }
+}
+ */
+.grid0-wrapper {
+    position: absolute;
+    right: -240px;
+
+    animation: slideRL 2s forwards;
+    animation-delay: 1s;
+}
+
 .grid0 {
     display: grid;
     grid-template-columns: max-content max-content max-content max-content max-content max-content max-content max-content;
     grid-template-rows: max-content max-content max-content max-content max-content max-content max-content max-content max-content max-content;
     grid-gap: 0px;
-    z-index: inherit;
-
-    position: absolute;
-
-    left: -500px;
-
-    /* transition: 0.5s; */
-
-    -webkit-animation: slide 3s forwards;
-    -webkit-animation-delay: 1s;
-    animation: slide 3s forwards;
-    animation-delay: 1s;
-
+    z-index: 9;
 }
-
-@-webkit-keyframes slide {
-    100% { left: 0; }
-}
-
-@keyframes slide {
-    100% { left: 0; }
-}
-
-/* .hero0:hover .grid0 {
-    transition: 0.5s;
-    left: 0;
-} */
 
 .grid0__cell {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     /* background-color: black; */
     border: 1px dashed rgba(207,207,196,1);
 }
 
+@-webkit-keyframes slideRL {
+    100% { right: calc(50% - 120px); }
+}
+
+@keyframes slideRL {
+    100% { right: calc(50% - 120px); }
+}
+
+.grid1-wrapper {
+    position: absolute;
+    left: -240px;
+
+    animation: slideLR 2s forwards;
+    animation-delay: 1.3s;
+}
 
 .grid1 {
     display: grid;
@@ -203,16 +230,32 @@ li {
     /* opacity: 0.5; */
 
     position: absolute;
-    top: 55px;
-    left: 30px;
+    top: 60px;
+    /* left: 30px; */
 }
 
 .grid1__cell {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     /* background-color: black; */
     border: 2px solid rgba(119,221,119,1);
     opacity: 1;
+}
+
+@-webkit-keyframes slideLR {
+    100% { left: calc(50% - 15px); }
+}
+
+@keyframes slideLR {
+    100% { left: calc(50% - 15px); }
+}
+
+.grid2-wrapper {
+    position: absolute;
+    right: -240px;
+
+    animation: slideRL2 2s forwards;
+    animation-delay: 1.6s;
 }
 
 .grid2 {
@@ -225,14 +268,22 @@ li {
     /* opacity: 0.5; */
 
     position: absolute;
-    top: 110px;
-    left: 60px;
+    top: 75px;
+    /* left: 60px; */
 }
 
 .grid2__cell {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     /* background-color: black; */
     border: 3px solid rgba(119,158,203,1);
     opacity: 0.9;
+}
+
+@-webkit-keyframes slideRL2 {
+    100% { right: calc(50% + 60px); }
+}
+
+@keyframes slideRL2 {
+    100% { right: calc(50% + 60px); }
 }

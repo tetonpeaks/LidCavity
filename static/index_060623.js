@@ -4,8 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     grid1 = document.getElementById('grid1'); // v-momentum
     grid2 = document.getElementById('grid2'); // pressure
 
-    console.log(grid0)
-
     createGrid({ N: 8, grid: grid0, borderWidth: 1 })
     createGrid({ N: 4, grid: grid1, borderWidth: 2 })
     createGrid({ N: 3, grid: grid2, borderWidth: 3 })
