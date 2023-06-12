@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 
         el.innerHTML = `<span class="close12" id="close12">&times;</span>
+            <div class="grid4" id="grid4"></div>
             <span class="arrow12 W">&#8672;</span>
             <span class="arrow12 E">&#8674;</span>
             <span class="arrow12 N">&#8675;</span>
@@ -59,8 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(getComputedStyle(document.documentElement).getPropertyValue('--modal-color'))
         } */
 
-       //let grid3 = document.getElementById('grid3');
-       //createGrid({ N: 3, grid: grid3, borderWidth: 1 });
+       let grid4 = document.getElementById('grid4');
+       createGrid({ N: 3, grid: grid4, borderWidth: 1 });
 
         document.getElementById("close12").addEventListener('click', function(e) {
             //console.log('Click happened for: ' + e.target.id)
@@ -77,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
         el.innerHTML = `<span class="close12" id="close12">&times;</span>
+            <div class="grid4" id="grid4"></div>
             <span class="arrow12 W">&#8672;</span>
             <span class="arrow12 E">&#8674;</span>
             <span class="arrow12 N">&#8675;</span>
@@ -90,8 +92,8 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(getComputedStyle(document.documentElement).getPropertyValue('--modal-color'))
         } */
 
-       //let grid3 = document.getElementById('grid3');
-       //createGrid({ N: 3, grid: grid3, borderWidth: 1 });
+       let grid4 = document.getElementById('grid4');
+       createGrid({ N: 3, grid: grid4, borderWidth: 1 });
 
         document.getElementById("close12").addEventListener('click', function(e) {
             console.log('Click happened for: ' + e.target.id)
