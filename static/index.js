@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         el.innerHTML = `<span class="close" id="close">&times;</span>
             <div class="grid3" id="grid3"></div>
-            <span class="arrow W">&#8674;</span>
-            <span class="arrow E">&#8672;</span>
+            <span class="arrow W">&#8672;</span>
+            <span class="arrow E">&#8674;</span>
             <span class="arrow N">&#8675;</span>
             <span class="arrow S">&#8673;</span>`;
 
