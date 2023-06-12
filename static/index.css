@@ -48,7 +48,7 @@
     }
 }
 
-@media screen and (orientation: landscape) and (max-width: 667px) {
+@media screen and (orientation: landscape) and (max-width: 668px) {
     .example0 {
         left: calc(50% - 240px - 40px);
         top: 240px;
