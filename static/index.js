@@ -4,7 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var grid1 = document.getElementById('grid1'); // v-momentum
     var grid2 = document.getElementById('grid2'); // pressure
 
-    document.documentElement.style.setProperty('--blinkingBackground', 'blinkingBackground 2s infinite ');
+    document.documentElement.style.setProperty('--blinkingBackground0', 'blinkingBackground0 2s infinite ');
+    document.documentElement.style.setProperty('--blinkingBackground1', 'blinkingBackground1 2s infinite ');
+    document.documentElement.style.setProperty('--blinkingBackground2', 'blinkingBackground2 2s infinite ');
 
     createGrid({ N: 8, grid: grid0, borderWidth: 1 });
     createGrid({ N: 4, grid: grid1, borderWidth: 2 });

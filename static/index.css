@@ -13,7 +13,9 @@
     --bgcolor1: #CEB888;
     --bgcolor2: #CEB888;
     --bgcolor3: #CEB888;
-    --blinkingBackground: ;
+    --blinkingBackground0: ;
+    --blinkingBackground1: ;
+    --blinkingBackground2: ;
     --animation1: ;
     --animation2: ;
     --animation3: ;
@@ -256,15 +258,47 @@ li {
 }
 
 .grid0__cell49 {
-    animation: var(--blinkingBackground);
+    animation: var(--blinkingBackground0);
+    animation-delay: 1s;
     /* animation: var(--blinkingBackground) 2s infinite; */
 }
 
 .grid0__cell49:hover {
-    animation: var(--blinkingBackground) 0.5s ease-out;
+    animation: var(--blinkingBackground0) 0.5s ease-out;
 }
 
-@keyframes blinkingBackground{
+.grid1__cell2 {
+    animation: var(--blinkingBackground1);
+    animation-delay: 1.3s;
+    /* animation: var(--blinkingBackground) 2s infinite; */
+}
+
+.grid1__cell2:hover {
+    animation: var(--blinkingBackground1) 0.5s ease-out;
+}
+
+.grid2__cell0 {
+    animation: var(--blinkingBackground2);
+    animation-delay: 1.4s;
+    /* animation: var(--blinkingBackground) 2s infinite; */
+}
+
+.grid2__cell0:hover {
+    animation: var(--blinkingBackground2) 0.5s ease-out;
+}
+
+@keyframes blinkingBackground0 {
+    0%		{ background-color: rgba(255,255,255,0.9);}
+    50%		{ background-color: rgba(255,255,255,0.5);}
+    100%		{ background-color: rgba(255,255,255,0.1);}
+    0%		{ background-color: rgba(255,255,255,0.9);}
+    50%		{ background-color: rgba(255,255,255,0.5);}
+    100%		{ background-color: rgba(255,255,255,0.1);}
+    0%		{ background-color: rgba(255,255,255,0.9);}
+    50%		{ background-color: rgba(255,255,255,0.5);}
+    100%		{ background-color: rgba(255,255,255,0.1);}
+}
+/* @keyframes blinkingBackground0 {
     0%		{ color: #CEB888;}
     50%		{ color: black;}
     100%		{ color: #CEB888;}
@@ -274,7 +308,43 @@ li {
     0%		{ background-color: black;}
     50%		{ background-color: #CEB888;}
     100%		{ background-color: black;}
+} */
+
+@keyframes blinkingBackground1 {
+    0%		{ background-color: rgba(119,221,119,0.9);}
+    50%		{ background-color: rgba(119,221,119,0.5);}
+    100%		{ background-color: rgba(119,221,119,0.1);}
+    0%		{ background-color: rgba(119,221,119,0.9);}
+    50%		{ background-color: rgba(119,221,119,0.5);}
+    100%		{ background-color: rgba(119,221,119,0.1);}
+    0%		{ background-color: rgba(119,221,119,0.9);}
+    50%		{ background-color: rgba(119,221,119,0.5);}
+    100%		{ background-color: rgba(119,221,119,0.1);}
 }
+
+@keyframes blinkingBackground2 {
+    0%		{ background-color: rgba(119,158,203,0.9);}
+    50%		{ background-color: rgba(119,158,203,0.5);}
+    100%		{ background-color: rgba(119,158,203,0.1);}
+    0%		{ background-color: rgba(119,158,203,0.9);}
+    50%		{ background-color: rgba(119,158,203,0.5);}
+    100%		{ background-color: rgba(119,158,203,0.1);}
+    0%		{ background-color: rgba(119,158,203,0.9);}
+    50%		{ background-color: rgba(119,158,203,0.5);}
+    100%		{ background-color: rgba(119,158,203,0.1);}
+}
+
+/* @keyframes blinkingBackground1 {
+    0%		{ color: rgba(119,221,119,0.5);}
+    50%		{ color: rgba(0,0,0,0.5);}
+    100%		{ color: rgba(119,221,119,0.5)}
+    0%		{ border-color: rgba(119,221,119,0.5);}
+    50%		{ border-color: rgba(0,0,0,0.5);}
+    100%		{ border-color: rgba(119,221,119,0.5);}
+    0%		{ background-color: rgba(0,0,0,0.5);}
+    50%		{ background-color: rgba(119,221,119,0.5);}
+    100%		{ background-color: rgba(0,0,0,0.5);}
+} */
 
 /* @media all and (orientation: portrait) {
     .example {
@@ -294,7 +364,7 @@ li {
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border: 2px solid #CEB888;
+    border: 2px solid white;
     /* padding: 15px; */
     /* text-align: center; */
     font-weight: bold;
@@ -302,19 +372,19 @@ li {
 
     position: relative;
     left: 50%;
-    top: 30%;
+    top: 45%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
 
-    box-shadow: 0px 0px 7.5px rgba(206,184,136,1);
+    box-shadow: 0px 0px 5px white;
 
     overflow: hidden;
 
 }
 
 .close {
-    color: #CEB888;
+    color: white;
     font-size: 30px;
 
     position: absolute;
@@ -356,6 +426,7 @@ li {
 
 .arrow {
     z-index: 9;
+    color: white;
 }
 
 .W {
