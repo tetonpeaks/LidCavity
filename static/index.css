@@ -20,6 +20,7 @@
     --animation2: ;
     --animation3: ;
     --margin-left: 37.5%;
+    --modal-color: ;
 }
 
 body {
@@ -360,7 +361,7 @@ li {
 
     width: 240px;
     height: 240px;
-    margin: auto;
+    /* margin: auto; */
     background-color: black;
     border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -369,7 +370,7 @@ li {
     font-weight: bold;
 
     position: absolute;
-    left: 120px;
+    left: 50%;
     top: calc(150px + 240px);
     transform: translate(-50%, 0%);
     -ms-transform: translate(-50%, 0%);
@@ -380,8 +381,36 @@ li {
     overflow: hidden;
 }
 
+.example12 {
+    visibility: hidden;
+    z-index: 9;
+    width: 240px;
+    height: 240px;
+    background-color: black;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border: 2px solid var(--modal-color);
+    font-weight: bold;
+    position: absolute;
+    right: calc(50% - 120px);
+    top: 50px;
+    box-shadow: 0px 0px 5px var(--modal-color);
+    overflow: hidden;
+}
+
 .close0 {
     color: white;
+    font-size: 25px;
+
+    position: absolute;
+    right: 10px;
+
+    z-index: 100;
+}
+
+.close12 {
+    color: var(--modal-color);
     font-size: 25px;
 
     position: absolute;
@@ -413,42 +442,6 @@ li {
     /* box-shadow: 0px 0px 1px white; */
 }
 
-.example1 {
-    visibility: hidden;
-    z-index: 9;
-
-    width: 240px;
-    height: 240px;
-    margin: auto;
-    background-color: black;
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border: 2px solid rgba(119,221,119,1);
-    font-weight: bold;
-
-    position: absolute;
-    right: 120px;
-    top: 45px;
-    transform: translate(50%, 0%);
-    -ms-transform: translate(50%, 0%);
-    -webkit-transform: translate(50%, 0%);
-
-    box-shadow: 0px 0px 5px rgba(119,221,119,1);
-
-    overflow: hidden;
-}
-
-.close1 {
-    color: rgba(119,221,119,1);
-    font-size: 25px;
-
-    position: absolute;
-    right: 10px;
-
-    z-index: 100;
-}
-
 @-webkit-keyframes slideRL2 {
     100% { right: calc(50% + 60px); }
 }
@@ -462,14 +455,9 @@ li {
     color: white;
 }
 
-.arrow1 {
+.arrow12 {
     z-index: 9;
-    color: rgba(119,221,119,1);
-}
-
-.arrow2 {
-    z-index: 9;
-    color: rgba(119,158,203,1);
+    color: var(--modal-color);
 }
 
 .W {

@@ -40,23 +40,68 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('grid1__cell2').addEventListener('click', function(e) {
         //console.log('Click happened for: ' + e.target.id)
 
-        let el = document.getElementById('example1');
+        let el = document.getElementById('example12');
 
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 
-        el.innerHTML = `<span class="close1" id="close1">&times;</span>
-            <span class="arrow1 W">&#8672;</span>
-            <span class="arrow1 E">&#8674;</span>
-            <span class="arrow1 N">&#8675;</span>
-            <span class="arrow1 S">&#8673;</span>`;
+        el.innerHTML = `<span class="close12" id="close12">&times;</span>
+            <span class="arrow12 W">&#8672;</span>
+            <span class="arrow12 E">&#8674;</span>
+            <span class="arrow12 N">&#8675;</span>
+            <span class="arrow12 S">&#8673;</span>`;
+
+        document.documentElement.style.setProperty('--modal-color', 'rgba(119,221,119,1)');
+
+        console.log("visibility", el.style.getPropertyValue('visibility'))
+        if (el.style.visibility == "hidden") {
+            el.style.visibility = "visible";
+        } /* else if (el.style.visibility == "visible" && getComputedStyle(document.documentElement).getPropertyValue('--modal-color') !== 'rgba(119,221,119,1') {
+            console.log(getComputedStyle(document.documentElement).getPropertyValue('--modal-color'))
+        } */
 
        //let grid3 = document.getElementById('grid3');
        //createGrid({ N: 3, grid: grid3, borderWidth: 1 });
 
-        document.getElementById("close1").addEventListener('click', function(e) {
+        document.getElementById("close12").addEventListener('click', function(e) {
             //console.log('Click happened for: ' + e.target.id)
             el.innerHTML = '';
             el.style.visibility = "hidden";
+            //console.log(el.style)
+        })
+    })
+
+    document.getElementById('grid2__cell0').addEventListener('click', function(e) {
+        //console.log('Click happened for: ' + e.target.id)
+
+        let el = document.getElementById('example12');
+
+        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+        el.innerHTML = `<span class="close12" id="close12">&times;</span>
+            <span class="arrow12 W">&#8672;</span>
+            <span class="arrow12 E">&#8674;</span>
+            <span class="arrow12 N">&#8675;</span>
+            <span class="arrow12 S">&#8673;</span>`;
+        document.documentElement.style.setProperty('--modal-color', 'rgba(119,158,203,1)');
+
+        console.log("visibility", el.style.getPropertyValue('visibility'))
+        if (el.style.visibility == "hidden") {
+            el.style.visibility = "visible";
+        } /* else if (el.style.visibility == "visible" && getComputedStyle(document.documentElement).getPropertyValue('--modal-color') !== 'rgba(119,158,203,1') {
+            console.log(getComputedStyle(document.documentElement).getPropertyValue('--modal-color'))
+        } */
+
+       //let grid3 = document.getElementById('grid3');
+       //createGrid({ N: 3, grid: grid3, borderWidth: 1 });
+
+        document.getElementById("close12").addEventListener('click', function(e) {
+            console.log('Click happened for: ' + e.target.id)
+
+            if (e.target.id == 'grid1_cell2') {
+                document.documentElement.style.setProperty('--modal-color', 'rgba(119,221,119.1)');
+            } else {
+                el.innerHTML = '';
+                el.style.visibility = "hidden";
+            }
             //console.log(el.style)
         })
     })
