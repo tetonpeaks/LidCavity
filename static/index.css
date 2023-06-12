@@ -48,14 +48,14 @@
     }
 }
 
-@media screen and (orientation: landscape) and (max-width: 668px) {
+@media screen and (orientation: landscape) and (min-width: 666px) {
     .example0 {
-        left: calc(50% - 240px - 40px);
+        left: calc(50% - 240px - 60px);
         top: 240px;
 
     }
     .example12 {
-        right: calc(50% - 240px - 40px);
+        right: calc(50% - 240px - 60px);
         top: 240px;
     }
 }
