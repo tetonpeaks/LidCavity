@@ -50,12 +50,12 @@
 
 @media screen and (orientation: landscape) and (min-width: 666px) {
     .example0 {
-        left: calc(50% - 240px - 80px);
+        left: calc(50% - 240px - 90px);
         top: 240px;
 
     }
     .example12 {
-        right: calc(50% - 240px - 80px);
+        right: calc(50% - 240px - 90px);
         top: 240px;
     }
 }
