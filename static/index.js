@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     createGrid({ N: 4, grid: grid1, borderWidth: 2 });
     createGrid({ N: 3, grid: grid2, borderWidth: 3 });
 
-    var el = document.getElementById('example');
+    var el = document.getElementById('example0');
 
     document.getElementById('grid0__cell49').addEventListener('click', function(e) {
         console.log('Click happened for: ' + e.target.id)
