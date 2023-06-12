@@ -374,7 +374,7 @@ li {
 
     position: absolute;
     top: 90px;
-    left: calc(50% - 10px);
+    left: calc(50% - 12px);
     /* transform: translateX(-50%); */
 
     animation-name: bounceAlphaN;
@@ -390,7 +390,7 @@ li {
     position: absolute;
     top: calc(120px + 120px - 7.5px);
     /* left: calc(165px + 7.5px); */
-    left: calc(50% - 10px);
+    left: calc(50% - 12px);
     /* transform: translateX(-50%); */
 
     animation-name: bounceAlphaS;
