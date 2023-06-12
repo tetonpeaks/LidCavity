@@ -12,28 +12,52 @@ document.addEventListener("DOMContentLoaded", function () {
     createGrid({ N: 4, grid: grid1, borderWidth: 2 });
     createGrid({ N: 3, grid: grid2, borderWidth: 3 });
 
-    var el = document.getElementById('example0');
 
     document.getElementById('grid0__cell49').addEventListener('click', function(e) {
-        console.log('Click happened for: ' + e.target.id)
+        //console.log('Click happened for: ' + e.target.id)
+        let el = document.getElementById('example0');
 
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 
-        el.innerHTML = `<span class="close" id="close">&times;</span>
+        el.innerHTML = `<span class="close0" id="close0">&times;</span>
             <div class="grid3" id="grid3"></div>
-            <span class="arrow W">&#8672;</span>
-            <span class="arrow E">&#8674;</span>
-            <span class="arrow N">&#8675;</span>
-            <span class="arrow S">&#8673;</span>`;
+            <span class="arrow0 W">&#8672;</span>
+            <span class="arrow0 E">&#8674;</span>
+            <span class="arrow0 N">&#8675;</span>
+            <span class="arrow0 S">&#8673;</span>`;
 
         let grid3 = document.getElementById('grid3');
         createGrid({ N: 3, grid: grid3, borderWidth: 1 });
 
-        document.getElementById("close").addEventListener('click', function(e) {
-            console.log('Click happened for: ' + e.target.id)
-            el.innerHTML = '<span class="close" id="close">&times;</span>';
+        document.getElementById("close0").addEventListener('click', function(e) {
+            //console.log('Click happened for: ' + e.target.id)
+            el.innerHTML = '';
             el.style.visibility = "hidden";
-            console.log(el.style)
+            //console.log(el.style)
+        })
+    })
+
+    document.getElementById('grid1__cell2').addEventListener('click', function(e) {
+        //console.log('Click happened for: ' + e.target.id)
+
+        let el = document.getElementById('example1');
+
+        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+
+        el.innerHTML = `<span class="close1" id="close1">&times;</span>
+            <span class="arrow1 W">&#8672;</span>
+            <span class="arrow1 E">&#8674;</span>
+            <span class="arrow1 N">&#8675;</span>
+            <span class="arrow1 S">&#8673;</span>`;
+
+       //let grid3 = document.getElementById('grid3');
+       //createGrid({ N: 3, grid: grid3, borderWidth: 1 });
+
+        document.getElementById("close1").addEventListener('click', function(e) {
+            //console.log('Click happened for: ' + e.target.id)
+            el.innerHTML = '';
+            el.style.visibility = "hidden";
+            //console.log(el.style)
         })
     })
 
