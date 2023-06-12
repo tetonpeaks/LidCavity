@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    grid0 = document.getElementById('grid0'); // u-momentum
-    grid1 = document.getElementById('grid1'); // v-momentum
-    grid2 = document.getElementById('grid2'); // pressure
+    var grid0 = document.getElementById('grid0'); // u-momentum
+    var grid1 = document.getElementById('grid1'); // v-momentum
+    var grid2 = document.getElementById('grid2'); // pressure
 
     document.documentElement.style.setProperty('--blinkingBackground', 'blinkingBackground 2s infinite ');
 
@@ -10,20 +10,35 @@ document.addEventListener("DOMContentLoaded", function () {
     createGrid({ N: 4, grid: grid1, borderWidth: 2 });
     createGrid({ N: 3, grid: grid2, borderWidth: 3 });
 
-    el = document.getElementById('example');
-    grid3 = document.getElementById('grid3');
+    var el = document.getElementById('example');
 
     document.getElementById('grid0__cell49').addEventListener('click', function(e) {
         console.log('Click happened for: ' + e.target.id)
+
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+
+        el.innerHTML = `<span class="close" id="close">&times;</span>
+            <div class="grid3" id="grid3"></div>
+            <span class="arrow W">&#8674;</span>
+            <span class="arrow E">&#8672;</span>
+            <span class="arrow N">&#8675;</span>
+            <span class="arrow S">&#8673;</span>`;
+
+        let grid3 = document.getElementById('grid3');
         createGrid({ N: 3, grid: grid3, borderWidth: 1 });
+
+        document.getElementById("close").addEventListener('click', function(e) {
+            console.log('Click happened for: ' + e.target.id)
+            el.innerHTML = '<span class="close" id="close">&times;</span>';
+            el.style.visibility = "hidden";
+            console.log(el.style)
+        })
     })
+
 
 });
 
 function createGrid(input) {
-
-    console.log(input.grid)
 
     let N = input.N;
     let grid = input.grid;
