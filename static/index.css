@@ -441,7 +441,7 @@ li {
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border: 2px solid rgba(207,207,196,1);
+    border: 2px solid var(--modal-color);
     font-weight: bold;
     position: absolute;
     /* right: calc(50% - 240px - 160px);
@@ -523,7 +523,7 @@ li {
     width: 80px;
     height: 80px;
     /* background-color: black; */
-    border: 1px dashed var(--modal-color);
+    border: 1px dashed rgba(207,207,196,1);
     /* box-shadow: 0px 0px 1px white; */
 }
 
@@ -541,6 +541,30 @@ li {
     height: 80px;
     border: 2px solid var(--modal-color);
 }
+
+.circle.small {
+    border: 2px solid var(--modal-color);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+.circle.filled {
+    background-color: black;
+}
+
+.circle.small.W {
+    position: absolute;
+    top: calc(120px - 22.5px);
+    left: calc(80px - 15px);
+}
+
+/* .circle.small {
+    border: 2px solid var(--modal-color);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+} */
 
 @-webkit-keyframes slideRL2 {
     100% { right: calc(50% + 60px); }
@@ -602,9 +626,82 @@ li {
     animation-name: var(--modal-animation);
 }
 
+.circle.small.W0, .circle.small.P0, .circle.small.E0, .circle.small.N0, .circle.small.S0 {
+    border-color: rgba(207,207,196,1);
+    position: absolute;
+    animation-duration: 0s;
+}
+.circle.small.W, .circle.small.P, .circle.small.E, .circle.small.N, .circle.small.NE {
+    border-color: rgba(207,207,196,1);
+    position: absolute;
+    animation-duration: 0s;
+}
+.circle.small.S, .circle.small.SW, .circle.small.NW, .circle.small.SE {
+    border-color: rgba(207,207,196,1);
+    position: absolute;
+    animation-duration: 0s;
+}
+
+.circle.small.W0 {
+    top: calc(120px - 12px);
+    left: calc(50% - 80px - 7.5px);
+}
+.circle.small.P0 {
+    top: calc(120px - 12px);
+    left: calc(40px - 7.5px + 80px);
+}
+.circle.small.E0 {
+    top: calc(120px - 12px);
+    right: calc(50% - 80px - 7.5px);
+}
+.circle.small.N0 {
+    top: calc(30px - 0px);
+    left: calc(40px - 7.5px + 80px + 0px);
+}
+.circle.small.S0 {
+    bottom: calc(30px - 0px);
+    left: calc(40px - 7.5px + 80px);
+}
+
+.circle.small.W {
+    top: calc(120px - 12px);
+    left: calc(50% - 80px - 7.5px);
+}
+.circle.small.P {
+    top: calc(120px - 12px);
+    left: calc(40px - 7.5px + 80px);
+}
+.circle.small.E {
+    top: calc(120px - 12px);
+    right: calc(50% - 80px - 7.5px);
+}
+.circle.small.N {
+    top: calc(30px - 0px);
+    left: calc(40px - 7.5px + 80px + 0px);
+}
+.circle.small.S {
+    bottom: calc(30px - 0px);
+    left: calc(40px - 7.5px + 80px);
+}
+.circle.small.NE {
+    top: calc(30px - 0px);
+    right: calc(50% - 80px - 7.5px);
+}
+.circle.small.NW {
+    top: calc(30px - 0px);
+    left: calc(50% - 80px - 7.5px);
+}
+.circle.small.SW {
+    bottom: calc(30px - 0px);
+    left: calc(50% - 80px - 7.5px);
+}
+.circle.small.SE {
+    bottom: calc(30px - 0px);
+    right: calc(50% - 80px - 7.5px);
+}
+
 @keyframes bounceAlphaW {
-    0% {opacity: 1;
-        transform: translateX(0px) scale(1);}
+    0% {opacity: 1; transform: translateX(0px) scale(1);}
     25%{opacity: 0; transform:translateX(-10px) scale(0.9);}
     26%{opacity: 0; transform:translateX(10px) scale(0.9);}
     55% {opacity: 1; transform: translateX(0px) scale(1);}
@@ -643,22 +740,21 @@ li {
 
 @keyframes bounceAlphaS {
     0% {opacity: 1; transform: translateY(0px) scale(1);}
-    25%{opacity: 0; transform:translateY(-10px) scale(0.9);}
-    26%{opacity: 0; transform:translateY(10px) scale(0.9);}
+    25%{opacity: 0; transform: translateY(-10px) scale(0.9);}
+    26%{opacity: 0; transform: translateY(10px) scale(0.9);}
     55% {opacity: 1; transform: translateY(0px) scale(1);}
 }
 
 @keyframes bounceAlphaRL {
-    0% {opacity: 1;
-        transform: translateX(0px) scale(1);}
-        25%{opacity: 0; transform:translateX(10px) scale(0.9);}
-        26%{opacity: 0; transform:translateX(-10px) scale(0.9);}
-        55% {opacity: 1; transform: translateX(0px) scale(1);}
+    0% {opacity: 1; transform: translateX(0px) scale(1);}
+    25%{opacity: 0; transform: translateX(10px) scale(0.9);}
+    26%{opacity: 0; transform: translateX(-10px) scale(0.9);}
+    55% {opacity: 1; transform: translateX(0px) scale(1);}
 }
 @keyframes bounceAlphaUD {
     0% {opacity: 1; transform: translateY(0px) scale(1);}
-    25%{opacity: 0; transform:translateY(10px) scale(0.9);}
-    26%{opacity: 0; transform:translateY(-10px) scale(0.9);}
+    25%{opacity: 0; transform: translateY(10px) scale(0.9);}
+    26%{opacity: 0; transform: translateY(-10px) scale(0.9);}
     55% {opacity: 1; transform: translateY(0px) scale(1);}
 }
 

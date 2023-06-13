@@ -25,7 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="arrow0 W0">&#8672;</span>
             <span class="arrow0 E0">&#8674;</span>
             <span class="arrow0 N0">&#8675;</span>
-            <span class="arrow0 S0">&#8673;</span>`;
+            <span class="arrow0 S0">&#8673;</span>
+            <div class="circle small W0"></div>
+            <div class="circle small P0"></div>
+            <div class="circle small E0"></div>
+            <div class="circle small N0"></div>
+            <div class="circle small S0"></div>`;
 
         let grid3 = document.getElementById('grid3');
         createGrid({ N: 3, grid: grid3, borderWidth: 1 });
@@ -69,7 +74,16 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="arrow12 E">&#8674;</span>
             <span class="arrow12 N">&#8674;</span>
             <span class="arrow12 S">&#8674;</span>
-            <span class="arrow12 P">&#8674;</span>`;
+            <span class="arrow12 P">&#8674;</span>
+            <div class="circle small W"></div>
+            <div class="circle small P"></div>
+            <div class="circle small E"></div>
+            <div class="circle small N"></div>
+            <div class="circle small S"></div>
+            <div class="circle small NE"></div>
+            <div class="circle small SW"></div>
+            <div class="circle small NW"></div>
+            <div class="circle small SE"></div>`;
 
         let grid4 = document.getElementById('grid4');
         createGrid({ N: 3, grid: grid4, borderWidth: 1 });
@@ -82,19 +96,19 @@ document.addEventListener("DOMContentLoaded", function () {
             transform: translate(0%, -50%);`;
 
         let W = document.getElementsByClassName('W')[0]; // must access [0]
-        W.style.cssText = `top: calc(120px - 22.5px);
+        W.style.cssText = `top: calc(0px + 80px + 15px + 3px);
             left: calc(80px - 15px);`;
 
         let P = document.getElementsByClassName('P')[0];
-        P.style.cssText = `top: calc(120px - 22.5px);
+        P.style.cssText = `top: calc(0px + 80px + 15px + 3px);
             right: calc(50% - 60px);`;
 
         let E = document.getElementsByClassName('E')[0];
-        E.style.cssText = `top: calc(120px - 22.5px);
+        E.style.cssText = `top: calc(0px + 80px + 15px + 3px);
             right: calc(50% - 120px - 15px);`;
 
         let N = document.getElementsByClassName('N')[0];
-        N.style.cssText = `top: calc(0% + 22.5px);
+        N.style.cssText = `top: calc(0px + 40px - 15px - 5px);
             right: calc(50% - 60px);`;
 
         let S = document.getElementsByClassName('S')[0];
@@ -126,7 +140,16 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="arrow12 E">&#8675;</span>
             <span class="arrow12 N">&#8675;</span>
             <span class="arrow12 S">&#8675;</span>
-            <span class="arrow12 P">&#8675;</span>`;
+            <span class="arrow12 P">&#8675;</span>
+            <div class="circle small W"></div>
+            <div class="circle small P"></div>
+            <div class="circle small E"></div>
+            <div class="circle small N"></div>
+            <div class="circle small S"></div>
+            <div class="circle small NE"></div>
+            <div class="circle small SW"></div>
+            <div class="circle small NW"></div>
+            <div class="circle small SE"></div>`;
 
         let grid4 = document.getElementById('grid4');
         createGrid({ N: 3, grid: grid4, borderWidth: 1 });
