@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
             right: calc(50% - 60px);`;
 
         let S = document.getElementsByClassName('S')[0];
-        S.style.cssText = `bottom: calc(22.5px - 2px);
+        S.style.cssText = `bottom: calc(0px + 40px - 15px - 6px);
             right: calc(50% - 60px);`;
 
         document.getElementById("close12").addEventListener('click', function(e) {
