@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 
         document.documentElement.style.setProperty('--modal-color', 'rgba(119,158,203,1)');
+        document.documentElement.style.setProperty('--modal-animation', 'bounceAlphaUD');
 
         el.innerHTML = `<span class="close12" id="close12">&times;</span>
             <div class="grid4" id="grid4"></div>
@@ -124,7 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="arrow12 W">&#8675;</span>
             <span class="arrow12 E">&#8675;</span>
             <span class="arrow12 N">&#8675;</span>
-            <span class="arrow12 S">&#8673;</span>`;
+            <span class="arrow12 S">&#8675;</span>
+            <span class="arrow12 P">&#8675;</span>`;
 
         let grid4 = document.getElementById('grid4');
         createGrid({ N: 3, grid: grid4, borderWidth: 1 });
@@ -136,10 +138,25 @@ document.addEventListener("DOMContentLoaded", function () {
             left: 50%;
             transform: translate(-50%, 0%);`;
 
-        console.log(document.getElementsByClassName('W')[0])
         let W = document.getElementsByClassName('W')[0]; // must access [0]
-        W.style.cssText = `top: calc(120px - 22.5px);
-            left: calc(80px - 30px);`;
+        W.style.cssText = `top: calc(80px - 15px);
+            left: calc(30px + 0px);`;
+
+        let P = document.getElementsByClassName('P')[0];
+        P.style.cssText = `top: calc(80px - 15px);
+            right: calc(50% - 12px);`;
+
+        let E = document.getElementsByClassName('E')[0];
+        E.style.cssText = `top: calc(80px - 15px);
+            right: calc(30px + 0px);`;
+
+        let N = document.getElementsByClassName('N')[0];
+        N.style.cssText = `top: calc(0px - 15px);
+            right: calc(50% - 12px);`;
+
+        let S = document.getElementsByClassName('S')[0];
+        S.style.cssText = `bottom: calc(80px - 22.5px);
+            right: calc(50% - 12px);`;
 
         console.log("visibility", el.style.getPropertyValue('visibility'))
         if (el.style.visibility == "hidden") {
