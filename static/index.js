@@ -96,23 +96,23 @@ document.addEventListener("DOMContentLoaded", function () {
             transform: translate(0%, -50%);`;
 
         let W = document.getElementsByClassName('W')[0]; // must access [0]
-        W.style.cssText = `top: calc(0px + 80px + 15px + 3px);
+        W.style.cssText = `top: calc(0px + 80px + 15px + 2px);
             left: calc(80px - 15px);`;
 
         let P = document.getElementsByClassName('P')[0];
-        P.style.cssText = `top: calc(0px + 80px + 15px + 3px);
+        P.style.cssText = `top: calc(0px + 80px + 15px + 2px);
             right: calc(50% - 60px);`;
 
         let E = document.getElementsByClassName('E')[0];
-        E.style.cssText = `top: calc(0px + 80px + 15px + 3px);
+        E.style.cssText = `top: calc(0px + 80px + 15px + 2px);
             right: calc(50% - 120px - 15px);`;
 
         let N = document.getElementsByClassName('N')[0];
-        N.style.cssText = `top: calc(0px + 40px - 15px - 5px);
+        N.style.cssText = `top: calc(0px + 40px - 15px - 6px);
             right: calc(50% - 60px);`;
 
         let S = document.getElementsByClassName('S')[0];
-        S.style.cssText = `bottom: calc(0% + 22.5px);
+        S.style.cssText = `bottom: calc(22.5px - 2px);
             right: calc(50% - 60px);`;
 
         document.getElementById("close12").addEventListener('click', function(e) {
