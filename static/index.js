@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         el.innerHTML = `<span class="close0" id="close0">&times;</span>
             <div class="grid3" id="grid3"></div>
+            <div class="grid3_minor" id="grid3_minor"></div>
             <span class="arrow0 W0">&#8672;</span>
             <span class="arrow0 E0">&#8674;</span>
             <span class="arrow0 N0">&#8675;</span>
@@ -28,6 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let grid3 = document.getElementById('grid3');
         createGrid({ N: 3, grid: grid3, borderWidth: 1 });
+
+        let grid3_minor = document.getElementById('grid3_minor');
+        createGrid({ N: 1, grid: grid3_minor, borderWidth: 2 });
+
+        grid3_minor.style.cssText = `top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);`;
 
         document.getElementById("close0").addEventListener('click', function(e) {
             //console.log('Click happened for: ' + e.target.id)

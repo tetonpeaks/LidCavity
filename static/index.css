@@ -415,7 +415,7 @@ li {
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border: 2px solid white;
+    border: 2px solid rgba(207,207,196,1);
     font-weight: bold;
 
     position: absolute;
@@ -427,7 +427,7 @@ li {
     -ms-transform: translate(-50%, 0%);
     -webkit-transform: translate(-50%, 0%); */
 
-    box-shadow: 0px 0px 5px white;
+    box-shadow: 0px 0px 5px rgba(207,207,196,1)
 
     /* overflow: hidden; */
 }
@@ -441,7 +441,7 @@ li {
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border: 2px solid var(--modal-color);
+    border: 2px solid rgba(207,207,196,1);
     font-weight: bold;
     position: absolute;
     /* right: calc(50% - 240px - 160px);
@@ -451,7 +451,7 @@ li {
 }
 
 .close0 {
-    color: white;
+    color: rgba(207,207,196,1);
     font-size: 25px;
 
     position: absolute;
@@ -475,9 +475,7 @@ li {
     grid-template-columns: max-content max-content max-content;
     grid-template-rows: max-content max-content max-content;
     grid-gap: 0px;
-
     z-index: 9;
-    /* opacity: 0.5; */
 
     position: absolute;
     top: 50%;
@@ -488,13 +486,22 @@ li {
 .grid3__cell {
     width: 80px;
     height: 80px;
-    /* background-color: black; */
     border: 1px dashed rgba(207,207,196,1);
-    /* box-shadow: 0px 0px 1px white; */
 }
 
-.grid4-wrapper {
+.grid3_minor {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-gap: 0px;
+    z-index: 9;
+
     position: absolute;
+}
+
+.grid3_minor__cell {
+    width: 80px;
+    height: 80px;
+    border: 2px solid rgba(207,207,196,1);
 }
 
 .grid4 {
@@ -516,34 +523,23 @@ li {
     width: 80px;
     height: 80px;
     /* background-color: black; */
-    border: 1px dashed white;
+    border: 1px dashed var(--modal-color);
     /* box-shadow: 0px 0px 1px white; */
-}
-
-.grid4-minor-wrapper {
-    position: absolute;
 }
 
 .grid4_minor {
     display: grid;
     grid-template-columns: max-content;
     grid-gap: 0px;
-
     z-index: 9;
-    /* opacity: 0.5; */
 
     position: absolute;
-    /* top: 50%;
-    left: 50%;
-    transform: translate(0%, -50%); */
 }
 
 .grid4_minor__cell {
     width: 80px;
     height: 80px;
-    /* background-color: black; */
     border: 2px solid var(--modal-color);
-    /* box-shadow: 0px 0px 1px white; */
 }
 
 @-webkit-keyframes slideRL2 {
