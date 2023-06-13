@@ -21,26 +21,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
         el.innerHTML = `<span class="close0" id="close0">&times;</span>
             <div class="grid3" id="grid3"></div>
-            <div class="grid3_minor" id="grid3_minor"></div>
+            <span class="arrow0 W0">&#8592;</span>
+            <span class="arrow0 E0">&#8594;</span>
+            <span class="arrow0 N0">&#8595;</span>
+            <span class="arrow0 S0">&#8593;</span>
+            <div class="circle small W0">W</div>
+            <div class="circle small P0">P</div>
+            <div class="circle small E0">E</div>
+            <div class="circle small N0">N</div>
+            <div class="circle small S0">S</div>
+            <div class="circle small s0">v<sub><sub>s</sub></sub></div>`;
+
+        /* el.innerHTML = `<span class="close0" id="close0">&times;</span>
+            <div class="grid3" id="grid3"></div>
             <span class="arrow0 W0">&#8672;</span>
             <span class="arrow0 E0">&#8674;</span>
             <span class="arrow0 N0">&#8675;</span>
             <span class="arrow0 S0">&#8673;</span>
-            <div class="circle small W0"></div>
-            <div class="circle small P0"></div>
-            <div class="circle small E0"></div>
-            <div class="circle small N0"></div>
-            <div class="circle small S0"></div>`;
+            <div class="circle small W0">W</div>
+            <div class="circle small P0">P</div>
+            <div class="circle small E0">E</div>
+            <div class="circle small N0">N</div>
+            <div class="circle small S0">S</div>
+            <div class="circle small s0">v<sub><sub>s</sub></sub></div>`; */
 
         let grid3 = document.getElementById('grid3');
         createGrid({ N: 3, grid: grid3, borderWidth: 1 });
 
-        let grid3_minor = document.getElementById('grid3_minor');
-        createGrid({ N: 1, grid: grid3_minor, borderWidth: 2 });
-
-        grid3_minor.style.cssText = `top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);`;
+        //let grid3_minor = document.getElementById('grid3_minor');
+        //createGrid({ N: 1, grid: grid3_minor, borderWidth: 2 });
+//
+        //grid3_minor.style.cssText = `top: 50%;
+        //    left: 50%;
+        //    transform: translate(-50%, -50%);`;
 
         document.getElementById("close0").addEventListener('click', function(e) {
             //console.log('Click happened for: ' + e.target.id)
@@ -75,15 +88,15 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="arrow12 N">&#8674;</span>
             <span class="arrow12 S">&#8674;</span>
             <span class="arrow12 P">&#8674;</span>
-            <div class="circle small W"></div>
-            <div class="circle small P"></div>
-            <div class="circle small E"></div>
-            <div class="circle small N"></div>
-            <div class="circle small S"></div>
-            <div class="circle small NE"></div>
-            <div class="circle small SW"></div>
-            <div class="circle small NW"></div>
-            <div class="circle small SE"></div>`;
+            <div class="circle small W">W</div>
+            <div class="circle small P">P</div>
+            <div class="circle small E">E</div>
+            <div class="circle small N">N</div>
+            <div class="circle small S">S</div>
+            <div class="circle small NE">NE</div>
+            <div class="circle small SW">SW</div>
+            <div class="circle small NW">NW</div>
+            <div class="circle small SE">SE</div>`;
 
         let grid4 = document.getElementById('grid4');
         createGrid({ N: 3, grid: grid4, borderWidth: 1 });
@@ -115,6 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
         S.style.cssText = `bottom: calc(0px + 40px - 15px - 6px);
             right: calc(50% - 60px);`;
 
+        let mainCell = document.getElementById('grid4_minor');
+        mainCell.style.backgroundColor = `rgba(119,221,119,0.3)`;
+
         document.getElementById("close12").addEventListener('click', function(e) {
             //console.log('Click happened for: ' + e.target.id)
             el.innerHTML = '';
@@ -132,6 +148,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.documentElement.style.setProperty('--modal-color', 'rgba(119,158,203,1)');
         document.documentElement.style.setProperty('--modal-animation', 'bounceAlphaUD');
+        //console.log("visibility", el.style.getPropertyValue('visibility'))
+        if (el.style.visibility == "hidden") {
+            el.style.visibility = "visible";
+        } /* else if (el.style.visibility == "visible" && getComputedStyle(document.documentElement).getPropertyValue('--modal-color') !== 'rgba(119,158,203,1') {
+            console.log(getComputedStyle(document.documentElement).getPropertyValue('--modal-color'))
+        } */
 
         el.innerHTML = `<span class="close12" id="close12">&times;</span>
             <div class="grid4" id="grid4"></div>
@@ -141,15 +163,15 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="arrow12 N">&#8675;</span>
             <span class="arrow12 S">&#8675;</span>
             <span class="arrow12 P">&#8675;</span>
-            <div class="circle small W"></div>
-            <div class="circle small P"></div>
-            <div class="circle small E"></div>
-            <div class="circle small N"></div>
-            <div class="circle small S"></div>
-            <div class="circle small NE"></div>
-            <div class="circle small SW"></div>
-            <div class="circle small NW"></div>
-            <div class="circle small SE"></div>`;
+            <div class="circle small W">W</div>
+            <div class="circle small P">P</div>
+            <div class="circle small E">E</div>
+            <div class="circle small N">N</div>
+            <div class="circle small S">S</div>
+            <div class="circle small NE">NE</div>
+            <div class="circle small SW">SW</div>
+            <div class="circle small NW">NW</div>
+            <div class="circle small SE">SE</div>`;
 
         let grid4 = document.getElementById('grid4');
         createGrid({ N: 3, grid: grid4, borderWidth: 1 });
@@ -181,15 +203,11 @@ document.addEventListener("DOMContentLoaded", function () {
         S.style.cssText = `bottom: calc(80px - 22.5px);
             right: calc(50% - 12px);`;
 
-        console.log("visibility", el.style.getPropertyValue('visibility'))
-        if (el.style.visibility == "hidden") {
-            el.style.visibility = "visible";
-        } /* else if (el.style.visibility == "visible" && getComputedStyle(document.documentElement).getPropertyValue('--modal-color') !== 'rgba(119,158,203,1') {
-            console.log(getComputedStyle(document.documentElement).getPropertyValue('--modal-color'))
-        } */
+        let mainCell = document.getElementById('grid4_minor');
+        mainCell.style.backgroundColor = `rgba(119,158,203,0.3)`;
 
         document.getElementById("close12").addEventListener('click', function(e) {
-            console.log('Click happened for: ' + e.target.id)
+            //console.log('Click happened for: ' + e.target.id)
 
             if (e.target.id == 'grid1_cell2') {
                 document.documentElement.style.setProperty('--modal-color', 'rgba(119,221,119.1)');
