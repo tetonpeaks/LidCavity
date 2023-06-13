@@ -21,10 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         el.innerHTML = `<span class="close0" id="close0">&times;</span>
             <div class="grid3" id="grid3"></div>
-            <span class="arrow0 W">&#8672;</span>
-            <span class="arrow0 E">&#8674;</span>
-            <span class="arrow0 N">&#8675;</span>
-            <span class="arrow0 S">&#8673;</span>`;
+            <span class="arrow0 W0">&#8672;</span>
+            <span class="arrow0 E0">&#8674;</span>
+            <span class="arrow0 N0">&#8675;</span>
+            <span class="arrow0 S0">&#8673;</span>`;
 
         let grid3 = document.getElementById('grid3');
         createGrid({ N: 3, grid: grid3, borderWidth: 1 });
@@ -44,14 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 
-        el.innerHTML = `<span class="close12" id="close12">&times;</span>
-            <div class="grid4" id="grid4"></div>
-            <span class="arrow12 W">&#8672;</span>
-            <span class="arrow12 E">&#8674;</span>
-            <span class="arrow12 N">&#8675;</span>
-            <span class="arrow12 S">&#8673;</span>`;
-
         document.documentElement.style.setProperty('--modal-color', 'rgba(119,221,119,1)');
+        document.documentElement.style.setProperty('--modal-animation', 'bounceAlphaRL');
 
         console.log("visibility", el.style.getPropertyValue('visibility'))
         if (el.style.visibility == "hidden") {
@@ -60,8 +54,44 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(getComputedStyle(document.documentElement).getPropertyValue('--modal-color'))
         } */
 
-       let grid4 = document.getElementById('grid4');
-       createGrid({ N: 3, grid: grid4, borderWidth: 1 });
+        el.innerHTML = `<span class="close12" id="close12">&times;</span>
+            <div class="grid4" id="grid4"></div>
+            <div class="grid4_minor" id="grid4_minor"></div>
+            <span class="arrow12 W">&#8674;</span>
+            <span class="arrow12 E">&#8674;</span>
+            <span class="arrow12 N">&#8674;</span>
+            <span class="arrow12 S">&#8674;</span>
+            <span class="arrow12 P">&#8674;</span>`;
+
+        let grid4 = document.getElementById('grid4');
+        createGrid({ N: 3, grid: grid4, borderWidth: 1 });
+
+        let grid4_minor = document.getElementById('grid4_minor');
+        createGrid({ N: 1, grid: grid4_minor, borderWidth: 1 });
+
+        grid4_minor.style.cssText = `top: 50%;
+            left: 50%;
+            transform: translate(0%, -50%);`;
+
+        let W = document.getElementsByClassName('W')[0]; // must access [0]
+        W.style.cssText = `top: calc(120px - 22.5px);
+            left: calc(80px - 15px);`;
+
+        let P = document.getElementsByClassName('P')[0];
+        P.style.cssText = `top: calc(120px - 22.5px);
+            right: calc(50% - 60px);`;
+
+        let E = document.getElementsByClassName('E')[0];
+        E.style.cssText = `top: calc(120px - 22.5px);
+            right: calc(50% - 120px - 15px);`;
+
+        let N = document.getElementsByClassName('N')[0];
+        N.style.cssText = `top: calc(0% + 22.5px);
+            right: calc(50% - 60px);`;
+
+        let S = document.getElementsByClassName('S')[0];
+        S.style.cssText = `bottom: calc(0% + 22.5px);
+            right: calc(50% - 60px);`;
 
         document.getElementById("close12").addEventListener('click', function(e) {
             //console.log('Click happened for: ' + e.target.id)
@@ -77,13 +107,31 @@ document.addEventListener("DOMContentLoaded", function () {
         let el = document.getElementById('example12');
 
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+
+        document.documentElement.style.setProperty('--modal-color', 'rgba(119,158,203,1)');
+
         el.innerHTML = `<span class="close12" id="close12">&times;</span>
             <div class="grid4" id="grid4"></div>
-            <span class="arrow12 W">&#8672;</span>
-            <span class="arrow12 E">&#8674;</span>
+            <div class="grid4_minor" id="grid4_minor"></div>
+            <span class="arrow12 W">&#8675;</span>
+            <span class="arrow12 E">&#8675;</span>
             <span class="arrow12 N">&#8675;</span>
             <span class="arrow12 S">&#8673;</span>`;
-        document.documentElement.style.setProperty('--modal-color', 'rgba(119,158,203,1)');
+
+        let grid4 = document.getElementById('grid4');
+        createGrid({ N: 3, grid: grid4, borderWidth: 1 });
+
+        let grid4_minor = document.getElementById('grid4_minor');
+        createGrid({ N: 1, grid: grid4_minor, borderWidth: 1 });
+
+        grid4_minor.style.cssText = `top: calc(50% - 80px);
+            left: 50%;
+            transform: translate(-50%, 0%);`;
+
+        console.log(document.getElementsByClassName('W')[0])
+        let W = document.getElementsByClassName('W')[0]; // must access [0]
+        W.style.cssText = `top: calc(120px - 22.5px);
+            left: calc(80px - 30px);`;
 
         console.log("visibility", el.style.getPropertyValue('visibility'))
         if (el.style.visibility == "hidden") {
@@ -91,9 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } /* else if (el.style.visibility == "visible" && getComputedStyle(document.documentElement).getPropertyValue('--modal-color') !== 'rgba(119,158,203,1') {
             console.log(getComputedStyle(document.documentElement).getPropertyValue('--modal-color'))
         } */
-
-       let grid4 = document.getElementById('grid4');
-       createGrid({ N: 3, grid: grid4, borderWidth: 1 });
 
         document.getElementById("close12").addEventListener('click', function(e) {
             console.log('Click happened for: ' + e.target.id)

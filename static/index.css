@@ -21,6 +21,7 @@
     --animation3: ;
     --margin-left: 37.5%;
     --modal-color: ;
+    --modal-animation: ;
 }
 
 @media screen {
@@ -428,7 +429,7 @@ li {
 
     box-shadow: 0px 0px 5px white;
 
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .example12 {
@@ -446,7 +447,7 @@ li {
     /* right: calc(50% - 240px - 160px);
     top: 240px; */
     box-shadow: 0px 0px 5px var(--modal-color);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .close0 {
@@ -492,6 +493,10 @@ li {
     /* box-shadow: 0px 0px 1px white; */
 }
 
+.grid4-wrapper {
+    position: absolute;
+}
+
 .grid4 {
     display: grid;
     grid-template-columns: max-content max-content max-content;
@@ -511,7 +516,33 @@ li {
     width: 80px;
     height: 80px;
     /* background-color: black; */
-    border: 1px solid var(--modal-color);
+    border: 1px dashed white;
+    /* box-shadow: 0px 0px 1px white; */
+}
+
+.grid4-minor-wrapper {
+    position: absolute;
+}
+
+.grid4_minor {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-gap: 0px;
+
+    z-index: 9;
+    /* opacity: 0.5; */
+
+    position: absolute;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(0%, -50%); */
+}
+
+.grid4_minor__cell {
+    width: 80px;
+    height: 80px;
+    /* background-color: black; */
+    border: 2px solid var(--modal-color);
     /* box-shadow: 0px 0px 1px white; */
 }
 
@@ -528,70 +559,60 @@ li {
     color: white;
 }
 
+.W0, .E0, .N0, .S0, .W, .E, .N, .S, .P {
+    font-size: 30px;
+    background-size: contain;
+
+    position: absolute;
+
+    animation-duration: 1.25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.W0 {
+    top: calc(120px - 22.5px);
+    left: calc(80px - 15px);
+
+    animation-name: bounceAlphaW;
+}
+
+.E0 {
+    top: calc(120px - 22.5px);
+    right: calc(80px - 15px);
+
+    animation-name: bounceAlphaE;
+}
+
+.N0 {
+    top: calc(80px - 15px);
+    left: calc(50% - 12px);
+
+    animation-name: bounceAlphaN;
+}
+
+.S0 {
+    bottom: calc(80px - 15px);
+    left: calc(50% - 12px);
+    animation-name: bounceAlphaS;
+}
+
 .arrow12 {
     z-index: 9;
     color: var(--modal-color);
 }
 
-.W {
-    font-size: 30px;
-    background-size: contain;
-
-    position: absolute;
-    top: calc(120px - 22.5px);
-    left: calc(80px - 30px);
-
-    animation-name: bounceAlphaW;
-    animation-duration: 1.25s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+.W, .P, .E, .N, .S {
+    animation-name: var(--modal-animation);
 }
 
-.E {
-    font-size: 30px;
-    background-size: contain;
-
-    position: absolute;
-    top: calc(120px - 22.5px);
-    right: calc(80px - 30px);
-
-    animation-name: bounceAlphaE;
-    animation-duration: 1.25s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+@keyframes bounceAlphaRL {
+    0% {opacity: 1;
+        transform: translateX(0px) scale(1);}
+    25%{opacity: 0; transform:translateX(10px) scale(0.9);}
+    26%{opacity: 0; transform:translateX(-10px) scale(0.9);}
+    55% {opacity: 1; transform: translateX(0px) scale(1);}
 }
-
-.N {
-    font-size: 30px;
-    background-size: contain;
-
-    position: absolute;
-    top: calc(80px - 30px);
-    left: calc(50% - 12px);
-    /* transform: translateX(-50%); */
-
-    animation-name: bounceAlphaN;
-    animation-duration: 1.25s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-}
-
-.S {
-    font-size: 30px;
-    background-size: contain;
-
-    position: absolute;
-    top: calc(80px + 80px - 7.5px);
-    /* left: calc(165px + 7.5px); */
-    left: calc(50% - 12px);
-    /* transform: translateX(-50%); */
-
-    animation-name: bounceAlphaS;
-    animation-duration: 1.25s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-}
-
 
 @keyframes bounceAlphaW {
     0% {opacity: 1;
