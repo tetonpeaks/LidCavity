@@ -576,7 +576,7 @@ li {
 .N0 {
     top: calc(0px + (100% / 3 / 2) + 24px + 2px);
     /* left: calc(50% - 12px); */
-    left: calc(40px + (100% / 3 / 2) + 24px + 8px);
+    left: calc(40px + (100% / 3 / 2) + 24px + 4px);
 
     animation-name: bounceAlphaN;
 }
@@ -584,7 +584,7 @@ li {
 .S0 {
     bottom: calc(0px + (100% / 3 / 2) + 24px + 2px);
     /* left: calc(50% - 12px); */
-    left: calc(40px + (100% / 3 / 2) + 24px + 8px);
+    left: calc(40px + (100% / 3 / 2) + 24px + 4px);
 
     animation-name: bounceAlphaS;
 }
