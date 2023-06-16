@@ -12,68 +12,53 @@ document.addEventListener("DOMContentLoaded", function () {
     createGrid({ N: 4, grid: grid1, borderWidth: 2 });
     createGrid({ N: 3, grid: grid2, borderWidth: 3 });
 
+    var arrowPos = {
+        W: `top: calc(40px + (100% / 3 / 2) + 24px + 2px); left: calc(0px + (100% / 3 / 2) + 24px + 4px);`, //W
+        E: `top: calc(40px + (100% / 3 / 2) + 24px + 2px); right: calc(40px + (100% / 3 / 2) - 12px - 4px);`, //E
+        N: `top: calc(0px + (100% / 3 / 2) + 24px + 4px); left: calc(40px + (100% / 3 / 2) + 24px + 7px);`, //N
+        S: `bottom: calc(0px + (100% / 3 / 2) + 24px - 2px); left: calc(40px + (100% / 3 / 2) + 24px + 7px);`, //S
+        P: `top: calc(40px + (100% / 3 / 2) + 24px + 2px); right: calc(40px + (100% / 3 / 2) - 12px - 4px);`, //P
+        ee: `top: calc(40px + (100% / 3 / 2) + 24px + 2px);right: calc(0px + (0% / 3 / 2) - 12px - 4px);`, //E, ee
+        nne: `top: calc(0px + (100% / 3 / 2) - 12px - 4px); right: calc(40px + (100% / 3 / 2) - 12px - 4px);`, //N, nne
+        sse: `bottom: calc(0px + (100% / 3 / 2) - 14px - 4px); right: calc(40px + (100% / 3 / 2) - 12px - 4px);`, //S, sse
+        nn: `top: calc(0px + (0% / 3 / 2) - 12px - 2px); left: calc(40px + (100% / 3 / 2) + 24px + 7px);`, //N, nn
+        nww: `top: calc(0px + (100% / 3 / 2) + 24px + 4px); left: calc(30px + 0px);`, //W, nww
+        nee: `top: calc(0px + (100% / 3 / 2) + 24px + 4px); right: calc(30px + 0px);`, //E, nee
+    };
+
+    var labelPos = {
+
+        wP: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(0px + (100% / 3 / 2) + 24px + 8px + 8px);`, //w
+        eP: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(40px + (200% / 3 / 2) + 24px + 8px + 8px);`, //e
+        nP: `top: calc(0px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //n
+        sP: `bottom: calc(0px + (100% / 3 / 2) + 24px - 10px + 0px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //s
+        nn: `top: calc(0px + (0% / 3 / 2) + 0px + 0px + 0px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //nn
+        n: `top: calc(0px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //n
+        s: `bottom: calc(0px + (100% / 3 / 2) + 24px - 10px + 0px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //s
+        nee: `top: calc(0px + (100% / 3 / 2) + 24px + 2px + 12px); right: calc(0px + (0% / 3 / 2) + 24px - 10px - 4px);`, //nee
+        nww: `top: calc(0px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(0px + (0% / 3 / 2) + 24px + 8px + 12px);`, //
+        nne: `top: calc(40px + (0% / 3 / 2) - 0px + 0px - 2px); left: calc(40px + (200% / 3 / 2) + 24px + 8px + 12px);`, //nne
+        e: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(40px + (200% / 3 / 2) + 24px + 8px + 8px);`, //e
+        sse: `bottom: calc(0px + (0% / 3 / 2) + 24px - 12px + 0px); left: calc(40px + (200% / 3 / 2) + 24px + 8px + 12px);`, //sse
+        ee: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); right: calc(0px + (0% / 3 / 2) - 24px - 10px + 0px);`, //ee
+        w: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(0px + (100% / 3 / 2) + 24px + 8px + 8px);`, //w
+
+    }
+
+    var el = document.getElementById('example12');
 
     document.getElementById('grid0__cell49').addEventListener('click', function(e) {
-        //console.log('Click happened for: ' + e.target.id)
-        let el = document.getElementById('example0');
 
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 
-        el.innerHTML = `<span class="close0" id="close0">&times;</span>
-            <div class="grid3" id="grid3"></div>
-            <span class="arrow0 W0">&#8592;</span>
-            <span class="arrow0 E0">&#8594;</span>
-            <span class="arrow0 N0">&#8595;</span>
-            <span class="arrow0 S0">&#8593;</span>
-            <div class="circle small W0">W</div>
-            <div class="circle small P0">P</div>
-            <div class="circle small E0">E</div>
-            <div class="circle small N0">N</div>
-            <div class="circle small S0">S</div>
-            <div class="circle small s0">v<sub><sub>s</sub></sub></div>`;
+        el.classList.add('open');
+        grid0.classList.add('open');
+        grid1.classList.add('open');
+        grid2.classList.add('open');
 
-        /* el.innerHTML = `<span class="close0" id="close0">&times;</span>
-            <div class="grid3" id="grid3"></div>
-            <span class="arrow0 W0">&#8672;</span>
-            <span class="arrow0 E0">&#8674;</span>
-            <span class="arrow0 N0">&#8675;</span>
-            <span class="arrow0 S0">&#8673;</span>
-            <div class="circle small W0">W</div>
-            <div class="circle small P0">P</div>
-            <div class="circle small E0">E</div>
-            <div class="circle small N0">N</div>
-            <div class="circle small S0">S</div>
-            <div class="circle small s0">v<sub><sub>s</sub></sub></div>`; */
+        document.documentElement.style.setProperty('--modal-color', 'rgba(207,207,196,1)');
 
-        let grid3 = document.getElementById('grid3');
-        createGrid({ N: 3, grid: grid3, borderWidth: 1 });
-
-        //let grid3_minor = document.getElementById('grid3_minor');
-        //createGrid({ N: 1, grid: grid3_minor, borderWidth: 2 });
-//
-        //grid3_minor.style.cssText = `top: 50%;
-        //    left: 50%;
-        //    transform: translate(-50%, -50%);`;
-
-        document.getElementById("close0").addEventListener('click', function(e) {
-            //console.log('Click happened for: ' + e.target.id)
-            el.innerHTML = '';
-            el.style.visibility = "hidden";
-            //console.log(el.style)
-        })
-    })
-
-    document.getElementById('grid1__cell2').addEventListener('click', function(e) {
-        //console.log('Click happened for: ' + e.target.id)
-
-        let el = document.getElementById('example12');
-
-        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
-
-        document.documentElement.style.setProperty('--modal-color', 'rgba(119,221,119,1)');
-        document.documentElement.style.setProperty('--modal-animation', 'bounceAlphaRL');
-
-        console.log("visibility", el.style.getPropertyValue('visibility'))
+        //console.log("visibility", el.style.getPropertyValue('visibility'))
         if (el.style.visibility == "hidden") {
             el.style.visibility = "visible";
         } /* else if (el.style.visibility == "visible" && getComputedStyle(document.documentElement).getPropertyValue('--modal-color') !== 'rgba(119,221,119,1') {
@@ -82,12 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         el.innerHTML = `<span class="close12" id="close12">&times;</span>
             <div class="grid4" id="grid4"></div>
-            <div class="grid4_minor" id="grid4_minor"></div>
-            <span class="arrow12 W">&#8674;</span>
-            <span class="arrow12 E">&#8674;</span>
-            <span class="arrow12 N">&#8674;</span>
-            <span class="arrow12 S">&#8674;</span>
-            <span class="arrow12 P">&#8674;</span>
+            <div class="gridP" id="gridP"></div>
+            <span class="arrow12 W">&#8594;</span>
+            <span class="arrow12 E">&#8594;</span>
+            <span class="arrow12 N">&#8595;</span>
+            <span class="arrow12 S">&#8595;</span>
             <div class="circle small W">W</div>
             <div class="circle small P">P</div>
             <div class="circle small E">E</div>
@@ -96,130 +80,156 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="circle small NE">NE</div>
             <div class="circle small SW">SW</div>
             <div class="circle small NW">NW</div>
-            <div class="circle small SE">SE</div>`;
+            <div class="circle small SE">SE</div>
+            <div class="circle small p">p</div>
+            <div class="circle small w">u<sub><sub>w</sub></sub></div>
+            <div class="circle small e">u<sub><sub>e</sub></sub></div>
+            <div class="circle small n">v<sub><sub>n</sub></sub></div>
+            <div class="circle small s">v<sub><sub>s</sub></sub></div>`;
 
         let grid4 = document.getElementById('grid4');
         createGrid({ N: 3, grid: grid4, borderWidth: 1 });
 
-        let grid4_minor = document.getElementById('grid4_minor');
-        createGrid({ N: 1, grid: grid4_minor, borderWidth: 1 });
+        let arrows = document.getElementsByClassName('arrow12');
+        let labels = document.getElementsByClassName('circle');
+        let labelsP = ['w','e','n','s']
 
-        grid4_minor.style.cssText = `top: 50%;
-            left: 50%;
-            transform: translate(0%, -50%);`;
+        for (let i = 0; i < labelsP.length; i++) {
+            let divArrow = Array.from(arrows).filter(cl => cl.classList.contains(labelsP[i].toUpperCase()));
 
-        let W = document.getElementsByClassName('W')[0]; // must access [0]
-        W.style.cssText = `top: calc(0px + 80px + 15px + 2px);
-            left: calc(80px - 15px);`;
+            if (labelsP[i] == 'w' || labelsP[i] == 'e') {
+                divArrow[0].style.cssText = arrowPos[labelsP[i].toUpperCase()] + `animation-name: bounceAlphaRL`;
+                divArrow[0].style.color = `rgba(119,221,119,1)`; //green
+            } else if (labelsP[i] == 'n' || labelsP[i] == 's') {
+                divArrow[0].style.cssText = arrowPos[labelsP[i].toUpperCase()] + `animation-name: bounceAlphaUD`;
+                divArrow[0].style.color = `rgba(119,158,203,1)`; //blue
+            } else {
+                divArrow[0].style.color = `rgba(207,207,196,1)`;
+            }
+        };
 
-        let P = document.getElementsByClassName('P')[0];
-        P.style.cssText = `top: calc(0px + 80px + 15px + 2px);
-            right: calc(50% - 60px);`;
+        for (let i = 0; i < labelsP.length; i++) {
+            let divLabel = Array.from(labels).filter(cl => cl.classList.contains(labelsP[i]));
+            divLabel[0].style.cssText = labelPos[labelsP[i]];
 
-        let E = document.getElementsByClassName('E')[0];
-        E.style.cssText = `top: calc(0px + 80px + 15px + 2px);
-            right: calc(50% - 120px - 15px);`;
+            if (labelsP[i] == 'w' || labelsP[i] == 'e') {
+                divLabel[0].style.color = `rgba(119,221,119,1)`; //green
+            } else if (labelsP[i] == 'n' || labelsP[i] == 's') {
+                divLabel[0].style.color = `rgba(119,158,203,1)`; //blue
+            } else {
+                divLabel[0].style.color = `rgba(207,207,196,1)`;
+            }
 
-        let N = document.getElementsByClassName('N')[0];
-        N.style.cssText = `top: calc(0px + 40px - 15px - 6px);
-            right: calc(50% - 60px);`;
+        };
 
-        let S = document.getElementsByClassName('S')[0];
-        S.style.cssText = `bottom: calc(0px + 40px - 15px - 6px);
-            right: calc(50% - 60px);`;
+        document.documentElement.style.setProperty('--modal-color', 'rgba(207,207,196,1)');
 
-        let mainCell = document.getElementById('grid4_minor');
-        mainCell.style.backgroundColor = `rgba(119,221,119,0.3)`;
+        document.getElementById("grid1__cell10").addEventListener('click', function(e) {
+
+            let ee = document.getElementsByClassName('ee');
+            if (ee.length === 0) {
+                el.innerHTML = el.innerHTML + `
+                <div class="gridU" id="gridU"></div>
+                <span class="arrow12 ee">&#8594;</span>
+                <span class="arrow12 nne">&#8594;</span>
+                <span class="arrow12 sse">&#8594;</span>
+                <div class="circle small ee">u<sub><sub>ee</sub></sub></div>
+                <div class="circle small nne">u<sub><sub>nne</sub></sub></div>
+                <div class="circle small sse">u<sub><sub>sse</sub></sub></div>`;
+
+                let gridU = document.getElementById('gridU');
+                createGrid({ N: 1, grid: gridU, borderWidth: 1 });
+                gridU.style.cssText = `top: 50%;
+                    left: 50%;
+                    transform: translate(0%, -50%);
+                    background-color: rgba(119,221,119,0.4)`;
+            }
+
+
+            let arrows = document.getElementsByClassName('arrow12');
+            let labels = document.getElementsByClassName('circle');
+            let labelsU = ['ee', 'nne', 'sse'];
+
+            for (let i = 0; i < labelsU.length; i++) {
+                let divArrow = Array.from(arrows).filter(cl => cl.classList.contains(labelsU[i]));
+                let divLabel = Array.from(labels).filter(cl => cl.classList.contains(labelsU[i]));
+                divArrow[0].style.cssText = arrowPos[labelsU[i]] + `animation-name: bounceAlphaRL`;
+                divLabel[0].style.cssText = labelPos[labelsU[i]];
+                divArrow[0].style.color = `rgba(119,221,119,1)`; //green
+                divLabel[0].style.color = `rgba(119,221,119,1)`; //green
+            };
+
+            document.getElementById("close12").addEventListener('click', function(e) {
+                //console.log('Click happened for: ' + e.target.id)
+                el.innerHTML = '';
+                el.style.visibility = "hidden";
+
+                el.classList.remove('open');
+                grid0.classList.remove('open');
+                grid1.classList.remove('open');
+                grid2.classList.remove('open');
+            });
+        });
+
+
+        document.getElementById("grid2__cell3").addEventListener('click', function(e) {
+
+            let nn = document.getElementsByClassName('nn');
+            if (nn.length === 0) {
+                el.innerHTML = el.innerHTML + `
+                    <div class="gridV" id="gridV"></div>
+                    <span class="arrow12 nn">&#8595;</span>
+                    <span class="arrow12 nww">&#8595;</span>
+                    <span class="arrow12 nee">&#8595;</span>
+                    <div class="circle small nn">v<sub><sub>nn</sub></sub></div>
+                    <div class="circle small nww">v<sub><sub>nww</sub></sub></div>
+                    <div class="circle small nee">v<sub><sub>nee</sub></sub></div>
+                `
+                let gridV = document.getElementById('gridV');
+                createGrid({ N: 1, grid: gridV, borderWidth: 1 });
+                gridV.style.cssText = `top: calc(50% - 80px);
+                    left: 50%;
+                    transform: translate(-50%, 0%);
+                    background-color: rgba(119,158,203,0.4)`;
+            }
+
+
+            let arrows = document.getElementsByClassName('arrow12');
+            let labels = document.getElementsByClassName('circle');
+            let labelsV = ['nn', 'nww', 'nee'];
+
+            for (let i = 0; i < labelsV.length; i++) {
+                let divArrow = Array.from(arrows).filter(cl => cl.classList.contains(labelsV[i]));
+                let divLabel = Array.from(labels).filter(cl => cl.classList.contains(labelsV[i]));
+                divArrow[0].style.cssText = arrowPos[labelsV[i]] + `animation-name: bounceAlphaUD`;
+                divLabel[0].style.cssText = labelPos[labelsV[i]];
+                divArrow[0].style.color = `rgba(119,158,203,1)`; //green
+                divLabel[0].style.color = `rgba(119,158,203,1)`; //green
+            };
+
+            document.getElementById("close12").addEventListener('click', function(e) {
+                //console.log('Click happened for: ' + e.target.id)
+                el.innerHTML = '';
+                el.style.visibility = "hidden";
+
+                el.classList.remove('open');
+                grid0.classList.remove('open');
+                grid1.classList.remove('open');
+                grid2.classList.remove('open');
+            });
+        });
 
         document.getElementById("close12").addEventListener('click', function(e) {
             //console.log('Click happened for: ' + e.target.id)
             el.innerHTML = '';
             el.style.visibility = "hidden";
-            //console.log(el.style)
-        })
+
+            el.classList.remove('open');
+            grid0_wrapper.classList.remove('open');
+            grid1.classList.remove('open');
+            grid2.classList.remove('open');
+        });
     })
-
-    document.getElementById('grid2__cell0').addEventListener('click', function(e) {
-        //console.log('Click happened for: ' + e.target.id)
-
-        let el = document.getElementById('example12');
-
-        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
-
-        document.documentElement.style.setProperty('--modal-color', 'rgba(119,158,203,1)');
-        document.documentElement.style.setProperty('--modal-animation', 'bounceAlphaUD');
-        //console.log("visibility", el.style.getPropertyValue('visibility'))
-        if (el.style.visibility == "hidden") {
-            el.style.visibility = "visible";
-        } /* else if (el.style.visibility == "visible" && getComputedStyle(document.documentElement).getPropertyValue('--modal-color') !== 'rgba(119,158,203,1') {
-            console.log(getComputedStyle(document.documentElement).getPropertyValue('--modal-color'))
-        } */
-
-        el.innerHTML = `<span class="close12" id="close12">&times;</span>
-            <div class="grid4" id="grid4"></div>
-            <div class="grid4_minor" id="grid4_minor"></div>
-            <span class="arrow12 W">&#8675;</span>
-            <span class="arrow12 E">&#8675;</span>
-            <span class="arrow12 N">&#8675;</span>
-            <span class="arrow12 S">&#8675;</span>
-            <span class="arrow12 P">&#8675;</span>
-            <div class="circle small W">W</div>
-            <div class="circle small P">P</div>
-            <div class="circle small E">E</div>
-            <div class="circle small N">N</div>
-            <div class="circle small S">S</div>
-            <div class="circle small NE">NE</div>
-            <div class="circle small SW">SW</div>
-            <div class="circle small NW">NW</div>
-            <div class="circle small SE">SE</div>`;
-
-        let grid4 = document.getElementById('grid4');
-        createGrid({ N: 3, grid: grid4, borderWidth: 1 });
-
-        let grid4_minor = document.getElementById('grid4_minor');
-        createGrid({ N: 1, grid: grid4_minor, borderWidth: 1 });
-
-        grid4_minor.style.cssText = `top: calc(50% - 80px);
-            left: 50%;
-            transform: translate(-50%, 0%);`;
-
-        let W = document.getElementsByClassName('W')[0]; // must access [0]
-        W.style.cssText = `top: calc(80px - 15px);
-            left: calc(30px + 0px);`;
-
-        let P = document.getElementsByClassName('P')[0];
-        P.style.cssText = `top: calc(80px - 15px);
-            right: calc(50% - 12px);`;
-
-        let E = document.getElementsByClassName('E')[0];
-        E.style.cssText = `top: calc(80px - 15px);
-            right: calc(30px + 0px);`;
-
-        let N = document.getElementsByClassName('N')[0];
-        N.style.cssText = `top: calc(0px - 15px);
-            right: calc(50% - 12px);`;
-
-        let S = document.getElementsByClassName('S')[0];
-        S.style.cssText = `bottom: calc(80px - 22.5px);
-            right: calc(50% - 12px);`;
-
-        let mainCell = document.getElementById('grid4_minor');
-        mainCell.style.backgroundColor = `rgba(119,158,203,0.3)`;
-
-        document.getElementById("close12").addEventListener('click', function(e) {
-            //console.log('Click happened for: ' + e.target.id)
-
-            if (e.target.id == 'grid1_cell2') {
-                document.documentElement.style.setProperty('--modal-color', 'rgba(119,221,119.1)');
-            } else {
-                el.innerHTML = '';
-                el.style.visibility = "hidden";
-            }
-            //console.log(el.style)
-        })
-    })
-
-
 });
 
 function createGrid(input) {
@@ -253,10 +263,5 @@ function createGrid(input) {
         }
 
         grid.appendChild(div);
-    }
-
-}
-
-function myFunc() {
-    console.log('Hi')
-}
+    };
+};

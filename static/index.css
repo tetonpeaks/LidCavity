@@ -21,7 +21,8 @@
     --animation3: ;
     --margin-left: 37.5%;
     --modal-color: ;
-    --modal-animation: ;
+    --modal-animationP: ;
+    --modal-animationU: ;
 }
 
 @media screen {
@@ -205,6 +206,7 @@ li {
 
 }
 
+
 .grid0-wrapper {
     position: absolute;
     right: -240px;
@@ -212,14 +214,20 @@ li {
 
     animation: slideRL 2s forwards;
     animation-delay: 1s;
+
 }
 
+.grid0.open {
+    transform: translateX(-60%);
+}
 .grid0 {
     display: grid;
     grid-template-columns: max-content max-content max-content max-content max-content max-content max-content max-content;
     grid-template-rows: max-content max-content max-content max-content max-content max-content max-content max-content max-content max-content;
     grid-gap: 0px;
     z-index: 9;
+    transition: transform 1.5s ease-in;
+    transform: translateX(0%);
 }
 
 .grid0__cell {
@@ -247,6 +255,10 @@ li {
     animation-delay: 1.3s;
 }
 
+.grid1.open {
+    transform: translateX(calc(-120% - 0px));
+
+}
 .grid1 {
     display: grid;
     grid-template-columns: max-content max-content max-content max-content ;
@@ -257,8 +269,11 @@ li {
     /* opacity: 0.5; */
 
     position: absolute;
-    top: 60px;
+    top: 90px;
     /* left: 30px; */
+
+    transition: transform 1.5s ease-in;
+    transform: translateX(0%);
 }
 
 .grid1__cell {
@@ -276,7 +291,6 @@ li {
 @keyframes slideLR {
     100% { left: calc(50% - 15px); }
 }
-
 .grid2-wrapper {
     position: absolute;
     right: -240px;
@@ -284,6 +298,10 @@ li {
 
     animation: slideRL2 2s forwards;
     animation-delay: 1.4s;
+}
+
+.grid2.open {
+    transform: translateX(calc(-60% - 90px));
 }
 
 .grid2 {
@@ -296,8 +314,10 @@ li {
     /* opacity: 0.5; */
 
     position: absolute;
-    top: 75px;
+    top: 45px;
     /* left: 60px; */
+    transition: transform 1.5s ease-in;
+    transform: translateX(0%);
 }
 
 .grid2__cell {
@@ -318,23 +338,23 @@ li {
     animation: var(--blinkingBackground0) 0.5s ease-out;
 }
 
-.grid1__cell2 {
+.grid1__cell10 {
     animation: var(--blinkingBackground1);
     animation-delay: 1.3s;
     /* animation: var(--blinkingBackground) 2s infinite; */
 }
 
-.grid1__cell2:hover {
+.grid1__cell210:hover {
     animation: var(--blinkingBackground1) 0.5s ease-out;
 }
 
-.grid2__cell0 {
+.grid2__cell3 {
     animation: var(--blinkingBackground2);
     animation-delay: 1.4s;
     /* animation: var(--blinkingBackground) 2s infinite; */
 }
 
-.grid2__cell0:hover {
+.grid2__cell3:hover {
     animation: var(--blinkingBackground2) 0.5s ease-out;
 }
 
@@ -382,32 +402,9 @@ li {
     100% { right: calc(50% + 60px); }
 }
 
-.example0 {
-    visibility: hidden;
-    z-index: 9;
-
-    width: 240px;
-    height: 240px;
-    /* margin: auto; */
-    background-color: black;
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border: 2px solid rgba(207,207,196,1);
-    /* font-weight: bold; */
-
-    position: absolute;
-    /* left: calc(50% - 240px - 160px);
-    top: 240px; */
-    /* left: 50%;
-    top: calc(150px + 240px); */
-    /* transform: translate(-50%, 0%);
-    -ms-transform: translate(-50%, 0%);
-    -webkit-transform: translate(-50%, 0%); */
-
-    box-shadow: 0px 0px 5px rgba(207,207,196,1)
-
-    /* overflow: hidden; */
+.example12.open {
+    /* transform: translateX(0px); */
+    transform: translateX(-40%);
 }
 
 .example12 {
@@ -422,10 +419,18 @@ li {
     border: 2px solid var(--modal-color);
     /* font-weight: bold; */
     position: absolute;
+    /* position: fixed; */
     /* right: calc(50% - 240px - 160px);
     top: 240px; */
     box-shadow: 0px 0px 5px var(--modal-color);
     /* overflow: hidden; */
+
+    transition: transform 1.5s ease-in;
+    transform: translateX(-90%);
+
+}
+@keyframes slideLR2 {
+    100% { left: 75%; }
 }
 
 .close0 {
@@ -467,23 +472,8 @@ li {
     border: 1px dashed rgba(207,207,196,1);
 }
 
-.grid3__cell4 {
-    background-color: rgba(207,207,196,0.3);
-}
-
-.grid3_minor {
-    display: grid;
-    grid-template-columns: max-content;
-    grid-gap: 0px;
-    z-index: 9;
-
-    position: absolute;
-}
-
-.grid3_minor__cell {
-    width: 80px;
-    height: 80px;
-    border: 2px solid rgba(207,207,196,1);
+.grid4__cell4 {
+    background-color: rgba(207,207,196,0.35);
 }
 
 .grid4 {
@@ -509,7 +499,7 @@ li {
     /* box-shadow: 0px 0px 1px white; */
 }
 
-.grid4_minor {
+.gridP, .gridU, .gridV {
     display: grid;
     grid-template-columns: max-content;
     grid-gap: 0px;
@@ -518,7 +508,7 @@ li {
     position: absolute;
 }
 
-.grid4_minor__cell {
+.gridP__cell, .gridU__cell, .gridV__cell {
     width: 80px;
     height: 80px;
     /* border: 2px solid var(--modal-color); */
@@ -545,8 +535,7 @@ li {
     z-index: 9;
     color: rgba(207,207,196,1);
 }
-
-.W0, .E0, .N0, .S0, .W, .E, .N, .S, .P {
+.W, .E, .N, .S, .arrow12.ee, .arrow12.nne, .arrow12.sse, .arrow12.nww, .arrow12.nee, .arrow12.nn {
     font-size: 24px;
     background-size: contain;
 
@@ -557,77 +546,11 @@ li {
     animation-timing-function: ease-in-out;
 }
 
-.W0 {
-    /* top: calc(120px - 22.5px); */
-    top: calc(40px + (100% / 3 / 2) + 24px + 2px);
-    left: calc(0px + (100% / 3 / 2) + 24px + 0px);
-
-    animation-name: bounceAlphaW;
-}
-
-.E0 {
-    /* top: calc(120px - 22.5px); */
-    top: calc(40px + (100% / 3 / 2) + 24px + 2px);
-    right: calc(0px + (100% / 3 / 2) + 24px + 0px);
-
-    animation-name: bounceAlphaE;
-}
-
-.N0 {
-    top: calc(0px + (100% / 3 / 2) + 24px + 2px);
-    /* left: calc(50% - 12px); */
-    left: calc(40px + (100% / 3 / 2) + 24px + 4px);
-
-    animation-name: bounceAlphaN;
-}
-
-.S0 {
-    bottom: calc(0px + (100% / 3 / 2) + 24px + 2px);
-    /* left: calc(50% - 12px); */
-    left: calc(40px + (100% / 3 / 2) + 24px + 4px);
-
-    animation-name: bounceAlphaS;
-}
-
-.circle.small.W0, .circle.small.P0, .circle.small.E0, .circle.small.N0, .circle.small.S0 {
-    border-color: rgba(207,207,196,1);
-    position: absolute;
-    animation-duration: 0s;
-}
-
-.circle.small.W0 {
-    /* top: calc(120px - 12px); */
-    top: calc(40px + (100% / 3 / 2) + 24px + 4px);
-    left: calc(40px + (0% / 3 / 2) - 12px - 2px);
-}
-.circle.small.P0 {
-    top: calc(40px + (100% / 3 / 2) + 24px + 4px);
-    left: calc(40px + (100% / 3 / 2) + 24px + 4px);
-}
-.circle.small.E0 {
-    top: calc(40px + (100% / 3 / 2) + 24px + 4px);
-    right: calc(40px + (0% / 3 / 2) - 12px - 2px);
-}
-.circle.small.N0 {
-    top: calc(40px + (0% / 3 / 2) - 12px - 2px);
-    /* left: calc(40px - 7.5px + 80px + 0px); */
-    left: calc(40px + (100% / 3 / 2) + 24px + 4px); /* 24px for circle radius + 4px for 2px border */
-}
-.circle.small.S0 {
-    bottom: calc(0px + (100% / 3 / 2) - 12px - 2px);
-    left: calc(40px + (100% / 3 / 2) + 24px + 4px);
-}
-
-.circle.small.s0 {
-    font-size: 11.5px;
-    border: 0px;
-}
-
 .centerlineV {
     border: 2px solid red;
 
     position: absolute;
-    left: 80px;
+    left: 0px;
     width: calc(100% / 3 / 2);
     height: 100%;
 }
@@ -636,18 +559,23 @@ li {
     border: 2px solid red;
 
     position: absolute;
-    top: 80px;
+    top: 0px;
     height: calc(100% / 3 / 2);
     width: 100%;
 }
 
-.arrow12 {
+.arrow12, .arrow12u, .arrow12v {
     z-index: 9;
     color: var(--modal-color);
+
+    /* animation: sweep 2s infinite linear; */
 }
 
-.W, .P, .E, .N, .S {
-    animation-name: var(--modal-animation);
+@keyframes sweep {
+    100% {
+        top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px);
+        left: calc(0px + (100% / 3 / 2) + 24px + 8px + 8px);
+    }
 }
 
 .circle.small.W, .circle.small.P, .circle.small.E, .circle.small.N, .circle.small.NE {
@@ -662,40 +590,62 @@ li {
 }
 
 .circle.small.W {
-    top: calc(120px - 12px);
-    left: calc(50% - 80px - 7.5px);
+    top: calc(40px + (100% / 3 / 2) + 24px + 2px);
+    left: calc(40px + (0% / 3 / 2) - 12px - 2px);
 }
 .circle.small.P {
-    top: calc(120px - 12px);
-    left: calc(40px - 7.5px + 80px);
+    top: calc(40px + (100% / 3 / 2) + 24px + 4px);
+    left: calc(40px + (100% / 3 / 2) + 24px + 4px);
 }
 .circle.small.E {
-    top: calc(120px - 12px);
-    right: calc(50% - 80px - 7.5px);
+    top: calc(40px + (100% / 3 / 2) + 24px + 4px);
+    right: calc(40px + (0% / 3 / 2) - 12px - 2px);
 }
 .circle.small.N {
-    top: calc(30px - 0px);
-    left: calc(40px - 7.5px + 80px + 0px);
+    top: calc(40px + (0% / 3 / 2) - 12px - 2px);
+    left: calc(40px + (100% / 3 / 2) + 24px + 4px);
 }
 .circle.small.S {
-    bottom: calc(30px - 0px);
-    left: calc(40px - 7.5px + 80px);
+    bottom: calc(40px + (0% / 3 / 2) - 12px - 2px);
+    left: calc(40px + (100% / 3 / 2) + 24px + 4px);
 }
 .circle.small.NE {
-    top: calc(30px - 0px);
-    right: calc(50% - 80px - 7.5px);
+    top: calc(40px + (0% / 3 / 2) - 12px - 2px);
+    right: calc(40px + (0% / 3 / 2) - 12px - 2px);
 }
 .circle.small.NW {
-    top: calc(30px - 0px);
-    left: calc(50% - 80px - 7.5px);
+    top: calc(40px + (0% / 3 / 2) - 12px - 2px);
+    left: calc(40px + (0% / 3 / 2) - 12px - 2px);
 }
 .circle.small.SW {
-    bottom: calc(30px - 0px);
-    left: calc(50% - 80px - 7.5px);
+    bottom: calc(40px + (0% / 3 / 2) - 12px - 2px);
+    left: calc(40px + (0% / 3 / 2) - 12px - 2px);
 }
 .circle.small.SE {
-    bottom: calc(30px - 0px);
-    right: calc(50% - 80px - 7.5px);
+    bottom: calc(40px + (0% / 3 / 2) - 12px - 2px);
+    right: calc(40px + (0% / 3 / 2) - 12px - 2px);
+}
+
+.circle.small.w, .circle.small.ee, .circle.small.sse, .circle.small.e, .circle.small.nne,
+.circle.small.nww, .circle.small.nee, .circle.small.s, .circle.small.n, .circle.small.nn {
+    font-size: 11.5px;
+    font-style: italic;
+    border: 0px;
+
+    position: absolute;
+
+    color: var(--modal-color);
+}
+
+.circle.small.p {
+    font-size: 11.5px;
+    font-style: italic;
+    border: 0px;
+
+    position: absolute;
+    top: calc(40px + (100% / 3 / 2) + 24px + 20px);
+    left: calc(40px + (100% / 3 / 2) + 24px + 20px);
+    color: rgba(207,207,196,1);
 }
 
 @keyframes bounceAlphaW {
