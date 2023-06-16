@@ -124,6 +124,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.documentElement.style.setProperty('--modal-color', 'rgba(207,207,196,1)');
 
+        document.getElementById("close12").addEventListener('click', function(e) {
+            //console.log('Click happened for: ' + e.target.id)
+            el.innerHTML = '';
+            el.style.visibility = "hidden";
+
+            el.classList.remove('open');
+            grid0.classList.remove('open');
+            grid1.classList.remove('open');
+            grid2.classList.remove('open');
+        });
+
         document.getElementById("grid1__cell10").addEventListener('click', function(e) {
 
             let ee = document.getElementsByClassName('ee');
@@ -225,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
             el.style.visibility = "hidden";
 
             el.classList.remove('open');
-            grid0_wrapper.classList.remove('open');
+            grid0.classList.remove('open');
             grid1.classList.remove('open');
             grid2.classList.remove('open');
         });

@@ -206,6 +206,10 @@ li {
 
 }
 
+.grid0, .grid1, .grid2 {
+    transition: transform 1.5s ease-in;
+    transform: translateX(0%);
+}
 
 .grid0-wrapper {
     position: absolute;
@@ -214,7 +218,6 @@ li {
 
     animation: slideRL 2s forwards;
     animation-delay: 1s;
-
 }
 
 .grid0.open {
@@ -226,8 +229,6 @@ li {
     grid-template-rows: max-content max-content max-content max-content max-content max-content max-content max-content max-content max-content;
     grid-gap: 0px;
     z-index: 9;
-    transition: transform 1.5s ease-in;
-    transform: translateX(0%);
 }
 
 .grid0__cell {
@@ -271,9 +272,6 @@ li {
     position: absolute;
     top: 90px;
     /* left: 30px; */
-
-    transition: transform 1.5s ease-in;
-    transform: translateX(0%);
 }
 
 .grid1__cell {
@@ -316,8 +314,6 @@ li {
     position: absolute;
     top: 45px;
     /* left: 60px; */
-    transition: transform 1.5s ease-in;
-    transform: translateX(0%);
 }
 
 .grid2__cell {
