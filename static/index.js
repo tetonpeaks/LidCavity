@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var el = document.getElementById('example12');
 
-    document.getElementById('grid0__cell49').addEventListener('click', function(e) {
+    document.getElementById('grid0__cell8').addEventListener('click', function(e) {
 
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 
@@ -203,7 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     transform: translate(-50%, 0%);
                     background-color: rgba(119,158,203,0.4)`;
             }
-
 
             let arrows = document.getElementsByClassName('arrow12');
             let labels = document.getElementsByClassName('circle');

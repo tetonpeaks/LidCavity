@@ -221,7 +221,7 @@ li {
 }
 
 .grid0.open {
-    transform: translateX(-60%);
+    transform: translateX(calc(-60% + 60px - 30px - 22.5px));
 }
 .grid0 {
     display: grid;
@@ -324,13 +324,13 @@ li {
     opacity: 0.9;
 }
 
-.grid0__cell49 {
+.grid0__cell8 {
     animation: var(--blinkingBackground0);
     animation-delay: 1s;
     /* animation: var(--blinkingBackground) 2s infinite; */
 }
 
-.grid0__cell49:hover {
+.grid0__cell8:hover {
     animation: var(--blinkingBackground0) 0.5s ease-out;
 }
 
@@ -400,15 +400,17 @@ li {
 
 .example12.open {
     /* transform: translateX(0px); */
-    transform: translateX(-40%);
+    /* transform: translateX(-40%); */
+    transform: translateX(calc(-60% + 60px + 30px - 22.5px));
 }
 
 .example12 {
-    visibility: hidden;
+    /* visibility: hidden; */
     z-index: 9;
     width: 240px;
     height: 240px;
-    background-color: black;
+    /* background-color: black; */
+    background-color: rgba(black, 0.1);
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -421,22 +423,41 @@ li {
     box-shadow: 0px 0px 5px var(--modal-color);
     /* overflow: hidden; */
 
-    transition: transform 1.5s ease-in;
-    transform: translateX(-90%);
-
-}
-@keyframes slideLR2 {
-    100% { left: 75%; }
+    /* transition: transform 1.5s ease-in;
+    transform: translateX(-90%); */
 }
 
-.close0 {
-    color: rgba(207,207,196,1);
+.close12 {
+    color: var(--modal-color);
     font-size: 25px;
 
     position: absolute;
     right: 10px;
 
     z-index: 100;
+}
+
+.example12.info {
+    /* visibility: hidden; */
+    z-index: 9;
+    width: 240px;
+    height: 240px;
+    background-color: rgba(207,207,196,0.1);
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border: 2px solid var(--modal-color);
+    /* font-weight: bold; */
+    position: absolute;
+    left: 80%;
+    /* position: fixed; */
+    /* right: calc(50% - 240px - 160px);
+    top: 240px; */
+    box-shadow: 0px 0px 5px var(--modal-color);
+    /* overflow: hidden; */
+
+    /* transition: transform 1.5s ease-in;
+    transform: translateX(-90%); */
 }
 
 .close12 {
