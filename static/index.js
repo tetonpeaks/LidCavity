@@ -43,20 +43,60 @@ document.addEventListener("DOMContentLoaded", function () {
         ee: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); right: calc(0px + (0% / 3 / 2) - 24px - 10px + 0px);`, //ee
         w: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(0px + (100% / 3 / 2) + 24px + 8px + 8px);`, //w
 
-    }
+    };
 
     var el = document.getElementById('example12');
+    var info0 = document.getElementById('example12 info0');
+    var info1 = document.getElementById('example12 info1');
+    var info2 = document.getElementById('example12 info2');
 
-    document.getElementById('grid0__cell8').addEventListener('click', function(e) {
+    var modals = {
+        el: el,
+        grid0: grid0,
+        grid1: grid1,
+        grid2: grid2,
+        info0: info0,
+        info1: info1,
+        info2: info2,
+    }
+
+    function closeModals(e) {
+        console.log('Click happened for: ' + e.target.id)
+
+        modals.info0.classList.remove('slideLeft');
+        modals.info0.classList.remove('open');
+        modals.info1.classList.remove('slideRight');
+        modals.info1.classList.remove('open');
+        modals.info2.classList.remove('open');
+
+        modals.el.classList.remove('open');
+        modals.grid0.classList.remove('open');
+        modals.grid1.classList.remove('open');
+        modals.grid2.classList.remove('open');
+
+        setTimeout(() => {
+            modals.el.innerHTML = '';
+            modals.el.style.visibility = "hidden";
+            modals.info0.style.visibility = 'hidden';
+            modals.info1.style.visibility = 'hidden';
+            modals.info2.style.visibility = 'hidden';
+        }, 1500)
+    }
+
+    document.getElementById('grid0__cell49').addEventListener('click', function(e) {
+    //el.addEventListener('click', function(e) {
 
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+        info0.style.visibility = (info0.style.visibility == "visible") ? "hidden" : "visible";
 
         el.classList.add('open');
         grid0.classList.add('open');
         grid1.classList.add('open');
         grid2.classList.add('open');
+        info0.classList.add('open');
 
         document.documentElement.style.setProperty('--modal-color', 'rgba(207,207,196,1)');
+        document.documentElement.style.setProperty('--info0-color', 'rgba(207,207,196,0.25)');
 
         //console.log("visibility", el.style.getPropertyValue('visibility'))
         if (el.style.visibility == "hidden") {
@@ -122,20 +162,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         };
 
-        document.documentElement.style.setProperty('--modal-color', 'rgba(207,207,196,1)');
-
-        document.getElementById("close12").addEventListener('click', function(e) {
-            //console.log('Click happened for: ' + e.target.id)
-            el.innerHTML = '';
-            el.style.visibility = "hidden";
-
-            el.classList.remove('open');
-            grid0.classList.remove('open');
-            grid1.classList.remove('open');
-            grid2.classList.remove('open');
-        });
+        document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
 
         document.getElementById("grid1__cell10").addEventListener('click', function(e) {
+
+            info2.style.visibility = (info2.style.visibility == "visible") ? "hidden" : "visible";
+            if (info2.style.visibility == "hidden") {
+                info2.style.visibility = "visible";
+            }
+
+            modals.info2.classList.add('open');
+            document.documentElement.style.setProperty('--info2-color', 'rgba(119,221,119,0.5)');
+            modals.info1.classList.add('slideRight');
+            modals.info0.classList.add('slideLeft');
 
             let ee = document.getElementsByClassName('ee');
             if (ee.length === 0) {
@@ -156,7 +195,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     background-color: rgba(119,221,119,0.4)`;
             }
 
-
             let arrows = document.getElementsByClassName('arrow12');
             let labels = document.getElementsByClassName('circle');
             let labelsU = ['ee', 'nne', 'sse'];
@@ -170,20 +208,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 divLabel[0].style.color = `rgba(119,221,119,1)`; //green
             };
 
-            document.getElementById("close12").addEventListener('click', function(e) {
-                //console.log('Click happened for: ' + e.target.id)
-                el.innerHTML = '';
-                el.style.visibility = "hidden";
-
-                el.classList.remove('open');
-                grid0.classList.remove('open');
-                grid1.classList.remove('open');
-                grid2.classList.remove('open');
-            });
+            document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
         });
 
-
         document.getElementById("grid2__cell3").addEventListener('click', function(e) {
+
+            info1.style.visibility = (info1.style.visibility == "visible") ? "hidden" : "visible";
+            if (info1.style.visibility == "hidden") {
+                info1.style.visibility = "visible";
+            }
+
+            modals.info1.classList.add('open');
+            modals.info0.classList.add('slideLeft');
+
+            document.documentElement.style.setProperty('--info1-color', 'rgba(119,158,203,0.5)');
 
             let nn = document.getElementsByClassName('nn');
             if (nn.length === 0) {
@@ -217,27 +255,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 divLabel[0].style.color = `rgba(119,158,203,1)`; //green
             };
 
-            document.getElementById("close12").addEventListener('click', function(e) {
-                //console.log('Click happened for: ' + e.target.id)
-                el.innerHTML = '';
-                el.style.visibility = "hidden";
-
-                el.classList.remove('open');
-                grid0.classList.remove('open');
-                grid1.classList.remove('open');
-                grid2.classList.remove('open');
-            });
-        });
-
-        document.getElementById("close12").addEventListener('click', function(e) {
-            //console.log('Click happened for: ' + e.target.id)
-            el.innerHTML = '';
-            el.style.visibility = "hidden";
-
-            el.classList.remove('open');
-            grid0.classList.remove('open');
-            grid1.classList.remove('open');
-            grid2.classList.remove('open');
+            //document.getElementById("close12").addEventListener('click', function() { closeModal() });
+            document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
         });
     })
 });
