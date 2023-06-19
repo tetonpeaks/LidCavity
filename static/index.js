@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let divLabel = Array.from(labels).filter(cl => cl.classList.contains(labelsU[i]));
                 divArrow[0].style.cssText = arrowPos[labelsU[i]] + `animation-name: bounceAlphaRL`;
                 divLabel[0].style.cssText = labelPos[labelsU[i]];
-                divArrow[0].style.color = `rgba(119,221,119,1)`; //green
+                divArrow[0].style.color = `rgba(119,221,119,1)`; //greens
                 divLabel[0].style.color = `rgba(119,221,119,1)`; //green
             };
 
