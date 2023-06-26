@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
     createGrid({ N: 3, grid: grid2, borderWidth: 3 });
 
     var arrowPos = {
-        W: `top: calc(40px + (100% / 3 / 2) + 24px + 2px); left: calc(0px + (100% / 3 / 2) + 24px + 4px);`, //W
-        E: `top: calc(40px + (100% / 3 / 2) + 24px + 2px); right: calc(40px + (100% / 3 / 2) - 12px - 4px);`, //E
-        N: `top: calc(0px + (100% / 3 / 2) + 24px + 4px); left: calc(40px + (100% / 3 / 2) + 24px + 7px);`, //N
-        S: `bottom: calc(0px + (100% / 3 / 2) + 24px - 2px); left: calc(40px + (100% / 3 / 2) + 24px + 7px);`, //S
-        P: `top: calc(40px + (100% / 3 / 2) + 24px + 2px); right: calc(40px + (100% / 3 / 2) - 12px - 4px);`, //P
+        w: `top: calc(40px + (100% / 3 / 2) + 24px + 2px); left: calc(0px + (100% / 3 / 2) + 24px + 4px);`, //W
+        e: `top: calc(40px + (100% / 3 / 2) + 24px + 2px); right: calc(40px + (100% / 3 / 2) - 12px - 4px);`, //E
+        n: `top: calc(0px + (100% / 3 / 2) + 24px + 4px); left: calc(40px + (100% / 3 / 2) + 24px + 7px);`, //N
+        s: `bottom: calc(0px + (100% / 3 / 2) + 24px - 2px); left: calc(40px + (100% / 3 / 2) + 24px + 7px);`, //S
+        p: `top: calc(40px + (100% / 3 / 2) + 24px + 2px); right: calc(40px + (100% / 3 / 2) - 12px - 4px);`, //P
         ee: `top: calc(40px + (100% / 3 / 2) + 24px + 2px);right: calc(0px + (0% / 3 / 2) - 12px - 4px);`, //E, ee
         nne: `top: calc(0px + (100% / 3 / 2) - 12px - 4px); right: calc(40px + (100% / 3 / 2) - 12px - 4px);`, //N, nne
         sse: `bottom: calc(0px + (100% / 3 / 2) - 14px - 4px); right: calc(40px + (100% / 3 / 2) - 12px - 4px);`, //S, sse
@@ -28,20 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var labelPos = {
 
-        wP: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(0px + (100% / 3 / 2) + 24px + 8px + 8px);`, //w
-        eP: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(40px + (200% / 3 / 2) + 24px + 8px + 8px);`, //e
-        nP: `top: calc(0px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //n
-        sP: `bottom: calc(0px + (100% / 3 / 2) + 24px - 10px + 0px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //s
-        nn: `top: calc(0px + (0% / 3 / 2) + 0px + 0px + 0px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //nn
+        w: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(0px + (100% / 3 / 2) + 24px + 8px + 8px);`, //w
+        e: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(40px + (200% / 3 / 2) + 24px + 8px + 8px);`, //e
         n: `top: calc(0px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //n
         s: `bottom: calc(0px + (100% / 3 / 2) + 24px - 10px + 0px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //s
+        nn: `top: calc(0px + (0% / 3 / 2) + 0px + 0px + 0px); left: calc(40px + (100% / 3 / 2) + 24px + 8px + 8px);`, //nn
         nee: `top: calc(0px + (100% / 3 / 2) + 24px + 2px + 12px); right: calc(0px + (0% / 3 / 2) + 24px - 10px - 4px);`, //nee
         nww: `top: calc(0px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(0px + (0% / 3 / 2) + 24px + 8px + 12px);`, //
         nne: `top: calc(40px + (0% / 3 / 2) - 0px + 0px - 2px); left: calc(40px + (200% / 3 / 2) + 24px + 8px + 12px);`, //nne
-        e: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(40px + (200% / 3 / 2) + 24px + 8px + 8px);`, //e
         sse: `bottom: calc(0px + (0% / 3 / 2) + 24px - 12px + 0px); left: calc(40px + (200% / 3 / 2) + 24px + 8px + 12px);`, //sse
         ee: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); right: calc(0px + (0% / 3 / 2) - 24px - 10px + 0px);`, //ee
-        w: `top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px); left: calc(0px + (100% / 3 / 2) + 24px + 8px + 8px);`, //w
 
     };
 
@@ -60,13 +56,19 @@ document.addEventListener("DOMContentLoaded", function () {
         info2: info2,
     }
 
-    function closeModals(e) {
-        console.log('Click happened for: ' + e.target.id)
+    var cls_info = [modals.info0.classList, modals.info1.classList, modals.info2.classList];
 
+    function closeModals(e) {
+        //console.log('Click happened for: ' + e.target.id)
+
+        modals.info0.classList.remove('slideRight');
         modals.info0.classList.remove('slideLeft');
         modals.info0.classList.remove('open');
         modals.info1.classList.remove('slideRight');
+        modals.info1.classList.remove('slideLeft');
         modals.info1.classList.remove('open');
+        modals.info2.classList.remove('slideRight');
+        modals.info2.classList.remove('slideLeft');
         modals.info2.classList.remove('open');
 
         modals.el.classList.remove('open');
@@ -81,111 +83,228 @@ document.addEventListener("DOMContentLoaded", function () {
             modals.info1.style.visibility = 'hidden';
             modals.info2.style.visibility = 'hidden';
         }, 1500)
-    }
+    };
 
     document.getElementById('grid0__cell49').addEventListener('click', function(e) {
-    //el.addEventListener('click', function(e) {
+        //el.addEventListener('click', function(e) {
 
-        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
-        info0.style.visibility = (info0.style.visibility == "visible") ? "hidden" : "visible";
+        let lengths = cls_info.map(a => a.length);
+        let idx = lengths.indexOf(Math.max(...lengths));
+        //console.log("lengths =", lengths)
+        //console.log("lengths.indexOf =", lengths.indexOf(Math.max(...lengths)))
+        let length = lengths[idx];
 
-        el.classList.add('open');
-        grid0.classList.add('open');
-        grid1.classList.add('open');
-        grid2.classList.add('open');
-        info0.classList.add('open');
+
+        //console.log(lengths.reduce((a, b) => a + b, 0))
+        let clTotal = lengths.reduce((a, b) => a + b, 0);
+
+
+        if (clTotal > 6) {
+            let sideModal = cls_info[idx];
+            let side = sideModal[length - 1];
+
+            let sideModalName = sideModal[1];
+
+            if (sideModalName === 'info1') {
+                if (side === 'slideLeft') {
+                    modals['info2'].classList.add('slideRight');
+                } else if (side === 'slideRight') {
+                    modals['info2'].classList.add('slideLeft');
+                } else {
+                    modals['info1'].classList.add('slideLeft')
+                }
+            } else if (sideModalName === 'info2') {
+                if (side === 'slideLeft') {
+                    modals['info1'].classList.add('slideRight');
+                } else if (side === 'slideRight') {
+                    modals['info1'].classList.add('slideLeft');
+                } else {
+                    modals['info2'].classList.add('slideLeft');
+                }
+            }
+        }
+
+
+        modals.info0.style.visibility = (modals.info0.style.visibility == "visible") ? "hidden" : "visible";
+        if (modals.info0.style.visibility == "hidden") { modals.info0.style.visibility = "visible" }
+
+        if (!modals.el.classList.contains('open')) { modals.el.classList.add('open') }
+
+
+        modals.el.classList.add('open');
+        modals.grid0.classList.add('open');
+        modals.grid1.classList.add('open');
+        modals.grid2.classList.add('open');
+        modals.info0.classList.add('open');
 
         document.documentElement.style.setProperty('--modal-color', 'rgba(207,207,196,1)');
         document.documentElement.style.setProperty('--info0-color', 'rgba(207,207,196,0.25)');
 
-        //console.log("visibility", el.style.getPropertyValue('visibility'))
-        if (el.style.visibility == "hidden") {
-            el.style.visibility = "visible";
-        } /* else if (el.style.visibility == "visible" && getComputedStyle(document.documentElement).getPropertyValue('--modal-color') !== 'rgba(119,221,119,1') {
-            console.log(getComputedStyle(document.documentElement).getPropertyValue('--modal-color'))
-        } */
+        let w = document.getElementsByClassName('w');
+        let n = document.getElementsByClassName('n');
 
-        el.innerHTML = `<span class="close12" id="close12">&times;</span>
-            <div class="grid4" id="grid4"></div>
-            <div class="gridP" id="gridP"></div>
-            <span class="arrow12 W">&#8594;</span>
-            <span class="arrow12 E">&#8594;</span>
-            <span class="arrow12 N">&#8595;</span>
-            <span class="arrow12 S">&#8595;</span>
-            <div class="circle small W">W</div>
-            <div class="circle small P">P</div>
-            <div class="circle small E">E</div>
-            <div class="circle small N">N</div>
-            <div class="circle small S">S</div>
-            <div class="circle small NE">NE</div>
-            <div class="circle small SW">SW</div>
-            <div class="circle small NW">NW</div>
-            <div class="circle small SE">SE</div>
-            <div class="circle small p">p</div>
-            <div class="circle small w">u<sub><sub>w</sub></sub></div>
-            <div class="circle small e">u<sub><sub>e</sub></sub></div>
-            <div class="circle small n">v<sub><sub>n</sub></sub></div>
-            <div class="circle small s">v<sub><sub>s</sub></sub></div>`;
+        if (w.length === 0 && modals.el.innerHTML === '') {
+            let labels = ['wH','eH','nV','sV'];
+            let innerHTML = `<span class="close12" id="close12">&times;</span>
+                <div class="grid4" id="grid4"></div>
+                <div class="gridP" id="gridP"></div>
+                <span class="arrow12 w">&#8594;</span>
+                <span class="arrow12 e">&#8594;</span>
+                <span class="arrow12 n">&#8595;</span>
+                <span class="arrow12 s">&#8595;</span>
+                <div class="circle small W">W</div>
+                <div class="circle small P">P</div>
+                <div class="circle small E">E</div>
+                <div class="circle small N">N</div>
+                <div class="circle small S">S</div>
+                <div class="circle small NE">NE</div>
+                <div class="circle small SW">SW</div>
+                <div class="circle small NW">NW</div>
+                <div class="circle small SE">SE</div>
+                <div class="circle small p">p</div>
+                <div class="circle small w">u<sub><sub>w</sub></sub></div>
+                <div class="circle small e">u<sub><sub>e</sub></sub></div>
+                <div class="circle small n">v<sub><sub>n</sub></sub></div>
+                <div class="circle small s">v<sub><sub>s</sub></sub></div>
+            `;
 
-        let grid4 = document.getElementById('grid4');
-        createGrid({ N: 3, grid: grid4, borderWidth: 1 });
+            createGrid4( {id: 'P', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+            modals.el.style.visibility = (modals.el.style.visibility == "visible") ? "hidden" : "visible";
+            modals.el.classList.add('open');
+        } else if (w.length === 0 && n.length > 0) {
+            let labels = ['wH','eH'];
+            let innerHTML = `
+                <div class="gridP" id="gridP"></div>
+                <span class="arrow12 w">&#8594;</span>
+                <span class="arrow12 e">&#8594;</span>
+                <div class="circle small w">u<sub><sub>w</sub></sub></div>
+                <div class="circle small e">u<sub><sub>e</sub></sub></div>
 
-        let arrows = document.getElementsByClassName('arrow12');
-        let labels = document.getElementsByClassName('circle');
-        let labelsP = ['w','e','n','s']
+            `;
 
-        for (let i = 0; i < labelsP.length; i++) {
-            let divArrow = Array.from(arrows).filter(cl => cl.classList.contains(labelsP[i].toUpperCase()));
+            createGrid4( {id: 'P', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+        } else if (n.length === 0 && w.length > 0) {
+            let labels = ['nV','sV'];
+            let innerHTML = `
+                <div class="gridP" id="gridP"></div>
+                <span class="arrow12 n">&#8595;</span>
+                <span class="arrow12 s">&#8595;</span>
+                <div class="circle small n">v<sub><sub>n</sub></sub></div>
+                <div class="circle small s">v<sub><sub>s</sub></sub></div>
+                `;
 
-            if (labelsP[i] == 'w' || labelsP[i] == 'e') {
-                divArrow[0].style.cssText = arrowPos[labelsP[i].toUpperCase()] + `animation-name: bounceAlphaRL`;
-                divArrow[0].style.color = `rgba(119,221,119,1)`; //green
-            } else if (labelsP[i] == 'n' || labelsP[i] == 's') {
-                divArrow[0].style.cssText = arrowPos[labelsP[i].toUpperCase()] + `animation-name: bounceAlphaUD`;
-                divArrow[0].style.color = `rgba(119,158,203,1)`; //blue
-            } else {
-                divArrow[0].style.color = `rgba(207,207,196,1)`;
-            }
-        };
+                createGrid4( {id: 'P', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+        } else {
+            let labels = [];
+            let innerHTML = `<div class="gridP" id="gridP"></div>`;
 
-        for (let i = 0; i < labelsP.length; i++) {
-            let divLabel = Array.from(labels).filter(cl => cl.classList.contains(labelsP[i]));
-            divLabel[0].style.cssText = labelPos[labelsP[i]];
-
-            if (labelsP[i] == 'w' || labelsP[i] == 'e') {
-                divLabel[0].style.color = `rgba(119,221,119,1)`; //green
-            } else if (labelsP[i] == 'n' || labelsP[i] == 's') {
-                divLabel[0].style.color = `rgba(119,158,203,1)`; //blue
-            } else {
-                divLabel[0].style.color = `rgba(207,207,196,1)`;
-            }
-
-        };
+            createGrid4( {id: 'P', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+        }
 
         document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
+    });
 
-        document.getElementById("grid1__cell10").addEventListener('click', function(e) {
+    document.getElementById("grid1__cell10").addEventListener('click', function(e) {
 
-            info2.style.visibility = (info2.style.visibility == "visible") ? "hidden" : "visible";
-            if (info2.style.visibility == "hidden") {
-                info2.style.visibility = "visible";
+        let lengths = cls_info.map(a => a.length);
+        let idx = lengths.indexOf(Math.max(...lengths));
+        let length = lengths[idx];
+
+        let clTotal = lengths.reduce((a, b) => a + b, 0);
+
+        if (clTotal > 6) {
+            let sideModal = cls_info[idx];
+            let side = sideModal[length - 1];
+
+            let sideModalName = sideModal[1]
+
+            if (sideModalName === 'info0') {
+
+                if (side === 'slideLeft') {
+                    modals['info1'].classList.add('slideRight');
+                } else if (side === 'slideRight') {
+                    modals['info1'].classList.add('slideLeft');
+                } else {
+                    modals['info0'].classList.add('slideLeft');
+                }
+            } else if (sideModalName === 'info1') {
+                if (side === 'slideLeft') {
+                    modals['info0'].classList.add('slideRight');
+                } else if (side === 'slideRight') {
+                    modals['info0'].classList.add('slideLeft');
+                } else {
+                    modals['info1'].classList.add('slideLeft')
+                }
+
             }
+        }
 
-            modals.info2.classList.add('open');
-            document.documentElement.style.setProperty('--info2-color', 'rgba(119,221,119,0.5)');
-            modals.info1.classList.add('slideRight');
-            modals.info0.classList.add('slideLeft');
+        modals.info2.style.visibility = (modals.info2.style.visibility == "visible") ? "hidden" : "visible";
+        if (modals.info2.style.visibility == "hidden") { modals.info2.style.visibility = "visible";}
 
-            let ee = document.getElementsByClassName('ee');
-            if (ee.length === 0) {
-                el.innerHTML = el.innerHTML + `
+
+        if (!modals.el.classList.contains('open')) { modals.el.classList.add('open') }
+
+        modals.grid0.classList.add('open');
+        modals.grid1.classList.add('open');
+        modals.grid2.classList.add('open');
+        modals.info2.classList.add('open');
+
+        document.documentElement.style.setProperty('--info2-color', 'rgba(119,221,119,0.5)');
+
+        let nn = document.getElementsByClassName('nn');
+        let ee = document.getElementsByClassName('ee');
+        let e_ = document.getElementsByClassName('e');
+        if (ee.length === 0 && modals.el.innerHTML === '') {
+            let labels = ['wH','eH','eeH','nneH','sseH'];
+            let innerHTML = `<span class="close12" id="close12">&times;</span>
+                <div class="grid4" id="grid4"></div>
                 <div class="gridU" id="gridU"></div>
+                <span class="arrow12 w">&#8594;</span>
+                <span class="arrow12 e">&#8594;</span>
                 <span class="arrow12 ee">&#8594;</span>
                 <span class="arrow12 nne">&#8594;</span>
                 <span class="arrow12 sse">&#8594;</span>
-                <div class="circle small ee">u<sub><sub>ee</sub></sub></div>
-                <div class="circle small nne">u<sub><sub>nne</sub></sub></div>
-                <div class="circle small sse">u<sub><sub>sse</sub></sub></div>`;
+                <div class="circle small W">W</div>
+                <div class="circle small P">P</div>
+                <div class="circle small E">E</div>
+                <div class="circle small N">N</div>
+                <div class="circle small S">S</div>
+                <div class="circle small NE">NE</div>
+                <div class="circle small SW">SW</div>
+                <div class="circle small NW">NW</div>
+                <div class="circle small SE">SE</div>
+                <div class="circle small p">p</div>
+                <div class="circle small w">v<sub><sub>w</sub></sub></div>
+                <div class="circle small e">v<sub><sub>e</sub></sub></div>
+                <div class="circle small ee">v<sub><sub>ee</sub></sub></div>
+                <div class="circle small nne">v<sub><sub>nne</sub></sub></div>
+                <div class="circle small sse">v<sub><sub>sse</sub></sub></div>
+            `;
+
+            createGrid4( {id: 'u', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+            modals.el.style.visibility = (modals.el.style.visibility == "visible") ? "hidden" : "visible";
+            modals.el.classList.add('open');
+
+            let gridU = document.getElementById('gridU');
+            createGrid({ N: 1, grid: gridU, borderWidth: 1 });
+            gridU.style.cssText = `top: 50%;
+                left: 50%;
+                transform: translate(0%, -50%);
+                background-color: rgba(119,221,119,0.4)`;
+            } else if (ee.length === 0 && (e_.length > 0)) {
+                let labels = ['eeH','nneH','sseH'];
+                let innerHTML = `
+                    <div class="gridU" id="gridU"></div>
+                    <span class="arrow12 ee">&#8594;</span>
+                    <span class="arrow12 nne">&#8594;</span>
+                    <span class="arrow12 sse">&#8594;</span>
+                    <div class="circle small ee">v<sub><sub>ee</sub></sub></div>
+                    <div class="circle small nne">v<sub><sub>nne</sub></sub></div>
+                    <div class="circle small sse">v<sub><sub>sse</sub></sub></div>
+                `;
+
+                createGrid4( {id: 'u', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
 
                 let gridU = document.getElementById('gridU');
                 createGrid({ N: 1, grid: gridU, borderWidth: 1 });
@@ -193,72 +312,232 @@ document.addEventListener("DOMContentLoaded", function () {
                     left: 50%;
                     transform: translate(0%, -50%);
                     background-color: rgba(119,221,119,0.4)`;
-            }
 
-            let arrows = document.getElementsByClassName('arrow12');
-            let labels = document.getElementsByClassName('circle');
-            let labelsU = ['ee', 'nne', 'sse'];
+            } else if (ee.length === 0 && nn.length > 0) {
+                let labels = ['wH','eH','eeH','nneH','sseH'];
+                let innerHTML = `
+                    <div class="gridU" id="gridU"></div>
+                    <span class="arrow12 w">&#8594;</span>
+                    <span class="arrow12 e">&#8594;</span>
+                    <span class="arrow12 ee">&#8594;</span>
+                    <span class="arrow12 nne">&#8594;</span>
+                    <span class="arrow12 sse">&#8594;</span>
+                    <div class="circle small w">v<sub><sub>w</sub></sub></div>
+                    <div class="circle small e">v<sub><sub>e</sub></sub></div>
+                    <div class="circle small ee">v<sub><sub>ee</sub></sub></div>
+                    <div class="circle small nne">v<sub><sub>nne</sub></sub></div>
+                    <div class="circle small sse">v<sub><sub>sse</sub></sub></div>
+                `;
 
-            for (let i = 0; i < labelsU.length; i++) {
-                let divArrow = Array.from(arrows).filter(cl => cl.classList.contains(labelsU[i]));
-                let divLabel = Array.from(labels).filter(cl => cl.classList.contains(labelsU[i]));
-                divArrow[0].style.cssText = arrowPos[labelsU[i]] + `animation-name: bounceAlphaRL`;
-                divLabel[0].style.cssText = labelPos[labelsU[i]];
-                divArrow[0].style.color = `rgba(119,221,119,1)`; //greens
-                divLabel[0].style.color = `rgba(119,221,119,1)`; //green
-            };
+                createGrid4( {id: 'u', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
 
-            document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
-        });
-
-        document.getElementById("grid2__cell3").addEventListener('click', function(e) {
-
-            info1.style.visibility = (info1.style.visibility == "visible") ? "hidden" : "visible";
-            if (info1.style.visibility == "hidden") {
-                info1.style.visibility = "visible";
-            }
-
-            modals.info1.classList.add('open');
-            modals.info0.classList.add('slideLeft');
-
-            document.documentElement.style.setProperty('--info1-color', 'rgba(119,158,203,0.5)');
-
-            let nn = document.getElementsByClassName('nn');
-            if (nn.length === 0) {
-                el.innerHTML = el.innerHTML + `
-                    <div class="gridV" id="gridV"></div>
-                    <span class="arrow12 nn">&#8595;</span>
-                    <span class="arrow12 nww">&#8595;</span>
-                    <span class="arrow12 nee">&#8595;</span>
-                    <div class="circle small nn">v<sub><sub>nn</sub></sub></div>
-                    <div class="circle small nww">v<sub><sub>nww</sub></sub></div>
-                    <div class="circle small nee">v<sub><sub>nee</sub></sub></div>
-                `
-                let gridV = document.getElementById('gridV');
-                createGrid({ N: 1, grid: gridV, borderWidth: 1 });
-                gridV.style.cssText = `top: calc(50% - 80px);
+                let gridU = document.getElementById('gridU');
+                createGrid({ N: 1, grid: gridU, borderWidth: 1 });
+                gridU.style.cssText = `top: 50%;
                     left: 50%;
-                    transform: translate(-50%, 0%);
-                    background-color: rgba(119,158,203,0.4)`;
+                    transform: translate(0%, -50%);
+                    background-color: rgba(119,221,119,0.4)`;
+
             }
 
-            let arrows = document.getElementsByClassName('arrow12');
-            let labels = document.getElementsByClassName('circle');
-            let labelsV = ['nn', 'nww', 'nee'];
+        document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
+    });
 
-            for (let i = 0; i < labelsV.length; i++) {
-                let divArrow = Array.from(arrows).filter(cl => cl.classList.contains(labelsV[i]));
-                let divLabel = Array.from(labels).filter(cl => cl.classList.contains(labelsV[i]));
-                divArrow[0].style.cssText = arrowPos[labelsV[i]] + `animation-name: bounceAlphaUD`;
-                divLabel[0].style.cssText = labelPos[labelsV[i]];
-                divArrow[0].style.color = `rgba(119,158,203,1)`; //green
-                divLabel[0].style.color = `rgba(119,158,203,1)`; //green
-            };
+    document.getElementById("grid2__cell3").addEventListener('click', function(e) {
 
-            //document.getElementById("close12").addEventListener('click', function() { closeModal() });
-            document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
-        });
-    })
+        let lengths = cls_info.map(a => a.length);
+        let idx = lengths.indexOf(Math.max(...lengths));
+        let length = lengths[idx];
+
+        let clTotal = lengths.reduce((a, b) => a + b, 0);
+
+        if (clTotal > 6) {
+
+            let sideModal = cls_info[idx];
+            let side = sideModal[length - 1];
+
+            let sideModalName = sideModal[1]
+
+            if (sideModalName === 'info0') {
+                if (side === 'slideLeft') {
+                    modals['info2'].classList.add('slideRight');
+                } else if (side === 'slideRight') {
+                    modals['info2'].classList.add('slideLeft');
+                } else {
+                    modals['info0'].classList.add('slideLeft')
+                }
+            } else if (sideModalName === 'info2') {
+                if (side === 'slideLeft') {
+                    modals['info0'].classList.add('slideRight');
+                } else if (side === 'slideRight') {
+                    modals['info0'].classList.add('slideLeft');
+                } else {
+                    modals['info2'].classList.add('slideLeft')
+                }
+
+            }
+        }
+
+        modals.info1.style.visibility = (modals.info1.style.visibility == "visible") ? "hidden" : "visible";
+        if (modals.info1.style.visibility == "hidden") { modals.info1.style.visibility = "visible" };
+
+
+        if (!modals.el.classList.contains('open')) { modals.el.classList.add('open') };
+
+        modals.grid0.classList.add('open');
+        modals.grid1.classList.add('open');
+        modals.grid2.classList.add('open');
+        modals.info1.classList.add('open');
+
+        document.documentElement.style.setProperty('--info1-color', 'rgba(119,158,203,0.5)');
+
+        let nn = document.getElementsByClassName('nn');
+        let ee = document.getElementsByClassName('ee');
+        let n = document.getElementsByClassName('n');
+        if (nn.length === 0 && modals.el.innerHTML === '') {
+            let labels = ['nV','sV','nnV','nwwV','neeV'];
+            let innerHTML = `<span class="close12" id="close12">&times;</span>
+                <div class="grid4" id="grid4"></div>
+                <div class="gridV" id="gridV"></div>
+                <span class="arrow12 n">&#8595;</span>
+                <span class="arrow12 s">&#8595;</span>
+                <span class="arrow12 nn">&#8595;</span>
+                <span class="arrow12 nww">&#8595;</span>
+                <span class="arrow12 nee">&#8595;</span>
+                <div class="circle small W">W</div>
+                <div class="circle small P">P</div>
+                <div class="circle small E">E</div>
+                <div class="circle small N">N</div>
+                <div class="circle small S">S</div>
+                <div class="circle small NE">NE</div>
+                <div class="circle small SW">SW</div>
+                <div class="circle small NW">NW</div>
+                <div class="circle small SE">SE</div>
+                <div class="circle small p">p</div>
+                <div class="circle small n">v<sub><sub>n</sub></sub></div>
+                <div class="circle small s">v<sub><sub>s</sub></sub></div>
+                <div class="circle small nn">v<sub><sub>nn</sub></sub></div>
+                <div class="circle small nww">v<sub><sub>nww</sub></sub></div>
+                <div class="circle small nee">v<sub><sub>nee</sub></sub></div>
+            `;
+
+            createGrid4( {id: 'v', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+            modals.el.style.visibility = (modals.el.style.visibility == "visible") ? "hidden" : "visible";
+            modals.el.classList.add('open');
+
+            let gridV = document.getElementById('gridV');
+            createGrid({ N: 1, grid: gridV, borderWidth: 1 });
+            gridV.style.cssText = `top: calc(50% - 80px);
+                left: 50%;
+                transform: translate(-50%, 0%);
+                background-color: rgba(119,158,203,0.4)
+            `;
+        } else if (nn.length === 0 && n.length > 0) {
+            let labels = ['nnV','nwwV','neeV'];
+            let innerHTML = `
+                <div class="gridV" id="gridV"></div>
+                <span class="arrow12 nn">&#8595;</span>
+                <span class="arrow12 nww">&#8595;</span>
+                <span class="arrow12 nee">&#8595;</span>
+                <div class="circle small nn">v<sub><sub>nn</sub></sub></div>
+                <div class="circle small nww">v<sub><sub>nww</sub></sub></div>
+                <div class="circle small nee">v<sub><sub>nee</sub></sub></div>
+            `;
+
+            createGrid4( {id: 'v', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+
+            let gridV = document.getElementById('gridV');
+
+            createGrid({ N: 1, grid: gridV, borderWidth: 1 });
+            gridV.style.cssText = `top: calc(50% - 80px);
+                left: 50%;
+                transform: translate(-50%, 0%);
+                background-color: rgba(119,158,203,0.4)
+            `;
+        } else if (nn.length === 0 && ee.length > 0) {
+            let labels = ['nV','sV','nnV','nwwV','neeV'];
+            let innerHTML = `
+                <div class="gridV" id="gridV"></div>
+                <span class="arrow12 n">&#8595;</span>
+                <span class="arrow12 s">&#8595;</span>
+                <span class="arrow12 nn">&#8595;</span>
+                <span class="arrow12 nww">&#8595;</span>
+                <span class="arrow12 nee">&#8595;</span>
+                <div class="circle small n">v<sub><sub>n</sub></sub></div>
+                <div class="circle small s">v<sub><sub>s</sub></sub></div>
+                <div class="circle small nn">v<sub><sub>nn</sub></sub></div>
+                <div class="circle small nww">v<sub><sub>nww</sub></sub></div>
+                <div class="circle small nee">v<sub><sub>nee</sub></sub></div>
+            `;
+
+            createGrid4( {id: 'v', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+
+            let gridV = document.getElementById('gridV');
+
+            createGrid({ N: 1, grid: gridV, borderWidth: 1 });
+            gridV.style.cssText = `top: calc(50% - 80px);
+                left: 50%;
+                transform: translate(-50%, 0%);
+                background-color: rgba(119,158,203,0.4)
+            `;
+
+        }
+
+        //document.getElementById("close12").addEventListener('click', function() { closeModal() });
+        document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
+    });
+
+    function createGrid4(params) {
+
+        modals.el.innerHTML = modals.el.innerHTML + params.innerHTML;
+        //const str = "hello,how,are,you,today?"
+        //const pieces = str.split(/[\s,]+/)
+        //console.log(str, pieces)
+
+        let arrows = document.getElementsByClassName('arrow12');
+        let labels = document.getElementsByClassName('circle');
+
+        for (let i = 0; i < params.label.length; i++) {
+            let dir = params.label[i].slice(0, -1);
+            let ori = params.label[i].slice(-1);
+
+            //let id = arrC.slice(-1);
+            //console.log(params.label[i].split(/[V, ]+/));
+            //console.log(params.label[i].slice(-1), params.label[i].slice(0, -1))
+
+            let divArrow = Array.from(arrows).filter(cl => cl.classList.contains(dir));
+            let divLabel = Array.from(labels).filter(cl => cl.classList.contains(dir));
+            if (ori === 'H') {
+                divArrow[0].style.cssText = arrowPos[dir] + params.animation[0];
+                divLabel[0].style.cssText = labelPos[dir];
+
+                divArrow[0].style.color = params.color[1];
+
+                divLabel[0].style.color = params.color[1];
+            } else if (ori === 'V') {
+                divArrow[0].style.cssText = arrowPos[dir] + params.animation[1];
+                divLabel[0].style.cssText = labelPos[dir];
+                divArrow[0].style.color = params.color[2];
+                divLabel[0].style.color = params.color[2];
+            }
+        };
+
+        let grid4 = document.getElementById('grid4');
+        if (params.id === 'P' && !modals.info1.classList.contains('open') && !modals.info2.classList.contains('open')) {
+            createGrid({ N: 3, grid: grid4, borderWidth: 1 });
+            document.getElementById('grid4__cell4').style.backgroundColor = `rgba(207,207,196,0.35)`;
+        } else if (params.id === 'v' && !modals.info0.classList.contains('open') && !modals.info2.classList.contains('open')) {
+            createGrid({ N: 3, grid: grid4, borderWidth: 1 });
+        } else if (params.id === 'v' && modals.info0.classList.contains('open')) {
+            document.getElementById('grid4__cell4').style.backgroundColor = `rgba(207,207,196,0.35)`;
+        } else if (params.id === 'u' && !modals.info0.classList.contains('open') && !modals.info1.classList.contains('open')) {
+            createGrid({ N: 3, grid: grid4, borderWidth: 1 });
+        } else if (params.id === 'u' && modals.info0.classList.contains('open')) {
+            document.getElementById('grid4__cell4').style.backgroundColor = `rgba(207,207,196,0.35)`;
+        } else if (params.id === 'P') {
+            document.getElementById('grid4__cell4').style.backgroundColor = `rgba(207,207,196,0.35)`;
+        }
+    };
 });
 
 function createGrid(input) {
@@ -280,11 +559,6 @@ function createGrid(input) {
 
         if (arrR.includes(i)) {
             div.style.borderWidth = `${width}px 0 ${width}px ${width}px`; // removes R
-
-            if (i === 7) {
-                //div.onclick = myFunc();
-                //console.log(div)
-            }
         }
 
         if (arrC.includes(i) && i !== element[0]) {

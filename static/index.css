@@ -209,11 +209,15 @@ li {
 
 }
 
-.grid0, .grid1, .grid2 {
+.grid0 {
     transition: transform 1.5s ease-in;
-    /* transform: translateX(0%); */
     z-index: 50;
     background-color: black;
+}
+.grid1, .grid2 {
+    transition: transform 1.5s ease-in;
+    z-index: 50;
+    background-color: rgba(0,0,0,0);
 }
 
 .grid0-wrapper {
@@ -264,7 +268,7 @@ li {
 }
 
 .grid1.open {
-    transform: translateX(calc(-120% - 0px));
+    transform: translateX(calc(-112.5% - 0px));
 
 }
 .grid1 {
@@ -306,7 +310,8 @@ li {
 }
 
 .grid2.open {
-    transform: translateX(calc(-60% - 90px));
+    /* transform: translateX(calc(-60% - 90px)); */
+    transform: translateX(calc(-150% - 0px));
 }
 
 .grid2 {
@@ -440,11 +445,11 @@ li {
     transform: translateY(calc(240px + 30px));
 }
 
-.example12.info0.slideLeft {
+.example12.info0.slideLeft, .example12.info1.slideLeft, .example12.info2.slideLeft {
     transform: translate(calc(-240px - 15px), calc(240px + 30px));
 }
 
-.example12.info1.slideRight {
+.example12.info0.slideRight, .example12.info1.slideRight, .example12.info2.slideRight {
     transform: translate(calc(240px + 15px), calc(240px + 30px));
 }
 
@@ -547,7 +552,7 @@ li {
 }
 
 .grid4__cell4 {
-    background-color: rgba(207,207,196,0.35);
+    /* background-color: rgba(207,207,196,0.35); */
 }
 
 .grid4 {
@@ -609,7 +614,7 @@ li {
     z-index: 9;
     color: rgba(207,207,196,1);
 }
-.W, .E, .N, .S, .arrow12.ee, .arrow12.nne, .arrow12.sse, .arrow12.nww, .arrow12.nee, .arrow12.nn {
+.w, .e, .n, .s, .p, .arrow12.ee, .arrow12.nne, .arrow12.sse, .arrow12.nww, .arrow12.nee, .arrow12.nn {
     font-size: 24px;
     background-size: contain;
 
@@ -700,7 +705,7 @@ li {
     right: calc(40px + (0% / 3 / 2) - 12px - 2px);
 }
 
-.circle.small.w, .circle.small.ee, .circle.small.sse, .circle.small.e, .circle.small.nne,
+.circle.small.n, .circle.small.s, .circle.small.w, .circle.small.ee, .circle.small.sse, .circle.small.e, .circle.small.nne,
 .circle.small.nww, .circle.small.nee, .circle.small.s, .circle.small.n, .circle.small.nn {
     font-size: 11.5px;
     font-style: italic;
