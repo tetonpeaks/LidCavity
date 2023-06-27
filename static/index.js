@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     var grid0 = document.getElementById('grid0'); // u-momentum
+    console.log(grid0)
     var grid1 = document.getElementById('grid1'); // v-momentum
     var grid2 = document.getElementById('grid2'); // pressure
 
