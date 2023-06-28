@@ -184,7 +184,7 @@ li {
     text-align: center;
     background-color: black;
     /* border: 2px solid rgba(10,10,10,0.85); */
-    border: /*  */2px solid red;
+    /* border: 2px solid red; */
     z-index: 50;
 
     overflow: hidden;
@@ -584,6 +584,7 @@ li {
     /* overflow: hidden; */
 
     transition: transform 1.5s ease-in;
+
     transform: translateX(0%);
 }
 
