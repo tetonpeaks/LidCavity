@@ -158,6 +158,166 @@ li {
 
 /* START UPPER DIV */
 
+.page0 {
+    display: block;
+    /* position: fixed; */
+    /* top: 65px; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: 0;
+    /* margin-top: 10vh; */
+    /* margin-bottom: 2vh; */
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    justify-items: center;
+    color: #CEB888;
+    /* border-top: 4px solid #CEB888; */
+    /* border-bottom: 4px solid #CEB888; */
+    z-index: 9;
+
+    position: absolute;
+}
+
+.infoU {
+    display: block;
+    width: 100vw;
+    height: calc(100vh + 0px);
+    position: relative;
+    margin: 0;
+    padding: 5px;
+    color: #CEB888;
+    border-radius: 5px;
+    text-align: center;
+    background-color: black;
+    /* border: 2px solid rgba(10,10,10,0.85); */
+    /* border: 2px solid red; */
+    z-index: 50;
+
+    overflow: hidden;
+}
+
+.outer-wrapper {
+    width: 100vh;
+    margin-top: 10vh;
+}
+
+.box-wrapper {
+    position: absolute;
+    right: calc(-300px - 6.25px);
+    margin-top: 10vh;
+
+    animation: slideRLU 2s forwards;
+    animation-delay: 1s;
+}
+
+/* @-webkit-keyframes slideLRU {
+    100% { left: calc(100% / 3 - 150px); }
+}
+
+@keyframes slideLRU {
+    100% { left: calc(100% / 3 - 150px); }
+} */
+
+@-webkit-keyframes slideRLU {
+    100% { right: calc(100% / 2 - 150px); }
+}
+@keyframes slideRLU {
+    100% { right: calc(100% / 2 - 150px); }
+}
+
+.box.open {
+    transform: translateX(calc(-120px - 15px));
+}
+
+.box {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-gap: 0px;
+
+    transition: transform 1.5s ease-in;
+    z-index: 50;
+    background-color: black;
+    text-align: center;
+}
+
+.box__cell {
+    width: 300px;
+    height: 300px;
+    border: 7px solid rgba(10, 10, 10, 0.85);
+    box-shadow: 0px 0px 7px  rgba(206,184,136,1);
+    background-color: rgba(92,171,176,1);
+
+    /* centers the inner arrow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow--inner {
+    font-size: 200px;
+    padding-bottom: calc(200px / 4);
+
+    animation: rotateArrow 4.5s infinite linear;
+    animation-delay: 1s;
+}
+
+@keyframes rotateArrow {
+    from { transform: rotate(-360deg); }
+    to {transform: rotate(360deg); }
+}
+
+
+.box--text {
+    position: relative;
+    display: inline-block; /* This + text-align in infoU centers the text div  */
+    /* background-color: rgba(207,207,196,1); */
+    background-color: black;
+    /* background-color: red; */
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    /* border: 2px solid red; */
+    /* font-weight: bold; */
+    /* position: absolute;
+    width: 75%;
+    right: calc(50%); */
+    top: calc(10vh + 300px);
+    margin-top: 5vh;
+    width: 50%;
+    /* box-shadow: 0px 0px 5px var(--modal-color); */
+    /* overflow: hidden; */
+
+    /* animation-delay: 1s; */
+
+    animation: fadeInText 5s ease-in;
+}
+
+@keyframes fadeInText {
+    /* 0% {opacity: 1; transform: translateX(0px) scale(1);}
+    90%{opacity: 1;}
+    100% {opacity: 0; transform: translateX(calc(300px - 25px - 12.5px)) scale(0.9);} */
+    0% {opacity: 0;}
+    50%{opacity: 0.75;}
+    100% {opacity: 1;}
+}
+
+.arrowU {
+    font-size: 50px;
+    background-size: contain;
+
+    position: absolute;
+    left: -6.25px;
+    top: -31.25px;
+
+    animation-delay: 1s;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    animation-name: bounceAlphaRLU;
+}
+
 .page1 {
     display: block;
     /* position: fixed; */
@@ -201,17 +361,6 @@ li {
 
 }
 
-.grid0 {
-    transition: transform 1.5s ease-in;
-    z-index: 50;
-    background-color: black;
-}
-.grid1, .grid2 {
-    transition: transform 1.5s ease-in;
-    z-index: 50;
-    background-color: rgba(0,0,0,0);
-}
-
 .grid0-wrapper {
     position: absolute;
     right: -240px;
@@ -225,12 +374,17 @@ li {
 .grid0.open {
     transform: translateX(calc(-120px - 15px));
 }
+
 .grid0 {
     display: grid;
     grid-template-columns: max-content max-content max-content max-content max-content max-content max-content max-content;
     grid-template-rows: max-content max-content max-content max-content max-content max-content max-content max-content max-content max-content;
     grid-gap: 0px;
     /* z-index: 9; */
+
+    transition: transform 1.5s ease-in;
+    z-index: 50;
+    background-color: black;
 }
 
 .grid0__cell {
@@ -247,6 +401,12 @@ li {
 
 @keyframes slideRL {
     100% { right: calc(50% - 120px); }
+}
+
+.grid1, .grid2 {
+    transition: transform 1.5s ease-in;
+    z-index: 50;
+    background-color: rgba(0,0,0,0);
 }
 
 .grid1-wrapper {
@@ -291,6 +451,7 @@ li {
 @keyframes slideLR {
     100% { left: calc(50% - 15px); }
 }
+
 .grid2-wrapper {
     position: absolute;
     right: -240px;
@@ -617,11 +778,11 @@ li {
 }
 
 .centerlineV {
-    border: 2px solid red;
+    border-right: 2px solid red;
 
     position: absolute;
     left: 0px;
-    width: calc(100% / 3 / 2);
+    width: calc(200% / 3);
     height: 100%;
 }
 
@@ -756,12 +917,12 @@ li {
     }
 }
 
-@keyframes bounceAlphaS {
+/* @keyframes bounceAlphaS {
     0% {opacity: 1; transform: translateY(0px) scale(1);}
     25%{opacity: 0; transform: translateY(-10px) scale(0.9);}
     26%{opacity: 0; transform: translateY(10px) scale(0.9);}
     55% {opacity: 1; transform: translateY(0px) scale(1);}
-}
+} */
 
 @keyframes bounceAlphaRL {
     0% {opacity: 1; transform: translateX(0px) scale(1);}
@@ -769,12 +930,21 @@ li {
     26%{opacity: 0; transform: translateX(-10px) scale(0.9);}
     55% {opacity: 1; transform: translateX(0px) scale(1);}
 }
+
+@keyframes bounceAlphaRLU {
+    /* 0% {opacity: 1; transform: translateX(0px) scale(1);}
+    90%{opacity: 1;}
+    100% {opacity: 0; transform: translateX(calc(300px - 25px - 12.5px)) scale(0.9);} */
+    0% {opacity: 1; transform: translateX(0px) scale(1);}
+    90%{opacity: 1;}
+    100% {opacity: 0; transform: translateX(calc(300px - 25px - 12.5px)) scale(0.9);}
+}
+
 @keyframes bounceAlphaUD {
     0% {opacity: 1; transform: translateY(0px) scale(1);}
     25%{opacity: 0; transform: translateY(10px) scale(0.9);}
     26%{opacity: 0; transform: translateY(-10px) scale(0.9);}
     55% {opacity: 1; transform: translateY(0px) scale(1);}
 }
-
 
 
