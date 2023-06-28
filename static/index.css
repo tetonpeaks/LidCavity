@@ -584,7 +584,6 @@ li {
     /* overflow: hidden; */
 
     transition: transform 1.5s ease-in;
-    /* transform: translateX(-90%); */
     transform: translateX(0%);
 }
 
