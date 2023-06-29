@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     var grid0 = document.getElementById('grid0'); // u-momentum
-    console.log(grid0)
     var grid1 = document.getElementById('grid1'); // v-momentum
     var grid2 = document.getElementById('grid2'); // pressure
 
@@ -487,6 +486,13 @@ document.addEventListener("DOMContentLoaded", function () {
         //document.getElementById("close12").addEventListener('click', function() { closeModal() });
         document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
     });
+
+    var grid0_cell0 = document.getElementsByClassName('process--grid0 cell0')[0];
+    var process__grid1 = document.getElementsByClassName('process--grid1')[0];
+
+    grid0_cell0.addEventListener('mouseenter', function(e) {
+        process__grid1.style.display = 'grid';
+    })
 
     function createGrid4(params) {
 
