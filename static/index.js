@@ -493,7 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
     grid0_cell0.addEventListener('mouseenter', function(e) {
         process__grid1.style.display = 'grid';
     })
-    grid0_cell0.addEventListener('touchmove', function(e) {
+    grid0_cell0.addEventListener('pointerenter', function(e) {
         process__grid1.style.display = 'grid';
     })
 
