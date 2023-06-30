@@ -499,8 +499,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var check__wrapper = document.getElementsByClassName('check--wrapper')[0];
     var correct__wrapper = document.getElementsByClassName('correct--wrapper')[0];
     var iterate__wrapper = document.getElementsByClassName('iterate--wrapper')[0];
-    //var check__outer = document.getElementsByClassName('outer');
-    //var check__inner = document.getElementsByClassName('inner');
 
     grid0_cell0.addEventListener('mouseenter', function(e) {
         testline__wrapper.style.display = 'block';
