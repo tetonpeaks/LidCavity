@@ -654,7 +654,7 @@ li {
 
 .iterate--wrapper {
     position: relative;
-    display: -webkit-flex;
+    display: none;
     justify-content: center;
     align-items: center;
     top: calc(10vh + 710px + 150px + 30px + 30px + 30px + 30px + 50px + 30px + 30px);
