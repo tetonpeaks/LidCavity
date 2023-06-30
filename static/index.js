@@ -489,12 +489,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var grid0_cell0 = document.getElementsByClassName('process--grid0 cell0')[0];
     var process__grid1 = document.getElementsByClassName('process--grid1')[0];
+    var process__grid2 = document.getElementsByClassName('process--grid2')[0];
+    var process__grid3 = document.getElementsByClassName('process--grid3')[0];
+    var process__grid4 = document.getElementsByClassName('process--grid4')[0];
+    var process__grid5 = document.getElementsByClassName('process--grid5')[0];
+    var testline__wrapper = document.getElementsByClassName('testline--wrapper')[0];
+    var mdot__wrapper = document.getElementsByClassName('mdot--wrapper')[0];
+    var P__wrapper = document.getElementsByClassName('P--wrapper')[0];
+    var check__wrapper = document.getElementsByClassName('check--wrapper')[0];
+    var correct__wrapper = document.getElementsByClassName('correct--wrapper')[0];
+    var iterate__wrapper = document.getElementsByClassName('iterate--wrapper')[0];
+    //var check__outer = document.getElementsByClassName('outer');
+    //var check__inner = document.getElementsByClassName('inner');
 
     grid0_cell0.addEventListener('mouseenter', function(e) {
+        testline__wrapper.style.display = 'block';
         process__grid1.style.display = 'grid';
+
+        process__grid1.addEventListener('mouseenter', function(e) {
+            mdot__wrapper.style.display = 'flex';
+
+            process__grid2.addEventListener('mouseenter', function(e) {
+                P__wrapper.style.display = 'flex';
+
+                process__grid3.addEventListener('mouseenter', function(e) {
+                    check__wrapper.style.display = 'flex';
+
+                    process__grid4.addEventListener('mouseenter', function(e) {
+                        correct__wrapper.style.display = 'flex';
+
+                        process__grid5.addEventListener('mouseenter', function(e) {
+                            iterate__wrapper.style.display = 'flex';
+                        })
+                    })
+
+
+                })
+            })
+        })
     })
+
     grid0_cell0.addEventListener('pointerenter', function(e) {
-        process__grid1.style.display = 'grid';
+        //process__grid1.style.display = 'grid';
     })
 
     function createGrid4(params) {

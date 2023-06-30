@@ -56,7 +56,7 @@
 
           <div class="example12" id="example12"></div>
 
-          <div class="process--text" id="process--text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.></div>
+          <div class="process--text" id="process--text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 
           <div class="process--wrapper0" id="process--wrapper0">
             <div class="process--grid0" id="process--grid0">
@@ -64,10 +64,63 @@
             </div>
           </div>
 
-          <div class="process--wrapper1" id="process--wrapper1">
-            <div class="process--grid1" id="process--grid1">
-              <div class="process--grid1 cell0" id="process--grid1 cell0">Find horizontal component of velocity field, <b><i>u</i></b></div>
-              <div class="process--grid1 cell1" id="process--grid1 cell1">Find vertical component of velocity field, <b><i>v</i></b></div>
+          <div class="testline--wrapper" id="testline--wrapper">
+            <div class="process--wrapper1" id="process--wrapper1">
+              <div class="testline R" id="testline R"></div>
+              <div class="testline L" id="testline L"></div>
+              <div class="process--grid1" id="process--grid1">
+                <div class="process--grid1 cell0" id="process--grid1 cell0">Find horizontal component of velocity field, <b><i>u</i></b></div>
+                <div class="process--grid1 cell1" id="process--grid1 cell1">Find vertical component of velocity field, <b><i>v</i></b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mdot--wrapper" id="mdot--wrapper">
+            <div class="mdot R" id="mdot R"></div>
+            <div class="mdot L" id="mdot L"></div>
+            <div class="process--grid2" id="process--grid2">
+              <div class="process--grid2 cell0" id="process--grid2 cell0">Find the mass flow rates, <b><i>F<sub>u</sub></i></b> and <b><i>F<sub>v</sub></i></b>, using <b><i>u</i></b> and <b><i>v</i></b></div>
+            </div>
+          </div>
+
+          <div class="P--wrapper" id="P--wrapper">
+            <div class="P R" id="P R"></div>
+            <div class="P L" id="P L"></div>
+            <div class="process--grid3" id="process--grid3">
+              <div class="process--grid3 cell0" id="process--grid3 cell0">Find the pressure, <b><i>p</i></b>, using the pressure correction equation<b><i>u</i></b> and <b><i>v</i></b></div>
+            </div>
+          </div>
+
+          <div class="check--wrapper" id="check--wrapper">
+            <div class="box--check" id="box--check"></div>
+            <div class="arrow L" id="arrow L">&#x25C0;</div>
+            <div class="arrow R" id="arrow R">&#x25B6;</div>
+            <div class="check R" id="check R"></div>
+            <div class="check L" id="check L"></div>
+            <div class="process--grid4" id="process--grid4">
+              <div class="process--grid4 cell0" id="process--grid4 cell0">Check continuity and momentum residuals</div>
+            </div>
+          </div>
+
+          <div class="correct--wrapper" id="correct--wrapper">
+            <div class="correct R" id="correct R"></div>
+            <div class="correct L" id="correct L"></div>
+            <div class="process--grid5" id="process--grid5">
+              <p class="process--grid5 cell0" id="process--grid5 cell0">Correct
+                <b><i>u</i></b>, <b><i>v</i></b>, and <b><i>p</i></b> using<br>
+                <b><i>u</i></b> = <b><i>u<sup>*</sup></i></b> + <b><i>u<sup>'</sup></i></b><br>
+                <b><i>v</i></b> = <b><i>v<sup>*</sup></i></b> + <b><i>v<sup>'</sup></i></b><br>
+                <b><i>p</i></b> = <b><i>p<sup>*</sup></i></b> + <b><i>p<sup>'</sup></i></b></p>
+            </div>
+          </div>
+
+          <div class="iterate--wrapper" id="iterate--wrapper">
+            <div class="box--iterate" id="box--iterate"></div>
+            <div class="arrow1 R" id="arrow1 R">&#x25B6;</div>
+            <div class="iterate R" id="iterate R"></div>
+            <div class="iterate L" id="iterate L"></div>
+            <div class="process--grid6" id="process--grid6">
+              <div class="process--grid6 cell0" id="process--grid6 cell0">Iterate until all residuals meet tolerances</div>
             </div>
           </div>
 
