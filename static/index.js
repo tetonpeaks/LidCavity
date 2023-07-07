@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var grid1 = document.getElementById('grid1'); // v-momentum
     var grid2 = document.getElementById('grid2'); // pressure
 
+    var axesArrows = document.getElementsByClassName('arrows');
+    var axesText = document.getElementsByClassName('text');
+
     document.documentElement.style.setProperty('--blinkingBackground0', 'blinkingBackground0 2s infinite ');
     document.documentElement.style.setProperty('--blinkingBackground1', 'blinkingBackground1 2s infinite ');
     document.documentElement.style.setProperty('--blinkingBackground2', 'blinkingBackground2 2s infinite ');
@@ -41,10 +44,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     };
 
+    var grid0_wrapper = document.getElementsByClassName('grid0-wrapper')[0];
+
     var el = document.getElementById('example12');
     var info0 = document.getElementById('example12 info0');
     var info1 = document.getElementById('example12 info1');
     var info2 = document.getElementById('example12 info2');
+
+    var disc = document.getElementsByClassName('discretization');
 
     var modals = {
         el: el,
@@ -75,6 +82,39 @@ document.addEventListener("DOMContentLoaded", function () {
         modals.grid0.classList.remove('open');
         modals.grid1.classList.remove('open');
         modals.grid2.classList.remove('open');
+        axesArrows[0].classList.remove('open');
+        axesArrows[1].classList.remove('open');
+        axesArrows[2].classList.remove('open');
+        axesText[0].classList.remove('open');
+        axesText[1].classList.remove('open');
+        document.documentElement.style.setProperty('--animation-axes', 'fadeOutText1 1.5s ease-out');
+        document.documentElement.style.setProperty('--animation-textU', 'fadeOutTextU 1.5s ease-out');
+        document.documentElement.style.setProperty('--animation-textV', 'fadeOutTextV 1.5s ease-out');
+        document.documentElement.style.setProperty('--animation-borderL', 'fadeOutBorderL 1.5s ease-out');
+        document.documentElement.style.setProperty('--animation-borderBL', 'fadeOutBorderBL 1.5s ease-out');
+        document.documentElement.style.setProperty('--animation-borderB', 'fadeOutBorderB 1.5s ease-out');
+        document.documentElement.style.setProperty('--animation-info0', 'fadeOutText1 1.5s ease-out');
+        document.documentElement.style.setProperty('--animation-info1', 'fadeOutText1 1.5s ease-out');
+        document.documentElement.style.setProperty('--animation-info2', 'fadeOutText1 1.5s ease-out');
+        document.documentElement.style.setProperty('--animation-grid0', 'fadeInGrid0 1.5s ease-out');
+
+        /* setTimeout(() => {
+            grid0.children[57].style = `border-bottom: 2px solid rgba(207,207,196,1);`;
+        }, 1500) */
+
+        var i = 1;
+        Array.prototype.forEach.call(info1.children, function(child) {
+            setTimeout(function() {
+                child.classList.remove("visible");
+            }, 50*i)
+        }, i++)
+
+        var i = 1;
+        Array.prototype.forEach.call(info2.children, function(child) {
+            setTimeout(function() {
+                child.classList.remove("visible");
+            }, 50*i)
+        }, i++)
 
         setTimeout(() => {
             modals.el.innerHTML = '';
@@ -82,11 +122,26 @@ document.addEventListener("DOMContentLoaded", function () {
             modals.info0.style.visibility = 'hidden';
             modals.info1.style.visibility = 'hidden';
             modals.info2.style.visibility = 'hidden';
+            axesArrows[0].style.visibility = 'hidden';
+            axesArrows[1].style.visibility = 'hidden';
+            axesArrows[2].style.visibility = 'hidden';
+            axesText[0].style.visibility = 'hidden';
+            axesText[1].style.visibility = 'hidden';
+            grid0.children[48].style = `border-left: 1px dashed rgba(207,207,196,1);
+                box-shadow: inset var(--box-shadow1) 0 var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,0);
+            `;
+            grid0.children[56].style = `border-left: 1px dashed rgba(207,207,196,1);
+                border-bottom: 1px dashed rgba(207,207,196,1);
+                box-shadow: var(--box-shadow1) var(--box-shadow0) var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,0);
+            `;
+            grid0.children[57].style = `border-bottom: 1px dashed rgba(207,207,196,1);
+                box-shadow: inset 0 var(--box-shadow0) var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,0);
+            `;
         }, 1500)
+
     };
 
     document.getElementById('grid0__cell49').addEventListener('click', function(e) {
-        //el.addEventListener('click', function(e) {
 
         let lengths = cls_info.map(a => a.length);
         let idx = lengths.indexOf(Math.max(...lengths));
@@ -124,18 +179,18 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-
         modals.info0.style.visibility = (modals.info0.style.visibility == "visible") ? "hidden" : "visible";
         if (modals.info0.style.visibility == "hidden") { modals.info0.style.visibility = "visible" }
 
         if (!modals.el.classList.contains('open')) { modals.el.classList.add('open') }
-
 
         modals.el.classList.add('open');
         modals.grid0.classList.add('open');
         modals.grid1.classList.add('open');
         modals.grid2.classList.add('open');
         modals.info0.classList.add('open');
+
+        document.documentElement.style.setProperty('--animation-grid0', 'fadeOutGrid0 1.5s ease-in-out');
 
         document.documentElement.style.setProperty('--modal-color', 'rgba(207,207,196,1)');
         document.documentElement.style.setProperty('--info0-color', 'rgba(207,207,196,0.25)');
@@ -171,6 +226,9 @@ document.addEventListener("DOMContentLoaded", function () {
             createGrid4( {id: 'P', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
             modals.el.style.visibility = (modals.el.style.visibility == "visible") ? "hidden" : "visible";
             modals.el.classList.add('open');
+
+            toggleAxes();
+            toggleInfo( {id: 'P'} );
         } else if (w.length === 0 && n.length > 0) {
             let labels = ['wH','eH'];
             let innerHTML = `
@@ -183,6 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
 
             createGrid4( {id: 'P', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+            toggleInfo( {id: 'P'} );
         } else if (n.length === 0 && w.length > 0) {
             let labels = ['nV','sV'];
             let innerHTML = `
@@ -193,12 +252,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="circle small s">v<sub><sub>s</sub></sub></div>
                 `;
 
-                createGrid4( {id: 'P', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+            createGrid4( {id: 'P', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+            toggleInfo( {id: 'P'} );
         } else {
             let labels = [];
             let innerHTML = `<div class="gridP" id="gridP"></div>`;
 
             createGrid4( {id: 'P', label: labels, innerHTML: innerHTML, color: [`rgba(207,207,196,1)`,`rgba(119,221,119,1)`,`rgba(119,158,203,1)`], animation: [`animation-name: bounceAlphaRL`, `animation-name: bounceAlphaUD`]} );
+            toggleInfo( {id: 'P'} );
         }
 
         document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
@@ -292,6 +353,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 left: 50%;
                 transform: translate(0%, -50%);
                 background-color: rgba(119,221,119,0.4)`;
+
+            toggleAxes();
+            toggleInfo( {id: 'u'} );
             } else if (ee.length === 0 && (e_.length > 0)) {
                 let labels = ['eeH','nneH','sseH'];
                 let innerHTML = `
@@ -312,7 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     left: 50%;
                     transform: translate(0%, -50%);
                     background-color: rgba(119,221,119,0.4)`;
-
+                toggleInfo( {id: 'u'} );
             } else if (ee.length === 0 && nn.length > 0) {
                 let labels = ['wH','eH','eeH','nneH','sseH'];
                 let innerHTML = `
@@ -337,8 +401,53 @@ document.addEventListener("DOMContentLoaded", function () {
                     left: 50%;
                     transform: translate(0%, -50%);
                     background-color: rgba(119,221,119,0.4)`;
-
+                toggleInfo( {id: 'u'} );
             }
+
+            var i = 1;
+            console.log(info2.children)
+            Array.prototype.forEach.call(info2.children, function(child) {
+                setTimeout(function() {
+                    child.classList.add("visible");
+                }, 500*i)
+            }, i++)
+
+            /* for (let i = 0; i < info2.children.length; i++) {
+                info2.children[i].style.visibility = 'visible';
+                info2.children[i].style.opacity = '0';
+            }
+            document.documentElement.style.setProperty('--animation-info-steps', 'fadeInInfo 3s ease-in');
+            setTimeout(() => {
+            for ( var i = 0; i < info2.children.length; i++) {
+                var j = i;
+                        info2.children[j].style.opacity = '1';
+                    }
+            }, 3000) */
+            /* setTimeout(() => {
+                    info2.children[6].style.opacity = '1';
+            }, 3000) */
+
+            /* info2.children[5].style.visibility = 'visible';
+            info2.children[5].style.opacity = '0';
+            disc[0].style.visibility = 'visible';
+            disc[0].style.opacity = '0';
+            document.documentElement.style.setProperty('--animation-info-steps', 'fadeInInfo 3s ease-in');
+            info2.children[5].style.opacity = '1';
+            disc[0].style.opacity = '1'; */
+
+            //setTimeout(() => {
+            //    disc[0].style.visibility = 'visible';
+            //    disc[0].style.opacity = '0';
+            //}, 3000)
+            console.log(disc[0].style)
+            //disc[0].style.visibility = 'visible';
+            //setTimeout(() => {
+            //    console.log('hi from setTimout')
+                //disc.style.visibility = 'visible';
+                //document.documentElement.style.setProperty('--animation-info-steps', 'fadeInInfo 2s ease-in -s');
+            //}, 5000);
+            //disc.style.cssText = 'opacity: 1; font-size: 4px; animation: var(--animation-info-steps);'
+
 
         document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
     });
@@ -432,6 +541,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 transform: translate(-50%, 0%);
                 background-color: rgba(119,158,203,0.4)
             `;
+
+            toggleAxes();
+            toggleInfo( {id: 'v'} );
         } else if (nn.length === 0 && n.length > 0) {
             let labels = ['nnV','nwwV','neeV'];
             let innerHTML = `
@@ -454,6 +566,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 transform: translate(-50%, 0%);
                 background-color: rgba(119,158,203,0.4)
             `;
+            toggleInfo( {id: 'v'} );
         } else if (nn.length === 0 && ee.length > 0) {
             let labels = ['nV','sV','nnV','nwwV','neeV'];
             let innerHTML = `
@@ -480,8 +593,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 transform: translate(-50%, 0%);
                 background-color: rgba(119,158,203,0.4)
             `;
-
+            toggleInfo( {id: 'v'} );
         }
+
+        var i = 1;
+        Array.prototype.forEach.call(info1.children, function(child) {
+            setTimeout(function() {
+                child.classList.add("visible");
+            }, 500*i)
+        }, i++)
 
         //document.getElementById("close12").addEventListener('click', function() { closeModal() });
         document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
@@ -582,6 +702,50 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('grid4__cell4').style.backgroundColor = `rgba(207,207,196,0.35)`;
         }
     };
+
+    function toggleAxes() {
+        axesArrows[0].classList.add('open'); axesArrows[1].classList.add('open'); axesArrows[2].classList.add('open');
+        document.documentElement.style.setProperty('--animation-axes', 'fadeInText1 1.5s ease-in');
+        //document.documentElement.style.setProperty('--animation-U', 'fadeInU 1.5s ease-in');
+        axesArrows[0].style.visibility = 'visible'; axesArrows[1].style.visibility = 'visible'; axesArrows[2].style.visibility = 'visible';
+
+        axesText[0].classList.add('open'); axesText[1].classList.add('open');
+        document.documentElement.style.setProperty('--animation-textU', 'fadeInTextV 1.5s ease-in');
+        document.documentElement.style.setProperty('--animation-textV', 'fadeInTextV 1.5s ease-in');
+        axesText[0].style.visibility = 'visible'; axesText[1].style.visibility = 'visible';
+
+        document.documentElement.style.setProperty('--animation-borderL', 'fadeInBorderL 1.5s ease-in');
+        document.documentElement.style.setProperty('--animation-borderBL', 'fadeInBorderBL 1.5s ease-in');
+        document.documentElement.style.setProperty('--animation-borderB', 'fadeInBorderB 1.5s ease-in');
+        setTimeout(() => {
+            grid0.children[48].style = `border-left: 2px solid rgba(207,207,196,1);
+                box-shadow: inset var(--box-shadow1) 0 var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,1);`;
+            grid0.children[56].style = `border-left: 2px solid rgba(207,207,196,1);
+                border-bottom: 2px solid rgba(207,207,196,1);
+                box-shadow: inset var(--box-shadow1) var(--box-shadow0) var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,1);
+            `;
+            grid0.children[57].style = `border-bottom: 2px solid rgba(207,207,196,1);
+                box-shadow: inset 0 var(--box-shadow0) var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,1);`;
+        }, 1500)
+
+    }
+
+    function toggleInfo(params) {
+        switch(params.id) {
+            case 'P':
+                console.log(params.id)
+                document.documentElement.style.setProperty('--animation-info0', 'fadeInText1 1.5s ease-in');
+                break;
+            case 'v':
+                console.log(params.id)
+                document.documentElement.style.setProperty('--animation-info1', 'fadeInText1 1.5s ease-in');
+                break;
+            case 'u':
+                console.log(params.id)
+                document.documentElement.style.setProperty('--animation-info2', 'fadeInText1 1.5s ease-in');
+                break;
+        }
+    }
 });
 
 function createGrid(input) {
@@ -603,9 +767,11 @@ function createGrid(input) {
 
         if (arrR.includes(i)) {
             div.style.borderWidth = `${width}px 0 ${width}px ${width}px`; // removes R
+            //console.log(i)
         }
 
         if (arrC.includes(i) && i !== element[0]) {
+            //console.log(i)
             div.style.borderWidth = `${width}px ${width}px 0 ${width}px`; // removes B
         }
 

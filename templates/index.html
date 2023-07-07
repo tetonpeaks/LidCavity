@@ -38,11 +38,285 @@
             </div>
           </div>
 
-          <div class="box--text" id="box--text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.></div>
+          <div class="box--text" id="box--text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text0">
+              <mfrac>
+                <mi>&part;(&#x03c1;&#x03c6;)</mi>
+                <mi>&part;t</mi>
+              </mfrac>
+              <mi>+</mi>
+              <mi>&#x2207; &sdot; (&#x03c1;V&#x03c6;)</mi>
+              <mi>=</mi>
+              <mi>&#x2207; &sdot; (&#x0393;&#x2207;&#x03c6;)</mi>
+            </math>
+          </div>
 
           <div class="example12 info0" id="example12 info0"></div>
-          <div class="example12 info1" id="example12 info1"></div>
-          <div class="example12 info2" id="example12 info2"></div>
+          <div class="example12 info1" id="example12 info1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step zero">
+              <mi>&#x2207;&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext>(</mtext>
+              <mi>&rho;</mi>
+              <mtext class="vector">V</mtext><mtext>v)</mtext>
+              <mspace width="2px"></mspace>
+              <mi>=</mi>
+              <mi>&#x2207;&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext>(</mtext>
+              <mi>&mu;&#x2207;</mi>
+              <mtext>v)</mtext>
+              <mspace width="2px"></mspace>
+              <mi>&minus;</mi>
+              <mi>&#x2207;p&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext class="vector">i</mtext>
+              <mspace width="2px"></mspace>
+              <mi>&plus;</mi>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext class="source">S</mtext>
+                <mtext class="source">v</mtext>
+              </msub>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step one">
+              <mtext class="instruct">Apply gradient theorem to</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step three">
+              <mtext class="instruct">
+                y, v momentum balance
+              </mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step two">
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="dV">&#x0394;V</mtext>
+              </munder>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">dV</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="area">A</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">d</mtext>
+              <mtext class="area vector">A</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step three">
+              <mtext class="instruct">Apply divergence theorem</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step four">
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="area">A</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">d</mtext>
+              <mtext class="area vector">A</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <munder>
+                <mi class="integral">&sum;</mi>
+                <mtext class="area">f</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext>p</mtext>
+                <mtext>f</mtext>
+              </msub>
+              <msub>
+                <mtext class="area vector">A</mtext>
+                <mtext>f</mtext>
+              </msub>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step five">
+              <mtext class="instruct">Complete the discretization</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="discretization">
+              <msub>
+                <mtext>a</mtext>
+                <mtext>p</mtext>
+              </msub>
+              <msub>
+                <mtext>v</mtext>
+                <mtext>p</mtext>
+              </msub>
+              <mtext>=</mtext>
+              <munder>
+                <mi class="integral">&sum;</mi>
+                <mtext>nb</mtext>
+              </munder>
+              <msub>
+                <mtext>a</mtext>
+                <mtext>nb</mtext>
+              </msub>
+              <msub>
+                <mtext>v</mtext>
+                <mtext>nb</mtext>
+              </msub>
+              <mtext>&plus;</mtext>
+              <msub>
+                <mtext>(p</mtext>
+                <mtext>s</mtext>
+              </msub>
+              <mtext>&minus;</mtext>
+              <msub>
+                <mtext>p</mtext>
+                <mtext>n)</mtext>
+              </msub>
+              <mtext>&#x0394;x</mtext>
+              <mtext>&plus;</mtext>
+              <msub>
+                <mtext>b</mtext>
+                <mtext>v</mtext>
+              </msub>
+            </math>
+          </div>
+          <div class="example12 info2" id="example12 info2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step zero">
+              <mi>&#x2207;&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext>(</mtext>
+              <mi>&rho;</mi>
+              <mtext class="vector">V</mtext><mtext>u)</mtext>
+              <mspace width="2px"></mspace>
+              <mi>=</mi>
+              <mi>&#x2207;&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext>(</mtext>
+              <mi>&mu;&#x2207;</mi>
+              <mtext>u)</mtext>
+              <mspace width="2px"></mspace>
+              <mi>&minus;</mi>
+              <mi>&#x2207;p&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext class="vector">i</mtext>
+              <mspace width="2px"></mspace>
+              <mi>&plus;</mi>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext class="source">S</mtext>
+                <mtext class="source">u</mtext>
+              </msub>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step one">
+              <mtext>Apply gradient theorem to</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step one">
+              <mtext>x, u momentum balance</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step two">
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="dV">&#x0394;V</mtext>
+              </munder>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">dV</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="area">A</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">d</mtext>
+              <mtext class="area vector">A</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step three">
+              <mtext>Apply divergence theorem</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step four">
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="area">A</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">d</mtext>
+              <mtext class="area vector">A</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <munder>
+                <mi class="integral">&sum;</mi>
+                <mtext class="area">f</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext>p</mtext>
+                <mtext>f</mtext>
+              </msub>
+              <msub>
+                <mtext class="area vector">A</mtext>
+                <mtext>f</mtext>
+              </msub>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step five">
+              <mtext>Complete the discretization</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="discretization">
+              <msub>
+                <mtext>a</mtext>
+                <mtext>p</mtext>
+              </msub>
+              <msub>
+                <mtext>u</mtext>
+                <mtext>p</mtext>
+              </msub>
+              <mtext>=</mtext>
+              <munder>
+                <mi class="integral">&sum;</mi>
+                <mtext>nb</mtext>
+              </munder>
+              <msub>
+                <mtext>a</mtext>
+                <mtext>nb</mtext>
+              </msub>
+              <msub>
+                <mtext>u</mtext>
+                <mtext>nb</mtext>
+              </msub>
+              <mtext>&plus;</mtext>
+              <msub>
+                <mtext>(p</mtext>
+                <mtext>w</mtext>
+              </msub>
+              <mtext>&minus;</mtext>
+              <msub>
+                <mtext>p</mtext>
+                <mtext>e)</mtext>
+              </msub>
+              <mtext>&#x0394;y</mtext>
+              <mtext>&plus;</mtext>
+              <msub>
+                <mtext>b</mtext>
+                <mtext>u</mtext>
+              </msub>
+            </math>
+          </div>
+
+          <div class="arrows U" id="arrows U">
+            <div class="point">&#x25B6;</div>
+            <div class="line"></div>
+            <div class="U"><b><i>U</i></b></div>
+          </div>
+          <div class="arrows X" id="arrows X">&#x25B6;</div>
+          <div class="arrows Y" id="arrows Y">&#x25B2;</div>
+          <div class="text X" id="text X"><b><i class="x">x, </i></b><b><i class="u">u</i></b></div>
+          <div class="text Y" id="text Y"><b><i class="y">y, </i></b><b><i class="v">v</i></b></div>
 
           <div class="grid0-wrapper" id="grid0-wrapper">
             <div class="grid0" id="grid0"></div>
