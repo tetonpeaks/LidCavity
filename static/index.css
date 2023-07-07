@@ -1694,6 +1694,12 @@ mtext {
     /* animation: sweep 2s infinite linear; */
 }
 
+@-webkit-keyframes sweep {
+    100% {
+        top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px);
+        left: calc(0px + (100% / 3 / 2) + 24px + 8px + 8px);
+    }
+}
 @keyframes sweep {
     100% {
         top: calc(40px + (100% / 3 / 2) + 24px + 2px + 12px);
