@@ -68,6 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function closeModals(e) {
         //console.log('Click happened for: ' + e.target.id)
 
+        document.getElementById('grid0__cell49').style.pointerEvents = 'all';
+        document.getElementById('grid1__cell10').style.pointerEvents = 'all';
+        document.getElementById('grid2__cell3').style.pointerEvents = 'all';
+
         modals.info0.classList.remove('slideRight');
         modals.info0.classList.remove('slideLeft');
         modals.info0.classList.remove('open');
@@ -103,14 +107,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 1500) */
 
         var i = 1;
-        Array.prototype.forEach.call(info1.children, function(child) {
+        Array.prototype.forEach.call(modals.info0.children, function(child) {
             setTimeout(function() {
                 child.classList.remove("visible");
             }, 50*i)
         }, i++)
 
         var i = 1;
-        Array.prototype.forEach.call(info2.children, function(child) {
+        Array.prototype.forEach.call(modals.info1.children, function(child) {
+            setTimeout(function() {
+                child.classList.remove("visible");
+            }, 50*i)
+        }, i++)
+
+        var i = 1;
+        Array.prototype.forEach.call(modals.info2.children, function(child) {
             setTimeout(function() {
                 child.classList.remove("visible");
             }, 50*i)
@@ -143,16 +154,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('grid0__cell49').addEventListener('click', function(e) {
 
+        document.getElementById('grid0__cell49').style.pointerEvents = 'none';
+
         let lengths = cls_info.map(a => a.length);
         let idx = lengths.indexOf(Math.max(...lengths));
         //console.log("lengths =", lengths)
         //console.log("lengths.indexOf =", lengths.indexOf(Math.max(...lengths)))
         let length = lengths[idx];
 
-
         //console.log(lengths.reduce((a, b) => a + b, 0))
         let clTotal = lengths.reduce((a, b) => a + b, 0);
-
 
         if (clTotal > 6) {
             let sideModal = cls_info[idx];
@@ -193,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.documentElement.style.setProperty('--animation-grid0', 'fadeOutGrid0 1.5s ease-in-out');
 
         document.documentElement.style.setProperty('--modal-color', 'rgba(207,207,196,1)');
-        document.documentElement.style.setProperty('--info0-color', 'rgba(207,207,196,0.25)');
+        document.documentElement.style.setProperty('--info0-color', 'rgba(207,207,196,0.5)');
 
         let w = document.getElementsByClassName('w');
         let n = document.getElementsByClassName('n');
@@ -262,10 +273,19 @@ document.addEventListener("DOMContentLoaded", function () {
             toggleInfo( {id: 'P'} );
         }
 
+        var i = 1;
+            Array.prototype.forEach.call(modals.info0.children, function(child) {
+                setTimeout(function() {
+                    child.classList.add("visible");
+                }, 500*i)
+            }, i++)
+
         document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
     });
 
     document.getElementById("grid1__cell10").addEventListener('click', function(e) {
+
+        document.getElementById('grid1__cell10').style.pointerEvents = 'none';
 
         let lengths = cls_info.map(a => a.length);
         let idx = lengths.indexOf(Math.max(...lengths));
@@ -405,54 +425,18 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             var i = 1;
-            console.log(info2.children)
-            Array.prototype.forEach.call(info2.children, function(child) {
+            Array.prototype.forEach.call(modals.info2.children, function(child) {
                 setTimeout(function() {
                     child.classList.add("visible");
                 }, 500*i)
             }, i++)
 
-            /* for (let i = 0; i < info2.children.length; i++) {
-                info2.children[i].style.visibility = 'visible';
-                info2.children[i].style.opacity = '0';
-            }
-            document.documentElement.style.setProperty('--animation-info-steps', 'fadeInInfo 3s ease-in');
-            setTimeout(() => {
-            for ( var i = 0; i < info2.children.length; i++) {
-                var j = i;
-                        info2.children[j].style.opacity = '1';
-                    }
-            }, 3000) */
-            /* setTimeout(() => {
-                    info2.children[6].style.opacity = '1';
-            }, 3000) */
-
-            /* info2.children[5].style.visibility = 'visible';
-            info2.children[5].style.opacity = '0';
-            disc[0].style.visibility = 'visible';
-            disc[0].style.opacity = '0';
-            document.documentElement.style.setProperty('--animation-info-steps', 'fadeInInfo 3s ease-in');
-            info2.children[5].style.opacity = '1';
-            disc[0].style.opacity = '1'; */
-
-            //setTimeout(() => {
-            //    disc[0].style.visibility = 'visible';
-            //    disc[0].style.opacity = '0';
-            //}, 3000)
-            console.log(disc[0].style)
-            //disc[0].style.visibility = 'visible';
-            //setTimeout(() => {
-            //    console.log('hi from setTimout')
-                //disc.style.visibility = 'visible';
-                //document.documentElement.style.setProperty('--animation-info-steps', 'fadeInInfo 2s ease-in -s');
-            //}, 5000);
-            //disc.style.cssText = 'opacity: 1; font-size: 4px; animation: var(--animation-info-steps);'
-
-
         document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
     });
 
     document.getElementById("grid2__cell3").addEventListener('click', function(e) {
+
+        document.getElementById('grid2__cell3').style.pointerEvents = 'none';
 
         let lengths = cls_info.map(a => a.length);
         let idx = lengths.indexOf(Math.max(...lengths));
@@ -597,7 +581,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         var i = 1;
-        Array.prototype.forEach.call(info1.children, function(child) {
+        Array.prototype.forEach.call(modals.info1.children, function(child) {
             setTimeout(function() {
                 child.classList.add("visible");
             }, 500*i)

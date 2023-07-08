@@ -1409,102 +1409,15 @@ li {
 }
 
 .example12.info0.open, .example12.info1.open, .example12.info2.open {
-    transform: translateY(calc(240px + 30px));
+    transform: translateY(calc(240px + 30px + 0px));
 }
 
 .example12.info0.slideLeft, .example12.info1.slideLeft, .example12.info2.slideLeft {
-    transform: translate(calc(-240px - 15px), calc(240px + 30px));
+    transform: translate(calc(-240px - 15px), calc(240px + 30px + 30px));
 }
 
 .example12.info0.slideRight, .example12.info1.slideRight, .example12.info2.slideRight {
-    transform: translate(calc(240px + 15px), calc(240px + 30px));
-}
-
-.text1, .text2, .discretization {
-    margin-top: 10px;
-}
-
-
-mi {
-    font-size: 14px;
-    font-style: italic;
-    font-family: 'latinmodern-math-1959';
-}
-
-mtext {
-    font-size: 14px;
-    font-style: italic;
-}
-
-.instruct {
-    font-style: normal;
-}
-
-.text1.step.zero, .text1.step.one, .text1.step.two, .text1.step.three, .text1.step.four, .text1.step.five {
-    opacity: 0;
-    transition: 2s opacity;
-}
-
-.text1.step.zero.visible, .text1.step.one.visible, .text1.step.two.visible, .text1.step.three.visible, .text1.step.four.visible, .text1.step.five.visible {
-    opacity: 1;
-}
-
-.text2.step.zero, .text2.step.one, .text2.step.two, .text2.step.three, .text2.step.four, .text2.step.five {
-    opacity: 0;
-    transition: 2s opacity;
-}
-
-.text2.step.zero.visible, .text2.step.one.visible, .text2.step.two.visible, .text2.step.three.visible, .text2.step.four.visible, .text2.step.five.visible {
-    opacity: 1;
-}
-
-.discretization {
-    opacity: 0;
-    transition: 2s opacity;
-    font-size: 4px;
-}
-
-.discretization.visible {
-    opacity: 1;
-}
-
-@-webkit-keyframes fadeInInfo {
-    0% { opacity: 0; }
-    90% { opacity: 0.1; }
-    100% { opacity: 1; }
-}
-
-@keyframes fadeInInfo {
-    0% { opacity: 0; }
-    90% { opacity: 0.1; }
-    100% { opacity: 1; }
-}
-
-.vector {
-    font-style: italic;
-    font-weight: bold;
-}
-
-.source {
-    font-style: italic;
-}
-
-.area, .dV {
-    font-size: 12px;
-    font-style: normal;
-}
-
-.area.vector {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.integral {
-    font-size: 24px;
-}
-
-.diff {
-    font-style: italic;
+    transform: translate(calc(240px + 15px), calc(240px + 30px + 30px));
 }
 
 .example12.info0 {
@@ -1512,14 +1425,14 @@ mtext {
     z-index: 50;
     right: calc(50% - 120px);
     width: 240px;
-    height: 240px;
+    height: calc(240px + 10px);
     background-color: var(--info0-color);
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border: 2px solid var(--modal-color);
+    border: 2px solid var(--info0-color);
     position: absolute;
-    box-shadow: 0px 0px 5px var(--modal-color);
+    box-shadow: 0px 0px 5px var(--info0-color);
     animation: var(--animation-info0);
 
     color: black;
@@ -1536,9 +1449,9 @@ mtext {
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border: 2px solid var(--modal-color);
+    border: 2px solid var(--info1-color);
     position: absolute;
-    box-shadow: 0px 0px 5px var(--modal-color);
+    box-shadow: 0px 0px 5px var(--info1-color);
     animation: var(--animation-info1);
 
     color: black;
@@ -1557,9 +1470,9 @@ mtext {
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border: 2px solid var(--modal-color);
+    border: 2px solid var(--info2-color);
     position: absolute;
-    box-shadow: 0px 0px 5px var(--modal-color);
+    box-shadow: 0px 0px 5px var(--info2-color);
     animation: var(--animation-info2);
 
     color: black;
@@ -1574,6 +1487,105 @@ mtext {
     right: 10px;
 
     z-index: 100;
+}
+
+mi {
+    font-size: 14px;
+    font-style: italic;
+}
+mn {
+    font-size: 14px;
+    font-style: normal;
+}
+
+mtext {
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* .instruct {
+    font-style: normal;
+} */
+
+.text0 {
+    margin-top: 10px;
+}
+
+.text0.step.zero {
+    margin-top: 20px;
+}
+
+.text1, .text2 {
+    margin-top: 10px;
+}
+
+.text0.step.zero, .text0.step.one, .text0.step.two, .text0.step.three, .text0.step.four, .text0.step.five, .text0.step.six {
+    opacity: 0;
+    transition: 2s opacity;
+}
+
+.text0.step.zero.visible, .text0.step.one.visible, .text0.step.two.visible, .text0.step.three.visible, .text0.step.four.visible, .text0.step.five.visible, .text0.step.six.visible {
+    opacity: 1;
+}
+
+.text1.step.zero, .text1.step.one, .text1.step.two, .text1.step.three, .text1.step.four, .text1.step.five, .text1.step.six {
+    opacity: 0;
+    transition: 2s opacity;
+}
+
+.text1.step.zero.visible, .text1.step.one.visible, .text1.step.two.visible, .text1.step.three.visible, .text1.step.four.visible, .text1.step.five.visible, .text1.step.six.visible {
+    opacity: 1;
+}
+
+.text2.step.zero, .text2.step.one, .text2.step.two, .text2.step.three, .text2.step.four, .text2.step.five, .text2.step.six {
+    opacity: 0;
+    transition: 2s opacity;
+}
+
+.text2.step.zero.visible, .text2.step.one.visible, .text2.step.two.visible, .text2.step.three.visible, .text2.step.four.visible, .text2.step.five.visible, .text2.step.six.visible {
+    opacity: 1;
+}
+
+@-webkit-keyframes fadeInInfo {
+    0% { opacity: 0; }
+    90% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInInfo {
+    0% { opacity: 0; }
+    90% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.vector {
+    /* font-style: italic; */
+    font-weight: bold;
+}
+
+.source {
+    font-style: italic;
+}
+
+.area, .dV {
+    font-size: 12px;
+    font-style: normal;
+}
+.f {
+    font-size: 12px;
+}
+
+.area.vector {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.integral {
+    font-size: 24px;
+}
+
+.diff {
+    font-style: italic;
 }
 
 .grid3 {
