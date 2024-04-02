@@ -2712,27 +2712,6 @@ def get_pdf():
         print(f"Error retrieving file from S3: {e}")
         # Handle the error, e.g., return an error response or redirect to an error page
 
-@app.route('/test', methods=['GET', 'POST'])
-@cross_origin()
-def test():
-
-    #if current_user.is_authenticated:
-    user_id = 1  # Get the user ID
-    username = 'default user'  # Get the username
-    user = User.query.filter_by(username=username).first()
-
-    print(
-        f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, "
-        f"{bcolors.WARNING}username{bcolors.ENDC}: {username}, ")
-
-    return render_template('index.html',
-                            user_authenticated=True,
-                            username=username
-                            )
-    #else:
-    #    print("Redirect to login")
-    #    return redirect(url_for('login'))
-
 chk_clients = set()
 
 @socketio.on('connect', namespace='/chk')

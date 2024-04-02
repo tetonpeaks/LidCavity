@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
     socketIsUserLoggedIn.on('response', (data) => {
         let obj = JSON.parse(data);
         loggedIn = obj.msg
-        console.log('loggedIn: ', loggedIn)
+        //console.log('loggedIn: ', loggedIn)
     })
 
     // Assume you have a variable loggedIn from the backend indicating the user's login status
