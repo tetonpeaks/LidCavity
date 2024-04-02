@@ -480,7 +480,7 @@ def packDisp(x, y, Np, Nint):
 
 def getSims():
 
-    user_id = 18
+    user_id = 1
     username = 'default user'
 
     #if current_user.is_authenticated:
@@ -2648,7 +2648,7 @@ def index():
 @cross_origin()
 def simulate():
     #if current_user.is_authenticated:
-    user_id = 18
+    user_id = 1
     username = 'default user'
     user = User.query.filter_by(username=username).first()
 
@@ -2700,7 +2700,7 @@ def get_pdf():
 def test():
 
     #if current_user.is_authenticated:
-    user_id = 18  # Get the user ID
+    user_id = 1  # Get the user ID
     username = 'default user'  # Get the username
     user = User.query.filter_by(username=username).first()
 
@@ -2741,7 +2741,7 @@ def chk(message):
     try:
         socketio.sleep(0.5)
 
-        user_id = 18
+        user_id = 1
         username = 'default user'
 
         #if current_user.is_authenticated:
@@ -2793,7 +2793,7 @@ def save(message):
     try:
         socketio.sleep(0.5)
 
-        user_id = 18
+        user_id = 1
         username = 'default user'
 
         #if current_user.is_authenticated:
@@ -3057,7 +3057,7 @@ def retreive(message):
     print("messaga retreive: ", message)
     #if current_user.is_authenticated:
 
-    user_id = 18
+    user_id = 1
     username = 'default user'
 
     try:
@@ -3220,7 +3220,7 @@ def start_fvm(message):
         print("message: ", res)
         main_error = np.asfortranarray(np.ones(1000), dtype='float32')
 
-        user_id = 18
+        user_id = 1
         username = 'default user'
 
         N = int(res['N'])
@@ -3611,7 +3611,7 @@ def genP(message):
         #else:
         #    print("No user is currently authenticated.")
 
-        user_id = 18
+        user_id = 11
         username = 'default user'
 
         res = message
@@ -3733,7 +3733,7 @@ def genS(message):
         #else:
         #    print("No user is currently authenticated.")
 
-        user_id = 18
+        user_id = 1
         username = 'default user'
 
         res = message
