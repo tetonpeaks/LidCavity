@@ -2005,9 +2005,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("grid1__cell10").addEventListener('click', function(e) {
 
         if (isFourthCWriterOff === true) {
-            document.querySelector('.fourth-c-row').style.display = 'flex';
 
             setTimeout(() => {
+                document.querySelector('.fourth-c-row').style.display = 'flex';
                 document.getElementById('fourth-c-wrapper').style.display = 'block';
                 startTypeWriter('fourth-c', 'fourth-c');
 
@@ -2015,7 +2015,21 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.querySelector('.fourth-c-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                 }, 250)
 
-            }, 0)
+                if (isFourthCCWriterOff === true) {
+
+                    setTimeout(() => {
+                        document.querySelector('.fourth-cc-row').style.display = 'flex';
+                        document.getElementById('fourth-cc-wrapper').style.display = 'block';
+                        startTypeWriter('fourth-cc', 'fourth-cc');
+
+                        setTimeout(() => {
+                            document.querySelector('.fourth-cc-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
+                        }, 250)
+
+                    }, 17500 - 5000)
+                }
+
+            }, 500)
         }
 
         grid1.style.opacity = 1; grid2.style.opacity = 1;
@@ -2159,9 +2173,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("grid2__cell3").addEventListener('click', function(e) {
 
         if (isFourthCWriterOff === true) {
-            document.querySelector('.fourth-c-row').style.display = 'flex';
 
             setTimeout(() => {
+                document.querySelector('.fourth-c-row').style.display = 'flex';
                 document.getElementById('fourth-c-wrapper').style.display = 'block';
                 startTypeWriter('fourth-c', 'fourth-c');
 
@@ -2169,7 +2183,21 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.querySelector('.fourth-c-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                 }, 250)
 
-            }, 0)
+                if (isFourthCCWriterOff === true) {
+
+                    setTimeout(() => {
+                        document.querySelector('.fourth-cc-row').style.display = 'flex';
+                        document.getElementById('fourth-cc-wrapper').style.display = 'block';
+                        startTypeWriter('fourth-cc', 'fourth-cc');
+
+                        setTimeout(() => {
+                            document.querySelector('.fourth-cc-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
+                        }, 250)
+
+                    }, 17500 - 5000)
+                }
+
+            }, 500)
         }
 
         grid1.style.opacity = 1; grid2.style.opacity = 1;

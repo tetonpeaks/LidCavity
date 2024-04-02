@@ -464,22 +464,8 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     });
 
-    function changeLabelText(label) {
-        // Change label text as needed
-        if (label === 'P') return 'Pressure';
-        if (label === 'u') return 'Velocity U';
-        if (label === 'v') return 'Velocity V';
-        return label; // Default to the original label if not matched
-    }
-
-    function getLabelColor(index) {
-        var colors = ["red", "blue", "green"]; // Define colors for each label
-        return colors[index % colors.length]; // Return color based on index
-    }
-
     const retreive = document.getElementById("retreive");
     const ddMenu = document.getElementById("dd-menu");
-    const dropdown = document.querySelector('.dropdown');
 
     retreive.addEventListener('mouseover', () => {
 
@@ -489,9 +475,6 @@ document.addEventListener("DOMContentLoaded", function () {
             //console.log('Client connected to /load')
         })
 
-        /* socket.emit('message', {
-            flag: 'simnames',
-        }) */
 
         socket.on('response', (data) => {
 
@@ -500,18 +483,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (simnames != null) {
 
-                //simnames = simnames.slice(-(simnames.length-1)) /* Commented Fe. 21 2024 1603 */
-
-                //if (Array.isArray(simnames)) {
-                //    //console.log("simnames: ", simnames, "simnames.length: ",
-                //    //    simnames.length, "slice", simnames.slice(-(simnames.length-1)))
-                //    simnames = simnames.slice(-(simnames.length-1))
-                //} else {
-                //    console.error('simnames is not an array')
-                //}
-                //console.log(simnames)
-
-                // Function to populate the ul with the array of items
+                // populate the ul with the array of items
                 function populateList() {
                     ddMenu.style.opacity = 1;
 
@@ -543,7 +515,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add mouseleave event listener to btn5 to hide dropdown
     retreive.addEventListener("mouseleave", function(e) {
         console.log('in retreive mouseleave')
-        // Check if the mouse cursor leaves btn5 from top, left, or right
+        // check if the mouse cursor leaves btn5 from top, left, or right
         const rect = retreive.getBoundingClientRect();
         if (
             e.clientX < rect.left || // left
@@ -568,8 +540,7 @@ document.addEventListener("DOMContentLoaded", function () {
             simname = prompt('Please specify a name for the simulation: ', simname)
         } else {
             simname = prompt('Please specify a name for the simulation: ', simname)
-            //simname = document.querySelector('#save').value;
-            //document.querySelector('#save').value = simname
+
         }
 
         var edata;
@@ -578,7 +549,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (simname !== null) {
             console.log('simname: ', simname)
-            //let socket4 = new WebSocket(webSocketUri4);
             const socket = io.connect('/chk');
 
             socket.on('connect', () => {
@@ -602,14 +572,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 console.log("edata: ", edata)
 
-                /* Check if simulation already exists in DB */
+                /* check if simulation already exists in DB */
                 exists = edata.chk;
                 if (exists === true) {
                     newname = prompt(`The simulation already exists. Would you like to update ${simname}?`, simname)
-                    //newname = prompt(edata.msg, simname)
                     if (newname !== simname) {
                         simname = newname
-                        //console.log('simname: ', simname)
                         document.querySelector('#save').value = newname
                     }
                 }
@@ -638,86 +606,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     let msg = obj.msg;
 
-                    console.log('msg: ', msg)
-
                     window.alert(msg)
-
-                    //window.scrollTo(0, document.body.scrollTop);
-                    //window.scrollTo(0, document.body.scrollHeight);
-                    //window.scrollTo(0, document.body.scrollIntoView);
-                    //clearInterval(statusInterval);
-                    //heroForm.style = 'background-color: rgba(10, 10, 10, 0.85);'
 
                     document.documentElement.style.setProperty('--animation4', '');
                     document.documentElement.style.setProperty('--bgcolor4', '#CEB888');
-                    //heroForm.style = 'background-color: rgba(10, 10, 10, 0.85);'
                 })
             });
-
-            //socket4.onmessage = function(e) {
-            //    edata = JSON.parse(e.data);
-//
-            //    /* Check if simulation already exists in DB */
-            //    exists = edata.chk;
-            //    if (exists === true) {
-            //        newname = prompt(edata.msg, simname)
-            //        if (newname !== simname) {
-            //            simname = newname
-            //            document.querySelector('#save').value = newname
-            //        }
-            //    }
-            //    //console.log("exists: ", exists, "simname: ", simname, "newname: ", newname)
-//
-            //    /* Save or update the simulation in the DB */
-            //    let socket5 = new WebSocket(webSocketUri5);
-            //    socket5.onopen = function() {
-            //        console.log(":: Connected to Socket 5 ::");
-//
-            //        document.documentElement.style.setProperty('--bgcolor0', '#04b0ee');
-//
-            //        socket5.send(JSON.stringify(
-            //            {
-            //                flag: '/* saveupdate */',
-            //                U: U,
-            //                Re: Re,
-            //                N: N,
-            //                Np: Np,
-            //                simname: simname,
-            //                newname: simname,
-            //                newData: newData,
-            //                exists: exists,
-            //            }
-            //        ));
-//
-            //        socket5.onmessage = function(e) {
-            //            let obj = JSON.parse(e.data);
-            //            console.log(obj)
-            //            window.alert(obj.msg)
-            //        }
-//
-            //        socket5.onclose = function() {
-            //            console.log('Closed Socket 5');
-            //            heroForm.style = 'background-color: rgba(10, 10, 10, 0.85);'
-//
-            //        };
-            //    }
-            //};
-
-            /* socket4.onclose = function() {
-                console.log('Closed Socket 4');
-
-                window.scrollTo(0, document.body.scrollTop);
-                //window.scrollTo(0, document.body.scrollHeight);
-                //window.scrollTo(0, document.body.scrollIntoView);
-                //clearInterval(statusInterval);
-                heroForm.style = 'background-color: rgba(10, 10, 10, 0.85);'
-
-                document.documentElement.style.setProperty('--animation4', '');
-                document.documentElement.style.setProperty('--bgcolor4', '#CEB888');
-                //document.documentElement.style.setProperty('--animation1', 'rotate 2s infinite linear');
-                //document.getElementById("uv").disabled = false;
-
-            }; */
         }
 
     });
