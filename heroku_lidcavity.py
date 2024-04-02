@@ -2729,14 +2729,10 @@ def test():
 
         playlist_id = '7ewC7h76BY0b43C30iHzFF'
 
-        return render_template('gptGrid.html',
+        return render_template('index.html',
                                user_authenticated=current_user.is_authenticated,
                                username=username
                                )
-        #if (user_login_status == True):
-        #    return render_template('gptGrid.html')
-        #else:
-        #    return redirect(url_for('login'))
     else:
         print("Redirect to login")
         return redirect(url_for('login'))
