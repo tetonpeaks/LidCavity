@@ -3611,7 +3611,7 @@ def genP(message):
         #else:
         #    print("No user is currently authenticated.")
 
-        user_id = 11
+        user_id = 1
         username = 'default user'
 
         res = message
