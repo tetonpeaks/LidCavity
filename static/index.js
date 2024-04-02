@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Assume you have a variable loggedIn from the backend indicating the user's login status
     //const loggedIn = {{ loggedIn|default(False)|lower }};
 
-    loginButton.addEventListener('click', function() {
+    /* loginButton.addEventListener('click', function() {
         // Perform logout logic, e.g., redirect to the logout route
 
         const socketLogout = io.connect('/logout')
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Update the button text and behavior based on the user's login status
-    loginButton.innerHTML = `Logout`;
+    loginButton.innerHTML = `Logout`; */
 
     // Assuming login success, you can enable the buttons
     function enableButtons() {
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
     addHoverAndFocusStyles(welcomeLi);
     addHoverAndFocusStyles(homeButton);
     addHoverAndFocusStyles(simulateButton);
-    addHoverAndFocusStyles(loginButton);
+    //addHoverAndFocusStyles(loginButton);
 
     const logoSim = document.querySelector('.logo-sim');
     const ddCFD = document.querySelector('.dropdown-CFD');
