@@ -1820,7 +1820,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     document.querySelector('.fourth-d-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                 }, 250)
 
-                            }, 10000 - 5000)
+                            }, 10000 - 3000)
                         }
                     }, 17000 - 7000)
                 }
@@ -3041,7 +3041,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         setTimeout(() => {
                             document.querySelector('.shit-b-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                         }, 250)
-                    }, 2000)
+                    }, 4000)
                 }
             }
 
@@ -4074,7 +4074,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             document.querySelector('.techstack-b-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                         }, 100)
 
-                    }, 11000)
+                    }, 11000 - 3000)
                 }
             }
         }
