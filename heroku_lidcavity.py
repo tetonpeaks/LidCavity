@@ -512,9 +512,9 @@ def getDataV(simname):
     """ retreive u and v velocities from DB """
     #stmt = select(Velocity).filter_by(simname=simname)
     #rows = session.execute(stmt)
-
     rows = session.query(Velocity).filter_by(simname=simname)
     rows = rows.all()
+    print("SIMNAME: ", simname, "rows: ", rows)
 
     N = int(len(rows) - 1)
     #print(f"{bcolors.WARNING} len(rows) {len(rows)} :: N {N} {bcolors.ENDC}")
