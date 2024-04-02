@@ -1156,7 +1156,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                                 }
                                             }, 3000)
                                         }
-                                    }, 12000 - 5000)
+                                    }, 12000 - 4000)
                                 }
                             }, 16500 - 5000)
                         }
@@ -1605,10 +1605,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 //document.getElementById('mid-row').scrollIntoView();
                 //document.getElementById('intro-row').scrollIntoView({ behavior: 'smooth' });
 
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                });
+                //window.scrollTo({
+                //    top: 0,
+                //    behavior: 'smooth',
+                //});
 
                 bottomRow.style.paddingTop = '0rem';
                 bottomRow.style.paddingBottom = '0rem';
@@ -1820,9 +1820,9 @@ document.addEventListener("DOMContentLoaded", function() {
                                     document.querySelector('.fourth-d-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                 }, 250)
 
-                            }, 10000 - 5000)
+                            }, 10000 - 7000)
                         }
-                    }, 17000 - 5000)
+                    }, 17000 - 10000)
                 }
 
             }
