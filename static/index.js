@@ -1820,9 +1820,9 @@ document.addEventListener("DOMContentLoaded", function() {
                                     document.querySelector('.fourth-d-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                 }, 250)
 
-                            }, 10000 - 7000)
+                            }, 10000 - 5000)
                         }
-                    }, 17000 - 10000)
+                    }, 17000 - 7000)
                 }
 
             }
@@ -1858,7 +1858,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             document.querySelector('.fourth-cc-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                         }, 250)
 
-                    }, 17500)
+                    }, 17500 - 15000)
                 }
 
             }, 500)
@@ -2837,7 +2837,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                                                     document.querySelector('.poop-d-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                                                 }, 250)
 
-                                                            }, 2000)
+                                                            }, 3000)
                                                         }
                                                     }, 5500)
                                                 }
