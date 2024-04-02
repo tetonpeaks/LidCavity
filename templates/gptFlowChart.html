@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TV Screen Effect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='gptFlowChart.css') }}">
+</head>
+  <style>
+  </style>
+</head>
+<body>
+
+    <div class="grid-behind">
+        <!-- New grid container (behind) -->
+        <div class="new-grid-container">
+            <div class="new-grid-wrapper" id="new-grid-wrapper">
+                <div class="new-grid-grid0" id="new-grid-grid0">
+                    <div class="new-grid-grid0 cell0" id="new-grid-grid0 cell0"></div>
+                    <div class="new-grid-grid0 cell1" id="new-grid-grid0 cell1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step7-container">
+            <div class="step7-wrapper" id="step7-wrapper">
+                <div class="step7-grid0" id="step7-grid0">
+                    <div class="step7-grid0 cell0" id="step7-grid0 cell0"></div>
+                    <div class="step7-grid0 cell1" id="step7-grid0 cell1"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Existing grid container (in front) -->
+        <!-- ... Your existing grid elements ... -->
+        <div class="grid-container">
+
+            <div class="fourth-row" id="fourth-row">
+                <div class="fourth-wrapper" id="fourth-wrapper">
+                    <div class="fourth-text-container">
+                        <div class="algo-text">
+                            <div>
+                                Guess the pressure field, <i>p</i>, and velocity fields, <i class="process--u">u</i>and <i>v</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1) Replicate this as process--wrapper2 + add padding to process--grid2
+                cells 0 and 1 but preserve what you had with the vertical lines -->
+            <!-- 2) Fix bug where as window is stretched H, the size of grid1, it's
+                it's wrapper, and the left borders move out of position -->
+            <div class="process--wrapper1" id="process--wrapper1">
+                <div class="process--grid1" id="process--grid1">
+                    <div class="process--grid1 cell0" id="process--grid1 cell0"></div>
+                    <div class="process--grid1 cell0NaN" id="process--grid1 cell0NaN"></div>
+                    <div class="process--grid1 cell1" id="process--grid1 cell1"></div>
+                    <div class="process--grid1 cell1NaN" id="process--grid1 cell1NaN"></div>
+                </div>
+            </div>
+
+            <div class="process--wrapper2" id="process--wrapper2">
+                <div class="process--grid2" id="process--grid2">
+                    <div class="process--grid2 cell0" id="process--grid2 cell0">
+                        <!-- fifth-text-container and fifth-text -->
+                        <div class="fifth-text-container">
+                            <div class="fifth-text">
+                                <div>
+                                    Find horizontal component of velocity field, <i>u</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process--grid2 cell1" id="process--grid2 cell1">
+                        <!-- sixth-text-container and sixth-text -->
+                        <div class="fifth-text-container">
+                            <div class="fifth-text">
+                                <div>
+                                    Find vertical component of velocity field, <i>v</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process--wrapper3" id="process--wrapper3">
+                <div class="process--grid3" id="process--grid3">
+                    <div class="process--grid3 cell0" id="process--grid3 cell0"></div>
+                    <div class="process--grid3 cell0NaN" id="process--grid3 cell0NaN"></div>
+                    <div class="process--grid3 cell1" id="process--grid3 cell1"></div>
+                    <div class="process--grid3 cell1NaN" id="process--grid3 cell1NaN"></div>
+                </div>
+            </div>
+
+            <div class="fifth-row" id="fifth-row">
+                <div class="fifth-wrapper" id="fifth-wrapper">
+                    <div class="fifth-text-container">
+                        <div class="algo-text">
+                            <div>
+                                Find the mass flow rates, <i>F<sub>u</sub></i> and <i>F<sub>v</sub></i>, using <i>u</i> and <i>v</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process--wrapper4" id="process--wrapper4">
+                <div class="process--grid4" id="process--grid4">
+                    <div class="process--grid4 cell0" id="process--grid4 cell0"></div>
+                    <div class="process--grid4 cell1" id="process--grid4 cell1"></div>
+                </div>
+            </div>
+
+            <div class="sixth-row" id="sixth-row">
+                <div class="sixth-wrapper" id="sixth-wrapper">
+                    <div class="sixth-text-container">
+                        <div class="algo-text">
+                            <div>
+                                Find the pressure, <i>p</i>, using the pressure correction equation <i>u</i> and <i>v</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process--wrapper5" id="process--wrapper5">
+                <div class="process--grid5" id="process--grid5">
+                    <div class="process--grid5 cell0" id="process--grid5 cell0"></div>
+                    <div class="process--grid5 cell1" id="process--grid5 cell1"></div>
+                </div>
+            </div>
+
+            <div class="seventh-row" id="seventh-row">
+                <div class="seventh-wrapper" id="seventh-wrapper">
+                    <div class="seventh-text-container">
+                        <div class="algo-text">
+                            <div>
+                                Check continuity and momentum balance residuals and compare to tolerances
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process--wrapper6" id="process--wrapper6">
+                <div class="process--grid6" id="process--grid6">
+                    <div class="process--grid6 cell0" id="process--grid6 cell0"></div>
+                    <div class="process--grid6 cell1" id="process--grid6 cell1"></div>
+                </div>
+            </div>
+
+            <div class="eigth-row" id="eigth-row">
+                <div class="eigth-wrapper" id="eigth-wrapper">
+                    <div class="eigth-text-container">
+                        <div class="algo-text">
+                            <div>
+                                <!-- <div> -->
+                                    Correct <i>u</i>, <i>v</i>, and <i>p</i> using
+                                    <i>u</i> = <i>u<sup>*</sup></i> + <i>u<sup>'</sup></i>,
+                                    <i>v</i> = <i>v<sup>*</sup></i> + <i>v<sup>'</sup></i>,
+                                    <i>p</i> = <i>p<sup>*</sup></i> + <i>p<sup>'</sup></i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process--wrapper7" id="process--wrapper7">
+                <div class="process--grid7" id="process--grid7">
+                    <div class="process--grid7 cell0" id="process--grid7 cell0"></div>
+                    <div class="process--grid7 cell1" id="process--grid7 cell1"></div>
+                </div>
+            </div>
+
+            <div class="ninth-row" id="ninth-row">
+                <div class="ninth-wrapper" id="ninth-wrapper">
+                    <div class="ninth-text-container">
+                        <div class="algo-text">
+                            <div>
+                                Update <i>p</i>, <i>u</i>, and <i>v</i> and iterate until tolorances for continuity and momentum balances are satisfied
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript" src="{{ url_for('static', filename='gptFlowChart.js') }}"></script>
+
+</html>

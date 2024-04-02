@@ -1,0 +1,153 @@
+{% extends 'layout.html' %}
+
+{% block title %}Simulate{% endblock %}
+
+{% block additional_head %}
+  <link rel="stylesheet" href="https://mincss.com/entireframework.min.css" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='simulate.css') }}">
+  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+{% endblock %}
+
+{% block content %}
+  <!-- The parent component -->
+  <div class="curtain">
+
+    <!-- The component wrapper -->
+    <div class="curtain__wrapper">
+
+      <!-- The checkbox hack! -->
+      <input type="checkbox" checked class="checkbox" id="checkbox">
+
+        <div class="curtain__prize" id="curtain__prize">
+            <div class="upper" id="upper">
+              <div class="heroForm" id="heroForm">
+                <div class="gridContainer" id="gridContainer">
+                  <div class="gridForm" id="gridContainer">
+                    <div class="form">
+                      <form action="">
+                        <p>
+                          <label for="input-U" class="input">Plate Velocity</label></br>
+                          <input type="text" class="input" id="input-U" value="10" placeholder="10">
+                          <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                        </p>
+                        <p>
+                          <label for="input-Re" class="input">Re</label></br>
+                          <input type="text" class="input" id="input-Re" value="400" placeholder="400">
+                          <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                        </p>
+                        <p>
+                          <label for="input-N" class="input"># of CVs</label></br>
+                          <input type="text" class="input" id="input-N" value="20" placeholder="30">
+                          <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                        </p>
+                        <p>
+                          <label for="input-Np" class="input"># of Particles</label></br>
+                          <input type="text" class="input" id="input-Np" value="80" placeholder="80">
+                          <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
+                        </p>
+                        <!-- <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" /> -->
+                      </form>
+                    </div>
+                    <div class="status">
+                      <button class="btn0" id="fvm"></button>
+                      <button class="btn1" id="uv"></button>
+                      <button class="btn2" id="streamline"></button>
+                      <button class="btn3" id="reset1"></button>
+                    </div>
+                    <div class="extrafxns">
+                      <button class="btn4" id="save" value=""></button>
+                      <label class="dropdown">
+
+                        <div class="btn5" id="retreive" value="My First Simulation">Load</div>
+
+                        <input type="checkbox" class="dd-input" id="test">
+
+                        <ul class="dd-menu" id="dd-menu"></ul>
+
+                      </label>
+                    </div>
+                  </div>
+                  <div class="gridEye" id="gridEye">
+                    <canvas class="myEye" id="myEye"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="container container1" id="container1">
+          <!-- <div class="heroConv" id="heroConv"> -->
+            <div class="gridConv">
+              <canvas class="myChartConv" id="myChartConv" style="width:100%;height:40vh"></canvas>
+            </div>
+          <!-- </div> -->
+        </div>
+
+
+        <div class="container2" id="container2">
+          <div class="fourth-wrapper" id="fourth-wrapper">
+            <div class="fourth-text-container">
+            </div>
+          </div>
+        </div>
+
+        <div class="container container3" id="container3"></div>
+        <!-- <div class="container container3" id="container3"></div>
+        <div class="container container4" id="container4"></div>
+        <div class="container container5" id="container5"></div> -->
+
+
+      <!-- curtain panel -->
+      <!-- <div class="curtain__panel curtain__panel--left" id="curtain__panel">
+        <div class="zone" id="zone">
+          <p>Simulation</p>
+          <p>Zone</p>
+        </div>
+      </div>  --><!-- curtain__panel -->
+
+      </div> <!-- curtain__wrapper -->
+
+  </div> <!-- curtain -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+    $(function() {
+        $("#container2").sortable({
+            axis: "y", // Restrict to horizontal sorting
+
+            stop: function(event, ui) {
+              // Your custom snapping logic
+              //var snapPosition = calculateSnapPosition(ui.item);
+
+              // Apply custom styles to the snapped item
+              //ui.item.css({
+              //  backgroundColor: "lightgreen",
+              //  border: "2px solid green",
+              //});
+
+              // Position the item at the snapped position
+              //ui.item.position(snapPosition);
+          },
+        });
+        /* $("#container3").sortable({
+            axis: "x", // Restrict to horizontal sorting
+        });
+        $("#container4").sortable({
+            axis: "x", // Restrict to horizontal sorting
+        });
+        $("#container5").sortable({
+            axis: "x", // Restrict to horizontal sorting
+        }); */
+    });
+  </script>
+
+  <!-- <script type="module" src="{{ url_for('static', filename='simulate.js') }}"></script> -->
+  <script type="text/javascript" src="{{ url_for('static', filename='simulate.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,250 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block additional_head %}
+    <link rel="stylesheet" href="https://mincss.com/entireframework.min.css" crossorigin="anonymous"/>
+    <!-- <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+    <style>
+        body {
+          background-color: black !important;
+        }
+        /* Override styles for textarea and input[type=text] */
+        textarea,
+        input[type=text] {
+          -webkit-appearance: initial !important; /* Reset appearance */
+          width: 100%;
+        }
+        .form-login { width: 12rem !important; }
+    </style>
+
+    {% if user_authenticated %}
+        <script>
+            function showDropdown(element) {
+                element.querySelector('.dropdown-content').style.display = 'block';
+            }
+
+            function hideDropdown(element) {
+                element.querySelector('.dropdown-content').style.display = 'none';
+            }
+        </script>
+
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="login-container" id="loginContainer">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="post" action="{{ url_for('login') }}" class="form-login">
+            <!-- {{ form.csrf_token }} -->
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.username.label }} {{ form.username() }}
+            </div>
+            <div>
+                {{ form.password.label }} {{ form.password() }}
+            </div>
+            <div id="submit-div">
+                {{ form.submit() }}
+            </div>
+        </form>
+
+        <p id="noAccount">Don't have an account?</p>
+        <button id="loginRegisterButton">Register</button>
+    </div>
+
+    {% if notify %}
+
+        <script>
+            navDropDown.classList.add('disabled');
+        </script>
+
+        {% if msg %}
+
+            {% if invalid_credentials %}
+            <div class="reset-password-container" id="reset-password-container" style="border-color: salmon;">
+                {% if flask_session['login_attempts'] >= max_attempts %}
+                <div style="grid-row: 1 / -1">{{ msg }} <a href="{{ url_for('password_reset') }}">reset your password</a>.</div>
+                {% elif pw_reset %}
+                <div style="grid-row: 1">{{ msg }}</div>
+                <div style="grid-row: 2">Forgot Password? <a href="{{ url_for('password_reset') }}">reset password</a></div>
+                {% else %}
+                <div style="grid-row: 1 / -1">{{ msg }}</div>
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="reset-password-container" id="reset-password-container">
+                <div style="grid-row: 1 / -1">{{ msg }}</div>
+            </div>
+            {% endif %}
+
+            {% if not invalid_credentials %}
+            <script>
+                // retrieve values from the URL query parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const flagParam = urlParams.get('flag');
+
+                console.log('flagParam: ', flagParam)
+
+                // convert the flag parameter to a boolean
+                const flag = flagParam === 'True';
+
+                console.log('flag: ', flag)
+
+                if (flag) {
+                    document.getElementById('reset-password-container').style.borderColor = 'salmon'; //fail
+                } else {
+                    document.getElementById('reset-password-container').style.borderColor = 'rgba(140, 200, 102, 1)'; //okgreen
+                }
+
+                //if (flag === false) {
+                //    document.getElementById('reset-password-container').style.borderColor = 'rgba(140, 200, 102, 1)'; //okgreen
+                //}
+            </script>
+            {% endif %}
+
+        {% endif %}
+
+        {% if msg["flag"] == "success" %}
+            <div class="reset-password-container" id="reset-password-container">
+                <div style="grid-row: 1 / -1">{{ msg["msg"] }}</div>
+            </div>
+
+            <script>
+                document.getElementById('reset-password-container').style.borderColor = 'rgba(206,184,136,1)'
+            </script>
+        {% endif %}
+
+        <script>
+
+            document.getElementById('loginContainer').style.display = 'grid';
+
+            const resetPasswordContainer = document.getElementById('reset-password-container');
+
+            let loginContainerHeight = loginContainer.getBoundingClientRect().top + loginContainer.offsetHeight;
+            //resetPasswordContainer.style.top = `${loginContainer.getBoundingClientRect().top + parseFloat(window.getComputedStyle(document.querySelector(".navbar")).getPropertyValue("border-bottom-width"))}px`;
+            resetPasswordContainer.style.top = `
+                ${loginContainerHeight +
+                    12.5*parseFloat(window.getComputedStyle(document.querySelector(".navbar")).getPropertyValue("border-bottom-width"))}px`;
+
+        </script>
+
+    {% endif %}
+
+    <script>
+
+        //(document.getElementById('submit-btn-login')).addEventListener('click', function(e) {
+        //        //e.preventDefault();
+        //        console.log('preventDefault')
+        //});
+
+        //const navbar = document.querySelector(".navbar");
+
+        //const navbarHeight = navbar.getBoundingClientRect().top + navbar.offsetHeight;
+
+        const loginButton = document.getElementById('loginButton');
+        const loginContainer = document.getElementById('loginContainer');
+
+        const noAccount = document.getElementById('noAccount');
+        const loginRegisterButton = document.getElementById('loginRegisterButton');
+
+        function addHoverAndFocusStyles(element) {
+            element.addEventListener('mouseover', function () {
+                element.style.boxShadow = '0px 0px 7.5px rgba(253, 181, 21, 1)';
+                element.style.transition = '0.3s ease';
+            });
+
+            element.addEventListener('focus', function () {
+                element.style.boxShadow = '0px 0px 7.5px rgba(253, 181, 21, 1)';
+                element.style.transition = '0.3s ease';
+            });
+
+            element.addEventListener('mouseout', function () {
+                element.style.boxShadow = 'none';
+                element.style.transition = 'none';
+            });
+
+            element.addEventListener('blur', function () {
+                element.style.boxShadow = 'none';
+                element.style.transition = 'none';
+            });
+        }
+
+        addHoverAndFocusStyles(loginButton);
+
+        //const borderWidth = parseFloat(window.getComputedStyle(navbar).getPropertyValue("border-bottom-width"));
+
+        let hoverTimeout;
+
+        // Function to check if the mouse is moving upwards
+        function isMouseMovingUp(event) {
+            return event.movementY < 0;
+        }
+
+        // Function to check if the mouse is within the login button's borders
+        function isMouseWithinLoginButton(event) {
+            const buttonRect = loginButton.getBoundingClientRect();
+            return (
+                event.clientX >= buttonRect.left &&
+                event.clientX <= buttonRect.right &&
+                event.clientY >= buttonRect.top &&
+                event.clientY <= buttonRect.bottom
+            );
+        }
+
+        loginButton.addEventListener('click', () => {
+            clearTimeout(hoverTimeout); // Clear any existing timeout
+            loginContainer.classList.add('active'); // Commented 240322 1734
+            loginRegisterButton.style.display = 'none'; // Commented 240322 1734
+            //document.querySelector('.navDropDown.icon').classList.add('disable-hover');
+            document.getElementById('navDropDown').classList.add('disabled');
+            document.getElementById('navDropDown').style.display = 'none';
+
+        });
+
+        loginButton.addEventListener('mousemove', (event) => {
+            //if (!isMouseMovingUp(event) && !isMouseWithinLoginButton(event)) {
+            //    loginContainer.classList.remove('active');
+            //}
+        });
+
+        loginContainer.addEventListener('mouseleave', () => {
+            // Set a timeout to remove the 'active' class after 500 milliseconds
+            //hoverTimeout = setTimeout(() => {
+            //    loginContainer.classList.remove('active');
+            //}, 500);
+            //loginContainer.classList.remove('active');
+        });
+
+        // Cancel the timeout and keep the container active when the mouse re-enters it
+        loginContainer.addEventListener('mouseenter', () => {
+            //clearTimeout(hoverTimeout);
+        });
+
+        noAccount.addEventListener('mouseover', () => {
+
+            loginRegisterButton.style.display = 'block';
+
+            document.getElementById('loginRegisterButton').addEventListener('click', function() {
+                window.location.href = "{{ url_for('register') }}";
+            });
+        });
+
+    </script>
+{% endblock %}

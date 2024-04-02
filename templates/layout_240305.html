@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Login Page{% endblock %}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* This is key for centering, full width, check borders w/ & w/o */
+            /* overflow: auto; */
+        }
+        :root {
+            --cell-width: 3vw;
+            --navbar-height: 3vw;
+            --font-size: 32px;
+            --border-grids: var(--font-size);
+
+            --algo-grid-container-height: ;
+            --grid-container-mp-inner: ;
+            --grid-container-mp-outer: ;
+            --updatewrapper-midpoint: ;
+            --continuitywrapper-midpoint: ;
+            --fieldswrapper-midpoint: ;
+            --ninthwrapper-midpoint: ;
+            --seventhwrapper-midpoint: ;
+            --fourthwrapper-midpoint: ;
+            --wrapper2-midpoint: ;
+            --animation-grid-matrix: ;
+            --animation-matrix: ;
+            --animation-math: ;
+            --animation-math2: ;
+            --offsetX: 0.0625;
+            --cell-width: 3vw;
+            --animation-integral: ;
+            --top-grids: 4vw;
+            --intro-text-height: ;
+            --intro-text-width: ;
+
+            --bg-image: url('https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/20180041842_goes16-abi-conus-geocolor-2500x1500.jpg');
+            --color: rgba(255,255,255,1);
+            --bgcolor0: rgba(255, 215, 0, 1);
+            --bgcolor1: #CEB888;
+            --bgcolor2: #CEB888;
+            --bgcolor3: #CEB888;
+            --blinkingBackground0: ;
+            --blinkingBackground1: ;
+            --blinkingBackground2: ;
+            --animation1: ;
+            --animation2: ;
+            --animation3: ;
+            --margin-left: 37.5%;
+            --modal-color: ;
+            --modal-animationP: ;
+            --modal-animationU: ;
+            --info0-color: ;
+            --info1-color: ;
+            --info2-color: ;
+            --z-infoU: 1;
+            --box-shadow0: -0.8vw;
+            --box-shadow1: 0.8vw;
+            /* --box-shadow0: -6.5px;
+            --box-shadow1: 6.5px; */
+            --animation-axes: ;
+            --animation-U: ;
+            --animation-textU: ;
+            --animation-textV: ;
+            --animation-borderL: ;
+            --animation-borderBL: ;
+            --animation-borderB: ;
+            --animation-info0: ;
+            --animation-info1: ;
+            --animation-info2: ;
+            --animation-grid00: ;
+            --animation-grid01: ;
+            --animation-grid10: ;
+            --animation-grid20: ;
+            --animation-info-steps: ;
+            --animation-Gaia400: ;
+            --animation-Gaia400u: ;
+            --animation-Gaia400v: ;
+            --animation-Gaia1000: ;
+            --animation-Gaia1000u: ;
+            --animation-Gaia1000v: ;
+            --animation-Gaia3200: ;
+            --animation-Gaia3200u: ;
+            --animation-Gaia3200v: ;
+            --animation-Gaia5000: ;
+            --animation-Gaia5000u: ;
+            --animation-Gaia5000v: ;
+            --top-Re: calc(10vh + var(--top-grids) + 150px + 30px + 30px + 30px + 30px + 50px + 30px + 30px + 120px + 0vh);
+            --font-size-integral: ;
+            --cell0-height: ;
+            --fontsize-date: ;
+            --animation-integral: ;
+            --animation-links0: ;
+            --animation-links2: ;
+            --animation-links4: ;
+            --animation-pdf: ;
+            --grid32-tran: ;
+            --gridicons-shad: ;
+            --arrowU-tranY: ;
+            --arrowInner-anim: ;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            font-size: var(--font-size);
+        }
+
+        .navbar {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            /* overflow: scroll */;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem; /* ch from 2rem */
+            font-size: 1.25rem; /* ch from 2rem */
+            background-color: black;
+            z-index: 1000;
+
+            border-bottom: 0.5rem solid #CEB888;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: rgba(206,184,136,1);
+            text-decoration: none;
+        }
+
+        .menu {
+            display: flex;
+            gap: 0.5rem;
+            list-style-type: none;
+        }
+
+        .logo-sim {
+            flex: 0;
+            text-align: left; /* Align the logo to the left */
+            margin-right: auto; /* Add some right margin to separate from nav-links */
+
+            padding: 0.5rem; /* ch from 1rem */
+            color: #CEB888;
+            border: 2px solid black;
+            box-shadow: 0px 0px 7.5px rgba(206,184,136,1);
+            border-radius: 5px;
+            background-color: black;
+        }
+
+        .loginButton:hover, .loginButton:focus {
+            box-shadow: 0px 0px 7.5px rgba(206,184,136,1);
+            transition: 0.3s ease;
+        }
+
+        .menu li {
+            flex: 0 0 auto; /* Don't allow the li items to grow or shrink */
+            padding: calc(0.125*var(--cell-width));
+            padding: 5px;
+            /* border: 2px solid #CEB888; */
+            border-radius: 5px;
+            /* box-shadow: 0px 0px 5px rgba(10,10,10,0.85); */
+            /* box-shadow: 0px 0px 5px rgba(206,184,136,7.5); */
+            /* background-color: rgba(206,184,136,1); */
+            background-color: black;
+
+            color: white;
+
+            transition: all 0.2 ease-in-out;
+        }
+
+        .menu li:active {
+            transform: scale(1.1);
+            transition: 0.1;
+        }
+
+        #home.disabled,
+        #simulate.disabled {
+            pointer-events: none;
+            opacity: 0.5; /* reduce opacity to disabled state */
+            display: none;
+            border: none;
+            box-shadow: none;
+        }
+
+        /* END NAVBAR */
+
+        #loginButton, #home, #simulate {
+            /* padding: 8px 12px;
+            color: white; */
+            cursor: pointer;
+            padding: 1rem;
+            /* padding: calc(0.125*var(--cell-width)); */
+        }
+
+        .login-container {
+            color: #CEB888;
+            background-color: black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: calc(5*var(--cell-width));
+            position: absolute;
+            /* top: var(--navbar-height); */
+            right: 0;
+            transform: translateY(0%);
+            transition: transform 0.3s ease-in-out;
+            box-sizing: border-box;
+            display: none; /* Hide the login container by default */
+            z-index: 1001; /* Ensure it appears above other elements */
+
+            font-size: calc(0.375*var(--cell-width));
+        }
+
+        .login-container.active {
+            transform: translateY(0);
+            display: block; /* Display the login container when it has the active class */
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form > div {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            /* box-sizing: border-box; */
+
+            font-size: calc(0.375*var(--cell-width));
+
+            background-color: rgba(10, 10, 10, 1); /* Background color */
+            color: #CEB888; /* Text color */
+            border: 1px solid #CEB888; /* Border color */
+        }
+
+        p {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        #submit {
+            font-size: calc(0.375*var(--cell-width));
+            margin-top: 15px;
+
+            color: black;
+            background-color: #CEB888;
+        }
+
+        .register-container {
+            color: #CEB888;
+            /* border: 2px solid white; */
+            position: absolute;
+            right: 0;
+
+            padding: 20px;
+
+            font-size: calc(0.375*var(--cell-width));
+
+            width: calc(5*var(--cell-width));
+        }
+
+        #registerLoginButton, #registerButton, #loginRegisterButton {
+            font-size: calc(0.375*var(--cell-width));
+            /* background-color: #CEB888; */
+        }
+
+        #loginRegisterButton, #registerLoginButton{
+            width: 100%;
+            padding: 8px;
+
+            display: none;
+
+            background-color: #CEB888;
+
+            margin-top: 15px;
+        }
+
+    </style>
+    {% block additional_head %}{% endblock %}
+</head>
+<body>
+        <!-- <div id="navbar">
+            <div id="loginButton">Login</div>
+        </div> -->
+
+        <div class="container0" id="container0">
+            <nav class="navbar" id="navbar">
+              <div class="logo-sim">CFD</div>
+              <ul class="nav-links">
+                <div class="menu">
+                  <li><a href="/test" onclick="" class="disabled" id="home">Home</a></li>
+                  <li><a href="/simulate" class="simulate disabled" id="simulate">Simulate</a></li>
+                  <li><a class="loginButton" id="loginButton" data-logout-url="{{ url_for('root') }}">Login</a></li>
+                  <!-- <li><a href="/" class="loginButton" id="loginButton" data-logout-url="{{ url_for('login') }}">Login</a></li> -->
+                </div>
+              </ul>
+            </nav>
+        </div>
+
+    {% block content %}{% endblock %}
+    <script>
+        const navbar = document.querySelector(".navbar");
+
+        const navbarHeight = navbar.getBoundingClientRect().top + navbar.offsetHeight;
+
+        if (document.querySelector('.login-container')) {
+            document.querySelector('.login-container').style.top = `${navbarHeight}px`;
+        }
+
+        if (document.querySelector('.register-container')) {
+            document.querySelector('.register-container').style.top = `${navbarHeight}px`;
+        }
+
+        if (document.querySelector('.curtain__panel')) {
+            document.querySelector('.curtain__panel').style.top = `calc(${navbarHeight}px - var(--border-grids))`;
+        }
+    </script>
+</body>
+</html>

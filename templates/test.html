@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Buttons</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+</head>
+<body>
+    <button id="websocket1-button">Connect to WebSocket 1</button>
+    <button id="websocket2-button">Connect to WebSocket 2</button>
+
+    <script>
+        const socket1 = io.connect('/test');  // Connect to the 'test' namespace
+        const socket2 = io.connect('/retreive');  // Connect to the 'retreive' namespace
+
+        document.getElementById('websocket1-button').addEventListener('click', () => {
+            //socket1.emit('test');
+            socket1.emit('message', 'Hello from /test namespace');
+            // Handle WebSocket 1 connection logic using socket1
+        });
+
+        document.getElementById('websocket2-button').addEventListener('click', () => {
+            //socket2.emit('retreive');
+            socket2.emit('message', 'Hello from /retreive namespace');
+            // Handle WebSocket 2 connection logic using socket2
+        });
+
+        // Handle WebSocket messages and events here
+        socket1.on('response', (data) => {
+            console.log("data: ", data)
+            // Handle messages from WebSocket 1
+        });
+
+        socket2.on('response', (data) => {
+            console.log("data: ", data )
+            // Handle messages from WebSocket 2
+        });
+    </script>
+</body>
+</html>

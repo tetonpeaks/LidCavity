@@ -1,0 +1,65 @@
+.AA, .AAB, .bracket-L, .bracket-R {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    font-size: calc(1*var(--cell-width));
+
+    color: rgba(255,255,255,0.4);
+    /* text-shadow: 4px 2px 0px #000, 1px 1px 0 #000, 0px 0px 0px #eee; */
+    /* color: rgba(255, 215, 0, 1); */
+    /* color: rgba(0, 0, 0, 1); */ /* Start with black text */
+    text-shadow: 4px 2px 0px #000, 1px 1px 0 #000, 0px 0px 0px rgba(255, 215, 0, 1);
+    /* text-shadow: 0px 0px 0px #000, 0px 0px 0 #000, 0px 0px 0px #eee; *//* No shadow initially */
+    /* transition: color 1s, text-shadow 1s; */ /* Apply transition to color and text-shadow */
+    animation: var(--animation-matrix);
+}
+
+.bracket-L, .bracket-R {
+    font-size: calc(6.5*var(--cell-width));
+}
+
+.bracket-L {transform: translate(calc(0.75*var(--cell-width)),calc(-0.4375*var(--cell-width)));}
+.bracket-R {transform: translate(calc(-0.75*var(--cell-width)),calc(-0.4375*var(--cell-width)));}
+
+.B {
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    grid-gap: 0;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
+    font-size: calc(1*var(--cell-width));
+
+    /* color: rgba(255,255,255,0.4); */
+    /* text-shadow: 4px 2px 0px #000, 1px 1px 0 #000, 0px 0px 0px #eee; */
+    color: rgba(0, 0, 0, 1); /* Start with black text */
+    text-shadow: 0px 0px 0px #000, 0px 0px 0 #000, 0px 0px 0px #eee; /* No shadow initially */
+    transition: color 2s, text-shadow 2s; /* Apply transition to color and text-shadow */
+}
+
+.AA, .AAB {
+    transform: translateX(calc(1.125*var(--cell-width)));
+}
+
+/* .text-appear {
+    color: rgba(255, 255, 255, 0.4);
+    text-shadow: 4px 2px 0px #000, 1px 1px 0 #000, 0px 0px 0px #eee;
+} */
+
+@keyframes matrixAnimation {
+    0% {
+        transform: translate(10%, -1.25vh) rotate(-2.5deg);
+        color: rgba(255, 255, 255, 0.4);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 215, 0, 1), 0 0 70px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 215, 0, 1), 0 0 150px rgba(255, 215, 0, 1);
+    }
+    100% {
+        /* transform: translate(10%, -1.25vh) rotate(-2.5deg); */
+        color: rgba(255,255,255,0.4);
+        /* color: rgba(255, 215, 0, 1); */
+        text-shadow: 4px 2px 0px #000, 1px 1px 0 #000, 0px 0px 0px rgba(255, 215, 0, 1);
+        /* text-shadow: 4px 2px 0px #000, 1px 1px 0 #000, 0px 0px 0px #eee;  *//* Transition to embossed style */
+    }
+}

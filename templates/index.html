@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://mincss.com/entireframework.min.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <title>CFD</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+  </head>
+  <body class="body">
+    <div class="container-nav">
+      <nav class="navbar">
+        <div class="logo-home">CFD</div>
+        <ul class="nav-links">
+            <div class="menu">
+              <li><a href="/" onclick="" class="home" id="home">Home</a></li>
+              <li><a href="/simulate" class="simulate" id="simulate">Simulate</a></li>
+            </div>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container0" id="container0">
+      <div class="page0" id="page0">
+
+        <div class="infoU" id="infoU">
+
+          <div class="dialog-wrapper" id="dialog-wrapper">
+            <div class="startEffectTypeWriter" id="startEffectTypeWriter">Start TV Effect</div>
+            <div class="text-container">
+              <span id="textContent"></span>
+            </div>
+          </div>
+
+          <div class="intro-wrapper">
+            <div class="startEffect" id="startEffect">Start Drop Down Integral</div>
+            <div class="integral-container" id="integral-container">
+                <math class="integral-intro-wrapper" xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mi class="integral-intro" id="integral-intro">&int;</mi>
+                </math>
+                <div class="text-column" id="text-column">
+                        <div class="grid3x2__cell" id="grid3x2__cell0"></div>
+                        <div class="grid3x2__cell" id="grid3x2__cell1"></div>
+                        <div class="grid3x2__cell" id="grid3x2__cell2"></div>
+                        <div class="grid3x2__cell" id="grid3x2__cell3">
+                          <div class="paper">
+                            <div class="vertical-line left zero"></div>
+                            <div class="hole hole1"></div>
+                            <div class="hole hole0"></div>
+                            <div class="hole hole2"></div>
+                            <div class="pdf"></div>
+                          </div>
+                        </div>
+                        <div class="grid3x2__cell" id="grid3x2__cell4"></div>
+                        <div class="grid3x2__cell" id="grid3x2__cell5">
+                          <canvas class="matrixCanvas" id="matrixCanvas"></canvas>
+                        </div>
+                    <!-- <div class="bullet-list" id="bullet-list"></div> -->
+
+                    <!-- Modal container for the video -->
+                    <div id="video-popup" class="modal"></div>
+                </div>
+            </div>
+          </div>
+
+          <div id="pdfPopup">
+            <div id="pdfContainer">
+              <object id="pdfObject" type="application/pdf" width="100%" height="100%"></object>
+            </div>
+          </div>
+
+          <div class="box--text" id="box--text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text0">
+              <mfrac>
+                <mi>&part;(&#x03c1;&#x03c6;)</mi>
+                <mi>&part;t</mi>
+              </mfrac>
+              <mi>+</mi>
+              <mi>&#x2207; &sdot; (&#x03c1;V&#x03c6;)</mi>
+              <mi>=</mi>
+              <mi>&#x2207; &sdot; (&#x0393;&#x2207;&#x03c6;)</mi>
+            </math>
+          </div>
+
+          <div class="example12 info0" id="example12 info0">
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text0 step zero">
+              <mi>&#x2207;&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext>(</mtext>
+              <mi>&rho;</mi>
+              <mtext class="vector">V)</mtext>
+              <mspace width="2px"></mspace>
+              <mi>=</mi>
+              <mspace width="2px"></mspace>
+              <mn>0</mn>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text0 step one">
+              <mtext>Integrate continuity over cell P</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text0 step two">
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="dV">&#x0394;V</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mi>&#x2207;&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext>(&rho;</mtext>
+              <mtext class="area vector">V)</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">dV</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="area">A</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>&rho;</mtext>
+              <mtext class="area vector">V</mtext>
+              <mtext>&sdot;</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">d</mtext>
+              <mtext class="area vector">A</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text0 step three">
+              <mtext>Apply divergence theorem</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text0 step four">
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="area">A</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>&rho;</mtext>
+              <mtext class="vector">V</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>&sdot;</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">d</mtext>
+              <mtext class="area vector">A</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&sum;</mi>
+                <mtext class="f">f</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>(&rho;</mtext>
+              <msub>
+                <mtext class="vector">V)</mtext>
+                <mtext>f</mtext>
+              </msub>
+              <mspace width="2px"></mspace>
+              <mtext>&sdot;</mtext>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext class="area vector">A</mtext>
+                <mtext>f</mtext>
+              </msub>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text0 step five">
+              <mtext>Complete the discretization</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text0 step six">
+              <msub>
+                <mtext>a</mtext>
+                <mtext>p</mtext>
+              </msub>
+              <msub>
+              </msub>
+              <msub>
+                <mtext>p</mtext>
+                <mtext>P</mtext>
+              </msub>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&sum;</mi>
+                <mtext>nb</mtext>
+              </munder>
+              <msub>
+                <mtext>p</mtext>
+                <mtext>nb</mtext>
+              </msub>
+              <mspace width="2px"></mspace>
+              <mtext>&plus;</mtext>
+              <mspace width="2px"></mspace>
+              <mspace width="2px"></mspace>
+              <mtext>b</mtext>
+            </math>
+
+          </div>
+          <div class="example12 info1" id="example12 info1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step zero">
+              <mi>&#x2207;&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext>(</mtext>
+              <mi>&rho;</mi>
+              <mtext class="vector">V</mtext><mtext>v)</mtext>
+              <mspace width="2px"></mspace>
+              <mi>=</mi>
+              <mi>&#x2207;&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext>(</mtext>
+              <mi>&mu;&#x2207;</mi>
+              <mtext>v)</mtext>
+              <mspace width="2px"></mspace>
+              <mi>&minus;</mi>
+              <mi>&#x2207;p&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext class="vector">j</mtext>
+              <mspace width="2px"></mspace>
+              <mi>&plus;</mi>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext class="source">S</mtext>
+                <mtext class="source">v</mtext>
+              </msub>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step one">
+              <mtext class="instruct">Apply gradient theorem to</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step three">
+              <mtext class="instruct">
+                y, v momentum balance on staggared cell
+              </mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step two">
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="dV">&#x0394;V</mtext>
+              </munder>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">dV</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="area">A</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">d</mtext>
+              <mtext class="area vector">A</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step three">
+              <mtext class="instruct">Apply divergence theorem</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step four">
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="area">A</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">d</mtext>
+              <mtext class="area vector">A</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&sum;</mi>
+                <mtext class="area">f</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext>p</mtext>
+                <mtext>f</mtext>
+              </msub>
+              <msub>
+                <mtext class="area vector">A</mtext>
+                <mtext>f</mtext>
+              </msub>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step five">
+              <mtext class="instruct">Complete the discretization</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text1 step six">
+              <msub>
+                <mtext>a</mtext>
+                <mtext>p</mtext>
+              </msub>
+              <msub>
+                <mtext>v</mtext>
+                <mtext>p</mtext>
+              </msub>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&sum;</mi>
+                <mtext>nb</mtext>
+              </munder>
+              <msub>
+                <mtext>a</mtext>
+                <mtext>nb</mtext>
+              </msub>
+              <msub>
+                <mtext>v</mtext>
+                <mtext>nb</mtext>
+              </msub>
+              <mspace width="2px"></mspace>
+              <mtext>&plus;</mtext>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext>(p</mtext>
+                <mtext>s</mtext>
+              </msub>
+              <mtext>&minus;</mtext>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext>p</mtext>
+                <mtext>n)</mtext>
+              </msub>
+              <mtext>&#x0394;x</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>&plus;</mtext>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext>b</mtext>
+                <mtext>v</mtext>
+              </msub>
+            </math>
+          </div>
+          <div class="example12 info2" id="example12 info2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step zero">
+              <mi>&#x2207;&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext>(</mtext>
+              <mi>&rho;</mi>
+              <mtext class="vector">V</mtext><mtext>u)</mtext>
+              <mspace width="2px"></mspace>
+              <mi>=</mi>
+              <mi>&#x2207;&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext>(</mtext>
+              <mi>&mu;&#x2207;</mi>
+              <mtext>u)</mtext>
+              <mspace width="2px"></mspace>
+              <mi>&minus;</mi>
+              <mi>&#x2207;p&sdot;</mi>
+              <mspace width="2px"></mspace>
+              <mtext class="vector">i</mtext>
+              <mspace width="2px"></mspace>
+              <mi>&plus;</mi>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext class="source">S</mtext>
+                <mtext class="source">u</mtext>
+              </msub>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step one">
+              <mtext>Apply gradient theorem to</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step one">
+              <mtext>x, u momentum balance to staggered cell</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step two">
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="dV">&#x0394;V</mtext>
+              </munder>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">dV</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="area">A</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">d</mtext>
+              <mtext class="area vector">A</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step three">
+              <mtext>Apply divergence theorem</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step four">
+              <munder>
+                <mi class="integral">&int;</mi>
+                <mtext class="area">A</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <mtext>p</mtext>
+              <mspace width="2px"></mspace>
+              <mtext class="diff">d</mtext>
+              <mtext class="area vector">A</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&sum;</mi>
+                <mtext class="area">f</mtext>
+              </munder>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext>p</mtext>
+                <mtext>f</mtext>
+              </msub>
+              <msub>
+                <mtext class="area vector">A</mtext>
+                <mtext>f</mtext>
+              </msub>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step five">
+              <mtext>Complete the discretization</mtext>
+            </math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" class="text2 step six">
+              <msub>
+                <mtext>a</mtext>
+                <mtext>p</mtext>
+              </msub>
+              <msub>
+                <mtext>u</mtext>
+                <mtext>p</mtext>
+              </msub>
+              <mspace width="2px"></mspace>
+              <mtext>=</mtext>
+              <mspace width="2px"></mspace>
+              <munder>
+                <mi class="integral">&sum;</mi>
+                <mtext>nb</mtext>
+              </munder>
+              <msub>
+                <mtext>a</mtext>
+                <mtext>nb</mtext>
+              </msub>
+              <msub>
+                <mtext>u</mtext>
+                <mtext>nb</mtext>
+              </msub>
+              <mspace width="2px"></mspace>
+              <mtext>&plus;</mtext>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext>(p</mtext>
+                <mtext>w</mtext>
+              </msub>
+              <mtext>&minus;</mtext>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext>p</mtext>
+                <mtext>e)</mtext>
+              </msub>
+              <mtext>&#x0394;y</mtext>
+              <mspace width="2px"></mspace>
+              <mtext>&plus;</mtext>
+              <mspace width="2px"></mspace>
+              <msub>
+                <mtext>b</mtext>
+                <mtext>u</mtext>
+              </msub>
+            </math>
+          </div>
+
+          <div class="arrows U" id="arrows U">
+            <div class="point">&#x25B6;</div>
+            <div class="line"></div>
+            <div class="U"><b><i>U</i></b></div>
+          </div>
+          <div class="arrows X" id="arrows X">&#x25B6;</div>
+          <div class="arrows Y" id="arrows Y">&#x25B2;</div>
+          <div class="text X" id="text X"><b><i class="x">x, </i></b><b><i class="u">u</i></b></div>
+          <div class="text Y" id="text Y"><b><i class="y">y, </i></b><b><i class="v">v</i></b></div>
+
+          <div class="grid0-wrapper" id="grid0-wrapper">
+            <div class="grid0" id="grid0"></div>
+          </div>
+          <div class="grid1-wrapper" id="grid1-wrapper">
+            <div class="grid1" id="grid1"></div>
+          </div>
+          <div class="grid2-wrapper" id="grid2-wrapper">
+            <div class="grid2" id="grid2"></div>
+          </div>
+
+          <div class="example12" id="example12"></div>
+
+          <div class="process--text" id="process--text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+          <div class="process--wrapper0" id="process--wrapper0">
+            <div class="process--grid0" id="process--grid0">
+              <div class="process--grid0 cell0" id="process--grid0 cell0">Guess the pressure field, <i>P</i>, and velocity fields, <i>u</i> and <i>v</i></div>
+            </div>
+          </div>
+
+          <div class="testline--wrapper" id="testline--wrapper">
+            <div class="process--wrapper1" id="process--wrapper1">
+              <div class="testline R" id="testline R"></div>
+              <div class="testline L" id="testline L"></div>
+              <div class="process--grid1" id="process--grid1">
+                <div class="process--grid1 cell0" id="process--grid1 cell0">Find horizontal component of velocity field, <i>u</i></div>
+                <div class="process--grid1 cell1" id="process--grid1 cell1">Find vertical component of velocity field, <i>v</i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mdot--wrapper" id="mdot--wrapper">
+            <div class="mdot R" id="mdot R"></div>
+            <div class="mdot L" id="mdot L"></div>
+            <div class="process--grid2" id="process--grid2">
+              <div class="process--grid2 cell0" id="process--grid2 cell0">Find the mass flow rates, <i>F<sub>u</sub></i> and <i>F<sub>v</sub></i>, using <i>u</i> and <i>v</i></div>
+            </div>
+          </div>
+
+          <div class="P--wrapper" id="P--wrapper">
+            <div class="P R" id="P R"></div>
+            <div class="P L" id="P L"></div>
+            <div class="process--grid3" id="process--grid3">
+              <div class="process--grid3 cell0" id="process--grid3 cell0">Find the pressure, <i>p</i>, using the pressure correction equation <i>u</i> and <i>v</i></div>
+            </div>
+          </div>
+
+          <div class="check--wrapper" id="check--wrapper">
+            <div class="box--check" id="box--check"></div>
+            <div class="arrow L" id="arrow L">&#x25C0;</div>
+            <div class="arrow R" id="arrow R">&#x25B6;</div>
+            <div class="check R" id="check R"></div>
+            <div class="check L" id="check L"></div>
+            <div class="process--grid4" id="process--grid4">
+              <div class="process--grid4 cell0" id="process--grid4 cell0">Check continuity and momentum residuals</div>
+            </div>
+          </div>
+
+          <div class="correct--wrapper" id="correct--wrapper">
+            <div class="correct R" id="correct R"></div>
+            <div class="correct L" id="correct L"></div>
+            <div class="process--grid5" id="process--grid5">
+              <p class="process--grid5 cell0" id="process--grid5 cell0">Correct
+                <i>u</i>, <i>v</i>, and <i>p</i> using<br>
+                <i>u</i> = <i>u<sup>*</sup></i> + <i>u<sup>'</sup></i><br>
+                <i>v</i> = <i>v<sup>*</sup></i> + <i>v<sup>'</sup></i><br>
+                <i>p</i> = <i>p<sup>*</sup></i> + <i>p<sup>'</sup></i></p>
+            </div>
+          </div>
+
+          <div class="iterate--wrapper" id="iterate--wrapper">
+            <div class="box--iterate" id="box--iterate"></div>
+            <div class="arrow1 R" id="arrow1 R">&#x25B6;</div>
+            <div class="iterate R" id="iterate R"></div>
+            <div class="iterate L" id="iterate L"></div>
+            <div class="process--grid6" id="process--grid6">
+              <div class="process--grid6 cell0" id="process--grid6 cell0">Iterate until all residuals meet tolerances</div>
+            </div>
+          </div>
+
+          <div class="test--wrapper">
+            <div class="solver--wrapper" id="solver--wrapper">
+              <div class="AA">A =</div>
+              <div class="B">
+                <div class="grid--matrix" id="grid--matrix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="Gaia-wrapper">
+
+          <div class="grid400" id="grid400">
+            <div class="hero Re400 u" id="hero Re400 u">
+              <div class="grid Re400">
+                <canvas class="Re400u" id="Re400u" style="width:45vw;height:45vw;"></canvas>
+              </div>
+            </div>
+            <div class="hero Re400 text" id="hero Re400 text">
+              <p class="figname--400" id="figname--400">Reynolds' # = 400</p>
+            </div>
+            <div class="hero Re400 v" id="hero Re400 v">
+              <div class="grid Re400">
+                <canvas class="Re400v" id="Re400v" style="width:45vw;height:45vw;"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid1000" id="grid1000">
+            <div class="hero Re1000 u" id="hero Re1000 u">
+              <div class="grid Re1000">
+                <canvas class="Re1000u" id="Re1000u" style="width:45vw;height:45vw;"></canvas>
+              </div>
+            </div>
+            <div class="hero Re1000 text" id="hero Re1000 text">
+              <p class="figname--1000" id="figname--1000">Reynolds' # = 1000</p>
+            </div>
+            <div class="hero Re1000 v" id="hero Re1000 v">
+              <div class="grid Re1000">
+                <canvas class="Re1000v" id="Re1000v" style="width:45vw;height:45vw;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="grid3200" id="grid3200">
+            <div class="hero Re3200 u" id="hero Re3200 u">
+              <div class="grid Re3200">
+                <canvas class="Re3200u" id="Re3200u" style="width:45vw;height:45vw;"></canvas>
+              </div>
+            </div>
+            <div class="hero Re3200 text" id="hero Re3200 text">
+              <p class="figname--3200" id="figname--3200">Reynolds' # = 3200</p>
+            </div>
+            <div class="hero Re3200 v" id="hero Re3200 v">
+              <div class="grid Re3200">
+                <canvas class="Re3200v" id="Re3200v" style="width:45vw;height:45vw;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="grid5000" id="grid5000">
+            <div class="hero Re5000 u" id="hero Re5000 u">
+              <div class="grid Re5000">
+                <canvas class="Re5000u" id="Re5000u" style="width:45vw;height:45vw;"></canvas>
+              </div>
+            </div>
+            <div class="hero Re5000 text" id="hero Re5000 text">
+              <p class="figname--5000" id="figname--5000">Reynolds' # = 5000</p>
+            </div>
+            <div class="hero Re5000 v" id="hero Re5000 v">
+              <div class="grid Re5000">
+                <canvas class="Re5000v" id="Re5000v" style="width:45vw;height:45vw;"></canvas>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container1">
+      <!-- <div class="page1" id="page1"> -->
+        <!-- <div class="info--Gaia" id="info--Gaia"> -->
+
+         <!--  <div class="hero Re400 u" id="hero Re400 u">
+            <div class="grid Re400">
+              <canvas class="Re400u" id="Re400u" style="width:45vw;height:45vw;"></canvas>
+            </div>
+          </div>
+          <div class="hero Re400 text" id="hero Re400 text">
+            <p class="figname--400" id="figname--400">Reynolds' # = 400</p>
+          </div>
+          <div class="hero Re400 v" id="hero Re400 v">
+            <div class="grid Re400">
+              <canvas class="Re400v" id="Re400v" style="width:45vw;height:45vw;"></canvas>
+            </div>
+          </div>
+          <div class="hero Re1000 u" id="hero Re1000 u">
+            <div class="grid Re1000">
+              <canvas class="Re1000u" id="Re1000u" style="width:45vw;height:45vw;"></canvas>
+            </div>
+          </div>
+          <div class="hero Re1000 text" id="hero Re1000 text">
+            <p class="figname--1000" id="figname--1000">Reynolds' # = 1000</p>
+          </div>
+          <div class="hero Re1000 v" id="hero Re1000 v">
+            <div class="grid Re1000">
+              <canvas class="Re1000v" id="Re1000v" style="width:45vw;height:45vw;"></canvas>
+            </div>
+          </div>
+          <div class="hero Re3200 u" id="hero Re3200 u">
+            <div class="grid Re3200">
+              <canvas class="Re3200u" id="Re3200u" style="width:45vw;height:45vw;"></canvas>
+            </div>
+          </div>
+          <div class="hero Re3200 text" id="hero Re3200 text">
+            <p class="figname--3200" id="figname--3200">Reynolds' # = 3200</p>
+          </div>
+          <div class="hero Re3200 v" id="hero Re3200 v">
+            <div class="grid Re3200">
+              <canvas class="Re3200v" id="Re3200v" style="width:45vw;height:45vw;"></canvas>
+            </div>
+          </div>
+          <div class="hero Re5000 u" id="hero Re5000 u">
+            <div class="grid Re5000">
+              <canvas class="Re5000u" id="Re5000u" style="width:45vw;height:45vw;"></canvas>
+            </div>
+          </div>
+          <div class="hero Re5000 text" id="hero Re5000 text">
+            <p class="figname--5000" id="figname--5000">Reynolds' # = 5000</p>
+          </div>
+          <div class="hero Re5000 v" id="hero Re5000 v">
+            <div class="grid Re5000">
+              <canvas class="Re5000v" id="Re5000v" style="width:45vw;height:45vw;"></canvas>
+            </div>
+          </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    </div>
+
+  </body>
+  <script type="text/javascript" src="{{ url_for('static', filename='index_WIP.js') }}"></script>
+</html>

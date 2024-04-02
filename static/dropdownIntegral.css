@@ -1,0 +1,354 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* This is key for centering, full width, check borders w/ & w/o */
+    /* overflow: auto; */
+}
+
+:root {
+    --font-size-integral: ;
+    --cell0-height: ;
+    --fontsize-date: ;
+    --animation-integral: ;
+    --animation-links0: ;
+    --animation-links2: ;
+    --animation-links4: ;
+    --animation-pdf: ;
+    --grid32-tran: ;
+}
+
+body {
+    background-color: black;
+}
+
+.intro-wrapper {
+    margin-top: 50px;
+    cursor: pointer;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.startEffect {
+    font-size: 24px;
+    /* color: rgba(206,184,136,1); */
+    color: rgba(255, 215, 0, 1);
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+/* New CSS to display integral and text side by side */
+.integral-container {
+    display: none;
+    grid-template-columns: max-content max-content; /* Adjust the grid columns */
+    grid-gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* border-top: 2px solid gold; */
+    border-bottom: 2px solid rgba(255, 215, 0, 1);
+    align-items: center; /* Vertically align items */
+    /* justify-content: space-between; */ /* Add space between items */
+    width: 100%;
+}
+
+.integral {
+    font-size: calc(var(--font-size-integral) * 4 );
+    color: rgba(255, 215, 0, 1);
+    /* padding-right: calc(var(--font-size-integral) / 3); */
+    padding-right: 20px;
+    grid-column: 1;
+    animation: var(--animation-integral);
+}
+
+.text-column {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: max-content max-content max-content;
+    grid-gap: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.grid3x2__cell {
+    display: flex;
+    /* width: 100%;
+    height: 100%; */
+    /* background-color: black; */
+    /* border: 1px dashed rgba(207,207,196,1); */
+    color: white;
+    overflow-wrap: break-word;
+    max-width: calc(32em + 10em);
+    /* box-shadow: 0px 0px 1px white; */
+
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.no-slip, .navier-stokes, .simple {
+    color: white;
+    text-decoration: none;
+    animation: var(--animation-links0);
+}
+.ghia, .incompressible {
+    color: white;
+    text-decoration: none;
+    animation: var(--animation-links2);
+}
+.hpc {
+    color: white;
+    text-decoration: none;
+    animation: var(--animation-links4);
+}
+
+/* .highlight-effect {
+    color: rgba(255, 215, 0, 05);
+    animation: color 1.5s ease-out;
+} */
+
+/* Define the animation */
+/* @keyframes highlight {
+  0% { background-color: transparent; }
+  50% { background-color: rgba(255, 215, 0, 0.5); }
+  100% { background-color: transparent; }
+} */
+
+@keyframes color {
+    0% { color: white;
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px rgba(255, 215, 0, 1), 0 0 70px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 215, 0, 1), 0 0 150px rgba(255, 215, 0, 1);
+    }
+    /* 50% { color: rgba(255, 215, 0, 0.5); } */
+    100% { color: rgba(255, 215, 0, 1); text-shadow: none; }
+  }
+
+.arrowU {
+    /* font-size: 50px; */
+    font-size: calc(var(--cell0-height) / 4);
+    background-size: contain;
+    position: absolute;
+    /* left: -6.25px;
+    top: -31.25px; */
+
+    /* transform: translate(6.25px, calc(-15.125px - 10px)); */
+
+    /* animation-delay: 1s; */
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    animation-name: slideArrowLR;
+}
+
+@keyframes slideArrowLR {
+    /* 0% {opacity: 1; transform: translateX(0px) scale(1);}
+    90%{opacity: 1;}
+    100% {opacity: 0; transform: translateX(calc(300px - 25px - 12.5px)) scale(0.9);} */
+    0% {opacity: 1; transform: translateX(6.25px) scale(1) translateY(calc(-15.125px - 10px));}
+    90%{opacity: 1;}
+    100% {opacity: 0; transform: translateX(calc(var(--cell0-height) - 25px - 12.5px)) scale(1) translateY(calc(-15.125px - 10px));}
+}
+
+
+.box {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-gap: 0px;
+
+    transition: transform 1.5s ease-in;
+    /* z-index: var(--z-infoU); */
+    background-color: black;
+    text-align: center;
+}
+
+.box__cell {
+    width: var(--cell0-height);
+    height: var(--cell0-height);
+    border: 7px solid rgba(10, 10, 10, 0.85);
+    box-shadow: 0px 0px 7px  rgba(206,184,136,1);
+    background-color: rgba(92,171,176,1);
+
+    /* centers the inner arrow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow--inner {
+    font-size: calc(var(--cell0-height) / 2);
+    padding-bottom: calc(var(--cell0-height) / 8);
+    animation: rotateArrow 4.5s infinite linear;
+
+    /* animation-delay: 1s; */
+}
+
+@keyframes rotateArrow {
+    from { transform: rotate(-360deg); }
+    to {transform: rotate(360deg); }
+}
+
+.paper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border: 1px solid rgba(10, 10, 10, 0.85);
+    box-shadow: 0px 0px 1px  rgba(206,184,136,1);
+    overflow: hidden;
+    perspective: 1000px;
+    transition: opacity 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    /* margin: 50px auto; */
+    /* padding: 20px; */
+    /* border: 1px solid rgba(100, 100, 100, 0.2);
+    box-shadow: -3px 3px 3px rgba(100, 100, 100, 0.7); */
+}
+
+.paper::before {
+    mix-blend-mode: difference; /* Invert color */
+}
+
+.paper:hover {
+    opacity: 0.8;
+    filter: invert(100%);
+}
+
+.pdf {
+    position: absolute;
+    top: 50%;
+    /* left: 50%; */
+    /* transform: translateY(-50%) rotate(90deg); */
+    writing-mode: horizontal-tb;
+    font-family: 'Dancing Script', cursive;
+    font-size: normal;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 3;
+    transform: translateY(-50%);
+    color: black;
+    overflow-wrap: break-word;
+    max-width: 70%;
+    text-align: center;
+    animation: var(--animation-pdf);
+}
+
+@keyframes shrinkPDF {
+    0% {
+        /* transform-origin: center center; */
+        transform: translateY(-50%);
+        /* transform: scale(1) translateY(-50%) rotate(0deg); */
+        opacity: 1;
+        /* letter-spacing: normal; */
+        /* font-size: 2em; */
+    }
+    100% {
+        /* transform-origin: center center; */
+        transform: translateY(-50%);
+        /* transform: scale(0) translateY(-50%) rotate(360deg); */
+        opacity: 0;
+        /* letter-spacing: 0.5vh; */
+        /* font-size: 0.5em; */
+    }
+}
+
+@keyframes revealPDF {
+    0% {
+        /* transform-origin: center center; */
+        transform: translateY(-50%);
+        /* transform: scale(0) translateY(-50%) rotate(0deg); */
+        opacity: 0;
+        /* letter-spacing: 0.5vh; */
+        /* font-size: 0.5em; */
+    }
+    100% {
+        /* transform-origin: center center; */
+        transform: translateY(-50%);
+        opacity: 1;
+        /* letter-spacing: normal; */
+        /* font-size: 2em; */
+    }
+}
+
+.content {
+    position: absolute;
+    z-index: 2;
+    font-family: 'Dancing Script', cursive;
+    text-align: right;
+    color: black;
+
+    /* font-size: var(--fontsize-date); */
+    /* upper left corner */
+    /* top: 2%;
+    right: 2%; */
+
+    /* center of paper */
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.hole {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.75), 0 0 0 2px rgba(100, 100, 100, 0.7);
+    z-index: 2;
+}
+
+.horizontal-line {
+    position: absolute;
+    height: 1px;
+    border-top: 1.5px solid rgba(100, 150, 200, 1);
+    z-index: 1;
+    left: 0;
+    right: 0;
+}
+
+.vertical-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    box-shadow: 0 0 1px 1px rgba(255, 100, 100, 1); /* Adjust the shadow size and color for a bolder appearance */
+    z-index: 1;
+}
+
+.vertical-line.left.zero {
+    left: 12%;
+}
+
+.vertical-line.left.one {
+    left: 13%;
+}
+
+#pdfPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 80%;
+    height: 80%;
+    z-index: 9999;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  #pdfContainer {
+    width: 100%;
+    height: 100%;
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 90%;
+  }

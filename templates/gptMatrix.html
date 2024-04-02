@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TV Screen Effect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='gptMatrix.css') }}">
+</head>
+  <style>
+  </style>
+</head>
+<body>
+
+    <div class="grid-behind">
+
+        <div class="gridLeft"> <!-- This was key -->
+
+            <div class="new-grid-container">
+                <div class="new-grid-wrapper" id="new-grid-wrapper">
+                    <div class="new-grid-grid0" id="new-grid-grid0">
+                        <div class="new-grid-grid0 cell0" id="new-grid-grid0 cell0"></div>
+                        <div class="new-grid-grid0 cell1" id="new-grid-grid0 cell1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step7-container">
+                <div class="step7-wrapper" id="step7-wrapper">
+                    <div class="step7-grid0" id="step7-grid0">
+                        <div class="step7-grid0 cell0" id="step7-grid0 cell0"></div>
+                        <div class="step7-grid0 cell1" id="step7-grid0 cell1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-wrapper">
+                <div class="solver--wrapper" id="solver--wrapper">
+                    <div class="matrix-text-container left">
+                        <div class="AA">A</div>
+                        <div class="AAB">=</div>
+                        <div class="B">
+                            <div class="bracket-L" id="bracket-L">[</div>
+                            <div class="grid--matrix" id="grid--matrix"></div>
+                            <div class="bracket-R" id="bracket-R">]</div>
+                        </div>
+                    </div>
+                    <div class="matrix-text-container right">
+                        <div class="AA">A</div>
+                        <div class="AAB">=</div>
+                        <div class="B">
+                            <div class="bracket-L" id="bracket-L">[</div>
+                            <div class="grid--matrix" id="grid--matrix"></div>
+                            <div class="bracket-R" id="bracket-R">]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="algo-grid-container">
+
+                <div class="fields-row" id="fields-row">
+                    <div class="fields-wrapper" id="fields-wrapper">
+                        <div class="algo-text-container">
+                            <div class="algo-text">
+                                <div>
+                                    Guess the pressure field, <i>p</i>, and velocity fields, <i class="process--u">u</i>and <i>v</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process--wrapper1" id="process--wrapper1">
+                    <div class="process--grid1" id="process--grid1">
+                        <div class="process--grid1 cell0" id="process--grid1 cell0"></div>
+                        <div class="process--grid1 cell1" id="process--grid1 cell1"></div>
+                    </div>
+                </div>
+
+                <div class="process--wrapper2" id="process--wrapper2">
+                    <div class="process--grid2" id="process--grid2">
+                        <div class="process--grid2 cell0" id="process--grid2 cell0">
+                            <!-- fifth-text-container and fifth-text -->
+                            <div class="fifth-text-container">
+                                <div class="fifth-text">
+                                    <div>
+                                        Find horizontal component of velocity field, <i>u</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process--grid2 cell1" id="process--grid2 cell1">
+                            <!-- sixth-text-container and sixth-text -->
+                            <div class="fifth-text-container">
+                                <div class="fifth-text">
+                                    <div>
+                                        Find vertical component of velocity field, <i>v</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process--wrapper3" id="process--wrapper3">
+                    <div class="process--grid3" id="process--grid3">
+                        <div class="process--grid3 cell0" id="process--grid3 cell0"></div>
+                        <div class="process--grid3 cell1" id="process--grid3 cell1"></div>
+                    </div>
+                </div>
+
+                <div class="massflow-row" id="massflow-row">
+                    <div class="massflow-wrapper" id="massflow-wrapper">
+                        <div class="algo-text-container">
+                            <div class="algo-text">
+                                <div>
+                                    Find the mass flow rates, <i>F<sub>u</sub></i> and <i>F<sub>v</sub></i>, using <i>u</i> and <i>v</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process--wrapper4" id="process--wrapper4">
+                    <div class="process--grid4" id="process--grid4">
+                        <div class="process--grid4 cell0" id="process--grid4 cell0"></div>
+                        <div class="process--grid4 cell1" id="process--grid4 cell1"></div>
+                    </div>
+                </div>
+
+                <div class="pressure-row" id="pressure-row">
+                    <div class="pressure-wrapper" id="pressure-wrapper">
+                        <div class="algo-text-container">
+                            <div class="algo-text">
+                                <div>
+                                    Find the pressure, <i>p</i>, using the pressure correction equation <i>u</i> and <i>v</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process--wrapper5" id="process--wrapper5">
+                    <div class="process--grid5" id="process--grid5">
+                        <div class="process--grid5 cell0" id="process--grid5 cell0"></div>
+                        <div class="process--grid5 cell1" id="process--grid5 cell1"></div>
+                    </div>
+                </div>
+
+                <div class="continuity-row" id="continuity-row">
+                    <div class="continuity-wrapper" id="continuity-wrapper">
+                        <div class="algo-text-container">
+                            <div class="algo-text">
+                                <div>
+                                    Check continuity and momentum balance residuals and compare to tolerances
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process--wrapper6" id="process--wrapper6">
+                    <div class="process--grid6" id="process--grid6">
+                        <div class="process--grid6 cell0" id="process--grid6 cell0"></div>
+                        <div class="process--grid6 cell1" id="process--grid6 cell1"></div>
+                    </div>
+                </div>
+
+                <div class="correct-row" id="correct-row">
+                    <div class="correct-wrapper" id="correct-wrapper">
+                        <div class="algo-text-container">
+                            <div class="algo-text">
+                                <div>
+                                    <!-- <div> -->
+                                        Correct <i>u</i>, <i>v</i>, and <i>p</i> using
+                                        <i>u</i> = <i>u<sup>*</sup></i> + <i>u<sup>'</sup></i>,
+                                        <i>v</i> = <i>v<sup>*</sup></i> + <i>v<sup>'</sup></i>,
+                                        <i>p</i> = <i>p<sup>*</sup></i> + <i>p<sup>'</sup></i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process--wrapper7" id="process--wrapper7">
+                    <div class="process--grid7" id="process--grid7">
+                        <div class="process--grid7 cell0" id="process--grid7 cell0"></div>
+                        <div class="process--grid7 cell1" id="process--grid7 cell1"></div>
+                    </div>
+                </div>
+
+                <div class="update-row" id="nupdaterow">
+                    <div class="update-wrapper" id="update-wrapper">
+                        <div class="algo-text-container">
+                            <div class="algo-text">
+                                <div>
+                                    Update <i>p</i>, <i>u</i>, and <i>v</i> and iterate until tolorances for continuity and momentum balances are satisfied
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+<script type="text/javascript" src="{{ url_for('static', filename='gptMatrix.js') }}"></script>
+
+</html>

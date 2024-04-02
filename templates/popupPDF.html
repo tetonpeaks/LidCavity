@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDF Popup Example</title>
+  <style>
+    /* Styling for the popup */
+    #pdfPopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      width: 80%;
+      height: 80%;
+      z-index: 9999;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    #pdfContainer {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Button to trigger fetching and displaying the PDF -->
+  <button onclick="fetchAndDisplayPDF()">Open PDF</button>
+
+  <!-- Popup container for the PDF -->
+  <div id="pdfPopup">
+    <div id="pdfContainer">
+      <object id="pdfObject" type="application/pdf" width="100%" height="100%"></object>
+    </div>
+    <button onclick="closePdfPopup()">Close</button>
+  </div>
+
+  <script>
+    function fetchAndDisplayPDF() {
+      const pdfUrl = '/get_pdf'; // Route to fetch the PDF from the Flask backend
+
+      fetch(pdfUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          const pdfObject = document.getElementById('pdfObject');
+          pdfObject.setAttribute('data', URL.createObjectURL(blob));
+          document.getElementById('pdfPopup').style.display = 'block';
+        })
+        .catch(error => {
+          console.error('Error fetching the PDF:', error);
+        });
+    }
+
+    function closePdfPopup() {
+      document.getElementById('pdfPopup').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

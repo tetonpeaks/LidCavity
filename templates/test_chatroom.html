@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Chat and Test</title>
+</head>
+<body>
+    <h1>WebSocket Chat and Test</h1>
+
+    <div id="chat-container">
+        <h2>Chat</h2>
+        <div id="chat-messages"></div>
+        <input type="text" id="chat-message-input" placeholder="Type a chat message">
+        <button id="chat-send-button">Send</button>
+    </div>
+
+    <div id="test-container">
+        <h2>Test</h2>
+        <div id="test-messages"></div>
+        <input type="text" id="test-message-input" placeholder="Type a test message">
+        <button id="test-send-button">Send</button>
+    </div>
+
+    <script>
+        const scheme = window.location.protocol === "https:" ? "wss://" : "ws://";
+        const wsChat = scheme + window.location.host + "/chat";
+        const wsTest = scheme + window.location.host + "/test";
+
+        const chatMessages = document.getElementById("chat-messages");
+        const chatMessageInput = document.getElementById("chat-message-input");
+        const chatSendButton = document.getElementById("chat-send-button");
+
+        const testMessages = document.getElementById("test-messages");
+        const testMessageInput = document.getElementById("test-message-input");
+        const testSendButton = document.getElementById("test-send-button");
+
+        function setupWebSocket(wsUri, messageContainer) {
+            const ws = new WebSocket(wsUri);
+
+            ws.onmessage = (event) => {
+                const messageDiv = document.createElement("div");
+                messageDiv.textContent = event.data;
+                messageContainer.appendChild(messageDiv);
+            };
+
+            return ws;
+        }
+
+        const chatWebSocket = setupWebSocket(wsChat, chatMessages);
+        const testWebSocket = setupWebSocket(wsTest, testMessages);
+
+        chatSendButton.addEventListener("click", () => {
+            if (chatWebSocket.readyState === WebSocket.OPEN) {
+                const message = chatMessageInput.value;
+                if (message.trim() !== "") {
+                    chatWebSocket.send(message);
+                    chatMessageInput.value = "";
+                }
+            } else {
+                console.log("Chat WebSocket is not open.");
+            }
+        });
+
+        testSendButton.addEventListener("click", () => {
+            if (testWebSocket.readyState === WebSocket.OPEN) {
+                const message = testMessageInput.value;
+                if (message.trim() !== "") {
+                    testWebSocket.send(message);
+                    testMessageInput.value = "";
+                }
+            } else {
+                console.log("Test WebSocket is not open.");
+            }
+        });
+    </script>
+</body>
+</html>

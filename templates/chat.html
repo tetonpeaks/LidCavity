@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SocketIO Example</title>
+</head>
+<body>
+    <h1>SocketIO Example</h1>
+
+    <button id="startLoop">Start Loop</button>
+    <button id="imageStream">Image Stream</button>
+    <ul id="messages"></ul>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script type="text/javascript">
+
+        const socketThreadingInfo = io.connect('http://' + document.domain + ':' + location.port + '/check_multithreading');
+        socketThreadingInfo.emit('message', null);
+
+        /* socketTest */
+
+        var socketTest = io.connect('http://' + document.domain + ':' + location.port + '/test');
+
+        // Add an event listener to the button
+        document.getElementById('startLoop').addEventListener('click', function () {
+            // Emit a message to start the for loop
+            socketTest.emit('message', 'Start Loop');
+
+            var socketRetreive = io.connect('http://' + document.domain + ':' + location.port + '/retreive');
+
+            // Handle WebSocket messages from the server
+            socketRetreive.on('background_data', function (message) {
+                var messages = document.getElementById('messages');
+                var li = document.createElement('li');
+                li.appendChild(document.createTextNode(message));
+                messages.appendChild(li);
+            })
+
+        });
+
+        document.getElementById('imageStream').addEventListener('click', () => {
+
+            document.getElementById('imageStream').disabled = true; // Disable the button
+
+            var socketimgStream = io.connect('http://' + document.domain + ':' + location.port + '/image_stream');
+
+            socketimgStream.on('connect', () => {
+                console.log('Connect to /image_stream')
+            })
+
+            socketimgStream.emit('message', 'Hi socket')
+
+            socketimgStream.on('response', (data) => {
+                console.log("event: ", data)
+
+                // Disconnect the socket after receiving 'img_src' event
+                //socketimgStream.disconnect();
+            })
+
+            // Re-enable the button after a short delay (1 second in this case)
+            setTimeout(() => {
+                document.getElementById('imageStream').disabled = false;
+            }, 1000); // Adjust this delay as needed
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        :root {
+            --cell-width: 3vw;
+            --navbar-height: 3vw;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #navbar {
+            width: 100%;
+            height: var(--navbar-height);
+            background-color: transparent;
+            border-bottom: 5px solid white;
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #loginButton {
+            padding: 8px 12px;
+            color: white;
+            font-size: calc(0.5*var(--cell-width));
+            cursor: pointer;
+        }
+
+
+        .login-container {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: calc(4*var(--cell-width));;
+            position: absolute;
+            top: var(--navbar-height);
+            right: 0;
+            transform: translateY(0%);
+            transition: transform 0.3s ease-in-out;
+            box-sizing: border-box;
+            display: none; /* Hide the login container by default */
+            z-index: 1001; /* Ensure it appears above other elements */
+
+            font-size: calc(0.25*var(--cell-width));
+        }
+
+        .login-container.active {
+            transform: translateY(0);
+            display: block; /* Display the login container when it has the active class */
+        }
+
+        .login-container.active {
+            transform: translateY(0);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form > div {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #submit {
+            font-size: calc(0.25*var(--cell-width));
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="loginButton">Login</div>
+    </div>
+
+    <div class="login-container" id="loginContainer">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="post" action="{{ url_for('login') }}">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.username.label }} {{ form.username() }}
+            </div>
+            <div>
+                {{ form.password.label }} {{ form.password() }}
+            </div>
+            <div id="submit">
+                {{ form.submit() }}
+            </div>
+        </form>
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+    </div>
+
+    <script>
+        const loginButton = document.getElementById('loginButton');
+        const loginContainer = document.getElementById('loginContainer');
+
+        loginButton.addEventListener('mouseover', () => {
+            loginContainer.classList.add('active');
+        });
+
+        loginContainer.addEventListener('mouseleave', () => {
+            loginContainer.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

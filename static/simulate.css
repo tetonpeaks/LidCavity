@@ -1,0 +1,849 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* This is key for centering, full width, check borders w/ & w/o */
+    /* overflow: auto; */
+}
+
+:root {
+    --btn0-display-name: "Run";
+    --animation-gridConv: ;
+    --gridicons-shad: 4px;
+    /* --bg-image: url('https://helios-i.mashable.com/imagery/articles/04xiSvNtqBjg2FTly1Tb3tG/hero-image.fill.size_1248x702.v1623369589.png') */
+    --bg-image: url('https://nesdis-prod.s3.amazonaws.com/migrated/20180313-noreaster.png?_ga=2.60147887.386465314.1697215741-1944269763.1697215741');
+    --color: rgba(255,255,255,1);
+    --bgcolor0: #CEB888;
+    --bgcolor1: #CEB888;
+    --bgcolor2: #CEB888;
+    --bgcolor3: #CEB888;
+    --bgcolor4: #CEB888;
+    --bgcolor5: #CEB888;
+    --animation0: ;
+    --animation1: ;
+    --animation2: ;
+    --animation3: ;
+    --animation4: ;
+    --animation5: ;
+    --animationTest: ;
+    --GridEyeHeight: ;
+    /* --cell-width: 3vw; */
+    --upper-bottom: ;
+    --container1-bottom: ;
+    --gridConv-bottom: ;
+}
+
+body {
+    background-color: black;
+}
+
+a {
+   /*  color: var(--color); */
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.curtain {
+    width: 100%; /* Ensures the component is the full screen width */
+    height: 100%; /* We're using this for demo purposes */
+    position: absolute;
+    /* top: 65px; */
+    /* overflow: scroll; */
+}
+
+.curtain__wrapper {
+    width: 100%;
+    height: 100%;
+    /* border: 4px solid red; */
+   /*  overflow: hidden; */ /* Allows us to slide the panels outside the container without them showing */
+}
+
+.curtain__panel {
+    background: black;
+    /* width: 50%;  */ /* Each panel takes up half the container */
+    /* height: 100vh; */ /* Used for demo purposes */
+    width: 100%;
+    height: 100vh; /* Each panel takes up half the container vertically */
+    /* float: left; */ /* Makes sure panels are side-by-side */
+    /* float: left;  *//* Makes sure panels are side-by-side vertically */
+    /* position: relative; */ /* Needed to define the z-index */
+    position: absolute; /* Needed to define the z-index */
+    /* top: 65px; */
+    /* z-index: 0; */ /* Places the panels in front of the prize */
+    /* text-align: center; */
+    color: #CEB888;
+
+    /* border: 4px solid red; */
+    /* border-top: 4px solid red; */
+}
+
+.curtain__panel--left {
+    /* height: 100%; */
+    width: 100vw;/*  */
+    /* line-height: 10vh; */
+    z-index: 10;
+    color: #CEB888;
+    animation: blinkingBackground 2s ease-in-out;
+    /* border-left: 4px solid #CEB888;
+    border-right: 4px solid #CEB888; */
+    /* border-top: 4px solid #CEB888; */
+    border-top: calc(var(--border-grids)) solid #CEB888;
+    /* border-bottom: 4px solid #CEB888; */
+    transform: translateY(105vh);
+}
+
+.zone {
+    height: 100vh;
+    font-size: calc(2*var(--cell-width));
+    /* font-size: 62px; */
+    line-height: calc(6*var(--cell-width));
+    /* line-height: 40vh; */
+    text-align: center;
+    font-weight: bold;
+    /* border: 4px solid #CEB888; */
+}
+
+.curtain__prize {
+    position: absolute; /* Forces the prize position into the container start */
+    /* top: 100vh; */
+    /* z-index: 1; */ /* Places the prize behind the panels, which are z-index 2 */
+    width: 100%;
+    height: 100%;
+    /* transition: all 4s linear; */
+}
+
+input[type=checkbox] {
+    position: absolute; /* Force the checkbox at the start of the container */
+    cursor: pointer; /* Indicate the curtain is clickable */
+    width: 100%; /* The checkbox is as wide as the component */
+    height: 100%; /* The checkbox is as tall as the component */
+    /* z-index: 100; */ /* Make sure the checkbox is on top of everything else */
+    z-index: 0;
+    opacity: 0; /* Hide the checkbox */
+  }
+
+/* When the checkbox is checked... */
+
+/* Slide the first panel in */
+input[type=checkbox]:checked ~ div.curtain__panel--left {
+    transform: translateY(0%);
+}
+
+/* input[type=checkbox]:checked ~ div.curtain__prize {
+    transform: translateY(100%);
+} */
+
+/* Slide the panel to the left out of the container */
+.curtain__panel--left {
+    /* transform: translateY(105vh); */
+}
+/* .curtain__prize {
+    transform: translateY(-50%);
+} */
+
+.curtain__panel {
+    background: black;
+    /* width: 100%; */ /* Each panel takes up half the container */
+    /* height: 150%; */ /* Used for demo purposes */
+    /* float: left; */ /* Makes sure panels are side-by-side */
+    position: absolute; /* Needed to define the z-index */
+    z-index: 10; /* Places the panels in front of the prize */
+    -webkit-transition: -webkit-transform 2s;
+    -webkit-transition: transform 2s;
+    transition: all 2s ease-in; /* Animates the sliding transition */
+
+    margin: 0;
+    padding: 0;
+}
+
+/* START UPPER DIV */
+
+.upper {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* top: calc(-1*var(--cell-width));
+    top: -10px; */
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    transition: height 0.3s ease;
+    /* height: 24vw; */
+    width: 100%;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+
+    text-align: center;
+
+    color: #CEB888;
+    background: black var(--bg-image);
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    /* background-position: -100px 0px; */
+    border-bottom: 0.5rem solid #CEB888;
+    z-index: 9;
+}
+
+.heroForm {
+    display: inline-block;
+    margin: 0;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    /* padding: calc(0.125*var(--cell-width)); */
+    padding: 5px; /* preferred */
+    color: #CEB888;
+    border-radius: 5px;
+    text-align: center;
+    justify-items: center;
+    background-color: rgba(10, 10, 10, 0.85);
+    border: 2px solid black;
+
+    overflow: hidden;
+}
+
+.gridContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 1;
+}
+
+.gridForm {
+    opacity: 1;
+
+    display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: max-content max-content max-content;
+    grid-gap: 10px;
+    grid-gap: 0.25rem;
+    justify-content: center;
+
+    font-size: 0.75rem; /* ch */
+    /* padding: 0.5em; */
+    margin-right: 0.5rem;
+}
+
+/* ch */
+p {
+    margin-top: 0;
+}
+
+.gridEye {
+    transition: width 0.3s, height 0.3s;
+
+    width: 0px; /* Initially set to zero width */
+    height: 0px; /* Initially set to zero height */
+    /* border: 2px solid red; */
+    /* background: blue; */
+}
+
+.showGridEye {
+    width: 6rem;
+    height: 6rem;
+}
+
+form {
+    display: grid;
+    /* grid-template-columns: max-content max-content; */
+    grid-template-columns: max-content max-content max-content max-content;
+    /* grid-template-rows: max-content max-content; */
+    grid-gap: 0.5em;
+    grid-gap: 0.125rem;
+    background-color: rgba(10, 10, 10, 0);
+    /* border: 2px solid black; */
+    border-radius: 5px;
+
+    color: #CEB888;
+    overflow: auto;
+    justify-content: center;
+    align-items: middle;
+}
+
+form p {
+    margin-bottom: 0;
+}
+
+form label {
+    float: center;
+}
+
+form .input {
+    width: 8em;
+    border-radius: 5px;
+    color: #CEB888;
+    text-align: center;
+
+    font-size: 1em; /* required */ /* ch */
+}
+
+.status {
+    display: grid;
+    grid-template-columns: max-content max-content max-content max-content;
+    justify-content: space-around;
+    /* gap: 0.5em; */
+}
+
+.btn0, .btn1, .btn2, .btn3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 4em;
+    width: 8em;
+
+    font-size: 1em; /* required */ /* ch */
+
+    position: relative;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: rgba(10,10,10,1);
+
+    cursor: pointer;
+}
+.btn0:hover,
+.btn1:hover,
+.btn2:hover,
+.btn3:hover,
+.btn4:hover,
+.btn5:hover {
+    transform: scale(1.025);
+    transition: 0.3s ease;
+}
+.extrafxns {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: space-around;
+
+    /* font-size: 0.75rem !important; */ /* ch */
+    /* font-size: 0.75rem; */
+}
+
+.btn4, .btn5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 2em;
+    width: 8em;
+
+    padding: 0.5em; /* ch */
+
+    font-size: 1em; /* ch */ /* ch from 1em */
+
+    position: relative;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* box-shadow: 0 20px 35px #CEB888; */
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: rgba(10,10,10,1);
+}
+
+.btn0:before {
+    content: "";
+    background-image: conic-gradient(
+        var(--bgcolor0) 20deg,
+        transparent 120deg
+    );
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;;
+    animation: var(--animation0);
+}
+.btn0:after {
+    content: "";
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    background-color: rgba(10,10,10,1);
+    border-radius: 5px;
+    top: 3%;
+    left: 3%;
+    color: #CEB888;
+    display: grid;
+    place-items: center;
+}
+.content-run:after {
+    content: "Run";
+}
+
+.content-stop:after {
+    content: "Stop";
+}
+.btn1:before {
+    content: "";
+    background-image: conic-gradient(
+        var(--bgcolor1) 20deg,
+        transparent 120deg
+    );
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;;
+    animation: var(--animation1);
+}
+.btn1:after {
+    content: "Integrate Velocity Field";
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    background-color: rgba(10,10,10,1);
+    border-radius: 5px;
+    top: 3%;
+    left: 3%;
+    color: #CEB888;
+    display: grid;
+    place-items: center;
+}
+.btn2:before {
+    content: "";
+    background-image: conic-gradient(
+        var(--bgcolor2) 20deg,
+        transparent 120deg
+    );
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;
+    animation: var(--animation2);
+}
+.btn2:after {
+    content: "Animate Streamlines";
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    background-color: rgba(10, 10, 10, 1);
+    border-radius: 5px;
+    top: 3%;
+    left: 3%;
+    color: #CEB888;
+    display: grid;
+    place-items: center;
+}
+.btn3:before {
+    content: "";
+    background-image: conic-gradient(
+        var(--bgcolor3) 20deg,
+        transparent 120deg
+    );
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;
+    animation: var(--animation3);
+}
+.btn3:after {
+    content: "Reset Chart";
+    white-space: pre-wrap;
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    background-color: rgba(10, 10, 10, 1);
+    border-radius: 5px;
+    top: 3%;
+    left: 3%;
+    color: #CEB888;
+    display: grid;
+    place-items: center;
+}
+.btn4:before {
+    content: "";
+    background-image: conic-gradient(
+        var(--bgcolor4) 20deg,
+        transparent 120deg
+    );
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;
+    animation: var(--animation4);
+}
+.btn4:after {
+    content: "Save Data";
+    white-space: pre-wrap;
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    background-color: rgba(10, 10, 10, 1);
+    border-radius: 5px;
+    top: 3%;
+    left: 3%;
+    color: #CEB888;
+    display: grid;
+    place-items: center;
+}
+.btn5:before {
+    content: "";
+    background-image: conic-gradient(
+        var(--bgcolor5) 20deg,
+        transparent 120deg
+    );
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;
+    animation: var(--animation5);
+}
+.btn5:after {
+    content: "Load Data";
+    white-space: pre-wrap;
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    background-color: rgba(10, 10, 10, 1);
+    border-radius: 5px;
+    top: 3%;
+    left: 3%;
+    color: #CEB888;
+    display: grid;
+    place-items: center;
+}
+.btn5 { width: 8rem; }
+
+/* END UPPER DIV */
+
+/* START LOWER CONTAINERS */
+
+.container1 {
+    /* display: block; */
+    position: relative; /* ch */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    /* top: var(--upper-bottom); */
+    z-index: 1;
+
+    /* display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 4vw; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: calc(12*var(--cell-width));
+    /* height: calc(6*var(--cell-width)); */
+
+    /* padding-top: calc(2*var(--cell-width)); */ /* 0302 2155 */
+    /* padding-top: 12rem; */ /*  */
+
+    height: auto;
+    width: auto;
+
+    transform: translateY(0%);
+
+    /* border-bottom: 4px solid #CEB888; */
+    text-align: center;
+}
+.gridConv { /* ch */
+    /* position: absolute;  *//* ch added */
+    /* transform: translate(-2rem, 1rem); */ /* Commented 240323 1600 */
+    /* transform: translate(0,calc(var(--upper-bottom) - 12rem)); */ /* ch */
+    /* transform: translate(calc(-1*var(--cell-width)),calc(var(--upper-bottom) - 1.0*var(--cell-width)));  */
+    width: 100%;
+    max-width: 100%; /* IMPORTANT 240323 1657 */
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    /* min-width: 667px; */
+    animation: var(--animation-gridConv);
+    transition: box-shadow 0.3s ease-in-out width 1s ease-out;
+
+    border-radius: 0.25rem;
+}
+@keyframes pulsate_gridConv {
+    0% {
+        box-shadow: 0px 0px 0.25rem #04b0ee;
+    }
+    100% {
+        box-shadow: 0 0 20px 10px rgba(206,184,136,0);
+    }
+}
+
+.myChartConv {
+    width: 32rem;
+    height: 16rem;
+}
+
+/* .gridConv { grid-row: 1; border: 2px solid orange; }
+.container2 { grid-row: 2; } */
+
+.container1 {
+    /* margin-bottom: 0.5em; */
+    padding: 0.375rem;
+    padding: 1rem;
+
+    /* border: 2px dashed white; */ }
+.container3 {
+    position: relative; /* ch added */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 1rem;
+}
+
+.ui-sortable-helper {
+    opacity: 0.6;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.grid {
+    transform: translateY(0);
+    transition: transform 1.5s ease-in;
+}
+
+.grid.animate {
+    transform: translateY(100%);
+}
+
+.container2 {
+    display: inline-block;
+    position: relative;
+    margin-left: 1em;
+    margin-right: auto;
+    white-space: nowrap;
+    /* overflow-x: scroll;
+    overflow-y: scroll; */
+    height: auto;
+    width: 100%;
+    /* z-index: 1; */
+    /* overflow-x: auto; */
+
+    /* top: 228px; */
+    /* width: 100vh; */
+    /* border: 4px solid red; */
+}
+
+.fourth-d-wrapper,
+.fourth-c-wrapper,
+.fourth-b-wrapper,
+.fourth-wrapper {
+    position: relative;
+    height: auto;
+    min-width: 50vw;
+    box-shadow: 0px 0px calc(var(--gridicons-shad) * 2) rgba(0, 51, 102, 1);
+    border-radius: var(--font-size * 0.5);
+
+    border-radius: calc(var(--gridicons-shad) * 2);
+
+    font-size: 1rem;
+    transition: height 0.1s ease-in-out;
+    background-color: rgba(10,10,10,1);
+
+    overflow: hidden;
+
+    margin-top: 1rem;
+    /* margin-bottom: 4vw; */
+
+    /* border: 2px solid yellow; */
+}
+.fourth-d-wrapper::before,
+.fourth-c-wrapper::before,
+.fourth-b-wrapper::before,
+.fourth-wrapper::before
+{
+    content: "";
+    background-image: conic-gradient(
+        rgba(253, 181, 21, 1) 20deg,
+        transparent 120deg
+    );
+    /* background-image: conic-gradient(
+        rgba(0, 51, 102, 1) 20deg,
+        transparent 120deg
+    ); */
+    height: 150%;
+    width: 150%;
+    position: absolute;
+    left: -25%;
+    top: -25%;;
+    animation: rotate 2s infinite linear;
+}
+.fourth-d-wrapper::after,
+.fourth-c-wrapper::after,
+.fourth-b-wrapper::after,
+.fourth-wrapper::after
+{
+    content: "";
+    height: 98%;
+    width: 99.5%;
+    position: absolute;
+    background-color: rgba(10,10,10,1);
+    border-radius: var(--font-size * 0.5);
+
+    border-radius: calc(var(--gridicons-shad) * 2); /* added */
+
+    top: 1%;
+    left: 0.25%;
+    color: rgba(0, 51, 102, 1);
+
+    opacity: 1;
+}
+.fourth-d-wrapper,
+.fourth-c-wrapper,
+.fourth-b-wrapper,
+.fourth-wrapper {
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+
+    width: 100%;
+}
+.fourth-d-text-container,
+.fourth-c-text-container,
+.fourth-b-text-container,
+.fourth-text-container
+{
+    display: none;
+    /* display: flex; */
+    position: absolute;
+    text-align: left;
+    color: white;
+    z-index: 1;
+    font-size: 1rem;
+
+    padding: calc(var(--font-size)*1.5); /*  */
+    padding: 0.25rem;
+    /* padding-bottom: calc(var(--font-size)*2.5); */
+
+    /* border: 1px solid red; */
+}
+.fourth-d-text-container a,
+.fourth-c-text-container a,
+.fourth-b-text-container a,
+.fourth-text-container a
+{
+    text-decoration: none;
+    color: white;
+}
+.highlight-effect {
+    color: rgba(253, 181, 21, 1);
+    animation: color 0.3s ease-out; /* Use the defined animation */
+}
+@keyframes color {
+    0% { color: white;
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px rgba(253, 181, 21, 1), 0 0 70px rgba(253, 181, 21, 1), 0 0 80px rgba(253, 181, 21, 1), 0 0 100px rgba(253, 181, 21, 1), 0 0 150px rgba(253, 181, 21, 1);
+    }
+    /* 50% { color: rgba(255, 215, 0, 0.5); } */
+    100% { color: rgba(253, 181, 21, 1); text-shadow: none; }
+}
+
+
+@keyframes slideR {
+    0% {
+        /* opacity: 0; */
+        transform: translateX(0);
+    }
+    100% {
+        /* opacity: 1; */
+        transform: translateX(-50px)
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0 } to {opacity: 1;}
+}
+
+/* END LOWER CONTAINERS */
+
+/* KEY FRAMES */
+
+@keyframes rotate{
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes blinkingBackground{
+    0%		{ color: #CEB888;}
+    50%		{ color: black;}
+    100%		{ color: #CEB888;}
+    0%		{ border-color: #CEB888;}
+    50%		{ border-color: black;}
+    100%		{ border-color: #CEB888;}
+    0%		{ background-color: black;}
+    50%		{ background-color: #CEB888;}
+    100%		{ background-color: black;}
+}
+
+@keyframes blinkingText {
+    0%		{ background-color: #CEB888;}
+    50%		{ background-color: black;}
+    100%		{ background-color: #CEB888;}
+}
+
+/* Checkbox */
+.dd-input {
+    display: none;
+}
+
+.dd-menu {
+    position: absolute;
+    /* top: 100%; */
+    border: 2px solid #CEB888;
+    border-radius: 4px;
+    padding: 0.25em;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+    background-color: rgba(10, 10, 10, 0.85);
+    list-style-type: none;
+
+    font-size: 0.75em;
+
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    width: auto;
+
+    transform: translate(8rem, -2rem);
+}
+
+.dd-input + .dd-menu {
+    display: block;
+}
+
+/* Checkbox checked */
+/* .dd-input:checked + .dd-menu {
+    display: block;
+} */
+
+.dd-menu li {
+    padding: 0.25rem 0.25rem;
+    /* padding: 5px 5px; */
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.dd-menu li:hover {
+    background-color: rgba(255, 215, 0, 0.5);
+    /* background-color: cyan; */
+    border-top: 2px solid #CEB888;
+    border-bottom: 2px solid #CEB888;
+}
+
+.dd-menu li a {
+    display: block;
+    /* margin: -10px -20px; */
+    padding: 0.25rem 0.25rem;
+}
+
+.dd-menu li.divider{
+    padding: 0;
+    border-bottom: 1px solid #cccccc;
+}

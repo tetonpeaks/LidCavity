@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        /* Style the container to display items horizontally */
+        #sortable-list {
+            display: flex;
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+
+        /* Style the individual sortable items */
+        .sortable-item {
+            /* margin-right: 2px; */ /* Fixed spacing between items */
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            cursor: grab; /* Change cursor to indicate draggability */
+            transition: transform 0.5s ease-in-out; /* Add animation effect */
+        }
+    </style>
+</head>
+<body>
+    <div id="sortable-list">
+      <!-- Initial item that starts on top of the deck -->
+      <div class="sortable-item" style="transform: translateX(0);">Item 1</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#sortable-list").sortable({
+                axis: "x", // Restrict to horizontal sorting
+                update: function(event, ui) {
+                    // Recalculate and distribute items evenly after sorting
+                    const items = $("#sortable-list .sortable-item");
+                    const totalWidth = $("#sortable-list").width();
+                    //const spacing = totalWidth / items.length;
+                    const spacing = 2;
+
+                    items.each(function(index, item) {
+                        $(item).css('transform', `translateX(${index * spacing}px)`);
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        const container = document.getElementById("sortable-list");
+
+        function appendItem(text) {
+            const newItem = document.createElement("div");
+            newItem.className = "sortable-item";
+            newItem.textContent = text;
+
+            // Insert the new item at the beginning of the container
+            container.insertBefore(newItem, container.firstElementChild);
+
+            // Insert the new item at the bottom of the deck
+            //container.appendChild(newItem);
+
+            // Calculate the spacing to evenly distribute items
+            const items = container.querySelectorAll(".sortable-item");
+            const totalWidth = container.clientWidth;
+            //const spacing = totalWidth / items.length;
+            const spacing = 2;
+            // Trigger a reflow by accessing offsetWidth
+            container.offsetWidth;
+
+            // Apply the animation to push items to the right with fixed spacing
+            items.forEach((item, index) => {
+                item.style.transform = `translateX(${index * spacing}px)`;
+            });
+        }
+
+        // Call appendItem to add each item only once
+        //appendItem("Item 1");
+        appendItem("Item 2");
+        appendItem("Item 3");
+    </script>
+</body>
+</html>
