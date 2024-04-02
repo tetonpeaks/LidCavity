@@ -480,13 +480,15 @@ def packDisp(x, y, Np, Nint):
 
 def getSims():
 
-    # Access the current user
-    if current_user.is_authenticated:
-        user_id = current_user.get_id()  # Get the user ID
-        username = current_user.username  # Get the username
-        print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
-    else:
-        print("No user is currently authenticated.")
+    user_id = 18
+    username = 'default user'
+
+    #if current_user.is_authenticated:
+    #    user_id = current_user.get_id()  # Get the user ID
+    #    username = current_user.username  # Get the username
+    #    print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
+    #else:
+    #    print("No user is currently authenticated.")
 
     #rows = session.query(Convergence.simname)
     #rows = rows.all()
@@ -1782,7 +1784,8 @@ socketio = SocketIO(app, reconnection=True, manage_session=False)
 @app.route('/')
 @cross_origin()
 def root():
-    return redirect(url_for('login'))
+    print("In root")
+    return redirect(url_for('test'))
 
 """ CHANGE PW LENGTH ON RELEASE """
 class RegistrationForm(FlaskForm):
@@ -2157,7 +2160,6 @@ def is_user_logged_in_handle_reconnect():
     print("Client reconnected to /is_user_logged_in")
 
 @socketio.on('message', namespace='/is_user_logged_in')
-@login_required
 def is_user_logged_in(message):
     # Access the current user
     if current_user.is_authenticated:
@@ -2190,7 +2192,6 @@ def logout_handle_reconnect():
 
 #@app.route('/logout', methods=['GET', 'POST'])
 @socketio.on('message', namespace='/logout')
-@login_required
 def logout(message):
     print(f"{bcolors.WARNING}Hi from /logout: {bcolors.ENDC}")
 
@@ -2640,35 +2641,29 @@ def register():
 
 @app.route('/index', methods=['GET', 'POST'])
 @cross_origin()
-@login_required
 def index():
     return render_template('index.html')
 
 @app.route('/simulate', methods=['GET', 'POST'])
 @cross_origin()
-@login_required
 def simulate():
-    if current_user.is_authenticated:
-        user_id = current_user.get_id()  # Get the user ID
-        username = current_user.username  # Get the username
-        user = User.query.filter_by(username=username).first()
+    #if current_user.is_authenticated:
+    user_id = 18
+    username = 'default user'
+    user = User.query.filter_by(username=username).first()
 
-        user_login_status = current_user.check_is_logged_in()
+    print(
+        f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, "
+        f"{bcolors.WARNING}username{bcolors.ENDC}: {username}, "
+    )
 
-        print(
-            f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, "
-            f"{bcolors.WARNING}username{bcolors.ENDC}: {username}, "
-            f"{bcolors.WARNING}user_login_status{bcolors.ENDC}: {user_login_status}, "
-            f"{bcolors.WARNING}current_user.is_authenticated: {bcolors.ENDC}{current_user.is_authenticated}"
-        )
-
-        return render_template('simulate.html',
-                               user_authenticated=current_user.is_authenticated,
-                               username=username
-                               )
-    else:
-        print("Redirect to login")
-        return redirect(url_for('login'))
+    return render_template('simulate.html',
+                            user_authenticated=True,
+                            username=username
+                            )
+    #else:
+    #    print("Redirect to login")
+    #    return redirect(url_for('login'))
 
 import boto3
 from botocore.exceptions import NoCredentialsError
@@ -2682,7 +2677,6 @@ s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=
 
 @app.route('/get_pdf', methods=['GET', 'POST'])
 @cross_origin()
-@login_required
 def get_pdf():
     object_name = 'SIMPLE-ALGORITHM-FOR-SYMMETRIC-DRIVEN-CAVITY-NEW.pdf'
 
@@ -2701,41 +2695,26 @@ def get_pdf():
         print(f"Error retrieving file from S3: {e}")
         # Handle the error, e.g., return an error response or redirect to an error page
 
-""" @app.route('/get_pdf', methods=['GET', 'POST'])
-@cross_origin()
-@login_required
-def get_pdf():
-    pdf_path = '/stephenhodson/Users/Downloads/SIMPLE-ALGORITHM-FOR-SYMMETRIC-DRIVEN-CAVITY-NEW.pdf'
-    return send_file(pdf_path, mimetype='application/pdf') """
-
 @app.route('/test', methods=['GET', 'POST'])
 @cross_origin()
-@login_required
 def test():
 
-    if current_user.is_authenticated:
-        user_id = current_user.get_id()  # Get the user ID
-        username = current_user.username  # Get the username
-        user = User.query.filter_by(username=username).first()
+    #if current_user.is_authenticated:
+    user_id = 18  # Get the user ID
+    username = 'default user'  # Get the username
+    user = User.query.filter_by(username=username).first()
 
-        user_login_status = current_user.check_is_logged_in()
+    print(
+        f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, "
+        f"{bcolors.WARNING}username{bcolors.ENDC}: {username}, ")
 
-        print(
-            f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, "
-            f"{bcolors.WARNING}username{bcolors.ENDC}: {username}, "
-            f"{bcolors.WARNING}user_login_status{bcolors.ENDC}: {user_login_status}, "
-            f"{bcolors.WARNING}current_user.is_authenticated: {bcolors.ENDC}{current_user.is_authenticated}"
-        )
-
-        playlist_id = '7ewC7h76BY0b43C30iHzFF'
-
-        return render_template('index.html',
-                               user_authenticated=current_user.is_authenticated,
-                               username=username
-                               )
-    else:
-        print("Redirect to login")
-        return redirect(url_for('login'))
+    return render_template('index.html',
+                            user_authenticated=True,
+                            username=username
+                            )
+    #else:
+    #    print("Redirect to login")
+    #    return redirect(url_for('login'))
 
 chk_clients = set()
 
@@ -2758,18 +2737,19 @@ def chk_handle_reconnect():
     print("Client reconnected to /chk")
 
 @socketio.on('message', namespace='/chk')
-@login_required
 def chk(message):
     try:
         socketio.sleep(0.5)
 
-        # Access the current user
-        if current_user.is_authenticated:
-            user_id = current_user.get_id()  # Get the user ID
-            username = current_user.username  # Get the username
-            print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
-        else:
-            print("No user is currently authenticated.")
+        user_id = 18
+        username = 'default user'
+
+        #if current_user.is_authenticated:
+        #    user_id = current_user.get_id()  # Get the user ID
+        #    username = current_user.username  # Get the username
+        #    print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
+        #else:
+        #    print("No user is currently authenticated.")
 
         res = message
 
@@ -2809,18 +2789,19 @@ def save_handle_reconnect():
     print("Client reconnected to save")
 
 @socketio.on('message', namespace='/save')
-@login_required
 def save(message):
     try:
         socketio.sleep(0.5)
 
-        # Access the current user
-        if current_user.is_authenticated:
-            user_id = current_user.get_id()  # Get the user ID
-            username = current_user.username  # Get the username
-            print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
-        else:
-            print("No user is currently authenticated.")
+        user_id = 18
+        username = 'default user'
+
+        #if current_user.is_authenticated:
+        #    user_id = current_user.get_id()  # Get the user ID
+        #    username = current_user.username  # Get the username
+        #    print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
+        #else:
+        #    print("No user is currently authenticated.")
 
         res = message
 
@@ -2998,7 +2979,6 @@ def save(message):
 load_clients = set()
 
 @socketio.on('connect', namespace='/load')
-@login_required
 def connect_load():
     print("CONNECTED to load: ", request.sid)
 
@@ -3073,122 +3053,122 @@ def close_connection_retreive(data):
 
 # WebSocket clients for retreive
 @socketio.on('message', namespace='/retreive')
-@login_required
 def retreive(message):
     print("messaga retreive: ", message)
-    if current_user.is_authenticated:
+    #if current_user.is_authenticated:
 
-        user_id = current_user.get_id()  # Get the user ID
+    user_id = 18
+    username = 'default user'
 
-        try:
-            res = message
+    try:
+        res = message
 
-            print(f"{bcolors.WARNING} res['flag']: {res['flag']}{bcolors.ENDC}")
+        print(f"{bcolors.WARNING} res['flag']: {res['flag']}{bcolors.ENDC}")
 
-            simname = res['simname']
+        simname = res['simname']
 
-            print(f"{bcolors.WARNING}simname: {bcolors.ENDC}{simname}")
+        print(f"{bcolors.WARNING}simname: {bcolors.ENDC}{simname}")
 
-            #user_id_index = simname[::-1].find('_')  # Find the index of the last underscore character from the reversed string
-            #if user_id_index != -1:  # Check if the underscore character exists
-            #    simname = simname[:-user_id_index - 1]  # Slice the string from the end to the index of the last underscore from the end
-            #    print("underscore found")
-            #else:
-            #    # Handle the case when no underscore character is found
-            #    print("No underscore character found in the string")
+        #user_id_index = simname[::-1].find('_')  # Find the index of the last underscore character from the reversed string
+        #if user_id_index != -1:  # Check if the underscore character exists
+        #    simname = simname[:-user_id_index - 1]  # Slice the string from the end to the index of the last underscore from the end
+        #    print("underscore found")
+        #else:
+        #    # Handle the case when no underscore character is found
+        #    print("No underscore character found in the string")
 
-            simname = f"{res['simname']}_{user_id}"
+        simname = f"{res['simname']}_{user_id}"
 
-            print(f"{bcolors.WARNING}simname (/retrieve): {bcolors.ENDC}{simname}")
+        print(f"{bcolors.WARNING}simname (/retrieve): {bcolors.ENDC}{simname}")
 
-            objV = getDataV(simname=simname)
+        objV = getDataV(simname=simname)
 
-            params = objV['params']
-            N = params['N']; Np = params['Np']
-            u = objV['u']; v = objV['v']
+        params = objV['params']
+        N = params['N']; Np = params['Np']
+        u = objV['u']; v = objV['v']
 
-            print(f"{bcolors.OKBLUE}From retreive :: N = {N} :: simname = {simname} {bcolors.ENDC}")
+        print(f"{bcolors.OKBLUE}From retreive :: N = {N} :: simname = {simname} {bcolors.ENDC}")
 
-            objP = getDataP(simname=simname)
+        objP = getDataP(simname=simname)
 
-            P = objP['P']
+        P = objP['P']
 
-            bias = 5
+        bias = 5
 
-            row, col, Pmax = find_max(abs(P))
-            #row, col, Pmax = find_max(abs(P[bias:-1][:]))
+        row, col, Pmax = find_max(abs(P))
+        #row, col, Pmax = find_max(abs(P[bias:-1][:]))
 
-            print("len(u): ", len(u))
-            print("len(P): ", len(P), "row: ", row, "col: ", col)
+        print("len(u): ", len(u))
+        print("len(P): ", len(P), "row: ", row, "col: ", col)
 
-            objC = getDataC(simname=simname)
+        objC = getDataC(simname=simname)
 
-            objS = {
-                "u": u,
-                "v": v,
-                "N": N,
-            }
+        objS = {
+            "u": u,
+            "v": v,
+            "N": N,
+        }
 
-            objD = getDataD(simname=simname,Np=Np,Nint=int(250))
+        objD = getDataD(simname=simname,Np=Np,Nint=int(250))
 
-            x = np.linspace(0,1,N); y = np.linspace(0,1,N)
+        x = np.linspace(0,1,N); y = np.linspace(0,1,N)
 
-            Nuv = int(len(u))
-            #Nuv = int(len(u)/2)
-            cfd = {
-                "yu": [],
-                "xv": [],
-            }
+        Nuv = int(len(u))
+        #Nuv = int(len(u)/2)
+        cfd = {
+            "yu": [],
+            "xv": [],
+        }
 
-            y = np.linspace(0,1,Nuv)
-            x = np.linspace(0,1,Nuv)
+        y = np.linspace(0,1,Nuv)
+        x = np.linspace(0,1,Nuv)
 
-            print("x[col+bias]: ", x[col+bias], "y[row]: ", y[row])
+        print("x[col+bias]: ", x[col+bias], "y[row]: ", y[row])
 
-            cfd["yu"] = np.zeros((Nuv, 2))
-            cfd["xv"] = np.zeros((Nuv, 2))
+        cfd["yu"] = np.zeros((Nuv, 2))
+        cfd["xv"] = np.zeros((Nuv, 2))
 
-            print("len(cfd['yu']): ", len(cfd["yu"]))
-            print("len(u): ", len(u))
+        print("len(cfd['yu']): ", len(cfd["yu"]))
+        print("len(u): ", len(u))
 
-            for i in range(0, Nuv):
-                cfd["yu"][i][0] = y[i]
-                cfd["yu"][i][1] = u[i][col+bias]/float(params['U'])
-                cfd["xv"][i][0] = x[i]
-                cfd["xv"][i][1] = v[row][i]/float(params['U'])
+        for i in range(0, Nuv):
+            cfd["yu"][i][0] = y[i]
+            cfd["yu"][i][1] = u[i][col+bias]/float(params['U'])
+            cfd["xv"][i][0] = x[i]
+            cfd["xv"][i][1] = v[row][i]/float(params['U'])
 
-            cfd["yu"][Nuv-1][1] = 1
+        cfd["yu"][Nuv-1][1] = 1
 
-            x = np.linspace(0,1,N); y = np.linspace(0,1,N)
+        x = np.linspace(0,1,N); y = np.linspace(0,1,N)
 
-            objImg = getDataImg(simname)
-            objImgP = getDataImgP(simname)
+        objImg = getDataImg(simname)
+        objImgP = getDataImgP(simname)
 
-            event = {
-                "msg": f"Simulation {simname} loaded.",
-                "objV": objV,
-                "objD": objD,
-                "objC": objC,
-                "objP": objP,
-                "cfd": cfd,
-                "eye": { 'x': x[col], 'y': y[row], 'value': Pmax },
-                "img_src": objImg['img_src'],
-                "imgP_src": objImgP['imgP_src'],
-                "params": params,
-                "sid": request.sid,
-            }
+        event = {
+            "msg": f"Simulation {simname} loaded.",
+            "objV": objV,
+            "objD": objD,
+            "objC": objC,
+            "objP": objP,
+            "cfd": cfd,
+            "eye": { 'x': x[col], 'y': y[row], 'value': Pmax },
+            "img_src": objImg['img_src'],
+            "imgP_src": objImgP['imgP_src'],
+            "params": params,
+            "sid": request.sid,
+        }
 
-            emit('response', json.dumps(event, cls=npEncoder), room=request.sid)  # Emit to a specific client
+        emit('response', json.dumps(event, cls=npEncoder), room=request.sid)  # Emit to a specific client
 
-            session.close()
-            engine.dispose()
-        except Exception as e:
-            print(f"An exception occurred: {str(e)}")
-            traceback.print_exc()
-        finally:
-            print("poop /retreive")
-    else:
-        print("No user is currently authenticated.")
+        session.close()
+        engine.dispose()
+    except Exception as e:
+        print(f"An exception occurred: {str(e)}")
+        traceback.print_exc()
+    finally:
+        print("poop /retreive")
+    e#lse:
+     #   print("No user is currently authenticated.")
 
 """ /fvm route START """
 
@@ -3229,7 +3209,6 @@ def start_fvm_close_connection():
 running_loop = False
 
 @socketio.on('message', namespace='/start_fvm')
-@login_required
 def start_fvm(message):
     try:
         join_room(request.sid)
@@ -3240,6 +3219,9 @@ def start_fvm(message):
         #if res['flag'] == 'fvm':
         print("message: ", res)
         main_error = np.asfortranarray(np.ones(1000), dtype='float32')
+
+        user_id = 18
+        username = 'default user'
 
         N = int(res['N'])
 
@@ -3618,18 +3600,19 @@ def genP_close_connection(data):
     close_room(sid_to_close)
 
 @socketio.on('message', namespace='/genP')
-@login_required
 def genP(message):
     try:
         socketio.sleep(0.5)
 
-        # Access the current user
-        if current_user.is_authenticated:
-            user_id = current_user.get_id()  # Get the user ID
-            username = current_user.username  # Get the username
-            print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
-        else:
-            print("No user is currently authenticated.")
+        #if current_user.is_authenticated:
+        #    user_id = current_user.get_id()  # Get the user ID
+        #    username = current_user.username  # Get the username
+        #    print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
+        #else:
+        #    print("No user is currently authenticated.")
+
+        user_id = 18
+        username = 'default user'
 
         res = message
 
@@ -3739,18 +3722,19 @@ def genS_close_connection(data):
     close_room(sid_to_close)
 
 @socketio.on('message', namespace='/genS')
-@login_required
 def genS(message):
     try:
         socketio.sleep(0.5)
 
-        # Access the current user
-        if current_user.is_authenticated:
-            user_id = current_user.get_id()  # Get the user ID
-            username = current_user.username  # Get the username
-            print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
-        else:
-            print("No user is currently authenticated.")
+        #if current_user.is_authenticated:
+        #    user_id = current_user.get_id()  # Get the user ID
+        #    username = current_user.username  # Get the username
+        #    print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
+        #else:
+        #    print("No user is currently authenticated.")
+
+        user_id = 18
+        username = 'default user'
 
         res = message
 
@@ -3906,7 +3890,6 @@ def getRe_close_connection(data):
     close_room(sid_to_close)
 
 @socketio.on('message', namespace='/getRe')
-@login_required
 def getRe_socket(message):
     try:
 
@@ -4044,16 +4027,6 @@ def getRe_socket(message):
     finally:
         print("poop /getRe")
 
-@app.route('/chat')
-@cross_origin()
-def chat():
-    return render_template('chat.html')
-
-""" def start_app():
-    app.run(host='127.0.0.1', port=5000)
-
-if __name__ == '__main__':
-    threading.Thread(target=start_app).start() """
 
 def background_thread():
     while True:
