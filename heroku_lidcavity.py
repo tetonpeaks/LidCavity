@@ -1785,7 +1785,7 @@ socketio = SocketIO(app, reconnection=True, manage_session=False)
 @cross_origin()
 def root():
     print("In root")
-    return redirect(url_for('test'))
+    return redirect(url_for('index'))
 
 """ CHANGE PW LENGTH ON RELEASE """
 class RegistrationForm(FlaskForm):
@@ -2052,7 +2052,7 @@ def login():
 
             get_flashed_messages()
 
-            return redirect(url_for('test',
+            return redirect(url_for('index',
                                     user_authenticated=True,
                                     username=username
                                     ))
@@ -2642,7 +2642,24 @@ def register():
 @app.route('/index', methods=['GET', 'POST'])
 @cross_origin()
 def index():
-    return render_template('index.html')
+
+    #if current_user.is_authenticated:
+    user_id = 1  # Get the user ID
+    username = 'default user'  # Get the username
+    user = User.query.filter_by(username=username).first()
+
+    print(
+        f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, "
+        f"{bcolors.WARNING}username{bcolors.ENDC}: {username}, ")
+
+    return render_template('index.html',
+                            user_authenticated=True,
+                            username=username
+                            )
+    #else:
+    #    print("Redirect to login")
+    #    return redirect(url_for('login'))
+
 
 @app.route('/simulate', methods=['GET', 'POST'])
 @cross_origin()

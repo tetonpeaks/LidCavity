@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     socketIsUserLoggedIn.emit('message', {
-        flag: `is_user_logged_in`,
+        //flag: `is_user_logged_in`,
     })
 
     socketIsUserLoggedIn.on('response', (data) => {
