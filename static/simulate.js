@@ -1453,25 +1453,11 @@ document.addEventListener("DOMContentLoaded", function () {
                             display: false,
                         },
                         annotation: {
-                            annotations: [] // An array to store annotation objects
+                            annotations: []
                         },
-                        /* datalabels: { // Enable data labels
-                            display: true,
-                            color: 'black', // Label text color
-                            align: 'center', // Label text alignment
-                            anchor: 'end', // Label anchor position
-                            font: {
-                                size: fontSizeInPixels / 4,
-                                weight: 'normal'
-                            },
-                            formatter: (value, context) => { // Customize label text
-                                console.log("formatter: ",value, context)
-                                return `(${context.dataset.data[context.dataIndex].x}, ${context.dataset.data[context.dataIndex].y})`;
-                            },
-                        } */
                     },
                     interaction: {
-                        mode: 'point', // Enable hover and click interactions on data points
+                        mode: 'point',
                         font: fontSizeInPixels / 4,
                     },
                 },
