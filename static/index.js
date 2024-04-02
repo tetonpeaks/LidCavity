@@ -1858,7 +1858,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             document.querySelector('.fourth-cc-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                         }, 250)
 
-                    }, 17500 - 15000)
+                    }, 17500 - 5000)
                 }
 
             }, 500)
