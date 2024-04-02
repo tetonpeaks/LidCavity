@@ -1156,11 +1156,11 @@ document.addEventListener("DOMContentLoaded", function() {
                                                 }
                                             }, 3000)
                                         }
-                                    }, 12000 - 4000)
+                                    }, 12000 - 5000)
                                 }
-                            }, 16500 - 4000)
+                            }, 16500 - 5000)
                         }
-                    }, 15500 - 4000)
+                    }, 15500 - 5000)
                 }
             }
 
@@ -1820,9 +1820,9 @@ document.addEventListener("DOMContentLoaded", function() {
                                     document.querySelector('.fourth-d-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                 }, 250)
 
-                            }, 10000)
+                            }, 10000 - 5000)
                         }
-                    }, 17000)
+                    }, 17000 - 5000)
                 }
 
             }
