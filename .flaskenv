@@ -1,0 +1,3 @@
+FLASK_APP=heroku_lidcavity
+FLASK_ENV=development
+FLASK_RUN_PORT=8080

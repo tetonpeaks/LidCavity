@@ -4,17 +4,9 @@ heroku_mysql.txt
 bb0d08a9933f05-cert.pem
 bb0d08a9933f05-key.pem
 cleardb-ca.pem
-cert.pem
-key.pem
-localhost.cert
-localhost.csr
-localhost.key
-localhost.pem
-config.py
-.env
 
 
-.flaskenv
+flaskenv
 
 main_calcALL.cpython-310-darwin.so
 main_calcALL-f2pywrappers2.f90
