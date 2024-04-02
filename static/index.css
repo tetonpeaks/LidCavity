@@ -144,7 +144,6 @@ body {
     margin-top: 1rem;
 
     overflow: hidden; /* may not need */
-    /* transition: height 1s ease-in-out; */
 }
 .algo-outer-wrapper { grid-row: 1 };
 .grid-behind { grid-row: 2 };
