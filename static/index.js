@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (classList.contains("bottom-row")) {
                 text.classList.add('intro-text');
                 text.id = 'dialog';
-                textContent = `In graduate school at Purdue University in the Mechanical Engineering department, I took a course on Numerical Methods in Heat, Mass, and Momentum Transfer that was taught by Jayathi Murthy at the time. If I span across every scholastic course I have taken beginning in high school and throughout my journey to a doctorate degree, it is this course that I enjoyed the most. Computational Fluid Dynamics, or CFD, combines calculus with physics and high-performance computing (HPC). To me, developing this software application was simply a portfolio project. A nuanced application through which I could concisely convey a small look at what I am capable of based on my past achievements and experience, where I want to go in the future, while writing this in the present. I consider myself to be a complex problem solver based on the rigor that my previous academics, internships, and industry work experiences required of me. I developed this application from almost nothing, just some CFD code I had written graduate school.`;
+                textContent = `In graduate school at Purdue University in the Mechanical Engineering department, I took a course on Numerical Methods in Heat, Mass, and Momentum Transfer in 2008. If I span across every scholastic course I have taken beginning in high school and throughout my journey to a doctorate degree, it is this course that I enjoyed the most. Computational Fluid Dynamics, or CFD, combines calculus with physics and high-performance computing (HPC). To me, developing this software application was simply a portfolio project. A nuanced application through which I could concisely convey a small look at what I am capable of based on my past achievements and experience, where I want to go in the future, while writing this in the present. I consider myself to be a complex problem solver based on the rigor that my previous academics, internships, and industry work experiences required of me. I developed this application from almost nothing, just some CFD code I had written in graduate school. Both the repository for this application and my LinkedIn profile can also be accessed by hovering over or clicking on pulsating logo above.`;
             } else if (classList.contains('calculus-row')) {
                 text.classList.add('fourth-text');
                 text.id = 'dialog';
@@ -765,6 +765,14 @@ document.addEventListener("DOMContentLoaded", function() {
                         splitandhighlight(word);
                     } else if (word === 'control' || word === 'volumes') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Control_volume');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === 'repository') {
+                        link.setAttribute('href', 'https://github.com/tetonpeaks/LidCavity');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === 'LinkedIn') {
+                        link.setAttribute('href', 'https://www.linkedin.com/in/stephen-hodson-880b38a5/');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'FLUENT') {
@@ -1171,7 +1179,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 }
                             }, 16500 - 5000)
                         }
-                    }, 15500 - 5000)
+                    }, 15500 - 4000)
                 }
             }
 
