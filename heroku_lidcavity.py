@@ -2711,9 +2711,6 @@ def get_pdf():
         print(f"Error retrieving file from S3: {e}")
         # Handle the error, e.g., return an error response or redirect to an error page
 
-@app.route('/test', methods=['GET', 'POST'])
-@cross_origin()
-def test():
 
     #if current_user.is_authenticated:
     user_id = 1  # Get the user ID
