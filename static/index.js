@@ -747,7 +747,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Systems_engineering');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'nonlinear' || word === 'regression,') {
+                    } else if ((word === 'nonlinear' || word === 'regression,') && words[index+1] !== 'Navier-Stokes') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Nonlinear_regression');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
