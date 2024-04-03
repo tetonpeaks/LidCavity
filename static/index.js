@@ -3296,7 +3296,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     display: true,
                                     labels: {
                                         font: {
-                                            size: fontSizeInPixels  // Set the font size for the legend
+                                            size: fontSizeInPixels
                                         }
                                     }
                                 }
@@ -3387,7 +3387,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     display: true,
                                     labels: {
                                         font: {
-                                            size: fontSizeInPixels  // Set the font size for the legend
+                                            size: fontSizeInPixels
                                         }
                                     }
                                 }
@@ -3479,7 +3479,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     display: true,
                                     labels: {
                                         font: {
-                                            size: fontSizeInPixels  // Set the font size for the legend
+                                            size: fontSizeInPixels
                                         }
                                     }
                                 }
@@ -3571,7 +3571,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     display: true,
                                     labels: {
                                         font: {
-                                            size: fontSizeInPixels  // Set the font size for the legend
+                                            size: fontSizeInPixels
                                         }
                                     }
                                 }
@@ -3663,7 +3663,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     display: true,
                                     labels: {
                                         font: {
-                                            size: fontSizeInPixels  // Set the font size for the legend
+                                            size: fontSizeInPixels
                                         }
                                     }
                                 }
@@ -3755,7 +3755,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     display: true,
                                     labels: {
                                         font: {
-                                            size: fontSizeInPixels  // Set the font size for the legend
+                                            size: fontSizeInPixels
                                         }
                                     }
                                 }
@@ -3849,7 +3849,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     display: true,
                                     labels: {
                                         font: {
-                                            size: fontSizeInPixels  // Set the font size for the legend
+                                            size: fontSizeInPixels
                                         }
                                     }
                                 }
@@ -3941,7 +3941,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     display: true,
                                     labels: {
                                         font: {
-                                            size: fontSizeInPixels  // Set the font size for the legend
+                                            size: fontSizeInPixels
                                         }
                                     }
                                 }
