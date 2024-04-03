@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
         //console.log('loggedIn: ', loggedIn)
     })
 
-    // Assume you have a variable loggedIn from the backend indicating the user's login status
     //const loggedIn = {{ loggedIn|default(False)|lower }};
 
     /* loginButton.addEventListener('click', function() {
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Assuming login success, you can enable the buttons
     function enableButtons() {
-        document.getElementById('welcome').classList.remove('disabled');
+        //document.getElementById('welcome').classList.remove('disabled');
         document.getElementById('home').classList.remove('disabled');
         document.getElementById('simulate').classList.remove('disabled');
     }
@@ -92,11 +91,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    const welcomeLi = document.getElementById('welcome');
+    //const welcomeLi = document.getElementById('welcome');
     const homeButton = document.getElementById('home');
     const simulateButton = document.getElementById('simulate');
 
-    addHoverAndFocusStyles(welcomeLi);
+    //addHoverAndFocusStyles(welcomeLi);
     addHoverAndFocusStyles(homeButton);
     addHoverAndFocusStyles(simulateButton);
     //addHoverAndFocusStyles(loginButton);
@@ -203,6 +202,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const techstackBTextContainer = document.querySelector('.techstack-b-text-container');
     const techstackBWrapper = document.querySelector('.techstack-b-wrapper');
 
+    //startTypeWriter('KNXXX', 'KNXXX');
+
     var Re400U; var Re400V; var Re1000U; var Re1000V; var Re3200U; var Re3200V; var Re5000U; var Re5000V;
 
     //adjust wrapper height based on content
@@ -291,6 +292,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const algoRow = document.querySelector('.algo-row');
     const grid_behind = document.querySelector('.grid-behind');
+
+    grid_behind.style.display = 'none';
 
     //grid_behind.dataset.textWidth = 'grid__behind-text-width';
     //setupObserver(algoRow, grid_behind);
@@ -414,7 +417,11 @@ document.addEventListener("DOMContentLoaded", function() {
             const textContainer = document.querySelector(`.${prefix}-text-container`);
 
             //console.log('prefix: ', prefix, 'classList: ', classList)
-            if (classList === "intro-f") {
+            if (classList === "KNXXX") {
+                text.classList.add('KNXXX-text');
+                text.id = 'dialog';
+                textContent = `KNXXX Productions`;
+            } else if (classList === "intro-f") {
                 text.classList.add('intro-f-text');
                 text.id = 'dialog';
                 textContent = `This type writer idea came from the popular 1990s TV sitcom, Doogie Howser, M.D. This one goes out to everyone I met along the way!`;
@@ -510,10 +517,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     const word = words[index];
 
                     const link = document.createElement('a');
-                    link.setAttribute('target', '_blank'); // Open link in a new tab
+                    link.setAttribute('target', '_blank');
 
                     function splitandhighlight(word) {
-                        // Split 'Lorem' into spans for each character
                         const chars = word.split('').map((char) => {
                             const span = document.createElement('span');
                             span.textContent = char;
@@ -550,13 +556,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         // add space between words
                         textDiv.appendChild(document.createTextNode(' '));
-
                     }
 
                     if ((word === 'Numerical' || word === 'Methods' || word === 'Heat,' || word === 'Mass,' || word === 'Momentum' || word === 'Transfer') ||
                         (words[index - 1] === 'Methods' && word === 'in') ||
                         (words[index - 1] === 'Mass,' && word === 'and')) {
-
                         link.setAttribute('href', 'https://engineering.purdue.edu/online/courses/numerical-methods-heat-mass-momentum-transfer');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -575,7 +579,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     } else if ((word === 'conservation' || word === 'principles' || word === 'and' || word ==='fundamental' || word === 'laws') && (words[index-1] === 'principles' || words[index+1] === 'principles' || words[index-1] === 'conservation' || words[index+1] === 'laws' || words[index-1] === 'fundamental') && (words[index-2] !== 'satisfy' || words[index-3] !== 'satisfy')) {
                         console.log('isAlgoWriterOff',isAlgoWriterOff)
                         if (isAlgoWriterOff) {
-
                             link.setAttribute('href', 'https://en.wikipedia.org/wiki/Conservation_law');
                             textDiv.appendChild(link);
                             splitandhighlight(word);
@@ -583,17 +586,14 @@ document.addEventListener("DOMContentLoaded", function() {
                     } else if ((word === 'continuity' || word === 'equation') && (words[index-2] === 'which' || words[index-3] == 'which')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Continuity_equation');
                         textDiv.appendChild(link);
-
                         splitandhighlight(word);
                     } else if ((word === 'partial' || word === 'differential' || word === 'equations') && (words[index-1] === 'the' || words[index-1] === 'partial' || words[index-1] === 'differential')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Partial_differential_equation');
                         textDiv.appendChild(link);
-
                         splitandhighlight(word);
                     } else if (
                         (word === 'Quadratic' || word === 'Upwind' || word === 'Interpolation' || word === 'Convective' || word === 'Kinetics' || word === 'for') &&
                         (words[index-1] === 'accurate' || words[index-1] === 'Quadratic') || words[index-1] === 'Upwind' || words[index-1] === 'Interpolation' || words[index+1] === 'Kinetics' || words[index-1] === 'Convective' ) {
-
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/QUICK_scheme');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -775,6 +775,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://www.comsol.com/');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
+                    } else if (word === 'KNXXX' || word === 'Productions') {
+                        console.log('Hi')
+                        splitandhighlight(word);
+                        textDiv.appendChild(document.createTextNode(word + ' '));
                     } else {
                         // apply html tags if necessary
                         if (word.includes('<i>') && word.includes('</i>')) {
@@ -782,7 +786,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         } else if (word.includes('<sup>') && word.includes('<sup>')) {
                             textDiv.innerHTML += word + ' ';
                         } else {
-                            // append it as regular text
+                            // append as regular text
                             textDiv.appendChild(document.createTextNode(word + ' '));
                         }
                     }
@@ -792,7 +796,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     introWrapper.style.setProperty('--intro-text-height', '98%')
                     introWrapper.style.setProperty('--intro-text-width', '99.5%')
 
-                    setTimeout(typeWriter, 50); // speed of each word
+                    // set speed
+                    if (classList === 'KNXXX') {
+                        setTimeout(typeWriter, 100);
+                    } else {
+                        setTimeout(typeWriter, 50);
+                    }
                 }
             }
 
@@ -803,7 +812,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }, 250);
 
-        if (classList === 'intro-f'){
+        if (classList === 'KNXXX') {
+            return;
+        } else if (classList === 'intro-f'){
             isWhyFWriterOff = false
         } else if (classList === 'intro-e'){
             isWhyEWriterOff = false
@@ -2525,6 +2536,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (classList.contains("algo-outer-wrapper") && isCalculusRowOpen == true) {
 
+            grid_behind.style.display = 'grid';
+
             if (!isAlgoWrapperOpen) {
 
                 isAlgoWrapperOpen = true;
@@ -3967,7 +3980,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 setTimeout(() => {
                     document.querySelector('.techstack-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
-                }, 100)
+                }, 250)
 
                 if (isTechStackBWriterOff === true) {
                     setTimeout(() => {
@@ -3977,7 +3990,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         setTimeout(() => {
                             document.querySelector('.techstack-b-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
-                        }, 100)
+                        }, 250)
 
                     }, 11000 - 3000)
                 }

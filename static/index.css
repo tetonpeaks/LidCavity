@@ -183,6 +183,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
 }
 .techstack-dialog-row
 {
@@ -270,6 +271,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
 }
 .calculus-row {
     grid-row: 5;
@@ -407,7 +409,7 @@ body {
 .intro-d-wrapper,
 .intro-c-wrapper,
 .intro-b-wrapper,
-.intro-wrapper { margin-bottom: 1rem; }
+.intro-wrapper { margin-bottom: 1rem; display: none; }
 
 .fourth-wrapper,
 .poop-wrapper { margin-top: 2rem; }
@@ -2529,6 +2531,7 @@ mtext {
     /* border: 1px solid orange; */
 }
 .grid-behind {
+    display: none;
     margin-bottom: 0rem;
     display: grid;
     height: auto;
