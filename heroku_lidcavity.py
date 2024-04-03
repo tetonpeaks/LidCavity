@@ -1784,7 +1784,6 @@ socketio = SocketIO(app, reconnection=True, manage_session=False)
 @app.route('/')
 @cross_origin()
 def root():
-    print("In root")
     return redirect(url_for('index'))
 
 """ CHANGE PW LENGTH ON RELEASE """
@@ -2052,7 +2051,7 @@ def login():
 
             get_flashed_messages()
 
-            return redirect(url_for('index',
+            return redirect(url_for('test',
                                     user_authenticated=True,
                                     username=username
                                     ))
@@ -2711,6 +2710,27 @@ def get_pdf():
     except Exception as e:
         print(f"Error retrieving file from S3: {e}")
         # Handle the error, e.g., return an error response or redirect to an error page
+
+@app.route('/test', methods=['GET', 'POST'])
+@cross_origin()
+def test():
+
+    #if current_user.is_authenticated:
+    user_id = 1  # Get the user ID
+    username = 'default user'  # Get the username
+    user = User.query.filter_by(username=username).first()
+
+    print(
+        f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, "
+        f"{bcolors.WARNING}username{bcolors.ENDC}: {username}, ")
+
+    return render_template('index.html',
+                            user_authenticated=True,
+                            username=username
+                            )
+    #else:
+    #    print("Redirect to login")
+    #    return redirect(url_for('login'))
 
 chk_clients = set()
 
@@ -3607,7 +3627,7 @@ def genP(message):
         #else:
         #    print("No user is currently authenticated.")
 
-        user_id = 1
+        user_id = 11
         username = 'default user'
 
         res = message
