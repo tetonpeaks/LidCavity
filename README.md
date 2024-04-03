@@ -1,4 +1,4 @@
-## Getting Started with The Lid-Driven Cavity Flow
+# Getting Started with The Lid-Driven Cavity Flow
 
 ## The Problem
 
