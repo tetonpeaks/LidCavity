@@ -29,7 +29,9 @@ https://engineering.purdue.edu/online/courses/numerical-methods-heat-mass-moment
 
 ## Credits
 
-John Bark
+John Burkardt --> https://people.sc.fsu.edu/~jburkardt/f_src/test_interp_2d/test_interp_2d.html
+
+Jayathi Murthy --> https://www.linkedin.com/in/jayathi-murthy-96a08262/
 
 
 
