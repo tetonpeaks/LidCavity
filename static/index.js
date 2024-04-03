@@ -2993,10 +2993,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 const cellWidth = getComputedStyle(document.documentElement).getPropertyValue('--cell-width-rem');
 
-                // Get the viewport width in pixels
+                // viewport width in pixels
                 const vwInPixels = window.innerWidth || document.documentElement.clientWidth;
 
-                // Convert vw to pixels
+                // cnvert vw to pixels
                 const fontSizeInPixels = parseFloat(cellWidth) * (vwInPixels / 100);
 
                 Re = [400,1000,3200,5000];
