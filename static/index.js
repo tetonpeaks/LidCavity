@@ -656,7 +656,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if ((word === 'Ghia,' || word === 'and' || word === 'Shin') && (words[index-1] === 'of' || words[index-1] === 'Ghia,' || words[index-1] === 'and')) {
-                        link.setAttribute('href', 'href="https://www.sciencedirect.com/science/article/abs/pii/0021999182900584');
+                        link.setAttribute('href', 'href="https://www.sciencedirect.com/science/article/abs/pii/0021999182900584"');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'Fortran') {
