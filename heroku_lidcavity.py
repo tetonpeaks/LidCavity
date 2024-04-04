@@ -79,19 +79,16 @@ from models import Gaia1982
 SECRET_KEY = os.environ.get('SECRET_KEY')
 app.config['LOGIN_VIEW'] = 'login'
 
-#app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(minutes=1)
-app.permanent_session_lifetime = datetime.timedelta(minutes=1)
+app.permanent_session_lifetime = datetime.timedelta(minutes=15)
 
-# Create an instance of LoginManager
+# an instance of LoginManager
 login_manager = LoginManager(app)
 
-# Import the User model and user_loader callback function
 from models import load_user
 
-# Register the user_loader callback function
+# register user_loader callback function
 login_manager.user_loader(load_user)
 
-# Configure the login view (optional)
 login_manager.login_view = 'login'
 
 class bcolors:
@@ -120,55 +117,24 @@ def trunc(values, decs=0):
 
 """ These 3 fxns can be combined """
 def chkVfxn(simname, user_id, rowID, colID, N): #change
-    #stmt = select(Velocity.simname).filter_by(simname=simname) #change
-    #rows = session.
-    # execute(stmt)
 
     chk = False; rows = None
 
     if (simname == f"default_{user_id}"):
 
-        # Define your conditions
-        #condition1 = Velocity.user_id == user_id
-        #condition3 = Velocity.rowID == int(rowID)
         condition2 = Velocity.simname == simname
         combined_condition = and_(condition2)
 
-        # Apply the filter to the query
         result = session.query(Velocity).filter(combined_condition).all()
 
         if (result):
             chk = False
-
-        """ try:
-            print(f"type(rowID): {type(rowID)}")
-
-            results = session.query(Velocity).filter(Velocity.rowID == N).all()
-
-            for result in results:
-                print(f"rowID: {result.rowID}, user_id: {result.user_id}, simname: {result.simname}")
-        except Exception as e:
-            print(f"Error: {e}") """
-
-        #session.query(Velocity).filter(Velocity.simname == 'default')
-
-        """ rows = session.query(Velocity).filter_by(
-                user_id=user_id,
-                simname=simname,
-                #rowID=rowID,
-                #colID=colID, # may not need
-            ).all() """
-
     else:
         rows = session.query(Velocity).filter_by(user_id=user_id,simname=simname).all()
 
     """ can be one-liner """
     if (rows):
         chk = True
-    #for row in rows:
-    #    chk = True
-    #if (results):
-    #    chk = True
 
     msg = None
     if (chk == True):
@@ -180,9 +146,6 @@ def chkVfxn(simname, user_id, rowID, colID, N): #change
     return {"msg": msg, "chk": chk}
 
 def chkPfxn(simname, user_id, rowID, colID, N): #change
-    #stmt = select(Velocity.simname).filter_by(simname=simname) #change
-    #rows = session.
-    # execute(stmt)
 
     chk = False; rows = None
 
@@ -190,7 +153,6 @@ def chkPfxn(simname, user_id, rowID, colID, N): #change
         condition2 = Pressure.simname == simname
         combined_condition = and_(condition2)
 
-        # Apply the filter to the query
         result = session.query(Pressure).filter(combined_condition).all()
 
         if (result):
@@ -200,9 +162,6 @@ def chkPfxn(simname, user_id, rowID, colID, N): #change
 
 
     if (rows): chk = True
-    """ can be one-liner """
-    """ for row in rows:
-        chk = True """
 
     msg = None
     if (chk == True):
@@ -214,9 +173,6 @@ def chkPfxn(simname, user_id, rowID, colID, N): #change
     return {"msg": msg, "chk": chk}
 
 def chkCfxn(simname, user_id, rowID, colID): #change
-    #stmt = select(Velocity.simname).filter_by(simname=simname) #change
-    #rows = session.
-    # execute(stmt)
 
     chk = False; rows = None
 
@@ -224,7 +180,6 @@ def chkCfxn(simname, user_id, rowID, colID): #change
         condition2 = Convergence.simname == simname
         combined_condition = and_(condition2)
 
-        # Apply the filter to the query
         result = session.query(Convergence).filter(combined_condition).all()
 
         if (result):
@@ -234,9 +189,6 @@ def chkCfxn(simname, user_id, rowID, colID): #change
 
 
     if (rows): chk = True
-    """ can be one-liner """
-    """ for row in rows:
-        chk = True """
 
     msg = None
     if (chk == True):
@@ -255,7 +207,6 @@ def chkDfxn(simname, user_id, rowID, colID): #change
         condition2 = Displacement.simname == simname
         combined_condition = and_(condition2)
 
-        # Apply the filter to the query
         result = session.query(Displacement).filter(combined_condition).all()
 
         if (result):
@@ -283,7 +234,6 @@ def chkImgfxn(simname, user_id, rowID, colID): #change
         condition2 = StreamlineImg.simname == simname
         combined_condition = and_(condition2)
 
-        # Apply the filter to the query
         result = session.query(StreamlineImg).filter(combined_condition).all()
 
         if (result):
@@ -310,8 +260,6 @@ def chkImgPfxn(simname, user_id, rowID, colID): #change
     if (simname == f"default_{user_id}"):
         condition2 = StreamlineImgP.simname == simname
         combined_condition = and_(condition2)
-
-        # Apply the filter to the query
         result = session.query(StreamlineImgP).filter(combined_condition).all()
 
         if (result):
@@ -332,12 +280,10 @@ def chkImgPfxn(simname, user_id, rowID, colID): #change
     return {"msg": msg, "chk": chk}
 
 def packVel(u, v, N):
-    #uL = u[np.tril_indices(2*N+1, k = 0)]; vL = v[np.tril_indices(2*N+1, k = 0)]
-    #uU = u[np.triu_indices(2*N+1, k = 1)]; vU = v[np.triu_indices(2*N+1, k = 1)]
+
     u_flat = ["%.8f" % number for number in u.flatten('C')]
     v_flat = ["%.8f" % number for number in v.flatten('C')]
 
-    #ulist = [[0]*(2*N+1)]*(2*N+1)
     ulists = [[0 for i in range(2*N+1)] for j in range(2*N+1)]
     vlists = [[0 for i in range(2*N+1)] for j in range(2*N+1)]
 
@@ -346,7 +292,6 @@ def packVel(u, v, N):
         for j in range(0,2*N+1):
             ulists[i][j] = u_flat[ctr]
             vlists[i][j] = v_flat[ctr]
-            #print(f"ulist[i][j]: {ulists[i][j]} :: uflat[i][j]: {u_flat[ctr]} {bcolors.WARNING} :: i = {i}, j = {j} :: ctr = {ctr} {bcolors.ENDC}")
             ctr += 1
 
     #print(f"{bcolors.OKCYAN} ulist: {ulists[-1]}, len(ulist): {len(ulists)} {bcolors.ENDC}")
@@ -381,7 +326,6 @@ def packPressure(P, x, y, N):
     x_flat = ["%.8f" % number for number in x.flatten('C')]
     y_flat = ["%.8f" % number for number in y.flatten('C')]
 
-    #ulist = [[0]*(2*N+1)]*(2*N+1)
     Plists = [[0 for i in range(N)] for j in range(N)]
     xlists = [[0 for i in range(N)] for j in range(N)]
     ylists = [[0 for i in range(N)] for j in range(N)]
@@ -396,7 +340,6 @@ def packPressure(P, x, y, N):
         ylists[i] = y_flat[ctr1D]
         for j in range(0,N):
             Plists[i][j] = P_flat[ctr2D]
-            #print(f"ulist[i][j]: {ulists[i][j]} :: uflat[i][j]: {u_flat[ctr]} {bcolors.WARNING} :: i = {i}, j = {j} :: ctr = {ctr} {bcolors.ENDC}")
             ctr2D += 1
         ctr1D += 1
 
@@ -416,9 +359,6 @@ def packPressure(P, x, y, N):
         # print(f"len(ulists[ctr]): {ulists[ctr]}\nlen(ulists_pkg[ctr+1]): {ulists[ctr+1]}\nulists_pkg[i] {bcolors.WARNING}{ulists_pkg[i]}, i: {i} :: ctr: {ctr}{bcolors.ENDC}")
         ctr += inc
 
-    # could be problematic for N odd
-    #Plists_pkg[i+1] = {"first": Plists[ctr], "second": None}
-
     return Plists_pkg, xlists_pkg, ylists_pkg
 
 def packDisp(x, y, Np, Nint):
@@ -428,19 +368,6 @@ def packDisp(x, y, Np, Nint):
 
     xlists = [[0 for i in range(Nint)] for j in range(Np)]
     ylists = [[0 for i in range(Nint)] for j in range(Np)]
-
-    #ctr = 0
-    """ for i in range(0, 1):
-        #xlists[i][0:-1] = x_flat[ctr:(ctr + Nint)]
-        #ylists[i][0:-1] = y_flat[ctr:(ctr + Nint)]
-        #ctr += Nint
-        #print(f"{bcolors.WARNING} ctr: {ctr} {bcolors.ENDC} {bcolors.OKCYAN}:: x_flat[]: {x_flat[ctr:(ctr + Nint)]}  :: xlists[i] {xlists[i]}{bcolors.ENDC}")
-        for j in range(0, Nint):
-            #print(f"{bcolors.WARNING}:: x_flat[1000]: {x_flat[1000]}{bcolors.ENDC}")
-            xlists[i][j] = x_flat[ctr]
-            ylists[i][j] = y_flat[ctr]
-            print(f"ulist[i][j]: {xlists[i][j]} :: uflat[i][j]: {x_flat[ctr]} {bcolors.WARNING} :: i = {i}, j = {j} :: ctr = {ctr} {bcolors.ENDC}")
-            ctr += 1 """
 
     ctrX = 0; ctrY = 0
     # something with i iter when end is Np
@@ -498,7 +425,7 @@ def getSims():
 
     #print(f"{bcolors.WARNING}rows: {bcolors.ENDC}{rows}")
 
-    # Extract the values from the results
+    # extract simnames from results
     simnames = [row.simname for row in rows]
     simnames = [simname for simname in simnames if 'default' not in simname]
 
@@ -510,8 +437,6 @@ def getDataV(simname):
     print(f"{bcolors.OKGREEN}Retreiving {simname} velocity... {bcolors.ENDC}")
 
     """ retreive u and v velocities from DB """
-    #stmt = select(Velocity).filter_by(simname=simname)
-    #rows = session.execute(stmt)
     rows = session.query(Velocity).filter_by(simname=simname)
     rows = rows.all()
     print("SIMNAME: ", simname, "rows: ", rows)
@@ -520,17 +445,6 @@ def getDataV(simname):
     #print(f"{bcolors.WARNING} len(rows) {len(rows)} :: N {N} {bcolors.ENDC}")
     u = np.asfortranarray(np.zeros((2*N+1,2*N+1)), dtype='float32')
     v = np.asfortranarray(np.zeros((2*N+1,2*N+1)), dtype='float32')
-
-    #ctr = 0
-    #for i in range(0, len(u)):
-    #    for j in range(0, len(v)):
-    #        """ Need to change these for any call to getDataV """
-    #        u[i][j] = float(rows[i].axisU['u'][j])
-    #        v[i][j] = float(rows[i].axisV['v'][j])
-#
-    #    ctr += 1
-
-    #print(type(float(rows[-1].axisU['u']['first'][-1 - 1])))
 
     params = {
         "U": rows[0].U,
@@ -575,73 +489,6 @@ def getDataV(simname):
 
     return obj
 
-    #for i in range(0, len(ulists)):
-
-        #print(f"{bcolors.WARNING} row: {row.axisU['u']},\nlen(row.axisU): {len(row.axisU['u'])} {bcolors.ENDC}")
-
-        #ustrs = row.axisU['u']
-
-        #ulist = [[0]*(2*N+1)]*(2*N+1)
-
-        #getcontext().prec = 6
-        #exp = "(?:(?<=,)|(?<=^))[+-]?\d+\.?\d*(?:E[+-]?\d+)?(?=,|$)"
-
-        #print(f"{bcolors.OKBLUE} ulist: {len(ulist)} {bcolors.ENDC}")
-        #ctrI = 0
-        #for i in range(0,len(ustrs)):
-        #    print(f"{bcolors.OKBLUE} ustr: {ustrs[i]}, ctrI: {ctrI} {bcolors.ENDC}")
-        #    ctrI += 1; ctrJ = 0
-        #    for j in range(0,len(ustrs[i])):
-        #
-        #         #print(f"{bcolors.WARNING} dummy: {type(ustrs[i][j])}, ctrJ: {ctrJ} {bcolors.ENDC}")
-        #         ctrJ += 1
-        #         ulist[i][j] = float(ustrs[i][j])
-        #         #print(f"{bcolors.WARNING} dummy: {type(ulist)} {bcolors.ENDC}")
-
-        #print(f"{bcolors.OKBLUE} ulist: {ulist},\nctrI: {ctrI},\nctrJ: {ctrJ} {bcolors.ENDC}")
-
-        #uflat = ["%.2f" % number for number in u.flatten('C')]
-        #ustr = ', '.join(u.flatten('C'))
-        #u = np.fromstring(test, dtype = float, sep = ', ' )
-        #print(f"{bcolors.WARNING} type(u): {type(u[0][0])} \n len(u): {len(u)} \n {u} {bcolors.ENDC}")
-        #tokens = re.findall(exp, velObj['u'])
-        #id = row[2]
-        #u = np.asfortranarray(np.zeros((len(tokens))), dtype='float32')
-        #v = u
-        #cmd = f"""for p in tokens: {id}[ctr] = float(p); ctr += 1"""
-        #exec(cmd)
-
-
-    #for row in rows:
-    #    tokens = re.findall(exp, row[1])
-    #    print(f"{bcolors.WARNING} tokens: {tokens} {bcolors.ENDC}")
-    #    id = row[2]
-    #    u = np.asfortranarray(np.zeros((len(tokens))), dtype='float32')
-    #    v = u
-    #
-    #    cmd = f"""for p in tokens: {id}[ctr] = float(p); ctr += 1"""
-    #    exec(cmd)
-    #
-    #    #eval("u = np.asfortranarray(np.zeros((len(tokens))), dtype='float32');")
-    #
-    #    print(f"{bcolors.OKGREEN} \
-    #            id: {id}, \n \
-    #            len(tokens): {len(tokens)} \n \
-    #                len({id}): {len(eval(id))} \
-    #                    {bcolors.ENDC}")
-
-       # """ #for p in tokens:
-       # #    u[ctr] = float(p)
-       # #    ctr += 1
-       #     #print(f"{bcolors.WARNING} ctr: {ctr} {bcolors.ENDC}")
-       #     #print(f"{bcolors.WARNING} {ctr} {float(p)} {len(tokens)} {u} {bcolors.ENDC}")
-       #     #result = np.fromstring(re.findall(exp, row[1]), dtype=float, sep=',')
-       #     #result = np.fromstring(row[1], dtype=float, sep=',')
-       #     #print(f"{bcolors.OKGREEN} shape(result): {result[-1]} {bcolors.ENDC}") """
-
-    #print(Velocity.__table__.columns.keys(), Velocity.metadata.tables['cfd'].columns.keys())
-    #keys = Velocity.__table__.columns.keys()
-
 def getDataD(simname, Np, Nint):
 
     print(f"{bcolors.OKGREEN}Retreiving {simname} displacement... {bcolors.ENDC}")
@@ -665,21 +512,11 @@ def getDataD(simname, Np, Nint):
     ctr = 0; inc = 2
     for i in range(0, int((Np/2))):
 
-        """ if (i < 5):
-            print(f"{bcolors.WARNING} i: {i} :: ctr: {ctr}\n \
-                rows[{bcolors.FAIL}{i}{bcolors.ENDC}].axisX['x']['first'][{bcolors.FAIL}1{bcolors.ENDC}]: \
-                {rows[i].axisX['x']['first'][1]}\n \
-                rows[{bcolors.FAIL}{i}{bcolors.ENDC}].axisX['x']['second'][{bcolors.FAIL}1{bcolors.ENDC}]: \
-                {rows[i].axisX['x']['second'][1]}") """
-
         for j in range(0, Nint):
             x[ctr][j] = float(rows[i].axisX['x']['first'][j])
             y[ctr][j] = float(rows[i].axisY['y']['first'][j])
             x[ctr+1][j] = float(rows[i].axisX['x']['second'][j])
             y[ctr+1][j] = float(rows[i].axisY['y']['second'][j])
-
-        """ if (i < 5):
-            print(f"x[{bcolors.FAIL}{ctr}{bcolors.ENDC}]: {x[ctr][1]}\n:: x[{bcolors.FAIL}{ctr+1}{bcolors.ENDC}]: {x[ctr+1][1]}") """
 
         ctr += inc
 
@@ -714,23 +551,16 @@ def getDataImg(simname):
             "simname": rows[0].simname,
         }
 
-    #for row in rows:
-
     img_chunks = []
     for row in rows:
-        if row.img_src is not None:  # Check if img_src is not None
+        if row.img_src is not None:
             img_chunks.append(row.img_src.decode())
 
     #print(img_chunks)
 
     img_src = ''.join(img_chunks)
 
-    # Reconstruct img_src by concatenating the encoded chunks and then decoding
-    #img_src = b''.join(img_chunks).decode('utf-8')  # Decoding from bytes to string
-
     print(f"{bcolors.OKGREEN} '{simname}' streamline image successfully retreived.{bcolors.ENDC}")
-
-    #data = { "x": x, "y": y }
 
     obj = { "img_src": img_src, "params": params}
 
@@ -759,21 +589,14 @@ def getDataImgP(simname):
             "simname": rows[0].simname,
         }
 
-    #for row in rows:
-
     imgP_chunks = []
     for row in rows:
-        if row.imgP_src is not None:  # Check if img_src is not None
+        if row.imgP_src is not None:
             imgP_chunks.append(row.imgP_src.decode())
 
     imgP_src = ''.join(imgP_chunks)
 
-    # Reconstruct img_src by concatenating the encoded chunks and then decoding
-    #img_src = b''.join(img_chunks).decode('utf-8')  # Decoding from bytes to string
-
     print(f"{bcolors.OKGREEN} '{simname}' streamline imageP successfully retreived.{bcolors.ENDC}")
-
-    #data = { "x": x, "y": y }
 
     obj = { "imgP_src": imgP_src, "params": params}
 
@@ -787,9 +610,6 @@ def getDataP(simname):
     print(f"{bcolors.OKGREEN}Retreiving {simname} pressure... {bcolors.ENDC}")
 
     """ retreive 2D pressure field from DB """
-    #stmt = select(Velocity).filter_by(simname=simname)
-    #rows = session.execute(stmt)
-
     rows = session.query(Pressure).filter_by(simname=simname)
     rows = rows.all()
 
@@ -808,11 +628,6 @@ def getDataP(simname):
 
     ctr = 0; inc = 2
     for i in range(0, int((N/2))):
-        """ print(f"{bcolors.WARNING} i: {i} :: ctr: {ctr}\n \
-                rows[{bcolors.FAIL}{i}{bcolors.ENDC}].axisU['u']['first'][{bcolors.FAIL}1{bcolors.ENDC}]: \
-                {rows[i].axisU['u']['first'][1]}\n \
-                rows[{bcolors.FAIL}{i}{bcolors.ENDC}].axisU['u']['second'][{bcolors.FAIL}1{bcolors.ENDC}]: \
-                {rows[i].axisU['u']['second'][1]}") """
 
         for j in range(0, int((N))):
             P[ctr][j] = float(rows[i].axisP['p']['first'][j])
@@ -834,8 +649,8 @@ def getDataP(simname):
 def getDataC(simname):
 
     print(f"{bcolors.OKGREEN}Retreiving {simname} displacement... {bcolors.ENDC}")
-    """ retreive x and y displacements from DB """
 
+    """ retreive x and y displacements from DB """
     rows = session.query(Convergence).filter_by(simname=simname)
     rows = rows.all()
 
@@ -1585,12 +1400,11 @@ def generateStreamlines(objS, objP):
     yP = np.linspace(0, L, N)
     XP, YP = np.meshgrid(xP, yP)
 
-    # Create the plot
     imgP_buf = io.BytesIO()
     figP = plt.figure()
     axP = plt.subplot(111)
 
-    # Plot the filled contour plot for the pressure field
+    # plot the filled contour plot for the pressure field
     contour = axP.contourf(XP, YP, P,
                            density = 3,
                            linewidth = 0.6,
@@ -1599,13 +1413,13 @@ def generateStreamlines(objS, objP):
                         )
     #cbar = plt.colorbar(contour, label='Normalized Pressure')
 
-    # Add contour lines
+    # add contour lines
     contours = axP.contour(XP, YP, P, colors='k', levels=N, linewidths=0.5)
 
-    # Add a legend for the contour lines
+    # add a legend for the contour lines
     axP.clabel(contours, inline=True, fontsize=8, fmt='%1.2f', rightside_up=True)
 
-    # Add labels and a title
+    # add labels and a title
     #axP.set_xlabel('X')
     #axP.set_ylabel('Y')
 
@@ -1731,54 +1545,6 @@ def find_max(matrix):
 
 from flask import request
 
-""" @app.before_request
-def before_request():
-    if request.endpoint and request.endpoint in ['login','static']:
-        # Skip the before_request logic for certain routes (e.g., login)
-        return
-
-    if current_user.is_authenticated:
-        last_activity = g.get('last_activity')
-
-        print(f"last_activity: {last_activity}")
-        print(f"(datetime.datetime.utcnow(): {datetime.datetime.utcnow()}")
-        print(f"(app.permentant_session_lifetime: {app.permanent_session_lifetime}")
-
-        if last_activity is None or (datetime.datetime.utcnow() - last_activity) > app.permanent_session_lifetime:
-            # User's session has expired, log them out
-            print("User's session has expired. Redirecting to login.")
-            logout_user()
-            return redirect(url_for('login'))
-
-        # Update last activity timestamp
-        g.last_activity = datetime.datetime.utcnow()
-    else:
-        # User is not authenticated, handle as needed
-        pass """
-
-
-""" @app.before_request
-def before_request():
-    print("Before request is called.")
-    if current_user.is_authenticated:
-        last_activity = g.get('last_activity')
-
-        print(f"last_activity: {last_activity}")
-        print(f"(datetime.datetime.utcnow(): {datetime.datetime.utcnow()}")
-        print(f"(app.permentant_session_lifetime: {app.permanent_session_lifetime}")
-
-        if last_activity is None or (datetime.datetime.utcnow() - last_activity) > app.permanent_session_lifetime:
-            # User's session has expired, log them out
-            print("User's session has expired. Redirecting to login.")
-            logout_user()
-            return redirect(url_for('login'))
-
-        # Update last activity timestamp
-        g.last_activity = datetime.datetime.utcnow()
-    else:
-        # User is not authenticated, handle as needed
-        pass """
-
 socketio = SocketIO(app, reconnection=True, manage_session=False)
 
 @app.route('/')
@@ -1796,9 +1562,6 @@ class RegistrationForm(FlaskForm):
             r'^(?=.*[0-9])(?=.*[A-Z])(?=.*[\W_]).+$',
             message='Password must contain at least one digit, one uppercase letter, and one special character'
         )
-        #Regexp(r'.*[0-9].*', message='Password must contain at least one digit'),
-        #Regexp(r'.*[A-Z].*', message='Password must contain at least one uppercase letter'),
-        #Regexp(r'.*[\W_].*', message='Password must contain at least one special character')
     ])
 
     confirm_password = PasswordField('Confirm Password', validators=[
@@ -1917,20 +1680,10 @@ def password_reset():
                         flag=False,
                         msg=f"Please check your email to reset your password.",
                     ))
-
-                #msg = {
-                #    'msg': 'Please check your email to reset your password',
-                #    'flag': 'success'
-                #    }
-                #flash('Please check your email to reset your password', 'success')
-                #return redirect(url_for('login'))
             else:
                 notify = True
                 invalid_credentials = True
                 print(f"{bcolors.WARNING}notify {bcolors.ENDC}{notify}")
-
-                #flash('Username or email address not found!', 'danger')
-                #return redirect(url_for('login'))
 
         # For GET request
         return render_template(
@@ -2160,9 +1913,8 @@ def is_user_logged_in_handle_reconnect():
 
 @socketio.on('message', namespace='/is_user_logged_in')
 def is_user_logged_in(message):
-    # Access the current user
     if current_user.is_authenticated:
-        user_id = current_user.get_id()  # Get the user ID
+        user_id = current_user.get_id()
 
         if (user_id):
             event = {"msg": True}
@@ -2189,7 +1941,6 @@ def logout_disconnect():
 def logout_handle_reconnect():
     print("Client reconnected to logout")
 
-#@app.route('/logout', methods=['GET', 'POST'])
 @socketio.on('message', namespace='/logout')
 def logout(message):
     print(f"{bcolors.WARNING}Hi from /logout: {bcolors.ENDC}")
@@ -2231,10 +1982,6 @@ def logout(message):
         print("No user is currently authenticated.")
 
 mail = Mail(app)
-
-""" def generate_jwt_token(user_id, email):
-    payload = {'user_id': user_id, 'email': email}
-    return jwt.encode(payload, SECRET_KEY, algorithm='HS256') """
 
 @app.route('/password_reset_verify/<path:token>/<path:expiration_time>', methods=['GET','POST'])
 @cross_origin()
@@ -2374,8 +2121,6 @@ def password_reset_verify(token, expiration_time):
                             token_expired=token_expired
                             ))
 
-#@app.route('/verify/<hashed_token>', methods=['GET'])
-#@app.route('/verify/<path:token>', methods=['GET'])
 @app.route('/verify/<path:token>/<path:expiration_time>', methods=['GET'])
 @cross_origin()
 def verify(token, expiration_time):
@@ -2385,29 +2130,19 @@ def verify(token, expiration_time):
         decrypted_expiration_time = datetime.datetime.fromisoformat(decrypted_expiration_time_str)
         print(f"{bcolors.WARNING}user_id_from_url: {bcolors.ENDC}", decrypted_expiration_time)
 
-        # Verify the hashed token and update the user's verification status in the database
+        # verify the hashed token and update the user's verification status in the database
         user_id_from_url = get_user_id_from_verification_token(token)
-
-        # However, keep in mind that if someone gains access to your encryption key, they could
-        # decrypt the token. Store the encryption key securely, and consider rotating it
-        # periodically for added security.
 
         if user_id_from_url is not None:
             user = User.query.get(user_id_from_url)
 
-            # Convert the expiration_time string back to a datetime object if needed
+            # convert the expiration_time string back to datetime object
             expiration_time = decrypted_expiration_time
-            #expiration_time = datetime.datetime.fromisoformat(decrypted_expiration_time)
-            #expiration_time = datetime.datetime.fromisoformat(expiration_time)
 
-            # Convert the expiration_time back to a datetime object
-            #expiration_datetime = datetime.datetime.utcfromtimestamp(expiration_time)
-
-            # Compare the verification tokens
+            # compare verification tokens
             if user.jwt_token == token:
-            #if user.jwt_token == token:
 
-                # Check if the token has expired
+                # check if the token has expired
                 if datetime.datetime.utcnow() > expiration_time:
 
                     db.session.delete(user)
@@ -2423,18 +2158,11 @@ def verify(token, expiration_time):
                         msg=f"The registration link has expired. Please request a new link.",
                     ))
 
-
-                # Check if the token has expired
-                #if has_verification_token_expired(verification_token):
-                #    flash('Verification token has expired. Please request a new one.', 'error')
-                #    return redirect(url_for('error_page'))
-
-                # Update the user's verification status in the database (your verification logic here)
+                # update the user's verification status in the database
                 user.is_verified = True
                 db.session.commit()
 
-                # Redirect to a success page
-                #flash('Email verification successful!', 'success')
+                # redirect to a success page
                 return redirect(url_for(
                     'login',
                     source='verify',
@@ -2455,7 +2183,7 @@ def verify(token, expiration_time):
         print(f'{bcolors.FAIL}Error during verification: {bcolors.ENDC}{e}')
         traceback.print_exc()
 
-    # Redirect to an error page if verification fails
+    # redirect to error page if verification fails
     return redirect(url_for('error_page'))
 
 def get_user_id_from_verification_token(token):
@@ -2472,38 +2200,6 @@ def get_user_id_from_verification_token(token):
 
     return None
 
-""" def get_user_id_from_verification_token(token):
-    try:
-        # Perform a database query to get the user_id associated with the verification_token
-        user = User.query.filter_by(jwt_token=token).first()
-
-        if user:
-            return user.id
-    except Exception as e:
-        # Handle any exceptions or log errors as needed
-        print(f"Error getting user_id from verification token: {e}")
-
-    return None """
-
-""" def extract_user_id_from_token(jwt_token):
-    print(f'Raw token received: {jwt_token}')
-    try:
-        # Decode the JWT token
-        decoded_token = jwt.decode(jwt_token, SECRET_KEY, algorithms=['HS256'])
-
-        # Extract the user_id from the decoded token
-        user_id = decoded_token.get('user_id')
-
-        return user_id
-    except jwt.ExpiredSignatureError:
-        # Handle token expiration
-        print('Token has expired.')
-    except jwt.InvalidTokenError:
-        # Handle invalid token
-        print('Invalid token.')
-
-    return None """
-
 @app.route('/error_page')
 def error_page():
     error_message = "Oops! Something went wrong."
@@ -2515,20 +2211,17 @@ cipher_suite = Fernet(encryption_key)
 
 def generate_verification_token():
 
-    # Generate a random URL-safe text string for verification token
+    # generate a random URL-safe text string for verification token
     raw_token = secrets.token_urlsafe(32)
 
     print(f"{bcolors.WARNING}user_id_from_url: {bcolors.ENDC}", raw_token)
     encrypted_token = cipher_suite.encrypt(raw_token.encode('utf-8'))
 
-    # Hash the token before saving it to the database
     #hashed_token = bcrypt.hashpw(raw_token.encode('utf-8'), bcrypt.gensalt())
 
     expiration_time = datetime.datetime.utcnow() + datetime.timedelta(minutes=15)
     expiration_time_str = expiration_time.isoformat()
     encrypted_expiration_time = cipher_suite.encrypt(expiration_time_str.encode('utf-8'))
-
-    #expiration_time = datetime.utcnow() + timedelta(minutes=1)
 
     return raw_token, encrypted_token, encrypted_expiration_time
 
@@ -2697,20 +2390,15 @@ def get_pdf():
     object_name = 'SIMPLE-ALGORITHM-FOR-SYMMETRIC-DRIVEN-CAVITY-NEW.pdf'
 
     try:
-        # Download the PDF content from S3
         response = s3.get_object(Bucket=S3_BUCKET, Key=object_name)
         pdf_content = response['Body'].read()
 
-        # Create a BytesIO buffer to send the file
+        # create a BytesIO buffer to send pdf
         buffer = BytesIO(pdf_content)
 
-        # Send the file using send_file
         return send_file(buffer, mimetype='application/pdf')
-        #return send_file(buffer, mimetype='application/pdf', as_attachment=True, download_name='SIMPLE-ALGORITHM-FOR-SYMMETRIC-DRIVEN-CAVITY-NEW.pdf')
     except Exception as e:
         print(f"Error retrieving file from S3: {e}")
-        # Handle the error, e.g., return an error response or redirect to an error page
-
 
     #if current_user.is_authenticated:
     user_id = 1  # Get the user ID
@@ -2734,7 +2422,6 @@ chk_clients = set()
 @socketio.on('connect', namespace='/chk')
 def chk_connect():
     print("CONNECTED to chk: ", request.sid)
-     # Get the client's SID
     sid = request.sid
     chk_clients.add(sid)
     emit('sid', {'sid': sid}, room=request.sid)
@@ -2746,7 +2433,6 @@ def chk_disconnect():
 
 @socketio.on('reconnect', namespace='/chk')
 def chk_handle_reconnect():
-    # Handle reconnection logic (e.g., resuming simulation)
     print("Client reconnected to /chk")
 
 @socketio.on('message', namespace='/chk')
@@ -2786,7 +2472,6 @@ save_clients = set()
 @socketio.on('connect', namespace='/save')
 def save_connect():
     print("CONNECTED tosave: ", request.sid)
-     # Get the client's SID
     sid = request.sid
     save_clients.add(sid)
     emit('sid', {'sid': sid}, room=request.sid)
@@ -2798,7 +2483,6 @@ def save_disconnect():
 
 @socketio.on('reconnect', namespace='save')
 def save_handle_reconnect():
-    # Handle reconnection logic (e.g., resuming simulation)
     print("Client reconnected to save")
 
 @socketio.on('message', namespace='/save')
@@ -2969,19 +2653,18 @@ def save(message):
 
         print(f"{bcolors.OKCYAN}Write time = {time.time() - t1}[s]{bcolors.ENDC}")
 
-        user_id_index = trunc_msg[::-1].find('_')  # Find the index of the last underscore character from the reversed string
-        if user_id_index != -1:  # Check if the underscore character exists
-            trunc_msg = trunc_msg[:-user_id_index - 1]  # Slice the string from the end to the index of the last underscore from the end
+        user_id_index = trunc_msg[::-1].find('_')  # find index of the last underscore character from reversed string
+        if user_id_index != -1:
+            trunc_msg = trunc_msg[:-user_id_index - 1]  # slice string from end to index of last underscore from end
             print("** underscore found **")
         else:
-            # Handle the case when no underscore character is found
             print("** No underscore character found in the string **")
 
         print(f"{bcolors.OKGREEN}:: {trunc_msg} ::{bcolors.ENDC}")
 
         event = {"msg": trunc_msg + ' saved'}
 
-        emit('response', json.dumps(event, cls=npEncoder), room=request.sid)  # Emit to a specific client
+        emit('response', json.dumps(event, cls=npEncoder), room=request.sid)
 
     except Exception as e:
         print(f"An exception occurred: {str(e)}")
@@ -3016,13 +2699,11 @@ def disconnect_load():
 
 @socketio.on('reconnect', namespace='/load')
 def handle_reconnect_load():
-    # Handle reconnection logic (e.g., resuming simulation)
     print("Client reconnected to /load")
 
 @socketio.on('close_connection')
 def close_connection_load(data):
-    # Close a specific connection by SID
-    sid_to_close = data['sid']  # Replace with the SID of the client to close
+    sid_to_close = data['sid']
     close_room(sid_to_close)
 
 retreive_clients = set()
@@ -3044,27 +2725,19 @@ def connect_retreive():
     finally:
         print("poop retreive")
 
-    # Add the client to start_fvm room (not needed for now)
-    #join_room('start_fvm', sid=sid)
-
-    #emit('sid', {'sid': sid}, room=sid)
-
 @socketio.on('disconnect', namespace='/retreive')
 def disconnect_retreive():
     print("DISCONNECTED")
 
 @socketio.on('reconnect', namespace='/retreive')
 def handle_reconnect_reteive():
-    # Handle reconnection logic (e.g., resuming simulation)
     print("Client reconnected to /retreive")
 
 @socketio.on('close_connection')
 def close_connection_retreive(data):
-    # Close a specific connection by SID
-    sid_to_close = data['sid']  # Replace with the SID of the client to close
+    sid_to_close = data['sid']
     close_room(sid_to_close)
 
-# WebSocket clients for retreive
 @socketio.on('message', namespace='/retreive')
 def retreive(message):
     print("messaga retreive: ", message)
@@ -3191,10 +2864,9 @@ start_fvm_clients = set()
 def start_fvm_connect():
     try:
         print("CONNECTED to start_fvm: ", request.sid)
-        # Get the client's SID
         sid = request.sid
         start_fvm_clients.add(sid)
-        join_room(sid)  # Join room using the client's SID
+        join_room(sid)
         emit('sid', {'sid': sid}, room=sid)
     except Exception as e:
         print(f"An exception occurred in start_fvm_connect: {str(e)}")
@@ -3211,7 +2883,6 @@ def start_fvm_disconnect():
 
 @socketio.on('reconnect', namespace='/start_fvm')
 def handle_reconnect():
-    # Handle reconnection logic (e.g., resuming simulation)
     emit('reconnected', {'message': 'You have been successfully reconnected to the server.'}, room=request.sid)
     print("Client reconnected to /start_fvm")
 
@@ -3225,11 +2896,10 @@ running_loop = False
 def start_fvm(message):
     try:
         join_room(request.sid)
-        # Check if there are still participants in the '/test' namespace.
-        socketio.sleep(1)  # Sleep for 1 second between checks
+
+        socketio.sleep(1)
 
         res = message
-        #if res['flag'] == 'fvm':
         print("message: ", res)
         main_error = np.asfortranarray(np.ones(1000), dtype='float32')
 
@@ -3263,13 +2933,13 @@ def start_fvm(message):
             raise ValueError(f'Number of particles must be\ngreater than {min_val} and less than or equal to {max_val}')
 
         T = 60
-        # Define fluid properites
+        # define fluid properites
         #mu = PropsSI('V','T',float(T)+273.15,'P',101325,'Water')
         mu = 1.12e-3
         #ro = PropsSI('D','T',float(T)+273.15,'P',101325,'Water')
         ro = 100
 
-        # Define flow conditions
+        # define flow conditions
         #print(f"{bcolors.FAIL} res['Re']: {float(res['Re'])} {bcolors.ENDC}")
         #Re = float(res['Re'])
         #ubn = float(res['U'])
@@ -3312,14 +2982,12 @@ def start_fvm(message):
         #clients = ws.handler.server.clients.values()
         #print("clients: ", clients)
 
-        #for i in range(0,10000):
         global running_loop
         running_loop = not running_loop
         print(f"{bcolors.WARNING} running loop: {running_loop}{bcolors.ENDC}")
         while running_loop:
 
             time.sleep(1e-6)
-            #print("loop running: ", ctr)
 
             main_error = 0
             [u_out,v_out,P_out,P_prime_out,cresid_out,vresid_out,uresid_out,main_error,iter] = main_calcALL.main(N,Nmax,ctr,u,v,P,P_prime,mu,ro,Re,ubn)
@@ -3329,7 +2997,6 @@ def start_fvm(message):
 
             main_error_old = main_error[-1]
 
-            #print(":: iter =", iter)
             j = -1
 
             uresid.append(uresid_out[j])
@@ -3345,16 +3012,8 @@ def start_fvm(message):
                 "sid": request.sid,
             }
 
-            # Send the message to all clients connected to this webserver
-            # process. (To support multiple processes or instances, an
-            # extra-instance storage or messaging system would be required.)
-
             emit('response', json.dumps(event, cls=npEncoder), room=request.sid)  # Emit to a specific client
-            #ws.send(json.dumps(event, cls=npEncoder))
-            #for client in clients:
-            #    client.ws.send(json.dumps(event, cls=npEncoder)) # send message back to onmessage
 
-            # Put the received message into the queue
             #message_queue.put(message)
 
             if main_error[iter[-1]-1] < 1e-2 or ctr > 10000:
@@ -3400,10 +3059,9 @@ def start_fvm(message):
 
                 t1 = time.time()
 
-                # Access the current user
                 if current_user.is_authenticated:
-                    user_id = current_user.get_id()  # Get the user ID
-                    username = current_user.username  # Get the username
+                    user_id = current_user.get_id()
+                    username = current_user.username
                     print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
                 else:
                     print("No user is currently authenticated.")
@@ -3419,25 +3077,16 @@ def start_fvm(message):
                 except:
                     print("default table does not exist")
 
-                # Assuming you have a User model with a 'username' attribute
-                #username = current_user.username if current_user.is_authenticated else None
-                #user = current_user.user_id if current_user.is_authenticated else None
-
-                #print(f"{bcolors.WARNING}username{bcolors.ENDC}: {username}")
-
                 #u[-1][:] = 10
                 print(u[-1][:])
 
                 # pack lists
                 ulists_pkg, vlists_pkg = packVel(u, v, N)
 
-                #for i in range(0, 2*N):
                 for i in range(0, int((2*N+1)/2)+1):
                     # update lists
-                    #ulist, vlist = list
                     ulist = ulists_pkg[i]
                     vlist = vlists_pkg[i]
-                    #ctr += 1
 
                     obj = {
                         "simname": f"default_{user_id}",
@@ -3486,19 +3135,16 @@ def start_fvm(message):
 
                 x = np.linspace(0,1,N); y = np.linspace(0,1,N)
 
-                #Pmax = abs(P).max()
                 row, col, Pmax = find_max(abs(P))
 
                 # pack lists
                 Plists_pkg, xlists_pkg, ylists_pkg = packPressure(P/Pmax, x, y, N)
-                #for i in range(0, 2*N):
+
                 for i in range(0, int((N)/2)):
                     # update lists
-                    #ulist, vlist = list
                     Plist = Plists_pkg[i]
                     xlist = xlists_pkg
                     ylist = ylists_pkg
-                    #ctr += 1
 
                     obj = {
                         "simname": f"default_{user_id}",
@@ -3523,10 +3169,7 @@ def start_fvm(message):
 
                 """ send u and v velocties to frontend """
                 event = { 'u': u, 'v': v, 'Pmax': { 'x': x[col], 'y': y[row], 'value': Pmax } }
-                emit('response', json.dumps(event, cls=npEncoder), room=request.sid)  # Emit to a specific client
-
-                #for client in clients:
-                #    client.ws.send(json.dumps(event, cls=npEncoder))
+                emit('response', json.dumps(event, cls=npEncoder), room=request.sid)
 
                 print(f"{bcolors.OKGREEN}Elapsed (CFD) = {(time.time() - t1)*1000} ms {bcolors.ENDC}")
 
@@ -3542,24 +3185,6 @@ def start_fvm(message):
             #print("ctr =", ctr)
             iter_prev = iter[-1]
 
-            """ try:
-                while not ws.closed:
-                    #message = ws.receive()
-                    print("message: ", message)
-                    if message:
-                        message_queue.put(message)
-                        print("HIIIIII")
-                        # Check the shared queue for messages
-                        message = message_queue.get()
-                        print("message in handle_start_fvm: ", message)
-
-                        #while not ws.closed:
-                        #message = ws.receive()
-                        print("message: ", message)
-
-            except Exception as e:
-                print(f"WebSocket closed unexpectedly: {e}")
-                # Perform cleanup and handle the closure """
     except ValueError as e:
         print(f"{bcolors.WARNING} A ValueError occurred: {bcolors.ENDC} {str(e)}")
         traceback.print_exc()
@@ -3591,7 +3216,6 @@ genP_clients = set()
 @socketio.on('connect', namespace='/genP')
 def genP_connect():
     print("CONNECTED to genP: ", request.sid)
-     # Get the client's SID
     sid = request.sid
     genP_clients.add(sid)
     emit('sid', {'sid': sid}, room=request.sid)
@@ -3603,13 +3227,11 @@ def genP_disconnect():
 
 @socketio.on('reconnect', namespace='/genP')
 def genP_handle_reconnect():
-    # Handle reconnection logic (e.g., resuming simulation)
     print("Client reconnected to /genP")
 
 @socketio.on('close_connection', namespace='/genP')
 def genP_close_connection(data):
-    # Close a specific connection by SID
-    sid_to_close = data['sid']  # Replace with the SID of the client to close
+    sid_to_close = data['sid']
     close_room(sid_to_close)
 
 @socketio.on('message', namespace='/genP')
@@ -3641,8 +3263,6 @@ def genP(message):
         u = obj['u']; v = obj['v']
         params = obj['params']
 
-        #N = params['N']; Np = params['Np']; Nint = params['Nint']
-
         L = 1
         x_mat, y_mat = np.mgrid[0:L:((2*N+1)*1j), 0:L:((2*N+1)*1j)]
 
@@ -3651,7 +3271,7 @@ def genP(message):
 
         """ Integrate Velocity Field to Generate Particle Positions """
 
-        # Initialize particles
+        # initialize particles
         solx0 = np.asfortranarray(np.random.uniform(low=0.01, high=0.99, size=(Np,)), dtype='float32')
         soly0 = np.asfortranarray(np.random.uniform(low=0.01, high=0.99, size=(Np,)), dtype='float32')
 
@@ -3660,7 +3280,6 @@ def genP(message):
 
         t1 = time.time()
         for j in range(0, Np):
-            #[x_out[j], y_out[j]] = genPosition.main(N, 1, Nint, u, v, solx0[j], soly0[j])
             [x_out[j], y_out[j]] = genPosition.main(N, 1, Nint, u, v, solx0[j], soly0[j])
             event = {'ctr': j, 'sid': request.sid}
 
@@ -3696,12 +3315,6 @@ def genP(message):
             saveDefaultDisplacement(obj)
 
         print(f"{bcolors.OKCYAN}Write time = {time.time() - t1}[s]{bcolors.ENDC}")
-
-        #event = {
-        #    'x': x_out,
-        #    'y': y_out
-        #}
-        #emit('response', json.dumps(event, cls=npEncoder), room=request.sid)  # Emit to a specific client
     except Exception as e:
         print(f"An exception occurred: {str(e)}")
         traceback.print_exc()
@@ -3713,7 +3326,6 @@ genS_clients = set()
 @socketio.on('connect', namespace='/genS')
 def genS_connect():
     print("CONNECTED to genS: ", request.sid)
-     # Get the client's SID
     sid = request.sid
     genS_clients.add(sid)
     emit('sid', {'sid': sid}, room=request.sid)
@@ -3725,13 +3337,11 @@ def genS_disconnect():
 
 @socketio.on('reconnect', namespace='/genS')
 def genS_handle_reconnect():
-    # Handle reconnection logic (e.g., resuming simulation)
     print("Client reconnected to /genS")
 
 @socketio.on('close_connection', namespace='/genS')
 def genS_close_connection(data):
-    # Close a specific connection by SID
-    sid_to_close = data['sid']  # Replace with the SID of the client to close
+    sid_to_close = data['sid']
     close_room(sid_to_close)
 
 @socketio.on('message', namespace='/genS')
@@ -3751,11 +3361,6 @@ def genS(message):
 
         res = message
 
-        #event = {
-        #            "confirm": 0,
-        #}
-        #emit('response', json.dumps(event, cls=npEncoder), room=request.sid)  # Emit to a specific client
-
         simname = res['simname'] + f"_{user_id}"
         N = int(res['N'])
         Nint = int(res['Nint'])
@@ -3771,11 +3376,8 @@ def genS(message):
 
         P = objP['P']
 
-        # Slice the region around the center with +/- bias
-        #region = P[N/2 - bias : N/2 + bias, :]
 
         bias = 5
-        #row, col, Pmax = find_max(abs(region))
         row, col, Pmax = find_max(abs(P[bias:-1][:]))
         #print(f"{bcolors.WARNING}{row, col, Pmax, x[col], y[row]}{bcolors.ENDC}")
 
@@ -3869,7 +3471,7 @@ def genS(message):
 
         print("PMAX: ", Pmax, "col: ", col, "row: ", row)
 
-        emit('response', json.dumps(event, cls=npEncoder), room=request.sid)  # Emit to a specific client
+        emit('response', json.dumps(event, cls=npEncoder), room=request.sid)
     except Exception as e:
         print(f"An exception occurred: {str(e)}")
         traceback.print_exc()
@@ -3881,7 +3483,6 @@ getRe_clients = set()
 @socketio.on('connect', namespace='/getRe')
 def getRe_connect():
     print("CONNECTED to /getRe: ")
-     # Get the client's SID
     sid = request.sid
     getRe_clients.add(sid)
     emit('sid', {'sid': sid}, room=request.sid)
@@ -3893,13 +3494,11 @@ def getRe_disconnect():
 
 @socketio.on('reconnect', namespace='/getRe')
 def getRe_handle_reconnect():
-    # Handle reconnection logic (e.g., resuming simulation)
     print("Client reconnected to /getRe")
 
 @socketio.on('close_connection', namespace='/getRe')
 def getRe_close_connection(data):
-    # Close a specific connection by SID
-    sid_to_close = data['sid']  # Replace with the SID of the client to close
+    sid_to_close = data['sid']
     close_room(sid_to_close)
 
 @socketio.on('message', namespace='/getRe')
@@ -4043,11 +3642,11 @@ def getRe_socket(message):
 
 def background_thread():
     while True:
-        # Simulate background data processing
+        # simulate background data processing
         #socketio.sleep(2)  # Use socketio.sleep instead of time.sleep
         socketio.emit('background_data', 'Background data message', namespace='/start_fvm')
 
-# Route to check if multithreading is active
+# coute to check if multithreading is active
 @app.route('/check_multithreading')
 def check_multithreading():
     if threading.active_count() > 1:
@@ -4060,27 +3659,5 @@ if __name__ == '__main__':
     bg_thread = threading.Thread(target=background_thread)
     bg_thread.start()
 
-    # Start the Flask-SocketIO app with Gevent
+    # start the Flask-SocketIO app with Gevent
     socketio.run(app, debug=True, host='0.0.0.0', port=8080)
-
-""" if __name__ == '__main__':
-    from gunicorn.app.wsgiapp import WSGIApplication
-
-    gunicorn_app = WSGIApplication()
-    gunicorn_app.load("app:app")
-    gunicorn_app.run() """
-
-""" if __name__ == "__main__":
-    from gevent import pywsgi
-    from geventwebsocket.handler import WebSocketHandler
-
-    server = pywsgi.WSGIServer(('', 5000), app, handler_class=WebSocketHandler)
-    server.serve_forever() """
-
-""" if __name__ == '__main__':
-    gevent.spawn(send_messages)
-    server = pywsgi.WSGIServer(('127.0.0.1', 5000), app, handler=sockets.handler)
-    server.serve_forever() """
-
-""" if __name__ == '__main__':
-    app.run(ssl_context=('localhost.crt', 'localhost.pem')) """
