@@ -5,11 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const navbar = document.querySelector(".navbar");
 
     const navbarHeight = navbar.getBoundingClientRect().top + navbar.offsetHeight;
-
-    // Get the computed styles of the element
     const computedStyles = window.getComputedStyle(navbar);
-
-    // Retrieve the borderWidth property
     const borderWidth = parseFloat(computedStyles.getPropertyValue("border-bottom-width"));
 
     document.querySelector('.dropdown-list').style.top = `${navbarHeight - borderWidth}px`;
@@ -57,10 +53,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     });
 
-    // Update the button text and behavior based on the user's login status
+    // update the button text and behavior based on the user's login status
     loginButton.innerHTML = `Logout`; */
 
-    // Assuming login success, you can enable the buttons
     function enableButtons() {
         //document.getElementById('welcome').classList.remove('disabled');
         document.getElementById('home').classList.remove('disabled');

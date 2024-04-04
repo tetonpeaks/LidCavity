@@ -1,33 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    //document.querySelector('.logo-sim').addEventListener('mouseover', removeAnimation);
-
-    // Get the window width
-    const windowWidth = window.innerWidth;
-
-    // Calculate the scale factor based on the window width
-    //const scaleFactor = calculateScaleFactor(windowWidth);
-
-    // Apply the scale factor to the heroForm element
-    //document.getElementById('heroForm').style.transform = `scale(${scaleFactor})`;
-
-    // Adjust the height of the .upper container based on the scale factor
     const upperContainer = document.querySelector('.upper');
     upperContainer.style.height = `auto`; // Reset height to auto
-    //const scaledHeroFormHeight = document.getElementById('heroForm').offsetHeight * scaleFactor;
-    //upperContainer.style.height = `calc(${scaledHeroFormHeight}px + 2rem)`;
-
-    // Function to calculate the scale factor based on window width
-    function calculateScaleFactor(windowWidth) {
-        // Define your logic to calculate the scale factor based on window width
-        // This can be a linear function, a piecewise function, or any other logic you prefer
-        // For example:
-        const maxWidth = 1920; // Adjust as needed
-        const minScale = 1.0; // Minimum scale factor
-        const maxScale = 1.0; // Maximum scale factor
-        const scaleFactor = minScale + ((maxScale - minScale) * (windowWidth / maxWidth));
-        return scaleFactor;
-    }
 
     const loginButton = document.getElementById('loginButton');
 
@@ -49,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log('loggedIn: ', loggedIn)
     })
 
-    // Assume you have a variable loggedIn from the backend indicating the user's login status
     //const loggedIn = {{ loggedIn|default(False)|lower }};
 
     /* loginButton.addEventListener('click', function() {
@@ -73,10 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    // Update the button text and behavior based on the user's login status
+    // update the button text and behavior based on the user's login status
     loginButton.innerHTML = `Logout`; */
 
-    // Assuming login success, you can enable the buttons
     function enableButtons() {
         //document.getElementById('welcome').classList.remove('disabled');
         document.getElementById('home').classList.remove('disabled');
@@ -201,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const initialFontSizePx = initialFontSizeRem * htmlFontSize;
         const initialMyEyeBiasPx = initialMyEyeBiasRem * htmlFontSize;
 
-        const minWidth = 667 - 300; // Minimum width at which the grid gap stops decreasing
+        const minWidth = 667 - 300; // minimum width at which the grid gap stops decreasing
 
         const initialCanvasWidth = 1440;
         const initialCanvasHeight = 600;
@@ -277,12 +249,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector('.fourth-c-text-container').style.fontSize = `${1.25 * newFontSize / htmlFontSize}rem`;
             document.querySelector('.fourth-d-text-container').style.fontSize = `${1.25 * newFontSize / htmlFontSize}rem`;
         }
-
-        /* For dialogs */
-        //cells.forEach(cell => {
-        //    cell.style.fontSize = `${newFontSize / htmlFontSize}rem`;
-        //});
-
 
     });
 
