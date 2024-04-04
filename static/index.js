@@ -1103,6 +1103,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error fetching the PDF:', error);
         });
 
+    var isBottomRowOpen = false;
     var isCalculusRowOpen = false;
 
     bottomRow.addEventListener("mouseover", function(event) {
@@ -1114,6 +1115,8 @@ document.addEventListener("DOMContentLoaded", function() {
         //integralContainer.style.display === 'none';
 
         if (classList.contains("bottom-row") || classList.contains("mid-row")) {
+
+            isBottomRowOpen = true;
 
             //bottomRow.style.borderWidth = `var(--border-grids) 0px var(--border-grids) 0px`;
 
@@ -1663,7 +1666,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let classList = event.target.classList;
 
         //calculusOuterWrapper.style.display = 'none';
-        if (classList.contains("calculus-row")) {
+        if (classList.contains("calculus-row") && isBottomRowOpen == true) {
             fourthRow.style.display = 'flex';
 
             //document.querySelector('.fourth-b-row').style.display = 'flex';
