@@ -3755,21 +3755,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     })
 
-    proofRow.addEventListener('mouseleave', () => { // use mouseleave rather than mouseout
-
-        //fignames_Re.forEach((figname_Re) => { figname_Re.classList.remove('visible'); })
-        //fignames_vel.forEach((fignames_vel) => { fignames_vel.classList.remove('visible') })
-
-        //document.getElementById('grid-proof').style.display = 'none';
-
-        //if (Re400U) {
-        //    Re400U.destroy(); Re400V.destroy();
-        //    Re1000U.destroy(); Re1000V.destroy();
-        //    Re3200U.destroy(); Re3200V.destroy();
-        //    Re5000U.destroy(); Re5000V.destroy();
-        //}
-    })
-
     techstackRow.addEventListener('mouseenter', (event) => {
         if (isCalculusRowOpen == true) {
 
@@ -4100,81 +4085,6 @@ function createGridCalcRow(input) {
             }
         }
     };
-
-    /* if (input.grid.className === 'grid--matrix') {
-
-        let tracker = [];
-        let row = 5;
-        let col = 5;
-        let h = 0
-
-        // Loop to initialize 2D array elements
-        for (let i = 0; i < row; i++) {
-            tracker[i] = [];
-            for (let j = 0; j < col; j++) {
-                tracker[i][j] = h++;
-            }
-        }
-
-        let diags = tracker.map((a, i) => a[i])
-        //let diags_minor = diags.slice(1,-1)
-
-        let rowID = 0;
-        let cells = input.grid.children;
-        for (let cell of cells) {
-            let id = cell.id;
-            //if (typeof id === 'string') {
-            //    console.log('is string')
-            //}
-
-            let idg = id.match(/\d+/g).map(Number)[0];
-            if (idg === 0 || idg === 4) {
-                cells[idg].style.setProperty('border-top', '4px solid red');
-                //cells[idg].style.setProperty('border-top', '4px solid red');
-            }
-            if (idg === 20 || idg === 24) {
-                cells[idg].style.setProperty('border-bottom', '4px solid red');
-                //cells[idg].style.setProperty('border-bottom', '4px solid red');
-            }
-
-            if (diags.slice(1,-1).includes(idg)) {
-                cells[idg].innerHTML = `x`;
-                cells[idg - 1].innerHTML = `x`;
-                cells[idg + 1].innerHTML = `x`;
-                cells[idg].style.setProperty('font-style', 'italic');
-                cells[idg - 1].style.setProperty('font-style', 'italic');
-                cells[idg + 1].style.setProperty('font-style', 'italic');
-                tracker[rowID].splice(tracker[rowID].indexOf(idg), 1);
-                tracker[rowID].splice(tracker[rowID].indexOf(idg - 1), 1);
-                tracker[rowID].splice(tracker[rowID].indexOf(idg + 1), 1);
-            } else if (idg === diags[0]) {
-                cells[idg].innerHTML = `x`;
-                cells[idg + 1].innerHTML = `x`;
-                cells[idg].style.setProperty('font-style', 'italic')
-                cells[idg + 1].style.setProperty('font-style', 'italic')
-                tracker[rowID].splice(tracker[rowID].indexOf(idg), 1);
-                tracker[rowID].splice(tracker[rowID].indexOf(idg + 1), 1);
-            } else if (idg === diags.slice(-1)[0]) {
-                cells[idg].innerHTML = `x`;
-                cells[idg - 1].innerHTML = `x`;
-                cells[idg].style.setProperty('font-style', 'italic')
-                cells[idg - 1].style.setProperty('font-style', 'italic')
-                tracker[rowID].splice(tracker[rowID].indexOf(idg), 1);
-                tracker[rowID].splice(tracker[rowID].indexOf(idg - 1), 1);
-            }
-
-            console.log("Hi")
-
-            for (let i = 0; i < tracker.length; i++) {
-                for (let j = 0; j < tracker[i].length; j++) {
-                    console.log("i: ", i, "j: ", j)
-                    cells[tracker[i][j]].innerHTML = `0`;
-                }
-            }
-
-            if (idg % 5 === 0 && idg !== 0) { rowID++ }
-        }
-    } */
 };
 
 function createGrid4CalcRow(input) {
@@ -4423,81 +4333,6 @@ function createGrid4CalcRow(input) {
             }
         }
     };
-
-    /* if (input.grid.className === 'grid--matrix') {
-
-        let tracker = [];
-        let row = 5;
-        let col = 5;
-        let h = 0
-
-        // Loop to initialize 2D array elements
-        for (let i = 0; i < row; i++) {
-            tracker[i] = [];
-            for (let j = 0; j < col; j++) {
-                tracker[i][j] = h++;
-            }
-        }
-
-        let diags = tracker.map((a, i) => a[i])
-        //let diags_minor = diags.slice(1,-1)
-
-        let rowID = 0;
-        let cells = input.grid.children;
-        for (let cell of cells) {
-            let id = cell.id;
-            //if (typeof id === 'string') {
-            //    console.log('is string')
-            //}
-
-            let idg = id.match(/\d+/g).map(Number)[0];
-            if (idg === 0 || idg === 4) {
-                cells[idg].style.setProperty('border-top', '4px solid red');
-                //cells[idg].style.setProperty('border-top', '4px solid red');
-            }
-            if (idg === 20 || idg === 24) {
-                cells[idg].style.setProperty('border-bottom', '4px solid red');
-                //cells[idg].style.setProperty('border-bottom', '4px solid red');
-            }
-
-            if (diags.slice(1,-1).includes(idg)) {
-                cells[idg].innerHTML = `x`;
-                cells[idg - 1].innerHTML = `x`;
-                cells[idg + 1].innerHTML = `x`;
-                cells[idg].style.setProperty('font-style', 'italic');
-                cells[idg - 1].style.setProperty('font-style', 'italic');
-                cells[idg + 1].style.setProperty('font-style', 'italic');
-                tracker[rowID].splice(tracker[rowID].indexOf(idg), 1);
-                tracker[rowID].splice(tracker[rowID].indexOf(idg - 1), 1);
-                tracker[rowID].splice(tracker[rowID].indexOf(idg + 1), 1);
-            } else if (idg === diags[0]) {
-                cells[idg].innerHTML = `x`;
-                cells[idg + 1].innerHTML = `x`;
-                cells[idg].style.setProperty('font-style', 'italic')
-                cells[idg + 1].style.setProperty('font-style', 'italic')
-                tracker[rowID].splice(tracker[rowID].indexOf(idg), 1);
-                tracker[rowID].splice(tracker[rowID].indexOf(idg + 1), 1);
-            } else if (idg === diags.slice(-1)[0]) {
-                cells[idg].innerHTML = `x`;
-                cells[idg - 1].innerHTML = `x`;
-                cells[idg].style.setProperty('font-style', 'italic')
-                cells[idg - 1].style.setProperty('font-style', 'italic')
-                tracker[rowID].splice(tracker[rowID].indexOf(idg), 1);
-                tracker[rowID].splice(tracker[rowID].indexOf(idg - 1), 1);
-            }
-
-            console.log("Hi")
-
-            for (let i = 0; i < tracker.length; i++) {
-                for (let j = 0; j < tracker[i].length; j++) {
-                    console.log("i: ", i, "j: ", j)
-                    cells[tracker[i][j]].innerHTML = `0`;
-                }
-            }
-
-            if (idg % 5 === 0 && idg !== 0) { rowID++ }
-        }
-    } */
 };
 
 function createGridAlgoRow(input) {
@@ -4635,30 +4470,12 @@ function createGridAlgoRow(input) {
                 if (idg % 5 === 0 && idg !== 0) { rowID++ }
             //}
         }
-
-        /* const cell0 = document.querySelector('.grid--matrix__cell0');
-        const cell6 = document.querySelector('.grid--matrix__cell6');
-
-        const cell0Top = cell0.getBoundingClientRect().top;
-        const cell0Left = cell0.getBoundingClientRect().left;
-        const cell0Right = cell0.getBoundingClientRect().right;
-        const cell6Top = cell6.getBoundingClientRect().top;
-        const cell6Left = cell6.getBoundingClientRect().left;
-        const cell6Right = cell6.getBoundingClientRect().right;
-
-        //cell0.style.transform = `translate(10px,0)`;
-        console.log("${cell0Right - cell0Left}: ", `${(cell6Right - cell0Left) / 2}`)
-
-        let computedStyle = window.getComputedStyle(cell0);
-
-        // Get the font size value
-        let fontSize = computedStyle.getPropertyValue('font-size'); */
     }
 };
 
 function createGridAlgoRow(input) {
 
-    //åconsole.log(`input.grid: ${input.grid.className}`)
+    //console.log(`input.grid: ${input.grid.className}`)
 
     let N = input.N;
     let grid = input.grid;
@@ -4697,7 +4514,7 @@ function createGridAlgoRow(input) {
         let col = 5;
         let h = 0
 
-        // Loop to initialize 2D array elements for placement of zeros
+        // loop to initialize 2D array elements for placement of zeros
         for (let i = 0; i < row; i++) {
             tracker[i] = [];
             for (let j = 0; j < col; j++) {
