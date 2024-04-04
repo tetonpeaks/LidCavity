@@ -1171,11 +1171,11 @@ document.addEventListener("DOMContentLoaded", function() {
                                                             document.querySelector('.intro-f-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                                         }, 250)
 
-                                                    }, 3500)
+                                                    }, 3500 + 2000)
                                                 }
-                                            }, 3000)
+                                            }, 3000 + 2000)
                                         }
-                                    }, 12000 - 4000)
+                                    }, 12000 - 2000)
                                 }
                             }, 16500 - 5000)
                         }
