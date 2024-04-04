@@ -103,6 +103,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const logoSim = document.querySelector('.logo-sim');
     const ddCFD = document.querySelector('.dropdown-CFD');
 
+    setTimeout(() => {
+
+        const KNXXX = document.getElementById('KNXXX-text-container');
+        const knxxxWidth = KNXXX.offsetWidth;
+        const knxxxLeft = KNXXX.offsetLeft;
+
+        console.log("knxxxWidth: ", knxxxWidth)
+
+        ddCFD.style.width = `${knxxxWidth}px`;
+        ddCFD.style.left = `${knxxxLeft}px`;
+    }, 1000)
+
     logoSim.addEventListener('mouseover', () => {
         //console.log('add active')
         ddCFD.classList.add('active');
@@ -420,7 +432,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (classList === "KNXXX") {
                 text.classList.add('KNXXX-text');
                 text.id = 'dialog';
-                textContent = `A KNXXX Production`;
+                textContent = `KNXXX Productions`;
             } else if (classList === "intro-f") {
                 text.classList.add('intro-f-text');
                 text.id = 'dialog';
