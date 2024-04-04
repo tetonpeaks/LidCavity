@@ -3059,12 +3059,12 @@ def start_fvm(message):
 
                 t1 = time.time()
 
-                if current_user.is_authenticated:
-                    user_id = current_user.get_id()
-                    username = current_user.username
-                    print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
-                else:
-                    print("No user is currently authenticated.")
+                #if current_user.is_authenticated:
+                #    user_id = current_user.get_id()
+                #    username = current_user.username
+                #    print(f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, {bcolors.WARNING}username{bcolors.ENDC}: {username}")
+                #else:
+                #    print("No user is currently authenticated.")
 
                 try:
                     # delete previous default velocity data in DB
