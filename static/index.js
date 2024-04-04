@@ -307,14 +307,9 @@ document.addEventListener("DOMContentLoaded", function() {
     grid_behind.style.display = 'none';
 
     //grid_behind.dataset.textWidth = 'grid__behind-text-width';
-    //setupObserver(algoRow, grid_behind);
-
-    var integralIntroWrapper = document.querySelector('.integral-intro-wrapper');
+    //setupObserver(algoRow, grid_behind);;
 
     const vhPX = window.innerHeight;
-    //document.documentElement.style.setProperty('--gridicons-shad', `${4 * 100 / vhPX}vh`)
-    //document.documentElement.style.setProperty('--gridicons-shad', `${4 * 100 / vhPX}vh`)
-    //document.documentElement.style.setProperty('--gridicons-shad', `4px`)
 
     var grid32 = document.querySelectorAll('.grid3x2__cell');
 
