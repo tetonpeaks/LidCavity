@@ -42,11 +42,6 @@ class PdfDocument(db.Model):
     title = Column(String(255))
     content = Column(db.BLOB)
 
-# Unique: If each user should have a unique JWT token, you can make the column unique.
-# This ensures that no two users share the same JWT token. However, keep in mind that
-# if a user logs out or needs a new token for some reason, you need a mechanism to handle
-# token updates.
-
 class User(UserMixin, db.Model):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
@@ -106,11 +101,11 @@ class Velocity(db.Model):
     simname = db.Column(db.String(100), unique=False, nullable=True)
     DT = db.Column(TIMESTAMP, default=datetime.datetime.utcnow)
 
-    # Add a foreign key field for the user
+    # add a foreign key field for the user
     username = db.Column(db.String(50), unique=False, nullable=False)
     user_id = db.Column(db.Integer, ForeignKey('user.id'), nullable=True)
 
-    # Define the relationship with the User model
+    # define the relationship with the User model
     user = relationship('User')
     #user = relationship('User', foreign_keys=[username, user_id])
 
@@ -185,11 +180,11 @@ class Displacement(db.Model):
     simname = db.Column(db.String(100), unique=False, nullable=True)
     DT = db.Column(TIMESTAMP, default=datetime.datetime.utcnow)
 
-    # Add a foreign key field for the user
+    # add a foreign key field for the user
     username = db.Column(db.String(50), unique=False, nullable=False)
     user_id = db.Column(db.Integer, ForeignKey('user.id'), nullable=True)
 
-    # Define the relationship with the User model
+    # define the relationship with the User model
     user = relationship('User')
 
     def __init__(self, U, Re, N, Np, rowID, colID, axisX, axisY, axisID, img_zlib, src, simname, DT, username, user_id=None):
@@ -253,11 +248,11 @@ class Pressure(db.Model):
     simname = db.Column(db.String(100), unique=False, nullable=True)
     DT = db.Column(TIMESTAMP, default=datetime.datetime.utcnow)
 
-    # Add a foreign key field for the user
+    # add a foreign key field for the user
     username = db.Column(db.String(50), unique=False, nullable=False)
     user_id = db.Column(db.Integer, ForeignKey('user.id'), nullable=True)
 
-    # Define the relationship with the User model
+    # define the relationship with the User model
     user = relationship('User')
 
     def __init__(self, U, Re, N, Np, rowID, colID, axisP, axisX, axisY, axisID, src, simname, DT, username, user_id=None):
@@ -330,11 +325,11 @@ class StreamlineImg(db.Model):
     simname = db.Column(db.String(100), unique=False, nullable=True)
     DT = db.Column(TIMESTAMP, default=datetime.datetime.utcnow)
 
-    # Add a foreign key field for the user
+    # add a foreign key field for the user
     username = db.Column(db.String(50), unique=False, nullable=False)
     user_id = db.Column(db.Integer, ForeignKey('user.id'), nullable=True)
 
-    # Define the relationship with the User model
+    # define the relationship with the User model
     user = relationship('User')
 
     def __init__(self, U, Re, N, Np, rowID, colID, axisID, img_src, src, simname, DT, username, user_id=None):
@@ -364,11 +359,11 @@ class StreamlineImgP(db.Model):
     simname = db.Column(db.String(100), unique=False, nullable=True)
     DT = db.Column(TIMESTAMP, default=datetime.datetime.utcnow)
 
-    # Add a foreign key field for the user
+    # add a foreign key field for the user
     username = db.Column(db.String(50), unique=False, nullable=False)
     user_id = db.Column(db.Integer, ForeignKey('user.id'), nullable=True)
 
-    # Define the relationship with the User model
+    # define the relationship with the User model
     user = relationship('User')
 
     def __init__(self, U, Re, N, Np, rowID, colID, axisID, imgP_src, src, simname, DT, username, user_id=None):

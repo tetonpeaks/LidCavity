@@ -36,7 +36,6 @@ print(F"{bcolors.WARNING} os.environ.get('FLASK_ENV'): {bcolors.ENDC}{os.environ
 
 class Config:
     DEBUG = True
-    # Other common configurations
 
 class LocalConfig(Config):
     WTF_CSRF_ENABLED = True

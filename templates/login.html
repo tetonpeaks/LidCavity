@@ -16,10 +16,9 @@
         body {
           background-color: black !important;
         }
-        /* Override styles for textarea and input[type=text] */
         textarea,
         input[type=text] {
-          -webkit-appearance: initial !important; /* Reset appearance */
+          -webkit-appearance: initial !important;
           width: 100%;
         }
         .form-login { width: 12rem !important; }
@@ -112,10 +111,6 @@
                 } else {
                     document.getElementById('reset-password-container').style.borderColor = 'rgba(140, 200, 102, 1)'; //okgreen
                 }
-
-                //if (flag === false) {
-                //    document.getElementById('reset-password-container').style.borderColor = 'rgba(140, 200, 102, 1)'; //okgreen
-                //}
             </script>
             {% endif %}
 
@@ -148,16 +143,6 @@
     {% endif %}
 
     <script>
-
-        //(document.getElementById('submit-btn-login')).addEventListener('click', function(e) {
-        //        //e.preventDefault();
-        //        console.log('preventDefault')
-        //});
-
-        //const navbar = document.querySelector(".navbar");
-
-        //const navbarHeight = navbar.getBoundingClientRect().top + navbar.offsetHeight;
-
         const loginButton = document.getElementById('loginButton');
         const loginContainer = document.getElementById('loginContainer');
 
@@ -192,12 +177,10 @@
 
         let hoverTimeout;
 
-        // Function to check if the mouse is moving upwards
         function isMouseMovingUp(event) {
             return event.movementY < 0;
         }
 
-        // Function to check if the mouse is within the login button's borders
         function isMouseWithinLoginButton(event) {
             const buttonRect = loginButton.getBoundingClientRect();
             return (
@@ -209,10 +192,9 @@
         }
 
         loginButton.addEventListener('click', () => {
-            clearTimeout(hoverTimeout); // Clear any existing timeout
+            clearTimeout(hoverTimeout);
             loginContainer.classList.add('active'); // Commented 240322 1734
             loginRegisterButton.style.display = 'none'; // Commented 240322 1734
-            //document.querySelector('.navDropDown.icon').classList.add('disable-hover');
             document.getElementById('navDropDown').classList.add('disabled');
             document.getElementById('navDropDown').style.display = 'none';
 

@@ -16,10 +16,9 @@
         body {
           background-color: black !important;
         }
-        /* Override styles for textarea and input[type=text] */
         textarea,
         input[type=text] {
-          -webkit-appearance: initial !important; /* Reset appearance */
+          -webkit-appearance: initial !important;
           width: 100%;
         }
         input[type=text] {
@@ -32,7 +31,7 @@
 
         .form-group { width: 12rem !important; }
         .register-container .username-input {
-          background-color: black !important; /* Override any conflicting styles */
+          background-color: black !important;
         }
 
         #password[type="password"] {
@@ -154,32 +153,9 @@
           const form = event.target;
           //form.reset();
           if (!form.checkValidity()) {
-            // If the form is invalid, prevent default form submission
             event.preventDefault();
-            // Reset the input fields
             form.reset();
           }
         })
-
-        //document.getElementById('registration-form').addEventListener('submit', function(event) {
-        //  const form = event.target;
-        //  if (!form.checkValidity()) {
-            // If the form is invalid, prevent default form submission
-        //    event.preventDefault();
-        //    // Reset the input fields
-        //    form.reset();
-        //  }
-        //});
-
-        //function togglePasswordVisibility() {
-        //    var passwordField = document.getElementById('password');
-        //    if (passwordField.type === "password") {
-        //        passwordField.type = "text";
-        //    } else {
-        //        passwordField.type = "password";
-        //    }
-        //}
-
-
   </script>
 {% endblock %}

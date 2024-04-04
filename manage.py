@@ -32,17 +32,16 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-# Create and initialize Flask app
+# create and initialize Flask app
 app = Flask(__name__)
 
-
-# Load configurations from the chosen environment (LocalConfig or ProdConfig)
+# load configurations from the chosen environment (LocalConfig or ProdConfig)
 app.config.from_object(load_config())
 
 app.secret_key = SECRET_KEY
 
 if (os.environ.get('FLASK_ENV') == 'production'):
-    # Add ProxyFix middleware to handle HTTPS headers properly
+    # add ProxyFix middleware to handle HTTPS headers properly
     app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1) # PRODUCTION 240311
 
     # PRODUCTION 240311
@@ -51,22 +50,22 @@ if (os.environ.get('FLASK_ENV') == 'production'):
     app.config['FORCE_SSL'] = True
     app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 
-# Initialize CSRF
+# initialize CSRF
 csrf.init_app(app)
 
-# Initialize CORS with allowed origins
+# initialize CORS with allowed origins
 cors.init_app(app, resources={r"/*": {"origins": CORS_ALLOWED_ORIGINS}})
 
-# Other CORS configurations
+# other CORS configurations
 cors.init_app(app, resources={r"/*": {"methods": ["GET", "POST", "PUT", "DELETE"]}})
 cors.init_app(app, resources={r"/*": {"allowed_headers": "Content-Type"}})
 
-# Database initialization
+# database initialization
 engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], pool_pre_ping=False, echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Create the database
+# create the database
 db = SQLAlchemy(app)
 db.init_app(app)
 
