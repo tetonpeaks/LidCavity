@@ -68,7 +68,7 @@ li {
     color: #CEB888;
     animation: blinkingBackground 2s ease-in-out;
     border-top: 0.5rem solid #CEB888;
-    transform: translateY(105vh);
+    transform: translateY(125vh);
 }
 
 .zone {

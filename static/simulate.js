@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    setTimeout(() => {
+        document.querySelector('.curtain__panel--left').style.display = 'none';
+    }, 3000)
+
     const upperContainer = document.querySelector('.upper');
     upperContainer.style.height = `auto`; // Reset height to auto
 
