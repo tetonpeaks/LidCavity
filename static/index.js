@@ -1175,7 +1175,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                                 }
                                             }, 3000)
                                         }
-                                    }, 12000 - 1000)
+                                    }, 12000 - 0)
                                 }
                             }, 16500 - 5000)
                         }
