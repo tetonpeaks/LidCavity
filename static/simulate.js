@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const socketIsUserLoggedIn = io.connect('/is_user_logged_in')
 
     socketIsUserLoggedIn.on('connect', () => {
-        console.log('Client connected to /is_user_logged_in')
+        //console.log('Client connected to /is_user_logged_in')
     });
 
     socketIsUserLoggedIn.emit('message', {
@@ -298,11 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const cellWidth = getComputedStyle(document.documentElement).getPropertyValue('--cell-width');
 
-    // Get the viewport width in pixels
     const vwInPixels = window.innerWidth || document.documentElement.clientWidth;
-
-    // Convert vw to pixels
-    //const fontSizeInPixels = parseFloat(cellWidth) * (vwInPixels / 100);
 
     const fontSizeInPixels = parseFloat(getComputedStyle(document.documentElement).fontSize)*2;
 
@@ -614,8 +610,6 @@ document.addEventListener("DOMContentLoaded", function () {
         var afterPseudo = window.getComputedStyle(btn0, ':after');
         var content = afterPseudo.content;
 
-        console.log("content: ", content)
-
         if (content.includes('Stop')) {
             btn0.classList.remove('content-stop');
             btn0.classList.add('content-run');
@@ -637,7 +631,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.documentElement.style.setProperty('--animation-gridConv', 'pulsate_gridConv 1s infinite alternate')
 
         socket.on('connect', () => {
-            console.log('Client connected to /start_fvm')
+            //console.log('Client connected to /start_fvm')
             document.documentElement.style.setProperty('--bgcolor0', '#04b0ee');
         })
 
@@ -650,7 +644,6 @@ document.addEventListener("DOMContentLoaded", function () {
         N = document.querySelector('#input-N').value;
         Np = document.querySelector('#input-Np').value;
 
-        // Send data to the server with a custom event name.
         socket.emit('message', {
             flag: 'fvm',
             U: U,
@@ -662,7 +655,6 @@ document.addEventListener("DOMContentLoaded", function () {
             sid: sid,
         });
 
-        // Listen for a response from the server with the same event name.
         socket.on('response', function (data) {
 
             newData = JSON.parse(data);
@@ -718,61 +710,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         socket.on('reconnect', () => {
-            // Handle reconnection logic (e.g., resuming the simulation)
         });
 
         socket.on('reconnect_error', (error) => {
-            console.log('Reconnection error:', error);
+            //console.log('Reconnection error:', error);
         });
-
-
-        /* socket.onmessage = function(e) {
-            newData = JSON.parse(e.data);
-            //console.log("newData: ", newData)
-
-            if (newData.x === 0) {
-                //window.scrollTo(0, 65)
-                //document.getElementById('myChartConv').scrollIntoView();
-                //window.scrollTo(0, document.body.scrollHeight);
-                //document.body.style.zoom = 1.0;
-                //window.scrollTo(0, document.body.scrollIntoView);
-            }
-
-            if (newData.hasOwnProperty('pressure')) {
-                myChartConv.data.labels.push(newData.x); // need to change
-                //heroForm.style = 'background-color: rgba(255,0,0,'+Math.abs(Math.sin((newData.x + 0.1) / 100))+');'
-                myChartConv.data.datasets[0].data.push(newData.pressure);
-                myChartConv.data.datasets[1].data.push(newData.umom);
-                myChartConv.data.datasets[2].data.push(newData.vmom);
-                myChartConv.update();
-
-            } else if (newData.hasOwnProperty('u')) {
-                u = newData.u;
-                v = newData.v;
-                console.log("newData: ", newData)
-                //localStorage.setItem("testV", newData.testV)
-            } else if (newData.hasOwnProperty('msg')) {
-                window.alert(newData.msg)
-            }
-        }; */
-
-       /*  socket.onclose = function() {
-            console.log('Closed FVM Socket');
-
-            btn0.setAttribute('data-content', 'Run');
-
-            //window.scrollTo(0, document.body.scrollTop);
-            //window.scrollTo(0, document.body.scrollHeight);
-            //window.scrollTo(0, document.body.scrollIntoView);
-            clearInterval(statusInterval);
-            heroForm.style = 'background-color: rgba(10, 10, 10, 0.85);'
-
-            document.documentElement.style.setProperty('--animation0', '');
-            document.documentElement.style.setProperty('--bgcolor0', '#CEB888');
-            document.documentElement.style.setProperty('--animation1', 'rotate 2s infinite linear');
-
-            document.getElementById("uv").disabled = false;
-        }; */
     });
 
     /* fvm route END */
@@ -791,7 +733,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const socket = io.connect('/genP');
 
         socket.on('connect', () => {
-            console.log('Client connected to /genP');
+            //console.log('Client connected to /genP');
             document.documentElement.style.setProperty('--animation1', 'rotate 2s infinite linear');
             document.documentElement.style.setProperty('--bgcolor1', '#04b0ee');
         })
@@ -868,7 +810,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const socket = io.connect('/genS');
 
         socket.on('connect', () => {
-            console.log('Client connected to /genS')
+            //console.log('Client connected to /genS')
             document.documentElement.style.setProperty('--bgcolor2', '#04b0ee');
         })
 
@@ -1092,10 +1034,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         container.insertBefore(grid, container.firstElementChild);
 
-        // Use a timeout to ensure the animation takes effect after the insertion
         setTimeout(() => {
             //console.log("setTimeout chartNum: ", chartNum)
-            // Move the new grid to its final position (right)
             if (chartNum > 0) {
                 const gridPrev = document.getElementById(`grid${chartNum - 1}`);
                 if (gridPrev) {
@@ -1115,8 +1055,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.documentElement.style.setProperty('--bgcolor5', '#04b0ee');
             document.documentElement.style.setProperty('--animation5', 'rotate 2s infinite linear');
         })
-
-        console.log('simname: ', simname)
 
         socket.emit('message', {
             flag: 'retreive',
@@ -1328,7 +1266,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const gridFormHeight = gridForm.offsetHeight;
-            console.log('gridFormHeight: ',gridFormHeight)
             document.querySelector('.gridEye').style.width = `calc(${gridFormHeight}px + 0px)`;
             document.querySelector('.gridEye').style.height = `calc(${gridFormHeight}px + 0px)`;
 
@@ -1410,8 +1347,6 @@ document.addEventListener("DOMContentLoaded", function () {
         genNewStreamlines(chartNum, flag)
 
         const grid0 = document.querySelector('.grid0');
-
-        console.log('grid0: ', grid0.style.fontSize)
 
         grid0.style.fontSize = `${1.25*(newFontSize / htmlFontSize)}rem`;
         document.querySelector('.fourth-text-container').style.fontSize = `${1.25 * newFontSize / htmlFontSize}rem`;
@@ -2037,31 +1972,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
             });
 
-
-            //if (chartNum > 0) {
-            //    myScatters[chartNum - 1].update();
-            //    myPressures[chartNum - 1].update();
-            //}
             myScatters[chartNum].update();
             myPressures[chartNum].update();
 
             ctrs[chartNum]++;
 
-            //let delta = Date.now() - start
-            ////console.log(":: Elapsed (s) =", Math.floor(delta/1000))
-
-
-            // For demonstration purposes, I'm using console.log to represent the animation logic
-            //console.log(`Chart ${chartNum} interval running`);
         }, 100);
     }
 
-    // Function to restart the previous interval if chartNum > 0
     function restartPreviousInterval(chartNum) {
         if (chartNum > 0 && intervals[chartNum - 1]) {
-            clearInterval(intervals[chartNum - 1]); // Clear the previous interval
-
-            startInterval(chartNum - 1); // Restart the previous interval
+            clearInterval(intervals[chartNum - 1]);
+            startInterval(chartNum - 1);
         }
     }
 
@@ -2308,11 +2230,9 @@ document.addEventListener("DOMContentLoaded", function () {
         //}
         if (chartNum > 0) {
             //clearInterval(intervals[chartNum - 1]);
-            // Restart the previous interval
             restartPreviousInterval(chartNum);
         }
 
-        // Start the interval for chartNum
         startInterval(chartNum);
 
         if (flag === 'fvm') {

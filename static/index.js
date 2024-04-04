@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const socketIsUserLoggedIn = io.connect('/is_user_logged_in')
 
     socketIsUserLoggedIn.on('connect', () => {
-        console.log('Client connected to /is_user_logged_in')
+        //console.log('Client connected to /is_user_logged_in')
     });
 
     socketIsUserLoggedIn.emit('message', {
@@ -562,7 +562,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if ((word === 'conservation' || word === 'principles' || word === 'and' || word ==='fundamental' || word === 'laws') && (words[index-1] === 'principles' || words[index+1] === 'principles' || words[index-1] === 'conservation' || words[index+1] === 'laws' || words[index-1] === 'fundamental') && (words[index-2] !== 'satisfy' || words[index-3] !== 'satisfy')) {
-                        console.log('isAlgoWriterOff',isAlgoWriterOff)
                         if (isAlgoWriterOff) {
                             link.setAttribute('href', 'https://en.wikipedia.org/wiki/Conservation_law');
                             textDiv.appendChild(link);
@@ -769,7 +768,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'KNXXX' || word === 'Productions') {
-                        console.log('Hi')
                         splitandhighlight(word);
                         textDiv.appendChild(document.createTextNode(word + ' '));
                     } else {
@@ -2767,7 +2765,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const socket = io.connect('/getRe');
 
             socket.on('connect', () => {
-                console.log('Client conneted to /getRe')
+                //console.log('Client conneted to /getRe')
             })
 
             socket.emit('message', {
