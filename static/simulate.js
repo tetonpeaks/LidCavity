@@ -1873,7 +1873,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Horizontal Velocity thru Primary Vortex.',
+                        text: 'Horizontal Velocity thru Primary Vortex',
                         color: '#CEB888',
                         font: {
                             size: fontSizeInPixels / 2.75,
@@ -2002,7 +2002,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Vertical Velocity thru Primary Vortex.',
+                        text: 'Vertical Velocity thru Primary Vortex',
                         color: '#CEB888',
                         font: {
                             size: fontSizeInPixels / 2.75,
@@ -2374,7 +2374,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         startTypeWriter('fourth-d');
                                     }, 6500)
                                 }
-                            }, 8500)
+                            }, 8000)
                         }
                     }, 2000)
                 }
