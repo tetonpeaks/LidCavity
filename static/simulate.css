@@ -89,7 +89,7 @@ li {
     /* border-left: 4px solid #CEB888;
     border-right: 4px solid #CEB888; */
     /* border-top: 4px solid #CEB888; */
-    border-top: calc(var(--border-grids)) solid #CEB888;
+    border-top: 0.5rem solid #CEB888;
     /* border-bottom: 4px solid #CEB888; */
     transform: translateY(105vh);
 }
