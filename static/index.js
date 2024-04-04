@@ -2927,18 +2927,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         el.classList.add('highlight-effect-with-shadow');
                 }, delay);
             });
-
-            /* grid_matrix_children.forEach((el, idx) => {
-                setTimeout(() => {
-                    //console.log(`el.innerHTML: ${el.innerHTML}`)
-                    //if (el.innerHTML.includes('x')) {
-                    //    el.classList.add('highlight-effect-with-shadow');
-                    //}
-                    if (diags.slice(0).includes(idx)) {
-                        el.classList.add('highlight-effect-with-shadow');
-                    }
-                }, idx * 100);
-            }); */
         });
     }
 
