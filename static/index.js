@@ -104,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const ddCFD = document.querySelector('.dropdown-CFD');
 
     setTimeout(() => {
-
         const KNXXX = document.getElementById('KNXXX-text-container');
         const knxxxWidth = KNXXX.offsetWidth;
         const knxxxLeft = KNXXX.offsetLeft;

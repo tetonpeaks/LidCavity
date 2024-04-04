@@ -120,6 +120,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const logoSim = document.querySelector('.logo-sim');
     const ddCFD = document.querySelector('.dropdown-CFD');
 
+    setTimeout(() => {
+        const KNXXX = document.getElementById('KNXXX-text-container');
+        const knxxxWidth = KNXXX.offsetWidth;
+        const knxxxLeft = KNXXX.offsetLeft;
+
+        console.log("knxxxWidth: ", knxxxWidth)
+
+        ddCFD.style.width = `${knxxxWidth}px`;
+        ddCFD.style.left = `${knxxxLeft}px`;
+    }, 1000)
+
     logoSim.addEventListener('mouseover', () => {
         //console.log('add active simulate')
         ddCFD.classList.add('active');
