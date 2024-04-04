@@ -108,8 +108,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const knxxxWidth = KNXXX.offsetWidth;
         const knxxxLeft = KNXXX.offsetLeft;
 
-        console.log("knxxxWidth: ", knxxxWidth)
-
         ddCFD.style.width = `${knxxxWidth}px`;
         ddCFD.style.left = `${knxxxLeft}px`;
     }, 1000)
@@ -124,29 +122,22 @@ document.addEventListener("DOMContentLoaded", function() {
         ddCFD.classList.remove('active');
     });
 
-    // Function to remove animation after first hover
     function removeAnimation() {
         document.querySelector('.logo-sim-text').style.animation = 'none';
         document.querySelector('.logo-sim-text').style.boxShadow = '0 0 0.25rem 0 #CEB888';
-        // Remove the event listener to prevent further calls
         document.querySelector('.logo-sim').removeEventListener('mouseover', removeAnimation);
     }
 
-    // Add event listener for the first hover
+    document.querySelector('.logo-sim').addEventListener('mouseover', removeAnimation);
     document.querySelector('.logo-sim').addEventListener('mouseover', removeAnimation);
 
-    // Get the computed value of the --cell-width variable
     const computedStyle = getComputedStyle(document.documentElement);
     const cellWidth = computedStyle.getPropertyValue('--cell-width');
 
-    // Function to handle viewport size changes
     const handleVPChange = () => {
 
         const introWrapper = document.querySelector('.intro-wrapper');
         const introTextContainer = document.querySelector('.intro-text-container');
-
-        //console.log('introWrapper.clientHeight', introWrapper.clientHeight)
-        //console.log('introTextContainer.clientHeight', introTextContainer.clientHeight)
 
         const containerHeight = introTextContainer.clientHeight;
         introWrapper.style.height = containerHeight + 'px';
@@ -154,13 +145,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const containerWidth = introTextContainer.clientWidth;
         document.documentElement.style.setProperty('--intro-text-width', containerWidth + 'px')
 
-        //console.log('--intro-text-width', containerWidth + 'px')
     };
 
-    // Add event listeners for viewport changes
     window.addEventListener('resize', handleVPChange);
 
-    // Call the function initially to get the initial viewport size
     handleVPChange();
 
     const introWrapper = document.querySelector('.intro-wrapper');
@@ -217,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var Re400U; var Re400V; var Re1000U; var Re1000V; var Re3200U; var Re3200V; var Re5000U; var Re5000V;
 
-    //adjust wrapper height based on content
+    // adjust wrapper height based on content
     const adjustWrapperHeight = (wrapper, textContainer) => {
         const containerWidth = textContainer.clientWidth;
         document.documentElement.style.setProperty(`--${textContainer.dataset.textWidth}`, `${containerWidth}px`);
@@ -228,19 +216,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // set up observer for specific wrapper + text container
     const setupObserver = (wrapper, textContainer) => {
-        // Initial adjustment
+        // initial adjustment
         adjustWrapperHeight(wrapper, textContainer);
 
-        // Create a MutationObserver to watch for changes in the text container
+        // create a MutationObserver to watch for changes in the text container
         const observer = new MutationObserver(() => adjustWrapperHeight(wrapper, textContainer));
 
-        // Config object for the observer (observe changes in childList and subtree)
+        // config object for the observer (observe changes in childList and subtree)
         const observerConfig = {
             childList: true,
             subtree: true,
         };
 
-        // Start observing changes in the text container
+        // start observing changes in the text container
         observer.observe(textContainer, observerConfig);
     };
 
@@ -329,24 +317,24 @@ document.addEventListener("DOMContentLoaded", function() {
     var savedDrops;
 
     function draw() {
-        // Set a semi-transparent background to create a trailing effect
+        // set a semi-transparent background to create trailing effect
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = '#0F0'; // Change color if needed
+        ctx.fillStyle = '#0F0';
         ctx.font = `${fontSize}px monospace`;
 
-        // Loop through each column to draw characters
+        // Llop through each column to draw characters
         for (let i = 0; i < drops.length; i++) {
             const text = characters[Math.floor(Math.random() * characters.length)];
 
-            // Draw the character at this column
+            // draw the character at this column
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-            // Move the character down
+            // move the character down
             drops[i]++;
 
-            // Reset drop position if it goes out of the screen
+            // reset drop position
             if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
                 drops[i] = 0;
             }
@@ -365,18 +353,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const canvas = document.getElementById('matrixCanvas');
     var ctx = canvas.getContext('2d');
 
-    // Set canvas dimensions
     canvas.style.width = `${grid0_height}px`;
 
-    // Characters to display
     const characters = '01';
     const fontSize = 12;
     const columns = canvas.width / fontSize;
-
-    // Create an array to store the dropping characters
     var drops = [];
     for (let i = 0; i < columns; i++) {
-        drops[i] = 1; // Initialize each drop position
+        drops[i] = 1; // initialize drop position
     }
 
     isPaused = false;
@@ -490,7 +474,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (classList.contains("bottom-row")) {
                 text.classList.add('intro-text');
                 text.id = 'dialog';
-                textContent = `In graduate school at Purdue University in the Mechanical Engineering department, I took a course on Numerical Methods in Heat, Mass, and Momentum Transfer in 2008. If I span across every scholastic course I have taken beginning in high school and throughout my journey to a doctorate degree, it is this course that I enjoyed the most. Computational Fluid Dynamics, or CFD, combines calculus with physics and high-performance computing (HPC). To me, developing this software application was simply a portfolio project. A nuanced application through which I could concisely convey to you a small look at what I am capable of based on my past achievements and experience, where I want to go in the future, while writing this in the present. I consider myself to be a complex problem solver based on the rigor that my previous academics, internships, and industry work experiences required of me. I developed this application from almost nothing, just some CFD code I had written in graduate school. Both the repository for this application and my LinkedIn profile can also be accessed by hovering over or clicking on pulsating logo above.`;
+                textContent = `In graduate school at Purdue University in the Mechanical Engineering department, I took a course on Numerical Methods in Heat, Mass, and Momentum Transfer in 2008. If I span across every scholastic course I have taken beginning in high school and throughout my journey to a doctorate degree, it is this course that I enjoyed the most. Computational Fluid Dynamics, or CFD, combines calculus with physics and high-performance computing (HPC). To me, developing this software application was simply a portfolio project. A nuanced application through which I could concisely convey to you a small look at what I am capable of based on my past achievements and experience, where I want to go in the future, while writing this in the present. I consider myself to be a complex problem solver based on the rigor that my previous academics, internships, and industry work experiences required of me. I developed this application from almost nothing, just some CFD code I had written in graduate school. Both the repository for this application and my LinkedIn profile can also be accessed by hovering over or clicking on the pulsating logo above. The simulator can be accessed from the navigation bar in the upper right `;
             } else if (classList.contains('calculus-row')) {
                 text.classList.add('fourth-text');
                 text.id = 'dialog';
@@ -884,16 +868,12 @@ document.addEventListener("DOMContentLoaded", function() {
         lastY = currentY;
     });
 
-    //added 240319 0922
     if (!localStorage.getItem('pageReloaded')) {
-        // Set the flag to indicate that the page has been reloaded
         localStorage.setItem('pageReloaded', true);
-        // Reload the page when the DOM content is fully loaded
         location.reload();
 
         console.log('Page Reloaded!')
     } else {
-        // Remove the flag from localStorage to allow normal page behavior
         localStorage.removeItem('pageReloaded');
     }
 
@@ -917,9 +897,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const AAs = document.querySelectorAll('.AA');
         const AABs = document.querySelectorAll('.AAB');
 
-        // Define the initial font size in rem and decrease factor
-        const initialFontSizeRem = 1; // Adjust as needed
-        const decreaseFactor = 0.005; // Adjust as needed
+        const initialFontSizeRem = 1;
+        const decreaseFactor = 0.005;
 
         htmlFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
         const initialFontSizePx = initialFontSizeRem * htmlFontSize;
@@ -931,29 +910,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const initialMaxWidth = 1920;
         const initialNewGridGapRem = 10;
-        //const initialNewGridGapRem = 16;
         const initialStep7GridGapRem = 18;
-        //const initialStep7GridGapRem = 24;
         //const fontSize = 1.25*parseFloat(getComputedStyle(document.documentElement).fontSize); // Font size in pixels
         const fontSize = 1.5*parseFloat(getComputedStyle(document.documentElement).fontSize); // Font size in pixels
 
-        // Convert initial grid gap from rem to pixels
+        // convert initial grid gap from rem to pixels
         const initialNewGridGap = initialNewGridGapRem * fontSize;
         const initialStep7GridGap = initialStep7GridGapRem * fontSize;
 
-        const minWidth = 1366; // Minimum width at which the grid gap stops decreasing
+        const minWidth = 1366; // minimum width at which the grid gap stops decreasing
 
         const gridGapFactorDefault = '62';
         const gridGapFactorDefaultFloat = parseFloat(gridGapFactorDefault);
         const gridGapFactor = calculateGridGapFactor(windowWidth);
 
         document.documentElement.style.setProperty('--grid-gap-factor', `${gridGapFactorDefaultFloat}`);
-        //document.documentElement.style.setProperty('--grid-gap-factor', gridGapFactor);
 
         function calculateGridGapFactor(windowWidth) {
-            // Define your logic to calculate the grid gap factor based on window width
-            // This can be a linear function, a piecewise function, or any other logic you prefer
-            // For example:
             let factor = gridGapFactorDefault;
             //let factor = 1.75*gridGapFactorDefault - (1366 - windowWidth) * decreaseFactor;
             return factor;
@@ -1017,16 +990,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
             introScale.style.transform = `scale(${newIntroScaleFactor}) translate(-1rem, ${newIntroTrnY}rem)`;
         } else if (windowWidth < (667 - 200)) {
-            newNewGridGap = initialNewGridGap * (minWidth / initialMaxWidth); // Grid gap stops decreasing at minWidth
-            newStep7GridGap = initialStep7GridGap * (minWidth / initialMaxWidth); // Grid gap stops decreasing at minWidth
+            newNewGridGap = initialNewGridGap * (minWidth / initialMaxWidth);
+            newStep7GridGap = initialStep7GridGap * (minWidth / initialMaxWidth);
         }
 
-        // Apply the new font size to all cells
         cells.forEach(cell => {
             cell.style.fontSize = `${newFontSize / htmlFontSize}rem`;
         });
 
-        // Apply the new grid gap to the grids
         document.documentElement.style.setProperty('--new-grid-grid0-gap', `${newNewGridGap / fontSize}rem`);
         document.documentElement.style.setProperty('--step7-grid-gap', `${newStep7GridGap / fontSize}rem`);
         document.documentElement.style.setProperty('--grid-gap-factor', `${newMatrixGridGap}`);
@@ -1041,13 +1012,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const newGridGrid0Cells = Array.from(document.querySelector('.new-grid-grid0').children);
         const processWrapper2Cells = Array.from(document.querySelector('.process--grid2').children);
 
-        /* Top */
+        /* top */
         const processWrapper2 = document.getElementById('process--wrapper2');
         const wrapper2Midpoint = processWrapper2.getBoundingClientRect().top + processWrapper2.offsetHeight / 2;
         const processWrapper2Top = processWrapper2.getBoundingClientRect().top;
         document.documentElement.style.setProperty('--wrapper2-midpoint', `calc(${(processWrapper2Top - algoOuterWrapperTop) + processWrapper2.offsetHeight / 2 - algoOuterWrapperHeight}px - 1rem)`);
 
-        /* Height */
+        /* height */
         const continuityWrapper = document.getElementById('continuity-wrapper');
         const continuityWrapperMidpoint = continuityWrapper.getBoundingClientRect().top + continuityWrapper.offsetHeight / 2;
         document.documentElement.style.setProperty('--continuitywrapper-midpoint', `${continuityWrapperMidpoint - wrapper2Midpoint}px`);
@@ -1056,19 +1027,19 @@ document.addEventListener("DOMContentLoaded", function() {
             newGridGrid0Cell.style.width = `${processWrapper2Cells[0].clientWidth}px`;
         })
 
-        /* Top */
+        /* top */
         const fieldsWrapper = document.querySelector('.fields-wrapper');
         const fieldsWrapperMidpoint = fieldsWrapper.getBoundingClientRect().top + fieldsWrapper.offsetHeight / 2;
         const fieldsWrapperTop = fieldsWrapper.getBoundingClientRect().top;
 
         document.documentElement.style.setProperty('--fieldswrapper-midpoint', `calc(${(fieldsWrapperTop - algoOuterWrapperTop) + processWrapper2.offsetHeight / 2 - algoOuterWrapperHeight}px - 1rem)`);
 
-        /* Height */
+        /* height */
         const updateWrapper = document.querySelector('.update-wrapper');
         const updateWrapperMidpoint = updateWrapper.getBoundingClientRect().top + updateWrapper.offsetHeight / 2;
         document.documentElement.style.setProperty('--updatewrapper-midpoint', `calc(${updateWrapperMidpoint - fieldsWrapperMidpoint}px + 0vw)`);
 
-        /* Centering horizontally */
+        /* centering horizontally */
         const gridContainer = document.querySelector('.algo-grid-container');
         const gridContainerMP = gridContainer.offsetLeft + gridContainer.offsetWidth / 2;
 
@@ -1093,11 +1064,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(blob => {
             pdfBlobUrl = URL.createObjectURL(blob);
             const pdfLink = document.getElementById('pdfLink');
-
-            // Set the href attribute to the PDF URL
             pdfLink.href = pdfBlobUrl;
-            // For non-mobile users, add the download attribute to the link
-            //pdfLink.setAttribute('download', 'SIMPLE-ALGORITHM-FOR-SYMMETRIC-DRIVEN-CAVITY-NEW.pdf');
         })
         .catch(error => {
             console.error('Error fetching the PDF:', error);
@@ -1197,19 +1164,11 @@ document.addEventListener("DOMContentLoaded", function() {
             bottomRow.style.paddingTop = '1rem';
             bottomRow.style.paddingBottom = '2rem';
 
-            // toggle the display of the integral-container
-            //console.log('integralContainer.style.display: ', integralContainer.style.display)
-            //integralContainer.style.display = integralContainer.style.display === "none" ? "grid" : "none";
-            //integralContainer.style.display = integralContainer.style.display === "" ? "grid" : "none";
-
-
             if (integralContainer.style.display === "grid") {
                 navierStokesLinked = false;
                 let liCtr = 0;
                 for (let i = 0; i < 5; i+=2) {
-                    //document.documentElement.style.setProperty('--animation-integral', `integralAnimation ${2}s ease-out`);
                     document.documentElement.style.setProperty('--animation-integral', `integralAnimation ${colorDuration * 20}s ease-out`);
-                    //document.documentElement.style.setProperty('--animation-integral', `colorIn ${colorDuration}s ease-out`);
                     grid32 = document.querySelectorAll('.grid3x2__cell');
 
                     if (i === 0) {
@@ -1261,13 +1220,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         paper.style.width = `${grid0_height}px`;
 
-                        pdf.textContent = "Stephen Hodson March 24, 2008 ME608"; // Use textContent for performance reasons
+                        pdf.textContent = "Stephen Hodson March 24, 2008 ME608"; // use textContent for performance reasons
 
                         let paperHeight = paper.offsetHeight;
 
                         const verticalLineZero = document.querySelector('.vertical-line.zero');
                         const holes = document.querySelectorAll('.hole');
-                        // Calculate the horizontal center between the two edges
+
+                        // calculate the horizontal center between the two edges
                         const holeTop = (paper.offsetHeight / 2) - (holes[0].offsetHeight / 2);
 
                         holes[0].style.top = `${holeTop}px`;
@@ -1276,7 +1236,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         const paperLeft = paper.getBoundingClientRect().left;
                         const verticalLineZeroShadowLeft = verticalLineZero.getBoundingClientRect().left;
 
-                        /* NEED TO FIX */
                         const center = `${(verticalLineZeroShadowLeft - paperLeft) / 2}`;
 
                         var holeDia = (center / 2) * 0.5;
@@ -1331,19 +1290,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         const fontSize = 12;
                         const columns = canvas.width / fontSize;
 
-                        /* // array to store binary digits
-                        var drops = [];
-                        for (let i = 0; i < columns; i++) {
-                            // initialize positions
-                            drops[i] = 1;
-                        }
-
-                        isPaused = false;
-                        animateMatrix();
-                        setTimeout(() => {
-                            isPaused = true;
-                        }, 200) */
-
                         setTimeout(() => {
                             grid32[i].classList.add('fade-in');
                             grid32[i+1].classList.add('fade-in');
@@ -1356,15 +1302,13 @@ document.addEventListener("DOMContentLoaded", function() {
                             pdf.style.letterSpacing = 'normal';
 
                             setTimeout(() => {
-                            //pdf.innerHTML = "";
-                            pdf.textContent = "";
-                            document.documentElement.style.setProperty('--animation-pdf', `revealPDF ${spd}s linear`);
-                            pdf.textContent = "PDF";
-                            pdf.style.letterSpacing = "normal";
-                            /* pdf.style.fontSize = "2em"; */
-                            pdf.style.fontFamily = "Lato, sans-serif";
-                            }, spd*1000 - 0)
-                        })
+                                pdf.textContent = "";
+                                document.documentElement.style.setProperty('--animation-pdf', `revealPDF ${spd}s linear`);
+                                pdf.textContent = "PDF";
+                                pdf.style.letterSpacing = "normal";
+                                pdf.style.fontFamily = "Lato, sans-serif";
+                                }, spd*1000 - 0)
+                            })
 
                         paper.addEventListener('mouseout', function(event) {
                             document.documentElement.style.setProperty('--animation-pdf', `shrinkPDF ${spd}s linear`);
@@ -1419,13 +1363,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                 } else {
                                     console.error('Failed to fetch the image source');
                                 }
-
-                                /* img_src = await fetchImageSrc(); // Replace this with your method to fetch img_src
-
-                                if (img_src) {
-                                    box.style.backgroundImage = `url(${img_src})`;
-
-                                } */
 
                                 document.documentElement.style.setProperty('--arrowInner-anim', `left ${arrowInnerTran}s ease, top ${arrowInnerTran}s ease`
                                 );
@@ -1523,26 +1460,15 @@ document.addEventListener("DOMContentLoaded", function() {
                         grid32[j].addEventListener("click", function(event) {
                             const pdfLink = document.getElementById('pdfLink');
 
-                            // Check if the user is on a mobile device
                             const isMobile = /iPad|iPhone/i.test(navigator.userAgent);
 
-                            // If the user is on a mobile device, provide instructions
                             if (isMobile) {
-
                                 pdfLink.target = '_blank';
-
                                 pdfLink.click();
-
-                                // add the download attribute to the link
-                                //pdfLink.setAttribute('download', 'SIMPLE-ALGORITHM-FOR-SYMMETRIC-DRIVEN-CAVITY-NEW.pdf');
-
                             } else {
                                 pdfLink.target = '_blank';
 
                                 pdfLink.click();
-
-                                // add the download attribute to the link
-                                //pdfLink.setAttribute('download', 'SIMPLE-ALGORITHM-FOR-SYMMETRIC-DRIVEN-CAVITY-NEW.pdf');
                             }
                     })
                     } else if (j === 5) {
@@ -1563,10 +1489,9 @@ document.addEventListener("DOMContentLoaded", function() {
                                 videoPopup.style.boxShadow = `0px 0px var(--gridicons-shad) rgba(10,10,10,0.85)`;
                             })
 
-                            // Event listener for closing the video popup
                             closeVideoPopup.addEventListener('click', function() {
                                 videoPopup.innerHTML = ``;
-                                videoPopup.style.display = 'none'; // Hide the modal after stopping the video
+                                videoPopup.style.display = 'none';
 
                                 videoPopup.style.boxShadow = `0px 0px var(--gridicons-shad) rgba(10,10,10,0.85)`;
                             });
@@ -1610,11 +1535,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const textContent = document.getElementById('text-column');
         textContent.style.display = "grid";
     }
-    // check if click occurred outside PDF popup
+
     document.addEventListener('click', function(event) {
       const pdfPopup = document.getElementById('pdfPopup');
 
-      // check if the clicked element is not within the PDF popup
       if (pdfPopup.style.display === 'block' && !pdfPopup.contains(event.target)) {
         closePdfPopup();
       }
@@ -1665,22 +1589,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let classList = event.target.classList;
 
-        //calculusOuterWrapper.style.display = 'none';
         if (classList.contains("calculus-row") && isBottomRowOpen == true) {
             fourthRow.style.display = 'flex';
 
-            //document.querySelector('.fourth-b-row').style.display = 'flex';
             calculusOuterWrapper.style.display = 'grid';
-            //calculusOuterWrapper.style.display = 'block';
-            //calculusOuterWrapper.style.height = 'calc(16*var(--cell-width));'
-
             calculusOuterWrapper.classList.toggle('open', true);
 
             isCalculusRowOpen = true;
 
             if (!isCalculusRowOpen) { grid1.style.opacity = 0; grid2.style.opacity = 0; }
-
-            //document.documentElement.style.setProperty('--animation-grid00', 'slideRL 2s forwards ease');
 
             if (isFourthWriterOff === true) {
                 document.getElementById('fourth-wrapper').style.display = 'block';
@@ -1821,14 +1738,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
         document.querySelector('.grid012-container').classList.add('open');
 
-        //calculusOuterWrapper.classList.toggle('open', true);
-
         const info0 = document.querySelector('.example12.info0');
 
         totalHeight = example12.offsetHeight;
         calculusOuterWrapper.style.height = `calc(${totalHeight}px + 14 * var(--cell-width-rem))`;
-
-        //document.documentElement.style.setProperty('--animation-grid01', 'fadeOutGrid0 1.5s ease-in-out');
 
         document.documentElement.style.setProperty('--modal-color', 'rgba(207,207,196,1)');
         document.documentElement.style.setProperty('--info0-color', 'rgba(207,207,196,0.5)');
@@ -1858,9 +1771,6 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log('Hi')
 
             areModalsOpen = true;
-
-            /* let cell = document.getElementById('grid4__cell3');
-            cell.innerHTML = `<div class="circle small W">W</div>`; */
         } else if (w.length === 0 && n.length > 0) {
             let labels = ['wH','eH'];
             let innerHTML = `
@@ -2245,7 +2155,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 500*i)
         }, i++)
 
-        //document.getElementById("close12").addEventListener('click', function() { closeModal() });
         document.getElementById("close12").addEventListener('click', (e) => closeModals(e));
     });
 
@@ -2305,16 +2214,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (ori === 'H') {
                 divArrow[0].style.cssText = params.animation[0];
-                //divArrow[0].style.cssText = arrowPos[dir] + params.animation[0];
-                //divLabel[0].style.cssText = labelPos[dir];
-
                 divArrow[0].style.color = params.color[1];
-
                 divLabel[0].style.color = params.color[1];
             } else if (ori === 'V') {
                 divArrow[0].style.cssText = params.animation[1];
-                //divArrow[0].style.cssText = arrowPos[dir] + params.animation[1];
-                //divLabel[0].style.cssText = labelPos[dir];
                 divArrow[0].style.color = params.color[2];
                 divLabel[0].style.color = params.color[2];
             }
@@ -2358,22 +2261,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 height: calc(var(--cell-width-rem) + var(--calc-grid-rem));
                 border-right: 0;
             `;
-            /* grid0.children[48].style = `border-left: 0.4vw solid rgba(207,207,196,1);
-                box-shadow: inset var(--box-shadow1) 0 var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,1);`;
-            grid0.children[56].style = `border-left: 0.4vw solid rgba(207,207,196,1);
-                border-bottom: 0.4vw solid rgba(207,207,196,1);
-                box-shadow: inset var(--box-shadow1) var(--box-shadow0) var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,1);
-            `;
-            grid0.children[57].style = `border-bottom: 0.4vw solid rgba(207,207,196,1);
-                box-shadow: inset 0 var(--box-shadow0) var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,1);`; */
-            /* grid0.children[48].style = `border-left: 2px solid rgba(207,207,196,1);
-                box-shadow: inset var(--box-shadow1) 0 var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,1);`;
-            grid0.children[56].style = `border-left: 2px solid rgba(207,207,196,1);
-                border-bottom: 2px solid rgba(207,207,196,1);
-                box-shadow: inset var(--box-shadow1) var(--box-shadow0) var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,1);
-            `;
-            grid0.children[57].style = `border-bottom: 2px solid rgba(207,207,196,1);
-                box-shadow: inset 0 var(--box-shadow0) var(--box-shadow1) var(--box-shadow0) rgba(207,207,196,1);`; */
         }, 1500)
 
     };
@@ -2439,12 +2326,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.documentElement.style.setProperty('--animation-math1', `colorOut ${colorDuration * 40}s ease-in`);
         document.documentElement.style.setProperty('--animation-math2', `colorOut ${colorDuration * 40}s ease-in`);
 
-        //calculusOuterWrapper.style.height = `calc(6*var(--cell-width-rem))`; // not sure if this does anything
-        //calculusOuterWrapper.style.height = `calc(0*var(--cell-width-rem))`; // not sure if this does anything
         calculusOuterWrapper.style.height = `calc(${totalHeight}px - 8 * var(--cell-width-rem))`;
-        /* setTimeout(() => {
-            grid0.children[57].style = `border-bottom: 2px solid rgba(207,207,196,1);`;
-        }, 1500) */
 
         var i = 1;
         Array.prototype.forEach.call(modals.info0.children, function(child) {
@@ -2506,41 +2388,13 @@ document.addEventListener("DOMContentLoaded", function() {
         areModalsOpen = false;
     };
 
-    // Check if the browser is Firefox
     if (navigator.userAgent.indexOf("Firefox") != -1) {
-        // Firefox detected, adjust font-size using standard property
         document.querySelector('.integral-intro-wrapper mi').style.fontSize = '38rem';
     } else {
-        // For other browsers, adjust font-size using standard property
         document.querySelector('.integral-intro-wrapper mi').style.fontSize = 'calc(44*var(--cell-width-rem))';
     }
 
-    // Function to set the position of .integral-intro-wrapper
-    function setIntegralIntroPosition() {
-        const textColumnContainer = document.getElementById('text-column-container');
-        const integralIntroWrapper = document.querySelector('.integral-intro-wrapper');
-
-        // Get the left position of textColumnContainer
-        const textColumnContainerLeft = textColumnContainer.getBoundingClientRect().left;
-
-        console.log('textColumnContainerLeft:', textColumnContainerLeft)
-
-        // Set the position of integralIntroWrapper
-        integralIntroWrapper.style.left = `calc(${textColumnContainerLeft}px - 16.5rem)`;
-    }
-
-    // Call the function initially
-    //setIntegralIntroPosition();
-
-    // Listen for the resize event and call the function
-    //window.addEventListener('resize', setIntegralIntroPosition);
-
     let isAlgoWrapperOpen = false;
-    let isAlgoBWrapperOpen = false;
-    let isAlgoCWrapperOpen = false;
-    let isAlgoDWrapperOpen = false;
-    let isAlgoEWrapperOpen = false;
-    let isAlgoFWrapperOpen = false;
 
     const algoGridContainer = document.querySelector('.algo-grid-container');
 
@@ -2559,24 +2413,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 isAlgoWrapperOpen = true;
 
-                //if (isAlgoWriterOff === true) {
-                //    document.getElementById('poop-wrapper').style.display = 'block';
-                //    startTypeWriter(classList, 'poop');
-                //}
-
-                //const newHeight = 5000;
-
-                //const newHeight =  1*algoGridContainer.scrollHeight;
-                //algoGridContainer.style.height = newHeight + 'px';
-                //algoGridContainer.style.height = `5000px`;
-
-                //algoGridContainer.style.height = 'auto';
-                //algoGridContainer.style.height = `21.25rem`;
                 algoGridContainer.style.height = `21.4375rem`;
-
-                //grid_behind.style.display = 'grid';
-
-                //document.documentElement.style.setProperty('--algo-grid-container-height','calc(5000)px')
 
                 var grid__matrices = Array.from(document.getElementsByClassName('grid--matrix'));
 
@@ -2590,51 +2427,32 @@ document.addEventListener("DOMContentLoaded", function() {
                     '.correct-wrapper, ' +
                     '.update-wrapper');
 
-                //var newHeight = 0;
 
                 function fadeElementsInSuccession(index) {
 
                     if (index < gridElements.length) {
                         let delay = 1000;
-                        if (gridElements[index].classList.contains('cell0')) {                            //delay = 1000;
-                            //delay = 1500;
+                        if (gridElements[index].classList.contains('cell0')) {
                             delay = 2000;
-                            //delay = 3000;
                         } else if (gridElements[index].classList.contains('cell1')) {
                             delay = 500;
                         } else if (gridElements[index].classList.contains('continuity-wrapper')) {
-                            delay = 1000; // Default 1000
+                            delay = 1000; // default 1000
                         } else if (gridElements[index].classList.contains('correct-wrapper')) {
                             delay = 2000;
                         }
 
-                        //const newHeight = algoGridContainer.scrollHeight + gridElements[index].clientHeight;
-                        //const newHeight = 0.0*algoGridContainer.scrollHeight + 0.0*gridElements[index].clientHeight;
-                        //const newHeight = 0.0*algoGridContainer.scrollHeight + gridElements[index].clientHeight;
-
-                        // Display the algo-grid-container's content one by one
-                        //algoRow.style.height = newHeight + 'px';
-                        //algoGridContainer.style.height = newHeight + 'px';
-
                         grid_behind.style.height = 'auto';
-
-                        //var newHeight = algoGridContainer.scrollHeight;
 
                         setTimeout(function () {
 
-                            // Add "visible" class to the current element
-                            //console.log('elementsToFadeIn[index].classList: ', elementsToFadeIn[index].classList)
                             if (gridElements[index].classList.contains('cell0')) {
-
                                 algoGridContainer.style.height = 'auto';
-
                                 gridElements[index].classList.add('visible');
                                 document.querySelector('.process--grid1.cell0').classList.add('visible');
-
                             } else if (gridElements[index].classList.contains('cell1')) {
                                 gridElements[index].classList.add('visible');
                                 document.querySelector('.process--grid1.cell1').classList.add('visible');
-
 
                                 let delay = 6000; // Default 6000
 
@@ -2645,9 +2463,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                     document.querySelector('.new-grid-grid0.cell1').classList.add('visible');
                                     window.dispatchEvent(new Event('resize'));
                                 }, delay);
-                            //}
-                            } else if (gridElements[index].classList.contains('massflow-wrapper')) {
 
+                            } else if (gridElements[index].classList.contains('massflow-wrapper')) {
                                 gridElements[index].classList.add('visible');
 
                                 document.querySelector('.process--wrapper3').style.display = 'flex';
@@ -2657,7 +2474,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                     document.querySelector('.process--grid3.cell1').classList.add('visible');
                                 }, 500)
                             } else if (gridElements[index].classList.contains('pressure-wrapper')) {
-
                                 document.querySelector('.process--wrapper4').style.display = 'flex';
 
                                 gridElements[index].classList.add('visible');
@@ -2666,7 +2482,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                     document.querySelector('.process--grid4.cell1').classList.add('visible');
                                 }, 0)
                             } else if (gridElements[index].classList.contains('continuity-wrapper')) {
-
                                 document.querySelector('.process--wrapper5').style.display = 'flex';
 
                                 gridElements[index].classList.add('visible');
@@ -2676,7 +2491,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                     document.querySelector('.new-grid-grid0.cell0').classList.add('visible');
                                     window.dispatchEvent(new Event('resize'));
                                 }, 0);
-                                //}, 500);
                             } else if (gridElements[index].classList.contains('correct-wrapper')) {
 
                                 document.querySelector('.process--wrapper6').style.display = 'flex';
@@ -2781,22 +2595,17 @@ document.addEventListener("DOMContentLoaded", function() {
                                     }, 2000)
                                 }
 
-                                //algoRow.style.height = `calc(50*var(--cell-width))`;
-                                //algoGridContainer.style.height = `calc(20*var(--cell-width))`;
-
                             } else if (gridElements[index].classList.contains('.algo-dialogue-wrapper')) {
                                 gridElements[index].classList.add('visible');
                             } else {
                                 gridElements[index].classList.add('visible');
                             }
 
-                            // Move to the next element after a delay
+                            // move to next step after a delay
                             setTimeout(function () {
                                 fadeElementsInSuccession(index + 1);
-                            }, 500); // Adjust the delay (in milliseconds) as needed
+                            }, 500);
                         }, delay);
-
-                        //algoGridContainer.style.height = 'auto';
                     }
                 }
 
@@ -2819,7 +2628,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 function fadeStep7ElementsInSuccession(index) {
                     if (index < step7gridElements.length) {
                         setTimeout(function () {
-                            /* Turns on right side of grid */
+                            /* turns on right side of grid */
                             step7gridElements[index + 1].classList.add('visible');
                             //fadeStep7ElementsInSuccession(index + 1);
                         }, 14000); // default 14000s, set to 0 for convenience
@@ -2829,15 +2638,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 fadeStep7ElementsInSuccession(0);
 
             }
-
-            //algoOuterWrapper.style.display = 'grid';
-            //document.getElementById('fields-wrapper').style.display = 'flex';
-
-            //if (isAlgoWriterOff === true) {
-                //document.getElementById('seventh-wrapper').style.display = 'block';
-                //startTypeWriter(classList, 'seventh');
-            //}
-
         }
     });
 
@@ -2851,8 +2651,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 element.classList.add('text-appear');
                 if (element.classList.contains('B')) {
                     document.documentElement.style.setProperty('--animation-grid-matrix', `gridMatrixAnimation ${colorDuration * 20}s ease-out`);
-                    // div B (grid--matrix)
-                    //element.classList.add('highlight-effect');
                 } else {
                     document.documentElement.style.setProperty('--animation-matrix', `matrixAnimation ${colorDuration * 20}s ease-out`);
                 }
@@ -2864,7 +2662,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let col = 5;
             let h = 0
 
-            // Loop to initialize 2D array elements for placement of zeros
+            // loop to initialize 2D array elements for placement of zeros
             for (let i = 0; i < row; i++) {
                 tracker[i] = [];
                 for (let j = 0; j < col; j++) {
@@ -2874,7 +2672,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             let diags = tracker.map((a, i) => a[i])
 
-            // Gather diagonal elements
+            // gather diagonal elements
             let diagEls = [];
             let UdiagEls = [];
             let LdiagEls = [];
@@ -2882,7 +2680,8 @@ document.addEventListener("DOMContentLoaded", function() {
             for (let i = 0; i < grid_matrix_children.length; i++) {
 
                 let el = grid_matrix_children[i];
-                // Extract numerical part from element ID
+
+                // extract numerical part from element ID
                 let elIdx = parseInt(el.id.match(/\d+/)[0], 10);
 
                 if (diags.includes(elIdx)) {
@@ -2998,7 +2797,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 Re = [400,1000,3200,5000];
                 var ctxsU = []; var ctxsV = [];
-                for (let i = 0; i < 4; i++) { // Edited for debuggin Feb. 28 0922
+                for (let i = 0; i < 4; i++) { // edited for debuggin Feb. 28 0922
                     ctxsU[i] = document.getElementById(`Re${Re[i]}u`).getContext('2d');
                     ctxsV[i] = document.getElementById(`Re${Re[i]}v`).getContext('2d');
                 }
@@ -3027,8 +2826,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                 backgroundColor: '#CFCFC4',
                                 borderWidth: fontSizeInPixels / 8,
                                 pointRadius: fontSizeInPixels / 4,
-                                //borderWidth: 1,
-                                //pointRadius: 4,
                                 pointBackgroundColor: '#CFCFC4',
                                 data: newData.Gaia[`${gaiaKeys[0]}`]['u']
                             }

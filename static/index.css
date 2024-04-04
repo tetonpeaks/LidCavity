@@ -42,10 +42,6 @@
     --bgcolor1: rgba(0, 51, 102, 1);
     --bgcolor2: rgba(0, 51, 102, 1);
     --bgcolor3: rgba(0, 51, 102, 1);
-    /* --bgcolor0: #CEB888;
-    --bgcolor1: #CEB888;
-    --bgcolor2: #CEB888;
-    --bgcolor3: #CEB888; */
     --blinkingBackground0: ;
     --blinkingBackground1: ;
     --blinkingBackground2: ;
@@ -62,8 +58,6 @@
     --z-infoU: 1;
     --box-shadow0: -0.8vw;
     --box-shadow1: 0.8vw;
-    /* --box-shadow0: -6.5px;
-    --box-shadow1: 6.5px; */
     --animation-axes: ;
     --animation-U: ;
     --animation-textU: ;
@@ -106,10 +100,10 @@
 }
 
 body {
-    background-color: black !important; /* added */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    height: 100vh; /* Full viewport height */
+    background-color: black !important;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 
     font-size: 1rem;
 
@@ -224,21 +218,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* border: 2px solid lightblue; */
-    /* border-top: 4px solid #CEB888; */
-    /* border: 4px solid #CEB888; */
     border: 0.5rem solid #CEB888;
     border-width: 0.5rem 0 0 0;
-
-    /* padding-top: 4rem; */
-
     font-size: 1em;
-
     margin-bottom: 0vw;
-
     transition: height 0.3s ease-in-out;
-
     max-width: 100vw; /* IMPORTANT FOR OPENING (prevents the extra width to the right) 240322 */
 }
 .calculus-scale {
@@ -247,10 +231,6 @@ body {
     align-items: center;
     width: 100%;
     height: auto;
-
-    /* padding-top: 4rem; */
-    /* transform: scale(0.75);
-    transition: scale 0.3s ease-out; */
 }
 
 .fourth-cc-row,
