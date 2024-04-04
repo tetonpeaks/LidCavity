@@ -3007,7 +3007,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
 
                 Re400_top = document.getElementById('hero Re400 u');
-                //console.log('Hi', window.getComputedStyle(Re400_top, null).getPropertyValue('top'))
 
                 gaiaKeys = Object.keys(newData.Gaia);
 
