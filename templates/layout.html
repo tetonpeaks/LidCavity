@@ -175,14 +175,19 @@
         }
 
         .KNXXX-text-container {
-            color: white;
-            padding: 0.5rem; /* Adjust padding as needed */
+            color: #CEB888;
+            padding: 0.5rem;
             border: 2px solid black;
             background-color: black;
             font-size: 1rem;
 
-            /* animation: pulsate 2s infinite alternate;
-            transition: box-shadow 0.3s ease-in-out; */
+            animation: pulsate 2s infinite alternate;
+            transition: box-shadow 0.3s ease-in-out;
+
+            position: relative;
+            left: 21.5%;
+
+            display: none;
         }
 
         .dropdown-CFD {
@@ -569,17 +574,17 @@
                         </div>
                     </div>
 
-                    <!-- <div class="KNXXX-text-container" id="KNXXX-text-container"></div> -->
 
-                {% else %}
+                    {% else %}
                     <div class="logo-sim">
                         <span class="logo-sim-text">CFD - A Lid-Driven Cavity Flow</span>
                     </div>
-                {% endif %}
+                    {% endif %}
 
-                <ul class="nav-links">
-                    <div class="menu">
-                        <!-- <li><a class="disabled" id="welcome">Welcome {{username}}!</a></li> -->
+                    <div class="KNXXX-text-container" id="KNXXX-text-container"></div>
+                    <ul class="nav-links">
+                        <div class="menu">
+                            <!-- <li><a class="disabled" id="welcome">Welcome {{username}}!</a></li> -->
                         <!-- DO NOT DELETE <li><a href="/test" onclick="" class="disabled" id="home">Home</a></li>
                         <li><a href="/simulate" class="simulate disabled" id="simulate">Simulate</a></li>
                         <li><a class="loginButton" id="loginButton" data-logout-url="{{ url_for('root') }}">Login</a></li> -->

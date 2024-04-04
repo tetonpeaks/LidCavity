@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const techstackBTextContainer = document.querySelector('.techstack-b-text-container');
     const techstackBWrapper = document.querySelector('.techstack-b-wrapper');
 
-    //startTypeWriter('KNXXX', 'KNXXX');
+    startTypeWriter('KNXXX', 'KNXXX');
 
     var Re400U; var Re400V; var Re1000U; var Re1000V; var Re3200U; var Re3200V; var Re5000U; var Re5000V;
 
@@ -420,7 +420,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (classList === "KNXXX") {
                 text.classList.add('KNXXX-text');
                 text.id = 'dialog';
-                textContent = `KNXXX Productions`;
+                textContent = `A KNXXX Production`;
             } else if (classList === "intro-f") {
                 text.classList.add('intro-f-text');
                 text.id = 'dialog';
