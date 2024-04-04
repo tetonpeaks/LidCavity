@@ -120,17 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const logoSim = document.querySelector('.logo-sim');
     const ddCFD = document.querySelector('.dropdown-CFD');
 
-    setTimeout(() => {
-        const KNXXX = document.getElementById('KNXXX-text-container');
-        const knxxxWidth = KNXXX.offsetWidth;
-        const knxxxLeft = KNXXX.offsetLeft;
-
-        console.log("knxxxWidth: ", knxxxWidth)
-
-        ddCFD.style.width = `${knxxxWidth}px`;
-        ddCFD.style.left = `${knxxxLeft}px`;
-    }, 1000)
-
     logoSim.addEventListener('mouseover', () => {
         //console.log('add active simulate')
         ddCFD.classList.add('active');
@@ -149,10 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const navbar = document.querySelector(".navbar");
 
-    // Get the computed styles of the element
+    // get the computed styles of the element
     const computedStyles = window.getComputedStyle(navbar);
 
-    // Retrieve the borderWidth property
+    // retrieve the borderWidth property
     const borderWidth = parseFloat(computedStyles.getPropertyValue("border-bottom-width"));
 
     document.querySelector('.dropdown-list').style.top = `${navbar.getBoundingClientRect().top + navbar.offsetHeight - borderWidth}px`;
@@ -1884,7 +1873,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Horizontal Velocity thru Primary Vortex',
+                        text: 'Horizontal Velocity thru Primary Vortex.',
                         color: '#CEB888',
                         font: {
                             size: fontSizeInPixels / 2.75,
@@ -2013,7 +2002,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Vertical Velocity thru Primary Vortex',
+                        text: 'Vertical Velocity thru Primary Vortex.',
                         color: '#CEB888',
                         font: {
                             size: fontSizeInPixels / 2.75,

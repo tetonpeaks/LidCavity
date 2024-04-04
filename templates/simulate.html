@@ -26,10 +26,13 @@
 {% endif %}
 
 {% block content %}
+  <!-- The parent component -->
   <div class="curtain">
 
+    <!-- The component wrapper -->
     <div class="curtain__wrapper">
 
+      <!-- The checkbox hack! -->
       <input type="checkbox" checked class="checkbox" id="checkbox">
 
         <div class="curtain__prize" id="curtain__prize">
@@ -46,7 +49,7 @@
                         </p>
                         <p>
                           <label for="input-Re" class="input">Re</label></br>
-                          <input type="text" class="input" id="input-Re" value="400" placeholder="400">
+                          <input type="text" class="input" id="input-Re" value="3200" placeholder="400">
                           <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}" />
                         </p>
                         <p>
@@ -90,8 +93,11 @@
         </div>
 
         <div class="container container1" id="container1">
+          <!-- <div class="heroConv" id="heroConv"> -->
             <div class="gridConv">
               <canvas class="myChartConv" id="myChartConv"></canvas>
+            </div>
+          <!-- </div> -->
         </div>
 
         <div class="container container3" id="container3">
@@ -115,13 +121,18 @@
 
         <div class="container container2" id="container2"></div>
 
+        <!-- <div class="container container3" id="container3"></div>
+        <div class="container container4" id="container4"></div>
+        <div class="container container5" id="container5"></div> -->
+
+
       <!-- curtain panel -->
-      <div class="curtain__panel curtain__panel--left" id="curtain__panel">
+      <!-- <div class="curtain__panel curtain__panel--left" id="curtain__panel">
         <div class="zone" id="zone">
           <p>Simulation</p>
           <p>Zone</p>
         </div>
-      </div> <!-- curtain__panel -->
+      </div>  --><!-- curtain__panel -->
 
       </div> <!-- curtain__wrapper -->
 
