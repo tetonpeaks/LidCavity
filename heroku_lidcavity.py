@@ -2338,7 +2338,7 @@ def index():
     #if current_user.is_authenticated:
     user_id = 1  # Get the user ID
     username = 'default user'  # Get the username
-    user = User.query.filter_by(username=username).first()
+    #user = User.query.filter_by(username=username).first()
 
     print(
         f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, "
