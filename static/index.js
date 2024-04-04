@@ -426,7 +426,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (classList === "KNXXX") {
                 text.classList.add('KNXXX-text');
                 text.id = 'dialog';
-                textContent = `WK5FF Productions`;
+                textContent = `K5WFF Productions`;
             } else if (classList === "intro-f") {
                 text.classList.add('intro-f-text');
                 text.id = 'dialog';
