@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.curtain__panel--left').style.display = 'none';
     }, 3000)
 
+    //startTypeWriter('KNXXX');
     const upperContainer = document.querySelector('.upper');
     upperContainer.style.height = `auto`; // Reset height to auto
 
@@ -97,12 +98,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const ddCFD = document.querySelector('.dropdown-CFD');
 
     setTimeout(() => {
-        const KNXXX = document.getElementById('KNXXX-text-container');
-        const knxxxWidth = KNXXX.offsetWidth;
-        const knxxxLeft = KNXXX.offsetLeft;
+        console.log('Hi')
 
-        ddCFD.style.width = `${knxxxWidth}px`;
-        ddCFD.style.left = `${knxxxLeft}px`;
+        const KNXXX = document.getElementById('KNXXX-text-container');
+        const logoSim = document.getElementById('logo-sim');
+        const logoSimWidth = logoSim.offsetWidth;
+        //const knxxxLeft = logoSim.offsetLeft;
+
+        ddCFD.style.width = `calc(${logoSimWidth}px - 2rem)`;
+        ddCFD.style.left = `${logoSim.getBoundingClientRect().right}px`;
     }, 1000)
 
     logoSim.addEventListener('mouseover', () => {
@@ -2054,7 +2058,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const textContainer = document.querySelector(`.${prefix}-text-container`);
 
-            if (prefix === "fourth") {
+            if (prefix === "KNXXX") {
+                console.log('In KNXXX IF')
+                text.classList.add('KNXXX-text');
+                text.id = 'dialog';
+                textContent = `K5WFF Productions`;
+            } else if (prefix === "fourth") {
                 text.classList.add('fourth-text');
                 textContainer.appendChild(text);
                 textContent = `Thank you for running your first simulation! Feel free to save, update, and load previous simulations.`;
@@ -2084,10 +2093,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     const word = words[index];
 
                     const link = document.createElement('a');
-                    link.setAttribute('target', '_blank'); // Open link in a new tab
+                    link.setAttribute('target', '_blank');
 
                     function splitandhighlight(word) {
-                        // Split 'Lorem' into spans for each character
                         const chars = word.split('').map((char) => {
                             const span = document.createElement('span');
                             span.textContent = char;
@@ -2095,23 +2103,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
 
                         chars.forEach((charSpan, index) => {
-                            // Exclude applying the highlight effect to the last character (comma)
                             if (word === 'Dynamics,' && word.endsWith(',') && index === word.length - 1) {
-                                // Add the character without the highlight effect
                                 link.appendChild(document.createTextNode(charSpan.textContent));
                             } else {
-                                // Apply the highlight effect to other characters
                                 link.appendChild(charSpan);
                                 setTimeout(() => {
                                     charSpan.classList.add('highlight-effect');
-                                }, index * 100); // speed of highlight effect
+                                }, index / index); // speed of highlight effect
                             }
-                            /* link.appendChild(charSpan);
-                            //console.log("charSpan: ", charSpan)
-                            setTimeout(() => {
-                                // Triggering the highlight effect for each character
-                                charSpan.classList.add('highlight-effect');
-                            }, index*100); */
                         });
 
                         // Add space between words
@@ -2126,12 +2125,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         link.setAttribute('href', 'https://gpm.nasa.gov/education/articles/how-do-hurricanes-form#:~:text=This%20difference%20is%20because%20of,flows%20down%20into%20the%20eye.');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
+                    //} else if (word === 'KNXXX' || word === 'Productions') {
+                    //    splitandhighlight(word);
+                    //    textDiv.appendChild(document.createTextNode(word + ' '));
                     } else {
-                        //if (word.includes('<i>') && word.includes('</i>')) {
-                        //    textDiv.innerHTML += word + ' ';
-                        //} else {
+                        if (word.includes('<i>') && word.includes('</i>')) {
+                            textDiv.innerHTML += word + ' ';
+                        } else {
                             textDiv.appendChild(document.createTextNode(word + ' '));
-                        //}
+                        }
                     }
 
                     index++;
@@ -2139,7 +2141,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     //introWrapper.style.setProperty('--intro-text-height', '98%')
                     //introWrapper.style.setProperty('--intro-text-width', '99.5%')
 
-                    setTimeout(typeWriter, 50); // speed of each word
+                    if (prefix === 'KNXXX') {
+                        setTimeout(typeWriter, 100);
+                    } else {
+                        setTimeout(typeWriter, 50);
+                    }
                     //setTimeout(typeWriter, 125); // speed of each word
                 }
             }
@@ -2155,7 +2161,9 @@ document.addEventListener("DOMContentLoaded", function () {
         //let el = document.querySelector(`.startEffect-intro`);
         //el.style.display = 'none';
 
-        if (prefix === 'fourth') {
+        if (prefix === 'KNXXX') {
+            return;
+        } else if (prefix === 'fourth') {
             isFourthWriterOff = false;
         } else if (prefix === 'fourth-b') {
             isFourthBWriterOff = false;
