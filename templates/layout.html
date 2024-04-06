@@ -257,6 +257,13 @@
 
         #welcome { cursor: none; border-radius: 7.5px; font-size: 1rem; }
 
+        .arrow {
+        display: inline-block;
+            margin-right: 5px;
+            color: #CEB888;
+            font-size: 1rem;
+        }
+
         .messages {
             list-style: none;
             padding: 0;
@@ -535,7 +542,7 @@
 
                     <ul class="nav-links">
                         <div class="menu">
-                            <li><a class="disabled" id="welcome">Welcome</a></li>
+                            <li><a class="disabled" id="welcome">Simulator <span class="arrow">&rarr;</span></a></li>
                         <!-- DO NOT DELETE <li><a href="/test" onclick="" class="disabled" id="home">Home</a></li>
                         <li><a href="/simulate" class="simulate disabled" id="simulate">Simulate</a></li>
                         <li><a class="loginButton" id="loginButton" data-logout-url="{{ url_for('root') }}">Login</a></li> -->
