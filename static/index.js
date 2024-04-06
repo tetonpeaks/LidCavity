@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
     loginButton.innerHTML = `Logout`; */
 
     function enableButtons() {
-        //document.getElementById('welcome').classList.remove('disabled');
+        document.getElementById('welcome').classList.remove('disabled');
         document.getElementById('home').classList.remove('disabled');
         document.getElementById('simulate').classList.remove('disabled');
     }
@@ -86,11 +86,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    //const welcomeLi = document.getElementById('welcome');
+    const welcomeLi = document.getElementById('welcome');
     const homeButton = document.getElementById('home');
     const simulateButton = document.getElementById('simulate');
 
-    //addHoverAndFocusStyles(welcomeLi);
+    addHoverAndFocusStyles(welcomeLi);
     addHoverAndFocusStyles(homeButton);
     addHoverAndFocusStyles(simulateButton);
     //addHoverAndFocusStyles(loginButton);
