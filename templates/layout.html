@@ -489,7 +489,7 @@
     </style>
     {% block additional_head %}{% endblock %}
 
-    {% if user_authenticated %}
+    <!-- {% if user_authenticated %} -->
         <script>
             function showDropdown(element) {
                 element.querySelector('.dropdown-content').style.display = 'block';
@@ -513,7 +513,7 @@
                 element.querySelector('.logo-sim-text:last-child').style.display = 'none';
             }
         </script> -->
-    {% endif %}
+    <!-- {% endif %} -->
 </head>
 <body>
         <!-- <div id="navbar">
@@ -522,7 +522,6 @@
 
         <div class="container0" id="container0">
             <nav class="navbar" id="navbar">
-                {% if user_authenticated %}
 
                     <div class="logo-sim" id="logo-sim">
                         <span class="logo-sim-text">CFD - A Lid-Driven Cavity Flow</span>
@@ -532,13 +531,6 @@
                         </div>
                         <div class="KNXXX-text-container" id="KNXXX-text-container"></div>
                     </div>
-
-
-                    {% else %}
-                    <div class="logo-sim">
-                        <span class="logo-sim-text">CFD - A Lid-Driven Cavity Flow</span>
-                    </div>
-                    {% endif %}
 
                     <ul class="nav-links">
                         <div class="menu">

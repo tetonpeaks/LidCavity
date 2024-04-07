@@ -12,8 +12,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 import json
 
-login_manager = LoginManager()
-login_manager.init_app(app)
+#login_manager = LoginManager()
+#login_manager.init_app(app)
 
 class JsonEncodedDict(db.TypeDecorator):
     """Enables JSON storage by encoding and decoding on the fly."""
@@ -78,9 +78,9 @@ class User(UserMixin, db.Model):
     def check_incorrect_attempts(self):
         return self.incorrect_attempts
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(1))
+#@login_manager.user_loader
+#def load_user(user_id):
+#    return User.query.get(int(1))
 
 # create a table schemas
 

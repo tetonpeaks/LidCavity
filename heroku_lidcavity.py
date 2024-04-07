@@ -82,14 +82,14 @@ app.config['LOGIN_VIEW'] = 'login'
 app.permanent_session_lifetime = datetime.timedelta(minutes=15)
 
 # an instance of LoginManager
-login_manager = LoginManager(app)
+#login_manager = LoginManager(app)
 
-from models import load_user
+#from models import load_user
 
 # register user_loader callback function
-login_manager.user_loader(load_user)
+#login_manager.user_loader(load_user)
 
-login_manager.login_view = 'login'
+#login_manager.login_view = 'login'
 
 class bcolors:
     HEADER = '\033[95m'
@@ -1915,15 +1915,16 @@ def is_user_logged_in_handle_reconnect():
 
 @socketio.on('message', namespace='/is_user_logged_in')
 def is_user_logged_in(message):
-    if current_user.is_authenticated:
-        user_id = current_user.get_id()
+    #if current_user.is_authenticated:
+        user_id = 1
+        #user_id = current_user.get_id()
 
         if (user_id):
             event = {"msg": True}
             emit('response', json.dumps(event, cls=npEncoder), room=request.sid)
 
-    else:
-        print("No user is currently authenticated.")
+    #else:
+    #    print("No user is currently authenticated.")
 
 logout_clients = set()
 
@@ -2342,14 +2343,11 @@ def index():
     username = 'default user'  # Get the username
     #user = User.query.filter_by(username=username).first()
 
-    print(
-        f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, "
-        f"{bcolors.WARNING}username{bcolors.ENDC}: {username}, ")
+    #print(
+    #    f"{bcolors.WARNING}user_id{bcolors.ENDC}: {user_id}, "
+    #    f"{bcolors.WARNING}username{bcolors.ENDC}: {username}, ")
 
-    return render_template('index.html',
-                            user_authenticated=True,
-                            username=username
-                            )
+    return render_template('index.html')
     #else:
     #    print("Redirect to login")
     #    return redirect(url_for('login'))

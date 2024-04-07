@@ -1608,9 +1608,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 if (isFourthBWriterOff === true) {
 
-                    document.querySelector('.fourth-b-row').style.display = 'flex';
 
                     setTimeout(() => {
+                        document.querySelector('.fourth-b-row').style.display = 'flex';
                         document.getElementById('fourth-b-wrapper').style.display = 'block';
                         startTypeWriter('fourth-b', 'fourth-b');
 
@@ -1620,9 +1620,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         if (isFourthDWriterOff === true) {
 
-                            document.querySelector('.fourth-d-row').style.display = 'flex';
 
                             setTimeout(() => {
+                                document.querySelector('.fourth-d-row').style.display = 'flex';
                                 document.getElementById('fourth-d-wrapper').style.display = 'block';
 
                                 document.getElementById('grid0__cell49').style.pointerEvents = 'auto';
@@ -3754,7 +3754,9 @@ document.addEventListener("DOMContentLoaded", function() {
             let classList = event.target.classList;
 
             if (isTechStackWriterOff === true) {
+                document.getElementById('techstack-dialog-row').style.display = 'flex';
                 document.getElementById('techstack-wrapper').style.display = 'block';
+
                 startTypeWriter(classList, 'techstack');
 
                 setTimeout(() => {
@@ -3764,6 +3766,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (isTechStackBWriterOff === true) {
                     setTimeout(() => {
 
+                        document.getElementById('techstack-b-dialog-row').style.display = 'flex';
                         document.getElementById('techstack-b-wrapper').style.display = 'block';
                         startTypeWriter('techstack-b', 'techstack-b');
 
