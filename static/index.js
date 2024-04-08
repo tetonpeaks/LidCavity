@@ -1303,7 +1303,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 }
                             }, 16500 - 5000)
                         }
-                    }, 15500 - 6000)
+                    }, 15500 - 6500)
                 }
             }
 
