@@ -434,7 +434,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (classList === "intro-d") {
                 text.classList.add('intro-d-text');
                 text.id = 'dialog';
-                textContent = `I hope you enjoy perusing this software application. Thank you for visiting. The app is best viewed in newer machines running Google Chrome, Mozilla Firefox, or Safari. The app can be viewed on desktops, laptops, tablets, and mobile devices.`;
+                textContent = `The app is best viewed in newer machines running Google Chrome, Mozilla Firefox, or Safari. The app can be viewed on desktops, laptops, tablets, and mobile devices.`;
             } else if (classList === "intro-c") {
                 text.classList.add('intro-c-text');
                 text.id = 'dialog';
@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (classList === "techstack-c") {
                 text.classList.add('techstack-c-text');
                 text.id = 'dialog';
-                textContent = `Thank you for visiting. This webpage is a scientific web application and simulator toolkit that runs Computational Fluid Dynamics (CFD) calculations using Fortran code on a Heroku dyno backend and served to you on this frontend. The CFD solver was written in 2008 for a graduate level course project on Numerical Methods in Heat, Mass, and Momentum Transfer that solves the coupled nonlinear Navier-Stokes and continuity equations in two-dimensions. The problem at hand is the Lid-Driven Cavity Flow Problem, which has and is still used extensively in the field of CFD to validate and verify numerical methods and codes. The solver uses a variant of the Semi-Implicit Method for Pressure-Linked Equations (SIMPLE) algorithm and a third order accurate Quadratic Upwind Interpolation for Convective Kinetics (QUICK) scheme is used to upwind face velocities. The domain is discretized using the finite volume method (FVM) as the technique enforces and preserves the conservation principles and fundamental laws of physics.`;
+                textContent = `Thank you for visiting. This webpage is a scientific web application and simulator toolkit that runs Computational Fluid Dynamics (CFD) calculations using Fortran code on a Heroku dyno backend and served to you on this frontend. The CFD solver was written in 2008 for a graduate level course project on Numerical Methods in Heat, Mass, and Momentum Transfer that solves the coupled nonlinear Navier-Stokes and continuity equations in two-dimensions. A PDF file under The Why and The Background comprises more detailed information. The problem at hand is the Lid-Driven Cavity Flow Problem, which has and is still used extensively in the field of CFD to validate and verify numerical methods and codes. The solver uses a variant of the Semi-Implicit Method for Pressure-Linked Equations (SIMPLE) algorithm and a third order accurate Quadratic Upwind Interpolation for Convective Kinetics (QUICK) scheme is used to upwind face velocities. The domain is discretized using the finite volume method (FVM) as the technique enforces and preserves the conservation principles and fundamental laws of physics.`;
             } else if (classList === "techstack-b") {
                 text.classList.add('techstack-b-text');
                 text.id = 'dialog';
@@ -586,6 +586,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         (words[index - 1] === 'Methods' && word === 'in') ||
                         (words[index - 1] === 'Mass,' && word === 'and') && isWhyWriterOff == true) {
                         link.setAttribute('href', 'https://engineering.purdue.edu/online/courses/numerical-methods-heat-mass-momentum-transfer');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'PDF')) {
+                        link.setAttribute('href', pdfBlobUrl);
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if ((word === 'algorithmic' || word === 'trading') & words[index+1] !== 'platforms') {
@@ -1615,7 +1619,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                 pdfLink.click();
                             } else {
                                 pdfLink.target = '_blank';
-
                                 pdfLink.click();
                             }
                     })
