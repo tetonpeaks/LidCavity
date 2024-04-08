@@ -568,6 +568,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
                             } else if (word === 'learning.' && word.endsWith('.') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'right.' && word.endsWith('.') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
                             } else {
                                 link.appendChild(charSpan);
                                 setTimeout(() => {
@@ -586,8 +588,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://engineering.purdue.edu/online/courses/numerical-methods-heat-mass-momentum-transfer');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'Jayathi' || word === 'Murthy') {
-                        link.setAttribute('href', 'https://www.linkedin.com/in/jayathi-murthy-96a08262/');
+                    } else if (word === 'upper' || word === 'right.') {
+                        link.setAttribute('href', 'https://desolate-bastion-69064.herokuapp.com/simulate');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'Computational' || word === 'Fluid' || word === 'Dynamics') {
