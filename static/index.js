@@ -257,8 +257,8 @@ document.addEventListener("DOMContentLoaded", function() {
     introDTextContainer.dataset.textWidth = 'intro-d-text-width';
     setupObserver(introDWrapper, introDTextContainer);
 
-    introETextContainer.dataset.textWidth = 'intro-e-text-width';
-    setupObserver(introEWrapper, introETextContainer);
+    //introETextContainer.dataset.textWidth = 'intro-e-text-width';
+    //setupObserver(introEWrapper, introETextContainer);
 
     introFTextContainer.dataset.textWidth = 'intro-f-text-width';
     setupObserver(introFWrapper, introFTextContainer);
@@ -586,6 +586,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         (words[index - 1] === 'Methods' && word === 'in') ||
                         (words[index - 1] === 'Mass,' && word === 'and') && isWhyWriterOff == true) {
                         link.setAttribute('href', 'https://engineering.purdue.edu/online/courses/numerical-methods-heat-mass-momentum-transfer');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'algorithmic' || word === 'trading') & words[index+1] !== 'platforms') {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Algorithmic_trading');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'upper' || word === 'right.') {
@@ -1273,35 +1277,33 @@ document.addEventListener("DOMContentLoaded", function() {
                                             document.querySelector('.intro-d-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                         }, 250)
 
-                                        if (isWhyEWriterOff === true) {
+                                        //if (isWhyEWriterOff === true) {
+                                        //    setTimeout(() => {
+                                        //        document.getElementById('intro-e-wrapper').style.display = 'block'; // Commented: Mon Jan 22, 1:19PM
+                                        //        startTypeWriter('intro-e', 'intro-e')
+                                        //        setTimeout(() => {
+                                        //            document.querySelector('.intro-e-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
+                                        //        }, 250)
+
+                                        if (isWhyFWriterOff === true) {
                                             setTimeout(() => {
 
-                                                document.getElementById('intro-e-wrapper').style.display = 'block'; // Commented: Mon Jan 22, 1:19PM
-                                                startTypeWriter('intro-e', 'intro-e')
+                                                document.getElementById('intro-f-wrapper').style.display = 'block'; // Commented: Mon Jan 22, 1:19PM
+                                                startTypeWriter('intro-f', 'intro-f')
 
                                                 setTimeout(() => {
-                                                    document.querySelector('.intro-e-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
+                                                    document.querySelector('.intro-f-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                                 }, 250)
 
-                                                if (isWhyFWriterOff === true) {
-                                                    setTimeout(() => {
-
-                                                        document.getElementById('intro-f-wrapper').style.display = 'block'; // Commented: Mon Jan 22, 1:19PM
-                                                        startTypeWriter('intro-f', 'intro-f')
-
-                                                        setTimeout(() => {
-                                                            document.querySelector('.intro-f-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
-                                                        }, 250)
-
-                                                    }, 9000)
-                                                }
-                                            }, 3000)
+                                            }, 4000)
                                         }
+                                        //    }, 3000)
+                                        //}
                                     }, 12000 - 0)
                                 }
                             }, 16500 - 5000)
                         }
-                    }, 15500 - 8000)
+                    }, 15500 - 7000)
                 }
             }
 
