@@ -847,7 +847,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Sentiment_analysis');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'emotion' || word === 'recognition.' || word === 'recognition') {
+                    } else if ((word === 'emotion' || word === 'recognition') && words[index+1] !== 'recognition.') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Emotion_recognition');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
