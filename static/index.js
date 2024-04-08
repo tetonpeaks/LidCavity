@@ -1299,7 +1299,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 }
                             }, 16500 - 5000)
                         }
-                    }, 15500 - 8000)
+                    }, 15500 - 10000)
                 }
             }
 
