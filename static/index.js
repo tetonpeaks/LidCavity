@@ -438,7 +438,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (classList === "intro-c") {
                 text.classList.add('intro-c-text');
                 text.id = 'dialog';
-                textContent = `I am just scratching the surface in web design, frontend/backend services and software development in general, yet that is what excites me the most about the future. I have intense curiosity and interests in the software development and client delivery of services to predict stock market dynamics in real-time, services in FinTech, healthcare, global distribution systems, traffic prediction. I want to learn more about microservices, systems engineering, data science, data engineering, and database management. I have natural interest in applying my previous academic and professional experiences to new horizons, using my engineering and math background to improve any data-driven technology. Whether that is to develop robo investors and trading platforms that are efficient and effective for users, dive deep into algorithmic trading of financial markets, or work on projects that use opinion mining and emotion recognition for customer feedback, brand monitoring/reputation management, market research/competitive analysis, health care/patient feedback, or personalized learning/adaptive learning platforms. Software development in general is a giant ocean to me and I just want to go swim in it. I plan to specialize my skill set and certify myself on machine learning from Coursera, finish my certification at Full Stack Open and dive deeper into pattern recognition, deep learning, sentiment analysis, and emotion recognition to name a few more rocks that I’d like to turn over.`;
+                textContent = `I am just scratching the surface in web design, frontend/backend services and software development in general, yet that is what excites me the most about the future. I have intense curiosity and interests in the software development and client delivery of services to predict stock market dynamics in real-time, services in FinTech, healthcare, global distribution systems, traffic prediction. I want to learn more about microservices, systems engineering, data science, data engineering, and database management. I have natural interest in applying my previous academic and professional experiences to new horizons, using my engineering and math background to improve any data-driven technology. Whether that is to develop robo investors and trading platforms that are efficient and effective for users, dive deep into algorithmic trading of financial markets, or work on projects that use opinion mining and emotion recognition for customer feedback, brand monitoring/reputation management, market research/competitive analysis, health care/patient feedback, or personalized learning/adaptive learning platforms. Software development in general is a giant ocean to me and I just want to go swim in it. I plan to specialize my skill set and certify myself on machine learning from Coursera, finish my certification at Full Stack Open and unpeel pattern recognition and deep learning.`;
             } else if (classList === "intro-b") {
                 text.classList.add('intro-b-text');
                 text.id = 'dialog';
@@ -563,6 +563,10 @@ document.addEventListener("DOMContentLoaded", function() {
                             } else if (word === 'recognition.' && word.endsWith('.') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
                             } else if (word === 'Coursera,' && word.endsWith(',') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'analysis,' && word.endsWith(',') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'learning.' && word.endsWith('.') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
                             } else {
                                 link.appendChild(charSpan);
@@ -827,11 +831,19 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://www.ansys.com/products/fluids/ansys-fluent');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'sentiment' || word === 'analysis') {
-                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Sentiment_analysis');
+                    //} else if (word === 'sentiment' || word === 'analysis,') {
+                    //    link.setAttribute('href', 'https://en.wikipedia.org/wiki/Sentiment_analysis');
+                    //    textDiv.appendChild(link);
+                    //    splitandhighlight(word);
+                    } else if (word === 'pattern' || word === 'recognition') {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Pattern_recognition');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'opinon' || word === 'mining') {
+                    } else if ((word === 'deep' || word === 'learning.') && words[index-1] !== 'dive') {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Deep_learning');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === 'opinion' || word === 'mining') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Sentiment_analysis');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -1177,7 +1189,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                             document.querySelector('.techstack-b-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                         }, 250)
 
-                                    }, 11000 - 4000)
+                                    }, 11000 - 3000)
                                 }
                             }, 9000)
                         }
@@ -1279,7 +1291,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                                             document.querySelector('.intro-f-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                                         }, 250)
 
-                                                    }, 3500)
+                                                    }, 6000)
                                                 }
                                             }, 3000)
                                         }
@@ -1287,7 +1299,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 }
                             }, 16500 - 5000)
                         }
-                    }, 15500 - 2000)
+                    }, 15500 - 4000)
                 }
             }
 
