@@ -191,10 +191,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const fignames_vel = document.querySelectorAll('.figname--vel');
     const techstackRow = document.querySelector('.techstack-row');
     const techstackTextContainer = document.querySelector('.techstack-text-container');
-    const techstackWrapper = document.querySelector('.techstack-b-wrapper');
+    const techstackWrapper = document.querySelector('.techstack-wrapper');
     const techstackBRow = document.querySelector('.techstack-b-row');
     const techstackBTextContainer = document.querySelector('.techstack-b-text-container');
     const techstackBWrapper = document.querySelector('.techstack-b-wrapper');
+    const techstackCTextContainer = document.querySelector('.techstack-c-text-container');
+    const techstackCWrapper = document.querySelector('.techstack-c-wrapper');
+    const techstackDTextContainer = document.querySelector('.techstack-d-text-container');
+    const techstackDWrapper = document.querySelector('.techstack-d-wrapper');
+
+    proofRow.style.gridRow = '12';
 
     startTypeWriter('KNXXX', 'KNXXX');
 
@@ -226,6 +232,18 @@ document.addEventListener("DOMContentLoaded", function() {
         // start observing changes in the text container
         observer.observe(textContainer, observerConfig);
     };
+
+    techstackCTextContainer.dataset.textWidth = 'techstack-c-text-width';
+    setupObserver(techstackCWrapper, techstackCTextContainer);
+
+    techstackDTextContainer.dataset.textWidth = 'techstack-d-text-width';
+    setupObserver(techstackDWrapper, techstackDTextContainer);
+
+    techstackTextContainer.dataset.textWidth = 'techstack-text-width';
+    setupObserver(techstackWrapper, techstackTextContainer);
+
+    techstackBTextContainer.dataset.textWidth = 'techstack-b-text-width';
+    setupObserver(techstackBWrapper, techstackBTextContainer);
 
     introTextContainer.dataset.textWidth = 'intro-text-width';
     setupObserver(introWrapper, introTextContainer);
@@ -277,12 +295,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     shitBTextContainer.dataset.textWidth = 'shit-b-text-width';
     setupObserver(shitBWrapper, shitBTextContainer);
-
-    techstackTextContainer.dataset.textWidth = 'techstack-text-width';
-    setupObserver(techstackWrapper, techstackTextContainer);
-
-    techstackBTextContainer.dataset.textWidth = 'techstack-b-text-width';
-    setupObserver(techstackBWrapper, techstackBTextContainer);
 
     const algoRow = document.querySelector('.algo-row');
     const grid_behind = document.querySelector('.grid-behind');
@@ -367,6 +379,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 200)
 
     var grid0_height;
+
+    var isTechStackCWriterOff = true;
+    var isTechStackDWriterOff = true;
+    var isTechStackWriterOff = true;
+    var isTechStackBWriterOff = true;
     var isWhyWriterOff = true;
     var isWhyBWriterOff = true;
     var isWhyCWriterOff = true;
@@ -378,15 +395,15 @@ document.addEventListener("DOMContentLoaded", function() {
     var isAlgoBWriterOff = true;
     var isAlgoCWriterOff = true;
     var isAlgoDWriterOff = true;
-
     var isProofWriterOff = true;
     var isProofBWriterOff = true;
-    var isTechStackWriterOff = true;
-    var isTechStackBWriterOff = true;
     var isFourthBWriterOff = true;
     var isFourthCWriterOff = true;
     var isFourthCCWriterOff = true;
     var isFourthDWriterOff = true;
+
+    var isBottomRowOpen = false;
+    var isCalculusRowOpen = false;
 
     function startTypeWriter(classList, prefix) {
 
@@ -413,7 +430,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (classList === "intro-e") {
                 text.classList.add('intro-e-text');
                 text.id = 'dialog';
-                textContent = `If I had enough time and help, I would transform this application into some sort of a learning and teaching tool. A generic and scalable type of application that school teachers or university professors could use to achieve more effective learning and retention from students.`;
+                textContent = `The simulator can be accessed from the navigation bar in the upper right. The app is best viewed on newer machines running Google Chrome, Mozilla Firefox, or Safari and can be viewed on desktops, laptops, tablets, and mobile devices in landscape. Both the repository for this application and my LinkedIn profile can also be accessed by hovering over or clicking on the pulsating logo above. Both the home and simulator pages are packed with useful information about this software application as well as my diverse skill sets and how I’ve cohesively rendered it here. If I had enough time and resources, I would implement ML and DL concepts into the codebase and transform it into a personalized learning or adaptive learning platform for academic purposes using sentiment analysis and emotion recognition.`;
             } else if (classList === "intro-d") {
                 text.classList.add('intro-d-text');
                 text.id = 'dialog';
@@ -421,15 +438,23 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (classList === "intro-c") {
                 text.classList.add('intro-c-text');
                 text.id = 'dialog';
-                textContent = `I know that I am just scratching the surface in web design, frontend/backend services and software development in general, yet that is what excites me the most about the future. I have interests in the software development and client delivery of services to predict stock market dynamics in real-time, services in FinTech, healthcare, global distribution systems, traffic prediction. I want to learn more about microservices, systems engineering, data science, data engineering, and database management. I have natural interest in applying my previous academic and professional experiences to new horizons, using my engineering and math background to improve any data-driven technology. Whether that is to develop robo investors and trading platforms that are efficient and effective for users, dive deep into algorithmic trading of financial markets, or work on projects that use opinion mining and emotion recognition for customer feedback, brand monitoring/reputation management, market research/competitive analysis, health care/patient feedback, or personalized learning/adaptive learning platforms. Software development in general is a giant ocean to me and I just want to go swim in it. I plan to certify myself on Coursera on machine learning, finish my certification at Full Stack Open and dive deeper into pattern recognition, deep learning, sentiment analysis, and emotion recognition to name a few more rocks that I’d like to turn over.`;
+                textContent = `I am just scratching the surface in web design, frontend/backend services and software development in general, yet that is what excites me the most about the future. I have intense curiosity and interests in the software development and client delivery of services to predict stock market dynamics in real-time, services in FinTech, healthcare, global distribution systems, traffic prediction. I want to learn more about microservices, systems engineering, data science, data engineering, and database management. I have natural interest in applying my previous academic and professional experiences to new horizons, using my engineering and math background to improve any data-driven technology. Whether that is to develop robo investors and trading platforms that are efficient and effective for users, dive deep into algorithmic trading of financial markets, or work on projects that use opinion mining and emotion recognition for customer feedback, brand monitoring/reputation management, market research/competitive analysis, health care/patient feedback, or personalized learning/adaptive learning platforms. Software development in general is a giant ocean to me and I just want to go swim in it. I plan to specialize my skill set and certify myself on machine learning from Coursera, finish my certification at Full Stack Open and dive deeper into pattern recognition, deep learning, sentiment analysis, and emotion recognition to name a few more rocks that I’d like to turn over.`;
             } else if (classList === "intro-b") {
                 text.classList.add('intro-b-text');
                 text.id = 'dialog';
                 textContent = `Web design and communicating globally with ease with useful information has always been an interest of mine so this application represents a grassroots movement for myself. In high school as a hobby back in 2000, I used to make primitive HTML websites to consolidate information for scheduling groups of Everquest players. At Cal, I started to become a mechanical engineer because I liked Top Gun and Apollo 13. At Purdue, I became a mechanical engineer at the highest level, trying to figure out ways to cool these heat generating GPUs and CPUs with carbon nanotubes back then with all that math, physics, systems engineering, nonlinear regression, uncertainty quantification, interdisciplinary projects and publications and yet I have found myself going back in time to figure out where I want to go in the future. Developing this app from scratch has been difficult and tortuous, but extremely rewarding personally and I’ve had the time of my life developing it and releasing it to production. Now I have to maintain it haha. I have learned so much more about frontend/backend web design and computer science than I had imagined when this application was just an idea.`;
+            } else if (classList === "techstack-d") {
+                text.classList.add('techstack-d-text');
+                text.id = 'dialog';
+                textContent = `The simulator can be accessed from the navigation bar in the upper right. The app is best viewed on newer machines running Google Chrome, Mozilla Firefox, or Safari and can be viewed on desktops, laptops, tablets, and mobile devices in landscape. Both the repository for this application and my LinkedIn profile can also be accessed by hovering over or clicking on the pulsating logo above. Both the home and simulator pages are packed with useful information about this software application as well as my diverse skill set and how I’ve cohesively rendered it here. If I had enough time and resources, I would implement ML and DL concepts into the codebase and transform it into a personalized learning or adaptive learning platform for academic purposes using sentiment analysis and emotion recognition.`;
+            } else if (classList === "techstack-c") {
+                text.classList.add('techstack-c-text');
+                text.id = 'dialog';
+                textContent = `Thank you for visiting. This webpage is a scientific web application and simulator toolkit that runs Computational Fluid Dynamics (CFD) calculations using Fortran code on a Heroku dyno backend and served to you on this frontend. The CFD solver was written in 2008 for a graduate level course project on Numerical Methods in Heat, Mass, and Momentum Transfer that solves the coupled nonlinear Navier-Stokes and continuity equations in two-dimensions. The problem at hand is the Lid-Driven Cavity Flow Problem, which has and is still used extensively in the field of CFD to validate and verify numerical methods and codes. The solver uses a variant of the Semi-Implicit Method for Pressure-Linked Equations (SIMPLE) algorithm and a third order accurate Quadratic Upwind Interpolation for Convective Kinetics (QUICK) scheme is used to upwind face velocities. The domain is discretized using the finite volume method (FVM) as the technique enforces and preserves the conservation principles and fundamental laws of physics.`;
             } else if (classList === "techstack-b") {
                 text.classList.add('techstack-b-text');
                 text.id = 'dialog';
-                textContent=`Python C/API extension modules of the solver and ODE integrator needed to be built in order to interface the solver and ODE integrator with the Flask web framework on the backend written in Python. In addition, the backend communicates with a MySQL database in order to manage data generated when users run simulations. Functions needed to be written in order to handle saving and retrieving user requests for the velocity field, particle displacements, and storage of the image source files generated by Matplotlib in a socket.io route. Socket.IO was chosen for suitability in long-polling environments as well as its room management, event-based communication, and reconnection handling features. The backend serves the frontend written in JavaScript, which controls the HTML5 template and CSS3 styles, creating the interactive and hopefully visually appealing user interface of the web application. The application uses the Mailgun to handle registration and password reset requests (commented for efficient usage, no login, etc). The PDF file is served to you using an Amazon S3 bucket.`;
+                textContent = `Python C/API extension modules of the solver and ODE integrator needed to be built in order to interface the solver and ODE integrator with the Flask web framework on the backend written in Python. In addition, the backend communicates with a MySQL database in order to manage data generated when users run simulations. Functions needed to be written in order to handle saving and retrieving user requests for the velocity field, particle displacements, and storage of the image source files generated by Matplotlib in a Socket.IO route. Socket.IO was chosen for suitability in long-polling environments as well as its room management, event-based communication, and reconnection handling features. The backend serves the frontend written in JavaScript, which controls the HTML5 template and CSS3 styles, creating the interactive and hopefully visually appealing user interface of the web application. The application uses the Mailgun to handle registration and password reset requests (commented for efficient usage, no login, etc). The PDF file is served to you using an Amazon S3 bucket.`;
             } else if (classList === "shit-b") {
                 text.classList.add('shit-b-text');
                 text.id = 'dialog';
@@ -466,10 +491,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 text.classList.add('fourth-b-text');
                 text.id = 'dialog';
                 textContent = `The computational domain for the lid-driven cavity flow shown below consists of three grids, one of which is the main computational domain on which the continuity equation is solved and where pressure is stored. The two other grids are staggered by a half-width of a cell centroid about the main computational domain in horizontal or vertical directions and represent the domains on which the velocities in the <i>x</i> and <i>y</i> directions are computed from their respective momentum balances. The resultant velocity field is used to determine the pressure by solving the continuity equation on each cell centroid of the main computational domain.`;
+            //} else if (classList === "bottom-row") {
+            } else if (classList === 'techstack') {
+            //} else if (classList.contains('techstack-row')) {
+                text.classList.add('techstack-text');
+                text.id = 'dialog';
+                textContent = `Starting closest to the machine, the tech stack starts with its computational engine, the CFD solver and integrator of the velocity field. The solver was written in Fortran modules (F90) in 2008 and did not undergo major reconstruction. I considered writing the solver in C/C++ and running speed tests, but in the interest of time I decided to move forward with my existing code. In order to generate the positions of the particles over time, the velocity field generated by the solver needs to be integrated over a specified time interval, so I wrote another set of code in F90 to handle the ordinary differential equation (ODE). The code to integrate the velocity field to find position or displacement uses a fourth-order Runge-Kutta numerical method, RK4. In order to deal with the Taylor series of the RK4 method, I borrowed a 2D piecewise linear interpolator distributed under the GNU LGPL license from John Burkardt.`;
             } else if (classList.contains("bottom-row")) {
                 text.classList.add('intro-text');
                 text.id = 'dialog';
-                textContent = `In graduate school at Purdue University in the Mechanical Engineering department, I took a course on Numerical Methods in Heat, Mass, and Momentum Transfer in 2008. If I span across every scholastic course I have taken beginning in high school and throughout my journey to a doctorate degree, it is this course that I enjoyed the most. Computational Fluid Dynamics, or CFD, combines calculus with physics and high-performance computing (HPC). To me, developing this software application was simply a portfolio project. A nuanced application through which I could concisely convey to you a small look at what I am capable of based on my past achievements and experience, where I want to go in the future, while writing this in the present. I consider myself to be a complex problem solver based on the rigor that my previous academics, internships, and industry work experiences required of me. I developed this application from almost nothing, just some CFD code I had written in graduate school. Both the repository for this application and my LinkedIn profile can also be accessed by hovering over or clicking on the pulsating logo above. The simulator can be accessed from the navigation bar in the upper right.`;
+                textContent = `In graduate school at Purdue University in the Mechanical Engineering department, I took a course on CFD. If I span across every scholastic course I have taken beginning in high school and throughout my journey to a doctorate degree, it is this course that I enjoyed the most. CFD combines calculus with physics and high-performance computing (HPC). Developing this software application was simply a portfolio project. A nuanced application through which I could concisely convey to you a small look at what I am capable of based on my past achievements and experience, where I want to go in the future, while writing this in the present. I consider myself to be a complex problem solver based on the rigor that my previous academics, internships, and industry work experiences required of me. I developed this application from almost nothing, just some CFD code I had written in graduate school.`;
             } else if (classList.contains('calculus-row')) {
                 text.classList.add('fourth-text');
                 text.id = 'dialog';
@@ -482,12 +513,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 text.classList.add('shit-text');
                 text.id = 'dialog';
                 textContent = `In 2008, the CFD solver for this software application was validated against the benchmark datasets of Ghia, Ghia, and Shin in their publication in 1982. Validation of any CFD solver is an important step so that the solver’s accuracy and reliability in representing real-world phenomena can be assessed. The solver should be capable of reproducing the behavior observed in physical experiments or well-established benchmark cases.`;
-            } else if (classList.contains('techstack-row')) {
-                text.classList.add('techstack-text');
-                text.id = 'dialog';
-                textContent = `Starting closest to the machine, the tech stack starts with its computational engine, the CFD solver and integrator of the velocity field. The solver was written in Fortran modules (F90) in 2008 and that code has not changed much since then. I considered writing the solver in C/C++ and running speed tests, but in the interest of time I decided to move forward with my existing code. In order to generate the positions of the particles over time, the velocity field generated by the solver needs to be integrated over a specified time interval, so I wrote another set of code in F90 to handle the ordinary differential equation (ODE). The code to integrate the velocity field to find position or displacement uses a fourth-order Runge-Kutta numerical method, RK4. In order to deal with the Taylor series of the RK4 method, I borrowed a 2D piecewise linear interpolator distributed under the GNU LGPL license from John Burkardt.`;
-            }
 
+            }
             textContainer.appendChild(text)
 
             // split text into array of words
@@ -527,9 +554,15 @@ document.addEventListener("DOMContentLoaded", function() {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
                             } else if (word === 'quantification,' && word.endsWith(',') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'Problem,' && word.endsWith(',') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
                             } else if (word === 'Burkardt.' && word.endsWith('.') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
                             } else if (word === '13.' && word.endsWith('.') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'recognition.' && word.endsWith('.') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'Coursera,' && word.endsWith(',') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
                             } else {
                                 link.appendChild(charSpan);
@@ -545,7 +578,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     if ((word === 'Numerical' || word === 'Methods' || word === 'Heat,' || word === 'Mass,' || word === 'Momentum' || word === 'Transfer') ||
                         (words[index - 1] === 'Methods' && word === 'in') ||
-                        (words[index - 1] === 'Mass,' && word === 'and')) {
+                        (words[index - 1] === 'Mass,' && word === 'and') && isWhyWriterOff == true) {
                         link.setAttribute('href', 'https://engineering.purdue.edu/online/courses/numerical-methods-heat-mass-momentum-transfer');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -553,7 +586,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://www.linkedin.com/in/jayathi-murthy-96a08262/');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'Computational' || word === 'Fluid' || word === 'Dynamics,') {
+                    } else if (word === 'Computational' || word === 'Fluid' || word === 'Dynamics') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Computational_fluid_dynamics');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -567,7 +600,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             textDiv.appendChild(link);
                             splitandhighlight(word);
                         }
-                    } else if ((word === 'continuity' || word === 'equation') && (words[index-2] === 'which' || words[index-3] == 'which')) {
+                    } else if ((word === 'continuity') && (words[index-2] === 'Navier-Stokes')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Continuity_equation');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -687,7 +720,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://matplotlib.org/');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'socket.io') {
+                    } else if (word === 'Socket.IO' && words[index+1] === 'route.') {
                         link.setAttribute('href', 'https://socket.io/docs/v4/tutorial/introduction');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -759,8 +792,47 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://www.linkedin.com/in/stephen-hodson-880b38a5/');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
+                    } else if (word === 'dyno') {
+                        link.setAttribute('href', 'https://www.linkedin.com/in/stephen-hodson-880b38a5/');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'Semi-Implicit' || word === 'Method' || word === 'for' || word === 'Pressure-Linked' || word === 'Equations') &&
+                    (words[index-1] === 'the' || words[index-1] === 'Semi-Implicit' || words[index-1] === 'Method' || words[index-1] === 'for' || words[index-1] === 'Pressure-Linked')
+                        && isProofBWriterOff == true)
+                    {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/SIMPLE_algorithm');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === 'Lid-Driven' || word === 'Cavity' || word === 'Flow' || word === 'Problem,') {
+                        link.setAttribute('href', 'https://www.sciencedirect.com/science/article/abs/pii/0021999182900584');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === 'Navier-Stokes') {
+                        link.setAttribute('href', 'https://www.ansys.com/products/fluids/ansys-fluent');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === 'high-performance' || word === 'computing') {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/High-performance_computing');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === "Coursera,") {
+                        link.setAttribute('href', 'https://www.coursera.org/specializations/machine-learning-introduction');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === 'C/C++') {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/C%2B%2B');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
                     } else if (word === 'FLUENT') {
                         link.setAttribute('href', 'https://www.ansys.com/products/fluids/ansys-fluent');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === 'sentiment' || word === 'analysis') {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Sentiment_analysis');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === 'emotion' || word === 'recognition.') {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Emotion_recognition');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'COMSOL') {
@@ -815,6 +887,12 @@ document.addEventListener("DOMContentLoaded", function() {
             isWhyCWriterOff = false
         } else if (classList === 'intro-b') {
             isWhyBWriterOff = false
+        } else if (classList === 'techstack') {
+            isTechStackWriterOff = false;
+        } else if (classList === 'techstack-c') {
+            isTechStackCWriterOff = false;
+        } else if (classList === 'techstack-d') {
+            isTechStackDWriterOff = false;
         } else if (classList === 'techstack-b') {
             isTechStackBWriterOff = false;
         } else if (classList === 'shit-b') {
@@ -837,6 +915,8 @@ document.addEventListener("DOMContentLoaded", function() {
             isFourthCCWriterOff = false;
         } else if (classList === 'fourth-b') {
             isFourthBWriterOff = false;
+        } else if (classList.contains('techstack-row')) {
+            isTechStackWriterOff = false;
         } else if (classList.contains('bottom-row')) {
             isWhyWriterOff = false;
         } else if (classList.contains('calculus-row')) {
@@ -845,8 +925,6 @@ document.addEventListener("DOMContentLoaded", function() {
             isAlgoWriterOff = false;
         } else if (classList.contains('proof-row')) {
             isProofWriterOff = false;
-        } else if (classList.contains('techstack-row')) {
-            isTechStackWriterOff = false;
         }
     }
 
@@ -1048,6 +1126,65 @@ document.addEventListener("DOMContentLoaded", function() {
     // initial setup on page load
     window.dispatchEvent(new Event('resize'));
 
+    techstackRow.addEventListener('mouseenter', (event) => {
+        //if (isCalculusRowOpen == true) {
+
+            let classList = event.target.classList;
+
+            if (isTechStackCWriterOff === true && classList.contains("techstack-row")) {
+                document.getElementById('techstack-c-dialog-row').style.display = 'flex';
+                document.getElementById('techstack-c-wrapper').style.display = 'block';
+                startTypeWriter("techstack-c", 'techstack-c');
+                setTimeout(() => {
+                    document.querySelector('.techstack-c-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
+                }, 250)
+
+                if (isTechStackDWriterOff === true) {
+                    setTimeout(() => {
+
+                        document.getElementById('techstack-d-dialog-row').style.display = 'flex';
+                        document.getElementById('techstack-d-wrapper').style.display = 'block';
+
+                        startTypeWriter('techstack-d', 'techstack-d');
+
+                        setTimeout(() => {
+                            document.querySelector('.techstack-d-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
+                        }, 250)
+
+                        if (isTechStackWriterOff === true) {
+                            setTimeout(() => {
+                                document.getElementById('techstack-dialog-row').style.display = 'flex';
+                                document.getElementById('techstack-wrapper').style.display = 'block';
+
+                                startTypeWriter('techstack', 'techstack');
+
+                                setTimeout(() => {
+                                    document.querySelector('.techstack-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
+                                }, 250)
+
+                                if (isTechStackBWriterOff === true) {
+                                    setTimeout(() => {
+
+                                        document.getElementById('techstack-b-dialog-row').style.display = 'flex';
+                                        document.getElementById('techstack-b-wrapper').style.display = 'block';
+                                        startTypeWriter('techstack-b', 'techstack-b');
+
+                                        setTimeout(() => {
+                                            document.querySelector('.techstack-b-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
+                                        }, 250)
+
+                                    }, 11000 - 3000)
+                                }
+                            }, 9000)
+                        }
+                    }, 10000)
+                }
+
+            }
+
+        //}
+    })
+
     const pdfUrl = '/get_pdf';
 
     var pdfBlobUrl;
@@ -1063,9 +1200,6 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error fetching the PDF:', error);
         });
 
-    var isBottomRowOpen = false;
-    var isCalculusRowOpen = false;
-
     bottomRow.addEventListener("mouseover", function(event) {
 
         //console.log('event.target.classList: ', event.target.classList)
@@ -1074,7 +1208,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //integralContainer.style.display === 'none';
 
-        if (classList.contains("bottom-row") || classList.contains("mid-row")) {
+        if ((classList.contains("bottom-row") || classList.contains("mid-row"))) {
+        //if ((classList.contains("bottom-row") || classList.contains("mid-row")) && isTechStackBWriterOff == false) {
 
             isBottomRowOpen = true;
 
@@ -3746,39 +3881,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             })
         }
-    })
-
-    techstackRow.addEventListener('mouseenter', (event) => {
-        if (isCalculusRowOpen == true) {
-
-            let classList = event.target.classList;
-
-            if (isTechStackWriterOff === true) {
-                document.getElementById('techstack-dialog-row').style.display = 'flex';
-                document.getElementById('techstack-wrapper').style.display = 'block';
-
-                startTypeWriter(classList, 'techstack');
-
-                setTimeout(() => {
-                    document.querySelector('.techstack-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
-                }, 250)
-
-                if (isTechStackBWriterOff === true) {
-                    setTimeout(() => {
-
-                        document.getElementById('techstack-b-dialog-row').style.display = 'flex';
-                        document.getElementById('techstack-b-wrapper').style.display = 'block';
-                        startTypeWriter('techstack-b', 'techstack-b');
-
-                        setTimeout(() => {
-                            document.querySelector('.techstack-b-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
-                        }, 250)
-
-                    }, 11000 - 3000)
-                }
-            }
-        }
-
     })
 })
 
