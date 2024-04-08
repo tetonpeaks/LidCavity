@@ -1291,7 +1291,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                                             document.querySelector('.intro-f-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                                         }, 250)
 
-                                                    }, 6000)
+                                                    }, 7000)
                                                 }
                                             }, 3000)
                                         }
@@ -1299,7 +1299,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 }
                             }, 16500 - 5000)
                         }
-                    }, 15500 - 4000)
+                    }, 15500 - 6000)
                 }
             }
 
