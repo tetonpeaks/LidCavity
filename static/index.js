@@ -831,7 +831,11 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Sentiment_analysis');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'emotion' || word === 'recognition.') {
+                    } else if (word === 'opinon' || word === 'mining') {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Sentiment_analysis');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if (word === 'emotion' || word === 'recognition.' || word === 'recognition') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Emotion_recognition');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -1173,7 +1177,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                             document.querySelector('.techstack-b-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                         }, 250)
 
-                                    }, 11000 - 3000)
+                                    }, 11000 - 4000)
                                 }
                             }, 9000)
                         }
@@ -1283,7 +1287,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 }
                             }, 16500 - 5000)
                         }
-                    }, 15500 - 4000)
+                    }, 15500 - 2000)
                 }
             }
 
