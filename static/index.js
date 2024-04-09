@@ -1243,7 +1243,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                                     }, 11000 - 3000)
                                 }
-                            }, 9000)
+                            }, 9000 - 1000)
                         }
                     }, 10000)
                 }
