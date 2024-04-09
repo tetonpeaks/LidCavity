@@ -807,7 +807,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'dyno') {
-                        link.setAttribute('href', 'https://www.linkedin.com/in/stephen-hodson-880b38a5/');
+                        link.setAttribute('href', 'https://www.heroku.com/dynos');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if ((word === 'Semi-Implicit' || word === 'Method' || word === 'for' || word === 'Pressure-Linked' || word === 'Equations') &&
