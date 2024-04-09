@@ -822,7 +822,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'Navier-Stokes') {
-                        link.setAttribute('href', 'https://www.ansys.com/products/fluids/ansys-fluent');
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'high-performance' || word === 'computing') {
