@@ -812,7 +812,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Apollo_13_(film)');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'systems' || word === 'engineering,') && (words[index-1] !== 'data' && words[index-1] !== 'microservices,' && words[index-2] !== 'microservices,' && words[index-1] !== 'my')) {
+                    } else if ((word === 'systems' || word === 'engineering,') && (words[index-1] !== 'data' && words[index-1] !== 'microservices,' && words[index-2] !== 'microservices,' && words[index-1] !== 'my') && words[index-1] !== 'linear') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Systems_engineering');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
