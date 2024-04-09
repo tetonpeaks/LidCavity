@@ -2931,6 +2931,22 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    var GaiaData;
+
+    const socket = io.connect('/getRe');
+
+            socket.on('connect', () => {
+                //console.log('Client conneted to /getRe')
+            })
+
+            socket.emit('message', {
+                flag: 'getRe',
+            })
+
+            socket.on('response', (data) => {
+                GaiaData = JSON.parse(data);
+            })
+
     proofRow.addEventListener('mouseenter', (event) => {
 
         if (isCalculusRowOpen == true) {
@@ -2962,989 +2978,977 @@ document.addEventListener("DOMContentLoaded", function() {
 
             /* Gaia Plots */
 
-            const socket = io.connect('/getRe');
+            //socket.on('response', (data) => {
 
-            socket.on('connect', () => {
-                //console.log('Client conneted to /getRe')
-            })
+            fignames_Re.forEach((figname_Re) => { figname_Re.classList.add('visible'); })
 
-            socket.emit('message', {
-                flag: 'getRe',
-            })
+            fignames_vel.forEach((figname_vel) => { figname_vel.classList.add('visible'); })
 
-            socket.on('response', (data) => {
+            const cellWidth = getComputedStyle(document.documentElement).getPropertyValue('--cell-width-rem');
 
-                fignames_Re.forEach((figname_Re) => { figname_Re.classList.add('visible'); })
+            // viewport width in pixels
+            const vwInPixels = window.innerWidth || document.documentElement.clientWidth;
 
-                fignames_vel.forEach((figname_vel) => { figname_vel.classList.add('visible'); })
+            // cnvert vw to pixels
+            const fontSizeInPixels = parseFloat(cellWidth) * (vwInPixels / 100);
 
-                const newData = JSON.parse(data);
+            Re = [400,1000,3200,5000];
+            var ctxsU = []; var ctxsV = [];
+            for (let i = 0; i < 4; i++) { // edited for debuggin Feb. 28 0922
+                ctxsU[i] = document.getElementById(`Re${Re[i]}u`).getContext('2d');
+                ctxsV[i] = document.getElementById(`Re${Re[i]}v`).getContext('2d');
+            }
 
-                const cellWidth = getComputedStyle(document.documentElement).getPropertyValue('--cell-width-rem');
+            Re400_top = document.getElementById('hero Re400 u');
 
-                // viewport width in pixels
-                const vwInPixels = window.innerWidth || document.documentElement.clientWidth;
+            gaiaKeys = Object.keys(GaiaData.Gaia);
 
-                // cnvert vw to pixels
-                const fontSizeInPixels = parseFloat(cellWidth) * (vwInPixels / 100);
-
-                Re = [400,1000,3200,5000];
-                var ctxsU = []; var ctxsV = [];
-                for (let i = 0; i < 4; i++) { // edited for debuggin Feb. 28 0922
-                    ctxsU[i] = document.getElementById(`Re${Re[i]}u`).getContext('2d');
-                    ctxsV[i] = document.getElementById(`Re${Re[i]}v`).getContext('2d');
+            const dataGaia = [
+                /* Re400 u and v */
+                {
+                    datasets: [
+                        {
+                            label: 'CFD Simulation Tool',
+                            borderColor: "#77DD77",
+                            backgroundColor: "#77DD77",
+                            borderWidth: fontSizeInPixels / 16,
+                            pointRadius: 0,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.cfd[`${gaiaKeys[0]}`]['u'],
+                            showLine: true,
+                        },
+                        {
+                            label: 'Gaia et al.',
+                            borderColor: '#77DD77',
+                            backgroundColor: '#CFCFC4',
+                            borderWidth: fontSizeInPixels / 8,
+                            pointRadius: fontSizeInPixels / 4,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.Gaia[`${gaiaKeys[0]}`]['u']
+                        }
+                    ]
+                },
+                {
+                    datasets: [
+                        {
+                            label: 'CFD Simulation Tool',
+                            borderColor: "#779ECB",
+                            backgroundColor: "#779ECB",
+                            borderWidth: fontSizeInPixels / 16,
+                            pointRadius: 0,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.cfd[`${gaiaKeys[0]}`]['v'],
+                            showLine: true,
+                        },
+                        {
+                            label: 'Gaia et al.',
+                            borderColor: '#779ECB',
+                            backgroundColor: '#CFCFC4',
+                            borderWidth: fontSizeInPixels / 8,
+                            pointRadius: fontSizeInPixels / 4,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.Gaia[`${gaiaKeys[0]}`]['v'],
+                        }
+                    ]
+                },
+                /* Re1000 u and v */
+                {
+                    datasets: [
+                        {
+                            label: 'CFD Simulation Tool',
+                            borderColor: "#77DD77",
+                            backgroundColor: "#77DD77",
+                            borderWidth: fontSizeInPixels / 16,
+                            pointRadius: 0,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.cfd[`${gaiaKeys[1]}`]['u'],
+                            showLine: true,
+                        },
+                        {
+                            label: 'Gaia et al.',
+                            borderColor: '#77DD77',
+                            backgroundColor: '#CFCFC4',
+                            borderWidth: fontSizeInPixels / 8,
+                            pointRadius: fontSizeInPixels / 4,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.Gaia[`${gaiaKeys[1]}`]['u'],
+                        }
+                    ]
+                },
+                {
+                    datasets: [
+                        {
+                            label: 'CFD Simulation Tool',
+                            borderColor: "#779ECB",
+                            backgroundColor: "#779ECB",
+                            borderWidth: fontSizeInPixels / 16,
+                            pointRadius: 0,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.cfd[`${gaiaKeys[1]}`]['v'],
+                            showLine: true,
+                        },
+                        {
+                            label: 'Gaia et al.',
+                            borderColor: '#779ECB',
+                            backgroundColor: '#CFCFC4',
+                            borderWidth: fontSizeInPixels / 8,
+                            pointRadius: fontSizeInPixels / 4,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.Gaia[`${gaiaKeys[1]}`]['v'],
+                        }
+                    ]
+                },
+                /* Re3200 u and v */
+                {
+                    datasets: [
+                        {
+                            label: 'CFD Simulation Tool',
+                            borderColor: "#77DD77",
+                            backgroundColor: "#77DD77",
+                            borderWidth: fontSizeInPixels / 16,
+                            pointRadius: 0,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.cfd[`${gaiaKeys[2]}`]['u'],
+                            showLine: true,
+                        },
+                        {
+                            label: 'Gaia et al.',
+                            borderColor: '#77DD77',
+                            backgroundColor: '#CFCFC4',
+                            borderWidth: fontSizeInPixels / 8,
+                            pointRadius: fontSizeInPixels / 4,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.Gaia[`${gaiaKeys[2]}`]['u']
+                        }
+                    ]
+                },
+                {
+                    datasets: [
+                        {
+                            label: 'CFD Simulation Tool',
+                            borderColor: "#779ECB",
+                            backgroundColor: "#779ECB",
+                            borderWidth: fontSizeInPixels / 16,
+                            pointRadius: 0,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.cfd[`${gaiaKeys[2]}`]['v'],
+                            showLine: true,
+                        },
+                        {
+                            label: 'Gaia et al.',
+                            borderColor: '#779ECB',
+                            backgroundColor: '#CFCFC4',
+                            borderWidth: fontSizeInPixels / 8,
+                            pointRadius: fontSizeInPixels / 4,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.Gaia[`${gaiaKeys[2]}`]['v'],
+                        }
+                    ]
+                },
+                /* Re5000 u and v */
+                {
+                    datasets: [
+                        {
+                            label: 'CFD Simulation Tool',
+                            borderColor: "#77DD77",
+                            backgroundColor: "#77DD77",
+                            borderWidth: fontSizeInPixels / 16,
+                            pointRadius: 0,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.cfd[`${gaiaKeys[3]}`]['u'],
+                            showLine: true,
+                        },
+                        {
+                            label: 'Gaia et al.',
+                            borderColor: '#77DD77',
+                            backgroundColor: '#CFCFC4',
+                            borderWidth: fontSizeInPixels / 8,
+                            pointRadius: fontSizeInPixels / 4,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.Gaia[`${gaiaKeys[3]}`]['u']
+                        }
+                    ]
+                },
+                {
+                    datasets: [
+                        {
+                            label: 'CFD Simulation Tool',
+                            borderColor: "#779ECB",
+                            backgroundColor: "#779ECB",
+                            borderWidth: fontSizeInPixels / 16,
+                            pointRadius: 0,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.cfd[`${gaiaKeys[3]}`]['v'],
+                            showLine: true,
+                        },
+                        {
+                            label: 'Gaia et al.',
+                            borderColor: '#779ECB',
+                            backgroundColor: '#CFCFC4',
+                            borderWidth: fontSizeInPixels / 8,
+                            pointRadius: fontSizeInPixels / 4,
+                            pointBackgroundColor: '#CFCFC4',
+                            data: GaiaData.Gaia[`${gaiaKeys[3]}`]['v'],
+                        }
+                    ]
                 }
+            ];
 
-                Re400_top = document.getElementById('hero Re400 u');
+            if (!Re400U) {
 
-                gaiaKeys = Object.keys(newData.Gaia);
-
-                const dataGaia = [
-                    /* Re400 u and v */
-                    {
-                        datasets: [
-                            {
-                                label: 'CFD Simulation Tool',
-                                borderColor: "#77DD77",
-                                backgroundColor: "#77DD77",
-                                borderWidth: fontSizeInPixels / 16,
-                                pointRadius: 0,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.cfd[`${gaiaKeys[0]}`]['u'],
-                                showLine: true,
-                            },
-                            {
-                                label: 'Gaia et al.',
-                                borderColor: '#77DD77',
-                                backgroundColor: '#CFCFC4',
-                                borderWidth: fontSizeInPixels / 8,
-                                pointRadius: fontSizeInPixels / 4,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.Gaia[`${gaiaKeys[0]}`]['u']
-                            }
-                        ]
-                    },
-                    {
-                        datasets: [
-                            {
-                                label: 'CFD Simulation Tool',
-                                borderColor: "#779ECB",
-                                backgroundColor: "#779ECB",
-                                borderWidth: fontSizeInPixels / 16,
-                                pointRadius: 0,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.cfd[`${gaiaKeys[0]}`]['v'],
-                                showLine: true,
-                            },
-                            {
-                                label: 'Gaia et al.',
-                                borderColor: '#779ECB',
-                                backgroundColor: '#CFCFC4',
-                                borderWidth: fontSizeInPixels / 8,
-                                pointRadius: fontSizeInPixels / 4,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.Gaia[`${gaiaKeys[0]}`]['v'],
-                            }
-                        ]
-                    },
-                    /* Re1000 u and v */
-                    {
-                        datasets: [
-                            {
-                                label: 'CFD Simulation Tool',
-                                borderColor: "#77DD77",
-                                backgroundColor: "#77DD77",
-                                borderWidth: fontSizeInPixels / 16,
-                                pointRadius: 0,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.cfd[`${gaiaKeys[1]}`]['u'],
-                                showLine: true,
-                            },
-                            {
-                                label: 'Gaia et al.',
-                                borderColor: '#77DD77',
-                                backgroundColor: '#CFCFC4',
-                                borderWidth: fontSizeInPixels / 8,
-                                pointRadius: fontSizeInPixels / 4,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.Gaia[`${gaiaKeys[1]}`]['u'],
-                            }
-                        ]
-                    },
-                    {
-                        datasets: [
-                            {
-                                label: 'CFD Simulation Tool',
-                                borderColor: "#779ECB",
-                                backgroundColor: "#779ECB",
-                                borderWidth: fontSizeInPixels / 16,
-                                pointRadius: 0,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.cfd[`${gaiaKeys[1]}`]['v'],
-                                showLine: true,
-                            },
-                            {
-                                label: 'Gaia et al.',
-                                borderColor: '#779ECB',
-                                backgroundColor: '#CFCFC4',
-                                borderWidth: fontSizeInPixels / 8,
-                                pointRadius: fontSizeInPixels / 4,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.Gaia[`${gaiaKeys[1]}`]['v'],
-                            }
-                        ]
-                    },
-                    /* Re3200 u and v */
-                    {
-                        datasets: [
-                            {
-                                label: 'CFD Simulation Tool',
-                                borderColor: "#77DD77",
-                                backgroundColor: "#77DD77",
-                                borderWidth: fontSizeInPixels / 16,
-                                pointRadius: 0,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.cfd[`${gaiaKeys[2]}`]['u'],
-                                showLine: true,
-                            },
-                            {
-                                label: 'Gaia et al.',
-                                borderColor: '#77DD77',
-                                backgroundColor: '#CFCFC4',
-                                borderWidth: fontSizeInPixels / 8,
-                                pointRadius: fontSizeInPixels / 4,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.Gaia[`${gaiaKeys[2]}`]['u']
-                            }
-                        ]
-                    },
-                    {
-                        datasets: [
-                            {
-                                label: 'CFD Simulation Tool',
-                                borderColor: "#779ECB",
-                                backgroundColor: "#779ECB",
-                                borderWidth: fontSizeInPixels / 16,
-                                pointRadius: 0,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.cfd[`${gaiaKeys[2]}`]['v'],
-                                showLine: true,
-                            },
-                            {
-                                label: 'Gaia et al.',
-                                borderColor: '#779ECB',
-                                backgroundColor: '#CFCFC4',
-                                borderWidth: fontSizeInPixels / 8,
-                                pointRadius: fontSizeInPixels / 4,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.Gaia[`${gaiaKeys[2]}`]['v'],
-                            }
-                        ]
-                    },
-                    /* Re5000 u and v */
-                    {
-                        datasets: [
-                            {
-                                label: 'CFD Simulation Tool',
-                                borderColor: "#77DD77",
-                                backgroundColor: "#77DD77",
-                                borderWidth: fontSizeInPixels / 16,
-                                pointRadius: 0,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.cfd[`${gaiaKeys[3]}`]['u'],
-                                showLine: true,
-                            },
-                            {
-                                label: 'Gaia et al.',
-                                borderColor: '#77DD77',
-                                backgroundColor: '#CFCFC4',
-                                borderWidth: fontSizeInPixels / 8,
-                                pointRadius: fontSizeInPixels / 4,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.Gaia[`${gaiaKeys[3]}`]['u']
-                            }
-                        ]
-                    },
-                    {
-                        datasets: [
-                            {
-                                label: 'CFD Simulation Tool',
-                                borderColor: "#779ECB",
-                                backgroundColor: "#779ECB",
-                                borderWidth: fontSizeInPixels / 16,
-                                pointRadius: 0,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.cfd[`${gaiaKeys[3]}`]['v'],
-                                showLine: true,
-                            },
-                            {
-                                label: 'Gaia et al.',
-                                borderColor: '#779ECB',
-                                backgroundColor: '#CFCFC4',
-                                borderWidth: fontSizeInPixels / 8,
-                                pointRadius: fontSizeInPixels / 4,
-                                pointBackgroundColor: '#CFCFC4',
-                                data: newData.Gaia[`${gaiaKeys[3]}`]['v'],
-                            }
-                        ]
-                    }
-                ];
-
-                if (!Re400U) {
-
-                    Re400U = new Chart(ctxsU[0], {
-                        //responsive: true,
-                        type: "scatter",
-                        data: [],
-                        options: {
-                            beginAtZero: true,
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
+                Re400U = new Chart(ctxsU[0], {
+                    //responsive: true,
+                    type: "scatter",
+                    data: [],
+                    options: {
+                        beginAtZero: true,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                display: true,
+                                title: {
                                     display: true,
-                                    title: {
-                                        display: true,
-                                        text: 'y/L',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    min: 0,
-                                    max: 1.01,
-
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        min: 0,
-                                        max: 1,
-                                        stepSize: 0.1,
-                                        padding: 10,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        },
-                                        borderColor: "#FDFD96",
-                                        borderWidth: 2,
-                                    },
-
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 16,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
+                                    text: 'y/L',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
                                 },
-                                y: {
-                                    min: -0.4,
+                                min: 0,
+                                max: 1.01,
+
+                                ticks: {
+                                    color: "#FDFD96",
+                                    min: 0,
                                     max: 1,
-                                    title: {
-                                        display: true,
-                                        text: 'u/U',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
+                                    stepSize: 0.1,
+                                    padding: 10,
+                                    font: {
+                                        size: fontSizeInPixels
                                     },
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        precision: 1,
-                                        callback: (value, idx, values) => {
-                                            return value;
-                                        },
-                                        font: {
-                                            size: fontSizeInPixels
-                                        },
-                                        borderColor: "#FDFD96",
-                                        borderWidth: 2,
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 16,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
+                                    borderColor: "#FDFD96",
+                                    borderWidth: 2,
+                                },
+
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 16,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
                                 },
                             },
-                            plugins: {
-                                legend: {
+                            y: {
+                                min: -0.4,
+                                max: 1,
+                                title: {
                                     display: true,
-                                    labels: {
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
+                                    text: 'u/U',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                ticks: {
+                                    color: "#FDFD96",
+                                    precision: 1,
+                                    callback: (value, idx, values) => {
+                                        return value;
+                                    },
+                                    font: {
+                                        size: fontSizeInPixels
+                                    },
+                                    borderColor: "#FDFD96",
+                                    borderWidth: 2,
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 16,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    font: {
+                                        size: fontSizeInPixels
                                     }
                                 }
                             }
-                        },
-                    });
-                    Re400V = new Chart(ctxsV[0], {
-                        //responsive: true,
-                        type: "scatter",
-                        data: [],
-                        options: {
-                            beginAtZero: true,
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
+                        }
+                    },
+                });
+                Re400V = new Chart(ctxsV[0], {
+                    //responsive: true,
+                    type: "scatter",
+                    data: [],
+                    options: {
+                        beginAtZero: true,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                display: true,
+                                title: {
                                     display: true,
-                                    title: {
-                                        display: true,
-                                        text: 'x/L',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    min: 0,
-                                    max: 1.01,
-
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        min: 0,
-                                        max: 1,
-                                        stepSize: 0.1,
-                                        padding: 10,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                },
-                                y: {
-                                    min: -0.5,
-                                    max: 0.4,
-                                    title: {
-                                        display: true,
-                                        text: 'v/U',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        callback: (value, idx, values) => {
-                                            return value;
-                                        },
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                },
-                            },
-                            plugins: {
-                                legend: {
-                                    display: true,
-                                    labels: {
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
+                                    text: 'x/L',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
                                     }
-                                }
-                            }
-                        },
-                    });
-                    Re1000U = new Chart(ctxsU[1], {
-                        //responsive: true,
-                        type: "scatter",
-                        data: [],
-                        options: {
-                            beginAtZero: true,
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
-                                    display: true,
-                                    title: {
-                                        display: true,
-                                        text: 'y/L',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    min: 0,
-                                    max: 1.01,
-
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        min: 0,
-                                        max: 1,
-                                        stepSize: 0.1,
-                                        padding: 10,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
                                 },
-                                y: {
-                                    min: -0.6,
+                                min: 0,
+                                max: 1.01,
+
+                                ticks: {
+                                    color: "#FDFD96",
+                                    min: 0,
                                     max: 1,
-                                    title: {
-                                        display: true,
-                                        text: 'u/U',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        precision: 1,
-                                        callback: (value, idx, values) => {
-                                            return value;
-                                        },
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
+                                    stepSize: 0.1,
+                                    padding: 10,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
                                 },
                             },
-                            plugins: {
-                                legend: {
+                            y: {
+                                min: -0.5,
+                                max: 0.4,
+                                title: {
                                     display: true,
-                                    labels: {
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
+                                    text: 'v/U',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                ticks: {
+                                    color: "#FDFD96",
+                                    callback: (value, idx, values) => {
+                                        return value;
+                                    },
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    font: {
+                                        size: fontSizeInPixels
                                     }
                                 }
                             }
-                        },
-                    });
-                    Re1000V = new Chart(ctxsV[1], {
-                        //responsive: true,
-                        type: "scatter",
-                        data: [],
-                        options: {
-                            beginAtZero: true,
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
+                        }
+                    },
+                });
+                Re1000U = new Chart(ctxsU[1], {
+                    //responsive: true,
+                    type: "scatter",
+                    data: [],
+                    options: {
+                        beginAtZero: true,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                display: true,
+                                title: {
                                     display: true,
-                                    title: {
-                                        display: true,
-                                        text: 'x/L',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    min: 0,
-                                    max: 1.01,
-
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        min: 0,
-                                        max: 1,
-                                        stepSize: 0.1,
-                                        padding: 10,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                },
-                                y: {
-                                    min: -0.6,
-                                    max: 0.4,
-                                    title: {
-                                        display: true,
-                                        text: 'v/U',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        precision: 1,
-                                        callback: (value, idx, values) => {
-                                            return value;
-                                        },
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                },
-                            },
-                            plugins: {
-                                legend: {
-                                    display: true,
-                                    labels: {
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
+                                    text: 'y/L',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
                                     }
-                                }
-                            }
-                        },
-                    });
-                    Re3200U = new Chart(ctxsU[2], {
-                        //responsive: true,
-                        type: "scatter",
-                        data: [],
-                        options: {
-                            beginAtZero: true,
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
-                                    display: true,
-                                    title: {
-                                        display: true,
-                                        text: 'y/L',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    min: 0,
-                                    max: 1.01,
-
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        min: 0,
-                                        max: 1,
-                                        stepSize: 0.1,
-                                        padding: 10,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
                                 },
-                                y: {
-                                    min: -0.6,
+                                min: 0,
+                                max: 1.01,
+
+                                ticks: {
+                                    color: "#FDFD96",
+                                    min: 0,
                                     max: 1,
-                                    title: {
-                                        display: true,
-                                        text: 'u/U',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        precision: 1,
-                                        callback: (value, idx, values) => {
-                                            return value;
-                                        },
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
+                                    stepSize: 0.1,
+                                    padding: 10,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
                                 },
                             },
-                            plugins: {
-                                legend: {
+                            y: {
+                                min: -0.6,
+                                max: 1,
+                                title: {
                                     display: true,
-                                    labels: {
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
+                                    text: 'u/U',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                ticks: {
+                                    color: "#FDFD96",
+                                    precision: 1,
+                                    callback: (value, idx, values) => {
+                                        return value;
+                                    },
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    font: {
+                                        size: fontSizeInPixels
                                     }
                                 }
                             }
-                        },
-                    });
-                    Re3200V = new Chart(ctxsV[2], {
-                        //responsive: true,
-                        type: "scatter",
-                        data: [],
-                        options: {
-                            beginAtZero: true,
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
+                        }
+                    },
+                });
+                Re1000V = new Chart(ctxsV[1], {
+                    //responsive: true,
+                    type: "scatter",
+                    data: [],
+                    options: {
+                        beginAtZero: true,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                display: true,
+                                title: {
                                     display: true,
-                                    title: {
-                                        display: true,
-                                        text: 'x/L',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    min: 0,
-                                    max: 1.01,
-
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        min: 0,
-                                        max: 1,
-                                        stepSize: 0.1,
-                                        padding: 10,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                },
-                                y: {
-                                    min: -0.8,
-                                    max: 0.6,
-                                    title: {
-                                        display: true,
-                                        text: 'v/U',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        precision: 1,
-                                        callback: (value, idx, values) => {
-                                            return value;
-                                            font: {
-                                                size: fontSizeInPixels
-                                            }
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                },
-                            },
-                            plugins: {
-                                legend: {
-                                    display: true,
-                                    labels: {
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
+                                    text: 'x/L',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
                                     }
-                                }
-                            }
-                        },
-                    });
-                    Re5000U = new Chart(ctxsU[3], {
-                        //responsive: true,
-                        type: "scatter",
-                        data: [],
-                        options: {
-                            beginAtZero: true,
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
-                                    display: true,
-                                    title: {
-                                        display: true,
-                                        text: 'y/L',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    min: 0,
-                                    max: 1.01,
-
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        min: 0,
-                                        max: 1,
-                                        stepSize: 0.1,
-                                        padding: 10,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
                                 },
-                                y: {
-                                    min: -0.6,
+                                min: 0,
+                                max: 1.01,
+
+                                ticks: {
+                                    color: "#FDFD96",
+                                    min: 0,
                                     max: 1,
-                                    title: {
-                                        display: true,
-                                        text: 'u/U',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        precision: 1,
-                                        callback: (value, idx, values) => {
-                                            return value;
-                                        },
-                                        font: {
-                                            size: fontSizeInPixels
-                                        },
-                                        borderColor: "#FDFD96",
-                                        borderWidth: 2,
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
+                                    stepSize: 0.1,
+                                    padding: 10,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
                                 },
                             },
-                            plugins: {
-                                legend: {
+                            y: {
+                                min: -0.6,
+                                max: 0.4,
+                                title: {
                                     display: true,
-                                    labels: {
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
+                                    text: 'v/U',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                ticks: {
+                                    color: "#FDFD96",
+                                    precision: 1,
+                                    callback: (value, idx, values) => {
+                                        return value;
+                                    },
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    font: {
+                                        size: fontSizeInPixels
                                     }
                                 }
                             }
-                        },
-                    });
-                    Re5000V = new Chart(ctxsV[3], {
-                        //responsive: true,
-                        type: "scatter",
-                        data: [],
-                        options: {
-                            beginAtZero: true,
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
+                        }
+                    },
+                });
+                Re3200U = new Chart(ctxsU[2], {
+                    //responsive: true,
+                    type: "scatter",
+                    data: [],
+                    options: {
+                        beginAtZero: true,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                display: true,
+                                title: {
                                     display: true,
-                                    title: {
-                                        display: true,
-                                        text: 'x/L',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
+                                    text: 'y/L',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                min: 0,
+                                max: 1.01,
+
+                                ticks: {
+                                    color: "#FDFD96",
                                     min: 0,
-                                    max: 1.01,
-
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        min: 0,
-                                        max: 1,
-                                        stepSize: 0.1,
-                                        padding: 10,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 32,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
+                                    max: 1,
+                                    stepSize: 0.1,
+                                    padding: 10,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
                                 },
-                                y: {
-                                    min: -0.8,
-                                    max: 0.6,
-                                    title: {
-                                        display: true,
-                                        text: 'v/U',
-                                        color: "#FDFD96",
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    ticks: {
-                                        color: "#FDFD96",
-                                        precision: 1,
-                                        callback: (value, idx, values) => {
-                                            return value;
-                                        },
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
-                                    grid: {
-                                        display: true,
-                                        borderColor: "#FDFD96",
-                                        drawBorder: true,
-                                        drawOnChartArea: false,
-                                        color: "#FDFD96",
-                                        drawTicks: true,
-                                        lineWidth: fontSizeInPixels / 16,
-                                        font: {
-                                            size: fontSizeInPixels
-                                        }
-                                    },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
                                 },
                             },
-                            plugins: {
-                                legend: {
+                            y: {
+                                min: -0.6,
+                                max: 1,
+                                title: {
                                     display: true,
-                                    labels: {
+                                    text: 'u/U',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                ticks: {
+                                    color: "#FDFD96",
+                                    precision: 1,
+                                    callback: (value, idx, values) => {
+                                        return value;
+                                    },
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                }
+                            }
+                        }
+                    },
+                });
+                Re3200V = new Chart(ctxsV[2], {
+                    //responsive: true,
+                    type: "scatter",
+                    data: [],
+                    options: {
+                        beginAtZero: true,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                display: true,
+                                title: {
+                                    display: true,
+                                    text: 'x/L',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                min: 0,
+                                max: 1.01,
+
+                                ticks: {
+                                    color: "#FDFD96",
+                                    min: 0,
+                                    max: 1,
+                                    stepSize: 0.1,
+                                    padding: 10,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
+                            y: {
+                                min: -0.8,
+                                max: 0.6,
+                                title: {
+                                    display: true,
+                                    text: 'v/U',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                ticks: {
+                                    color: "#FDFD96",
+                                    precision: 1,
+                                    callback: (value, idx, values) => {
+                                        return value;
                                         font: {
                                             size: fontSizeInPixels
                                         }
                                     }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
                                 }
                             }
+                        }
+                    },
+                });
+                Re5000U = new Chart(ctxsU[3], {
+                    //responsive: true,
+                    type: "scatter",
+                    data: [],
+                    options: {
+                        beginAtZero: true,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                display: true,
+                                title: {
+                                    display: true,
+                                    text: 'y/L',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                min: 0,
+                                max: 1.01,
+
+                                ticks: {
+                                    color: "#FDFD96",
+                                    min: 0,
+                                    max: 1,
+                                    stepSize: 0.1,
+                                    padding: 10,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
+                            y: {
+                                min: -0.6,
+                                max: 1,
+                                title: {
+                                    display: true,
+                                    text: 'u/U',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                ticks: {
+                                    color: "#FDFD96",
+                                    precision: 1,
+                                    callback: (value, idx, values) => {
+                                        return value;
+                                    },
+                                    font: {
+                                        size: fontSizeInPixels
+                                    },
+                                    borderColor: "#FDFD96",
+                                    borderWidth: 2,
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
                         },
-                    });
+                        plugins: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                }
+                            }
+                        }
+                    },
+                });
+                Re5000V = new Chart(ctxsV[3], {
+                    //responsive: true,
+                    type: "scatter",
+                    data: [],
+                    options: {
+                        beginAtZero: true,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                display: true,
+                                title: {
+                                    display: true,
+                                    text: 'x/L',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                min: 0,
+                                max: 1.01,
 
-                }
+                                ticks: {
+                                    color: "#FDFD96",
+                                    min: 0,
+                                    max: 1,
+                                    stepSize: 0.1,
+                                    padding: 10,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 32,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
+                            y: {
+                                min: -0.8,
+                                max: 0.6,
+                                title: {
+                                    display: true,
+                                    text: 'v/U',
+                                    color: "#FDFD96",
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                ticks: {
+                                    color: "#FDFD96",
+                                    precision: 1,
+                                    callback: (value, idx, values) => {
+                                        return value;
+                                    },
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                                grid: {
+                                    display: true,
+                                    borderColor: "#FDFD96",
+                                    drawBorder: true,
+                                    drawOnChartArea: false,
+                                    color: "#FDFD96",
+                                    drawTicks: true,
+                                    lineWidth: fontSizeInPixels / 16,
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                },
+                            },
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    font: {
+                                        size: fontSizeInPixels
+                                    }
+                                }
+                            }
+                        }
+                    },
+                });
 
-                gaiaCharts = [Re400U,Re400V,Re1000U,Re1000V,
-                                Re3200U,Re3200V,Re5000U,Re5000V];
+            }
 
-                for (let i = 0; i < 2*gaiaKeys.length; i++) {
-                    gaiaCharts[i].data = dataGaia[i];
-                    gaiaCharts[i].update();
-                }
-            })
+            gaiaCharts = [Re400U,Re400V,Re1000U,Re1000V,
+                            Re3200U,Re3200V,Re5000U,Re5000V];
+
+            for (let i = 0; i < 2*gaiaKeys.length; i++) {
+                gaiaCharts[i].data = dataGaia[i];
+                gaiaCharts[i].update();
+            }
+            //})
         }
     })
 })
