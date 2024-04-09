@@ -438,7 +438,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (classList === "intro-c") {
                 text.classList.add('intro-c-text');
                 text.id = 'dialog';
-                textContent = `I am just scratching the surface in web design, frontend/backend services and software development in general, yet that is what excites me the most about the future. I have intense curiosity and interests in the software development and client delivery of services to predict stock market dynamics in real-time, services in FinTech, healthcare, global distribution systems, traffic prediction. I want to learn more about microservices, systems engineering, data science, data engineering, and database management. I have natural interest in applying my previous academic and professional experiences to new horizons, using my engineering and math background to improve any data-driven technology. Whether that is to develop robo investors and trading platforms that are efficient and effective for users, dive deep into algorithmic trading of financial markets, or work on projects that use opinion mining and emotion recognition for customer feedback, brand monitoring/reputation management, market research/competitive analysis, health care/patient feedback, or personalized learning/adaptive learning platforms. Software development in general is a giant ocean to me and I just want to go swim in it. I plan to specialize my skill set and certify myself on machine learning from Coursera, finish my certification at Full Stack Open and unpeel pattern recognition and deep learning.`;
+                textContent = `I am just scratching the surface in web design, FE/BE services, and SD in general, yet that is what excites me the most about the future. I have intense curiosity and interests in developing software that analyzes stock market dynamics real-time or client services in Fintech. I want to learn more about microservices, data science, data engineering, and database management. I have natural interest in applying my previous academic and professional experiences to new horizons, using my engineering, math, physics, and SD skills to improve any data-driven technology. Whether that is to develop robo-advisor and trading platforms that are efficient and effective for users, dive deep into algorithmic trading, or work on projects that use opinion mining and emotion recognition for customer feedback, brand monitoring/reputation management, market research/competitive analysis, or health care/patient feedback. Software development in general is a giant ocean to me and I just want to go swim in it. I plan to specialize my skill set and certify myself on machine learning from Coursera, finish my certification at Full Stack Open and unpeel pattern recognition and deep learning.`;
             } else if (classList === "intro-b") {
                 text.classList.add('intro-b-text');
                 text.id = 'dialog';
@@ -500,7 +500,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (classList.contains("bottom-row")) {
                 text.classList.add('intro-text');
                 text.id = 'dialog';
-                textContent = `In graduate school at Purdue University in the Mechanical Engineering department, I took a course on CFD. If I span across every scholastic course I have taken beginning in high school and throughout my journey to a doctorate degree, it is this course that I enjoyed the most. CFD combines calculus with physics and high-performance computing (HPC). Developing this software application was simply a portfolio project. A nuanced application through which I could concisely convey to you a small look at what I am capable of based on my past achievements and experience, where I want to go in the future, while writing this in the present. I consider myself to be a complex problem solver based on the rigor that my previous academics, internships, and industry work experiences required of me. I developed this application from almost nothing, just some CFD code I had written in graduate school.`;
+                textContent = `At Purdue University in the ME department, I took a course on CFD. If I span across every scholastic course I have taken beginning in high school and throughout my journey to a doctorate degree, it is this course that I enjoyed the most. CFD combines calculus with physics and high-performance computing (HPC). Developing this software application was simply a portfolio project. A nuanced application through which I could concisely convey to you a small look at what I am capable of based on my past achievements and experience, where I want to go in the future, while writing this in the present. I consider myself to be a complex problem solver based on the rigor that my previous academics, internships, and industry work experiences required of me. I developed this application from almost nothing, just some CFD code I had written in graduate school.`;
             } else if (classList.contains('calculus-row')) {
                 text.classList.add('fourth-text');
                 text.id = 'dialog';
@@ -548,6 +548,14 @@ document.addEventListener("DOMContentLoaded", function() {
                                 link.appendChild(document.createTextNode(charSpan.textContent));
                             } else if (word === 'banded,' && word.endsWith(',') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'Cal,' && word.endsWith(',') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'science,' && word.endsWith(',') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'microservices,' && word.endsWith(',') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'trading,' && word.endsWith(',') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
                             } else if (word === 'engineering,' && word.endsWith(',') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
                             } else if (word === 'regression,' && word.endsWith(',') && index === word.length - 1) {
@@ -570,6 +578,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
                             } else if (word === 'right.' && word.endsWith('.') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
+                            } else if (word === 'Fintech.' && word.endsWith('.') && index === word.length - 1) {
+                                    link.appendChild(document.createTextNode(charSpan.textContent));
                             } else {
                                 link.appendChild(charSpan);
                                 setTimeout(() => {
@@ -588,11 +598,39 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://engineering.purdue.edu/online/courses/numerical-methods-heat-mass-momentum-transfer');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
+                    } else if ((word === 'robo-advisor')) {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Robo-advisor');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'Fintech.')) {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Fintech');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'data' || word === 'science,')) {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Data_science');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'microservices,')) {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Microservices');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'machine' || word === 'learning')) {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Machine_learning');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'Cal,')) {
+                        link.setAttribute('href', 'https://www.berkeley.edu/');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'Purdue')) {
+                        link.setAttribute('href', 'https://www.purdue.edu/');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
                     } else if ((word === 'PDF')) {
                         link.setAttribute('href', pdfBlobUrl);
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'algorithmic' || word === 'trading') & words[index+1] !== 'platforms') {
+                    } else if ((word === 'algorithmic' || word === 'trading,') && words[index+1] !== 'platforms') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Algorithmic_trading');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -690,7 +728,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://www.sciencedirect.com/science/article/abs/pii/0021999182900584');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'Fortran') {
+                    } else if (word === 'Fortran' && words[index+1] === 'code') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Fortran');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -738,7 +776,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://socket.io/docs/v4/tutorial/introduction');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'Javascript') {
+                    } else if (word === 'JavaScript') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/JavaScript');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -774,8 +812,13 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Apollo_13_(film)');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'systems' || word === 'engineering,') && (words[index-1] !== 'data' && words[index-1] !== 'microservices,' && words[index-2] !== 'microservices,')) {
+                    } else if ((word === 'systems' || word === 'engineering,') && (words[index-1] !== 'data' && words[index-1] !== 'microservices,' && words[index-2] !== 'microservices,' && words[index-1] !== 'my')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Systems_engineering');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'data' || word === 'engineering,') && words[index-1] !== 'my') {
+                        console.log('HIIIIIIIII', words[index-1])
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Data_engineering');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if ((word === 'nonlinear' || word === 'regression,') && words[index+1] !== 'Navier-Stokes') {
