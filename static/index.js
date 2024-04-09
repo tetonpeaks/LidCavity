@@ -606,7 +606,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Fintech');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'data' || word === 'science,')) {
+                    } else if ((word === 'data' || word === 'science,') && words[index-1] !== 'manage') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Data_science');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -614,7 +614,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Microservices');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'machine' || word === 'learning')) {
+                    } else if ((word === 'machine' || word === 'learning') && words[index-1] !== 'personalized' && words[index-1] !== 'adaptive') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Machine_learning');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -816,8 +816,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Systems_engineering');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'data' || word === 'engineering,') && words[index-1] !== 'my') {
-                        console.log('HIIIIIIIII', words[index-1])
+                    } else if ((word === 'data' || word === 'engineering,') && words[index-1] !== 'my' && words[index-1] !== 'manage') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Data_engineering');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
