@@ -596,7 +596,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Algorithmic_trading');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'upper' || word === 'right.') {
+                    } else if (word === 'upper' || word === 'right.' || word === 'simulator') {
                         link.setAttribute('href', 'https://desolate-bastion-69064.herokuapp.com/simulate');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
