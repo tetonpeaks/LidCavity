@@ -3089,7 +3089,7 @@ def start_fvm(message):
                     vlist = vlists_pkg[i]
 
                     obj = {
-                        "simname": f"default_{user_id}",
+                        "simname": "default_1",
                         "newname": None,
                         "U": ubn,
                         "Re": Re,
@@ -3111,7 +3111,7 @@ def start_fvm(message):
                 t1 = time.time()
 
                 obj = {
-                    "simname": f"default_{user_id}",
+                    "simname": "default_1",
                     "newname": None,
                     "U": ubn,
                     "Re": Re,
@@ -3147,7 +3147,7 @@ def start_fvm(message):
                     ylist = ylists_pkg
 
                     obj = {
-                        "simname": f"default_{user_id}",
+                        "simname": "default_1",
                         "newname": None,
                         "U": ubn,
                         "Re": Re,
@@ -3306,7 +3306,7 @@ def genP(message):
                     "axisX": {"x": xlist},
                     "axisY": {"y": ylist},
                     "img_zlib": None,
-                    "simname": f"default_{user_id}",
+                    "simname": "default_1",
                     "newname": None,
                     "username": username,
                     "user_id": user_id,
@@ -3411,7 +3411,7 @@ def genS(message):
                     "axisID": "sl",
                     "img_src": chunk.encode('utf-8'),
                     "src": "streamline",
-                    "simname": f"default_{user_id}",
+                    "simname": "default_1",
                     "newname": None,
                     "username": username,
                     "user_id": user_id,
@@ -3429,7 +3429,7 @@ def genS(message):
                     "colID": None,
                     "axisID": "sl",
                     "imgP_src": chunkP.encode('utf-8'),
-                    "simname": f"default_{user_id}",
+                    "simname": "default_1",
                     "newname": None,
                     "src": "streamline",
                     "username": username,
