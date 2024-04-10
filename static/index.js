@@ -581,6 +581,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             } else if (word === 'Fintech.' && word.endsWith('.') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
                             } else {
+                                console.log('highlight-effect', charSpan)
                                 link.appendChild(charSpan);
                                 setTimeout(() => {
                                     charSpan.classList.add('highlight-effect');
@@ -665,7 +666,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Continuity_equation');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'partial' || word === 'differential' || word === 'equations') && (words[index-1] === 'the' || words[index-1] === 'partial' || words[index-1] === 'differential') || words[index+1] !== 'governing') {
+                    } else if ((word === 'partial' || word === 'differential' || word === 'equations') && (words[index-1] === 'the' || words[index-1] === 'partial' || words[index-1] === 'differential' || words[index+1] !== 'governing')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Partial_differential_equation');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -916,9 +917,11 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://www.comsol.com/');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if (word === 'KNXXX' || word === 'Productions') {
-                        splitandhighlight(word);
-                        textDiv.appendChild(document.createTextNode(word + ' '));
+                    } else if (word === 'K5WFF' || word === 'Productions') {
+                            console.log(word)
+                            link.setAttribute('href', 'https://en.wikipedia.org/wiki/Sentiment_analysis');
+                            splitandhighlight(word);
+                            textDiv.appendChild(document.createTextNode(word + ' '));
                     } else {
                         // apply html tags if necessary
                         if (word.includes('<i>') && word.includes('</i>')) {
