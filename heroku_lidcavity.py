@@ -3201,7 +3201,7 @@ def start_fvm(message):
         print(f"An exception occurred: {str(e)}")
         traceback.print_exc()
 
-        event = { 'msg': 'An error as occurred with the basic tiered Heroku database due to overuse. Please try again later.' }
+        event = { 'msg': 'An error as occurred with the basic tiered Heroku cloud database due to overuse. Please try again later.' }
         emit('response', json.dumps(event, cls=npEncoder), room=request.sid)
         running_loop = False
     finally:

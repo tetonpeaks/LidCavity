@@ -614,10 +614,11 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Fintech');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'data' || word === 'science,') && (words[index-1] !== 'manage' || words[index+1] !== 'engineering,')) {
-                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Data_science');
-                        textDiv.appendChild(link);
-                        splitandhighlight(word);
+                    //} else if ((word === 'data' || word === 'science,') && (words[index-1] !== 'manage' || words[index+1] !== 'engineering,' || words[index+1] !== 'generated')) {
+                    //    console.log(words[index-1], words[index+1])
+                    //    link.setAttribute('href', 'https://en.wikipedia.org/wiki/Data_science');
+                    //    textDiv.appendChild(link);
+                    //    splitandhighlight(word);
                     } else if ((word === 'microservices,')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Microservices');
                         textDiv.appendChild(link);
@@ -664,7 +665,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Continuity_equation');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'partial' || word === 'differential' || word === 'equations') && (words[index-1] === 'the' || words[index-1] === 'partial' || words[index-1] === 'differential')) {
+                    } else if ((word === 'partial' || word === 'differential' || word === 'equations') && (words[index-1] === 'the' || words[index-1] === 'partial' || words[index-1] === 'differential') || words[index+1] !== 'governing') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Partial_differential_equation');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -824,7 +825,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Systems_engineering');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'data' || word === 'engineering,') && words[index-1] !== 'my' && words[index-1] !== 'manage') {
+                    } else if ((word === 'data' || word === 'engineering,') && words[index-1] !== 'my' && words[index-1] !== 'manage' && words[index+1] !== 'science') {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Data_engineering');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -895,7 +896,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Sentiment_analysis');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'emotion' || word === 'recognition.') && (words[index+1] === 'recognition.' || words[index-1] === 'emotion')) {
+                    } else if ((word === 'emotion' || word === 'recognition.') && (words[index+1] === 'recognition.' || words[index-1] === 'emotion' || words[index+1] === 'recognition')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Emotion_recognition');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -1345,7 +1346,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                             document.querySelector('.intro-f-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                         }, 250)
 
-                                    }, 10000)
+                                    }, 11000)
                                 }
                                         //    }, 3000)
                                         //}
