@@ -581,7 +581,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             } else if (word === 'Fintech.' && word.endsWith('.') && index === word.length - 1) {
                                     link.appendChild(document.createTextNode(charSpan.textContent));
                             } else {
-                                console.log('highlight-effect', charSpan)
+                                //console.log('highlight-effect', charSpan)
                                 link.appendChild(charSpan);
                                 setTimeout(() => {
                                     charSpan.classList.add('highlight-effect');
@@ -826,7 +826,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Systems_engineering');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'data' || word === 'engineering,') && words[index-1] !== 'my' && words[index-1] !== 'manage' && words[index+1] !== 'science') {
+                    } else if ((word === 'data' || word === 'engineering,') && (words[index-1] !== 'my' && words[index-1] !== 'manage' && words[index-1] !== 'microservices,')) {
+                        console.log('word: ', word)
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Data_engineering');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -918,7 +919,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'K5WFF' || word === 'Productions') {
-                            console.log(word)
                             link.setAttribute('href', 'https://en.wikipedia.org/wiki/Sentiment_analysis');
                             splitandhighlight(word);
                             textDiv.appendChild(document.createTextNode(word + ' '));
@@ -1253,7 +1253,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                             document.querySelector('.techstack-b-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                         }, 250)
 
-                                    }, 11000 - 3500)
+                                    }, 11000 - 2500)
                                 }
                             }, 9000 - 1000)
                         }
@@ -1288,8 +1288,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //integralContainer.style.display === 'none';
 
-        //if ((classList.contains("bottom-row") || classList.contains("mid-row"))) { // for debugging
-        if ((classList.contains("bottom-row") || classList.contains("mid-row")) && isTechStackBWriterOff == false) {
+        if ((classList.contains("bottom-row") || classList.contains("mid-row"))) { // for debugging
+        //if ((classList.contains("bottom-row") || classList.contains("mid-row")) && isTechStackBWriterOff == false) {
 
             isBottomRowOpen = true;
 
