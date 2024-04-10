@@ -430,7 +430,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else if (classList === "intro-e") {
                 text.classList.add('intro-e-text');
                 text.id = 'dialog';
-                textContent = `The simulator can be accessed from the navigation bar in the upper right. The app is best viewed on newer machines running Google Chrome, Mozilla Firefox, or Safari and can be viewed on desktops, laptops, tablets, and mobile devices in landscape. Both the repository for this application and my LinkedIn profile can also be accessed by hovering over or clicking on the pulsating logo above. Both the home and simulator pages are packed with useful information about this software application as well as my diverse skill sets and how I’ve cohesively rendered it here. If I had enough time and resources, I would implement ML and DL concepts into the codebase and transform it into a personalized learning or adaptive learning platform for academic purposes using sentiment analysis and emotion recognition.`;
+                textContent = `The simulator can be accessed from the navigation bar in the upper right. The app is best viewed on newer machines running Google Chrome, Mozilla Firefox, or Safari and can be viewed on desktops, laptops, tablets, and mobile devices in landscape. Both the repository for this application and my LinkedIn profile can also be accessed by hovering over or clicking on the pulsating logo above. Both the home and simulator pages are packed with useful information about this software application as well as my diverse skill set and how I’ve cohesively rendered it here. If I had enough time and resources, I would implement ML and DL concepts into the codebase and transform it into a personalized or adaptive learning platform for academic purposes using sentiment analysis and emotion recognition.`;
             } else if (classList === "intro-d") {
                 text.classList.add('intro-d-text');
                 text.id = 'dialog';
@@ -598,6 +598,14 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://engineering.purdue.edu/online/courses/numerical-methods-heat-mass-momentum-transfer');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
+                    } else if ((word === 'adaptive')) {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Adaptive_learning');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
+                    } else if ((word === 'personalized' || word === 'learning') && words[index-1] !== 'adaptive') {
+                        link.setAttribute('href', 'https://en.wikipedia.org/wiki/Personalized_learning');
+                        textDiv.appendChild(link);
+                        splitandhighlight(word);
                     } else if ((word === 'robo-advisor')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Robo-advisor');
                         textDiv.appendChild(link);
@@ -614,7 +622,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Microservices');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'machine' || word === 'learning') && words[index-1] !== 'personalized' && words[index-1] !== 'adaptive') {
+                    } else if ((word === 'machine' || word === 'learning') && (words[index-1] !== 'adaptive')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Machine_learning');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
@@ -2935,17 +2943,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const socket = io.connect('/getRe');
 
-            socket.on('connect', () => {
-                //console.log('Client conneted to /getRe')
-            })
+    socket.on('connect', () => {
+        //console.log('Client conneted to /getRe')
+    })
 
-            socket.emit('message', {
-                flag: 'getRe',
-            })
+    socket.emit('message', {
+        flag: 'getRe',
+    })
 
-            socket.on('response', (data) => {
-                GaiaData = JSON.parse(data);
-            })
+    socket.on('response', (data) => {
+        GaiaData = JSON.parse(data);
+    })
 
     proofRow.addEventListener('mouseenter', (event) => {
 
