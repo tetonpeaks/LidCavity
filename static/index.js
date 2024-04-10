@@ -1249,7 +1249,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                             document.querySelector('.techstack-b-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                                         }, 250)
 
-                                    }, 11000 - 3000)
+                                    }, 11000 - 3500)
                                 }
                             }, 9000 - 1000)
                         }
