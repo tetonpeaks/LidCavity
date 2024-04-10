@@ -1288,8 +1288,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //integralContainer.style.display === 'none';
 
-        if ((classList.contains("bottom-row") || classList.contains("mid-row"))) { // for debugging
-        //if ((classList.contains("bottom-row") || classList.contains("mid-row")) && isTechStackBWriterOff == false) {
+        //if ((classList.contains("bottom-row") || classList.contains("mid-row"))) { // for debugging
+        if ((classList.contains("bottom-row") || classList.contains("mid-row")) && isTechStackBWriterOff == false) {
 
             isBottomRowOpen = true;
 
