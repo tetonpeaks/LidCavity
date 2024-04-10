@@ -666,7 +666,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Continuity_equation');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    } else if ((word === 'partial' || word === 'differential' || word === 'equations') && (words[index-1] === 'the' || words[index-1] === 'partial' || words[index-1] === 'differential' || words[index+1] !== 'governing')) {
+                    } else if ((word === 'partial' || word === 'differential' || word === 'equations') && (words[index-1] === 'the' && words[index-1] === 'partial' || words[index-1] === 'differential') && (words[index+1] !== 'governing' || words[index-1] !== 'algebraic')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Partial_differential_equation');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
