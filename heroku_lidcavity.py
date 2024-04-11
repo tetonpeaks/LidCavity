@@ -3627,16 +3627,16 @@ def getRe_socket(message):
 
         emit('response', json.dumps(event, cls=npEncoder), room=request.sid)  # Emit to a specific client
 
+    except Exception as e:
+        print(f"An exception occurred: {str(e)}")
+        traceback.print_exc()
+    finally:
         session.close()
         engine.dispose()
 
         print(f"{bcolors.OKGREEN}******************{bcolors.ENDC}")
         print(f"{bcolors.OKGREEN}session closed / engine disposed{bcolors.ENDC}")
         print(f"{bcolors.OKGREEN}******************{bcolors.ENDC}")
-    except Exception as e:
-        print(f"An exception occurred: {str(e)}")
-        traceback.print_exc()
-    finally:
         print("poop /getRe")
 
 
