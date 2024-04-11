@@ -193,6 +193,7 @@
             box-shadow: 0px 0px 7.5px #CEB888;
             z-index: 1;
             font-size: 1rem;
+            cursor: pointer;
         }
 
         .dropdown-CFD a {
@@ -200,6 +201,7 @@
             padding: 0.5rem;
             color: #CEB888;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .dropdown-CFD a:hover {
@@ -228,6 +230,8 @@
             transition: 0.1;
         }
 
+        .simulator { color: #CEB888; cursor: none; }
+
         #loginButton.disabled,
         #welcome.disabled,
         #home.disabled,
@@ -255,7 +259,7 @@
             text-align: center;
         }
 
-        #welcome { cursor: none; border-radius: 7.5px; font-size: 1rem; }
+        #welcome { cursor: none; border-radius: 7.5px; font-size: 1rem; box-shadow: none; }
 
         .arrow {
         display: inline-block;
@@ -534,7 +538,7 @@
 
                     <ul class="nav-links">
                         <div class="menu">
-                            <li><a class="disabled" id="welcome">Simulator <span class="arrow">&rarr;</span></a></li>
+                            <div class="simulator">Simulator<span class="arrow">&rarr;</span></div>
                         <!-- DO NOT DELETE <li><a href="/test" onclick="" class="disabled" id="home">Home</a></li>
                         <li><a href="/simulate" class="simulate disabled" id="simulate">Simulate</a></li>
                         <li><a class="loginButton" id="loginButton" data-logout-url="{{ url_for('root') }}">Login</a></li> -->

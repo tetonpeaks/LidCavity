@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
     loginButton.innerHTML = `Logout`; */
 
     function enableButtons() {
-        document.getElementById('welcome').classList.remove('disabled');
+        //document.getElementById('welcome').classList.remove('disabled');
         document.getElementById('home').classList.remove('disabled');
         document.getElementById('simulate').classList.remove('disabled');
     }
@@ -86,11 +86,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    const welcomeLi = document.getElementById('welcome');
+    //const welcomeLi = document.getElementById('welcome');
     const homeButton = document.getElementById('home');
     const simulateButton = document.getElementById('simulate');
 
-    addHoverAndFocusStyles(welcomeLi);
+    //addHoverAndFocusStyles(welcomeLi);
     addHoverAndFocusStyles(homeButton);
     addHoverAndFocusStyles(simulateButton);
     //addHoverAndFocusStyles(loginButton);
@@ -1414,7 +1414,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     } else if (i === 2) {
                         grid32[i].innerHTML = `
                             <span class="paragraph">
-                                Many CFD codes have been benchmarked with this problem, which was first introduced by <a class="ghia" href="https://www.sciencedirect.com/science/article/abs/pii/0021999182900584" target="_blank">Ghia, Ghia, and Shin</a> in the Journal of Computational Physics in 1982. Their publication, among others, and more importantly, their datasets, are a standard reference for verifying the accuracy, convergence, and reliability of different numerical methods that are used to solve the Navier-Stokes equations for <a class="incompressible" href="https://en.wikipedia.org/wiki/Incompressible_flow#:~:text=In%20fluid%20mechanics%2C%20or%20more,moves%20with%20the%20flow%20velocity." target="_blank">incompressible fluid flow</a>. The lid-driven cavity problem remains a fundamental and widely accepted benchmark in the CFD community due to its simplicity in setup, yet its ability to reveal complexities in fluid flow behavior and validate numerical methods in simulating viscous, incompressible flow in a controlled environment.
+                                Many CFD codes have been benchmarked with this problem, which was first introduced by <a class="ghia" href="https://www.sciencedirect.com/science/article/abs/pii/0021999182900584" target="_blank">Ghia, Ghia, and Shin</a> in the Journal of Computational Physics in 1982. Their publication, among others, and more importantly, their datasets, are a standard reference for validating the accuracy, convergence, and reliability of different numerical methods that are used to solve the Navier-Stokes equations for <a class="incompressible" href="https://en.wikipedia.org/wiki/Incompressible_flow#:~:text=In%20fluid%20mechanics%2C%20or%20more,moves%20with%20the%20flow%20velocity." target="_blank">incompressible fluid flow</a>. The lid-driven cavity problem remains a fundamental and widely accepted benchmark in the CFD community due to its simplicity in setup, yet its ability to reveal complexities in fluid flow behavior and validate numerical methods in simulating viscous, incompressible flow in a controlled environment.
                             </span>
                         `;
 
