@@ -2070,7 +2070,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (prefix === "fourth-b") {
                 text.classList.add('fourth-b-text');
                 textContainer.appendChild(text);
-                textContent = `By increasing the Reynolds’ number (Re) incrementally, the following will occur. The velocity flow field will develop into a primary vortex near the geometric center with secondary vortices forming in the lower left and right corners. The secondary vortices will develop due to their proximity to two boundaries which will exhibit the no-slip condition, which is an important boundary condition in fluid mechanics that has been captured and rendered to the page with the stream particles moving at velocities determined by CFD solver.`;
+                textContent = `By increasing the Reynolds’ number (Re) incrementally, the following will occur: The velocity flow field will develop into a primary vortex near the geometric center with secondary vortices forming in the lower left and right corners. The secondary vortices will develop due to their proximity to two boundaries which will exhibit the no-slip condition, which is an important boundary condition in fluid mechanics that has been captured and rendered to the page with the stream particles moving at velocities determined by CFD solver.`;
             } else if (prefix === "fourth-c") {
                 text.classList.add('fourth-c-text');
                 textContainer.appendChild(text);
