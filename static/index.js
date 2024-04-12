@@ -2941,19 +2941,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var GaiaData;
 
-    const socket = io.connect('/getRe');
+    setTimeout(() => {
+        const socket = io.connect('/getRe');
 
-    socket.on('connect', () => {
-        //console.log('Client conneted to /getRe')
-    })
+        socket.on('connect', () => {
+            //console.log('Client conneted to /getRe')
+        })
 
-    socket.emit('message', {
-        flag: 'getRe',
-    })
+        socket.emit('message', {
+            flag: 'getRe',
+        })
 
-    socket.on('response', (data) => {
-        GaiaData = JSON.parse(data);
-    })
+        socket.on('response', (data) => {
+            GaiaData = JSON.parse(data);
+        })
+    }, 500)
 
     proofRow.addEventListener('mouseenter', (event) => {
 
