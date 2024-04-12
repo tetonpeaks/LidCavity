@@ -1211,27 +1211,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
             let classList = event.target.classList;
 
-            if (isTechStackCWriterOff === true && classList.contains("techstack-row")) {
-                document.getElementById('techstack-c-dialog-row').style.display = 'flex';
-                document.getElementById('techstack-c-wrapper').style.display = 'block';
-                startTypeWriter("techstack-c", 'techstack-c');
-                setTimeout(() => {
-                    document.querySelector('.techstack-c-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
-                }, 250)
-
-                if (isTechStackDWriterOff === true) {
-                    setTimeout(() => {
-
-                        document.getElementById('techstack-d-dialog-row').style.display = 'flex';
+            if (isTechStackDWriterOff === true && classList.contains("techstack-row")) {
+                document.getElementById('techstack-d-dialog-row').style.display = 'flex';
                         document.getElementById('techstack-d-wrapper').style.display = 'block';
-
                         startTypeWriter('techstack-d', 'techstack-d');
 
                         setTimeout(() => {
                             document.querySelector('.techstack-d-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
                         }, 250)
 
+                if (isTechStackCWriterOff === true) {
+                    setTimeout(() => {
+                        document.getElementById('techstack-c-dialog-row').style.display = 'flex';
+                        document.getElementById('techstack-c-wrapper').style.display = 'block';
+                        startTypeWriter("techstack-c", 'techstack-c');
+                        setTimeout(() => {
+                            document.querySelector('.techstack-c-text').style.fontSize =`${1.25 * newFontSize / htmlFontSize}rem`;
+                        }, 250)
+
+
                         if (isTechStackWriterOff === true) {
+
                             setTimeout(() => {
                                 document.getElementById('techstack-dialog-row').style.display = 'flex';
                                 document.getElementById('techstack-wrapper').style.display = 'block';
@@ -1255,7 +1255,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                                     }, 11000 - 2500)
                                 }
-                            }, 9000 - 1000)
+                            }, 9000 + 3000)
                         }
                     }, 10000)
                 }

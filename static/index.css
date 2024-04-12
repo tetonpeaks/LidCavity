@@ -127,7 +127,7 @@ body {
 
 .techstack-c-dialog-row
 {
-    grid-row: 1;
+    grid-row: 2;
     display: none; /* flex */
     justify-content: center;
     align-items: center;
@@ -135,7 +135,7 @@ body {
 }
 .techstack-d-dialog-row
 {
-    grid-row: 2;
+    grid-row: 1;
     display: none; /* flex */
     justify-content: center;
     align-items: center;
