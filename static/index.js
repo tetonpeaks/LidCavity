@@ -1255,9 +1255,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
                                     }, 11000 - 2500)
                                 }
-                            }, 9000 + 3000)
+                            }, 9000 + 2000)
                         }
-                    }, 10000)
+                    }, 10000 - 2000)
                 }
 
             }
