@@ -3599,6 +3599,9 @@ def getRe_socket(message):
             rows = session.execute(stmt).all()
             gaia1982[Re[i]]['v'] = np.zeros((len(rows),2))
 
+            session.close()
+            engine.dispose()
+
             j = 0
             for row in rows:
                 gaia1982[Re[i]]['v'][j][0] = row[0]
@@ -3612,8 +3615,11 @@ def getRe_socket(message):
                 src='cfd')
 
             rows = session.execute(stmt).all()
-
             cfd[Re[i]]['v'] = np.zeros((len(rows),2))
+
+            session.close()
+            engine.dispose()
+
             j = 0
             for row in rows:
                 #if (Re[i] == '400'):
@@ -3631,9 +3637,6 @@ def getRe_socket(message):
         print(f"An exception occurred: {str(e)}")
         traceback.print_exc()
     finally:
-        session.close()
-        engine.dispose()
-
         print(f"{bcolors.OKGREEN}******************{bcolors.ENDC}")
         print(f"{bcolors.OKGREEN}session closed / engine disposed{bcolors.ENDC}")
         print(f"{bcolors.OKGREEN}******************{bcolors.ENDC}")
