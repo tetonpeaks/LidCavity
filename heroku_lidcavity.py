@@ -2856,7 +2856,7 @@ def retreive(message):
         traceback.print_exc()
     finally:
         print("poop /retreive")
-    e#lse:
+    #else:
      #   print("No user is currently authenticated.")
 
 """ /fvm route START """
