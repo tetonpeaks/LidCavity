@@ -425,8 +425,8 @@ def getSims():
 
     rows = session.query(Convergence).filter_by(user_id=user_id).all()
 
-    session.close()
-    engine.dispose()
+    #session.close()
+    #engine.dispose()
 
     #print(f"{bcolors.WARNING}rows: {bcolors.ENDC}{rows}")
 
