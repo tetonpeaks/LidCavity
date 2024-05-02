@@ -615,11 +615,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Fintech');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
-                    //} else if ((word === 'data' || word === 'science,') && (words[index-1] !== 'manage' || words[index+1] !== 'engineering,' || words[index+1] !== 'generated')) {
-                    //    console.log(words[index-1], words[index+1])
-                    //    link.setAttribute('href', 'https://en.wikipedia.org/wiki/Data_science');
-                    //    textDiv.appendChild(link);
-                    //    splitandhighlight(word);
                     } else if ((word === 'microservices,')) {
                         link.setAttribute('href', 'https://en.wikipedia.org/wiki/Microservices');
                         textDiv.appendChild(link);
