@@ -856,7 +856,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'LinkedIn') {
-                        link.setAttribute('href', 'https://www.linkedin.com/in/stephen-hodson-880b38a5/');
+                        link.setAttribute('href', 'https://www.linkedin.com/in/stephen-hodson-phd-880b38a5/');
                         textDiv.appendChild(link);
                         splitandhighlight(word);
                     } else if (word === 'dyno') {
