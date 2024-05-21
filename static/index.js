@@ -349,9 +349,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function animateMatrix() {
-        //requestAnimationFrame(animateMatrix);
         animationFrameId = requestAnimationFrame(() => animateMatrix());
-        //console.log("isPaused: ", isPaused)
         if (!isPaused) {
             draw();
         }
