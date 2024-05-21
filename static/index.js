@@ -337,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             drops[i]++;
 
-            // reset drop position
+            // reset position
             if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
                 drops[i] = 0;
             }
