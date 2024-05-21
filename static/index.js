@@ -324,21 +324,17 @@ document.addEventListener("DOMContentLoaded", function() {
     var savedDrops;
 
     function draw() {
-        // set a semi-transparent background to create trailing effect
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         ctx.fillStyle = '#0F0';
         ctx.font = `${fontSize}px monospace`;
 
-        // Llop through each column to draw characters
         for (let i = 0; i < drops.length; i++) {
             const text = characters[Math.floor(Math.random() * characters.length)];
 
-            // draw the character at this column
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-            // move the character down
             drops[i]++;
 
             // reset drop position
